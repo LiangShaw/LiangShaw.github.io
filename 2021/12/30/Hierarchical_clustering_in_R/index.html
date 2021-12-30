@@ -4,42 +4,44 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)link1-lessonlink2-heatmap-extend Agglomerative Hierarchical Clustering丛集聚类分裂聚类    Steps to agglomerative hierarchical clustering  Data structure and">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)">
 <meta property="og:url" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)link1-lessonlink2-heatmap-extend Agglomerative Hierarchical Clustering丛集聚类分裂聚类    Steps to agglomerative hierarchical clustering  Data structure and">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/hierarchical_clustering.jpg">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/Steps_to_agglomerative.jpg">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_18_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_20_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_27_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_31_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_41_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_48_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_55_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_57_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_59_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_63_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_65_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_67_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_71_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_73_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_74_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_82_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_84_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_86_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_92_0.png">
-<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/output_94_1.png">
-<meta property="article:published_time" content="2021-12-30T11:39:13.434Z">
-<meta property="article:modified_time" content="2021-12-30T11:39:13.434Z">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/hierarchical_clustering.jpg">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/Steps_to_agglomerative.jpg">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_18_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_20_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_27_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_31_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_41_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_48_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_55_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_57_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_59_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_63_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_65_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_67_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_71_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_73_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_74_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_82_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_84_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_86_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_92_0.png">
+<meta property="og:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/output_94_1.png">
+<meta property="article:published_time" content="2021-12-30T12:19:54.657Z">
+<meta property="article:modified_time" content="2021-12-30T12:19:54.657Z">
 <meta property="article:author" content="shaoboliang">
+<meta property="article:tag" content="hierarchical clustering">
+<meta property="article:tag" content="R">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/img/hierarchical_clustering.jpg">
+<meta name="twitter:image" content="http://example.com/2021/12/30/Hierarchical_clustering_in_R/hierarchical_clustering.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -99,21 +101,31 @@
         <section id="main"><article id="post-Hierarchical_clustering_in_R" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/12/30/Hierarchical_clustering_in_R/" class="article-date">
-  <time class="dt-published" datetime="2021-12-30T11:39:13.434Z" itemprop="datePublished">2021-12-30</time>
+  <time class="dt-published" datetime="2021-12-30T12:19:54.657Z" itemprop="datePublished">2021-12-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="HIERARCHICAL-CLUSTERING-IN-R-THE-ESSENTIALS-层级聚类"><a href="#HIERARCHICAL-CLUSTERING-IN-R-THE-ESSENTIALS-层级聚类" class="headerlink" title="HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)"></a>HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)</h1><p><a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/agglomerative-hierarchical-clustering/">link1-lesson</a><br><a target="_blank" rel="noopener" href="https://www.datanovia.com/en/blog/clustering-using-correlation-as-distance-measures-in-r/">link2-heatmap-extend</a></p>
 <h2 id="Agglomerative-Hierarchical-Clustering"><a href="#Agglomerative-Hierarchical-Clustering" class="headerlink" title="Agglomerative Hierarchical Clustering"></a>Agglomerative Hierarchical Clustering</h2><p><a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/agglomerative-hierarchical-clustering/">丛集聚类</a><br>分裂聚类</p>
-<img src='img/hierarchical_clustering.jpg' width=600 />
+<img src='hierarchical_clustering.jpg' width=600 />
 
 
-<h2 id="Steps-to-agglomerative-hierarchical-clustering"><a href="#Steps-to-agglomerative-hierarchical-clustering" class="headerlink" title="Steps to agglomerative hierarchical clustering"></a>Steps to agglomerative hierarchical clustering</h2><center><img src='img/Steps_to_agglomerative.jpg' width=800 /></center>
+<h2 id="Steps-to-agglomerative-hierarchical-clustering"><a href="#Steps-to-agglomerative-hierarchical-clustering" class="headerlink" title="Steps to agglomerative hierarchical clustering"></a>Steps to agglomerative hierarchical clustering</h2><center><img src='Steps_to_agglomerative.jpg' width=800 /></center>
 
 <h3 id="Data-structure-and-preparation"><a href="#Data-structure-and-preparation" class="headerlink" title="Data structure and preparation"></a>Data structure and preparation</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Load the data</span></span><br><span class="line">data(<span class="string">&quot;USArrests&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Standardize the data</span></span><br><span class="line"><span class="comment">## The R function scale() can be used for standardization</span></span><br><span class="line">df &lt;- scale(USArrests)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Show the first 6 rows</span></span><br><span class="line">head(df, nrow = <span class="number">6</span>)</span><br></pre></td></tr></table></figure>
 
@@ -174,12 +186,12 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(res.hc, cex = <span class="number">0.8</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_18_0.png" alt="png"></p>
+<p><img src="output_18_0.png" alt="png"></p>
 <p> <code>fviz_dend()</code> ( in <code>factoextra</code> R package ) to produce a beautiful dendrogram.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cex: label size</span></span><br><span class="line">suppressPackageStartupMessages(library(<span class="string">&quot;factoextra&quot;</span>))</span><br><span class="line">fviz_dend(res.hc, title=<span class="string">&#x27;&#x27;</span>, cex = <span class="number">0.7</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_20_0.png" alt="png"></p>
+<p><img src="output_20_0.png" alt="png"></p>
 <h3 id="Cut-the-dendrogram-into-different-groups"><a href="#Cut-the-dendrogram-into-different-groups" class="headerlink" title="Cut the dendrogram into different groups"></a>Cut the dendrogram into different groups</h3><p>You can cut the hierarchical tree at a given height in order to partition your data into clusters.<br>The R base function cutree() can be used to cut a tree, generated by the hclust() function, into several groups either by specifying the desired number of groups or the cut height.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cut tree into 4 groups</span></span><br><span class="line">grp &lt;- cutree(res.hc, k = <span class="number">4</span>)</span><br><span class="line">head(grp, n = <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 
@@ -217,7 +229,7 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fviz_dend(res.hc, title=<span class="string">&#x27;&#x27;</span>, cex=<span class="number">0.7</span>, k=<span class="number">4</span>, type=<span class="string">&#x27;rectangle&#x27;</span>, rect=<span class="built_in">T</span> ,rect_border = <span class="string">&quot;jco&quot;</span>, rect_fill = <span class="literal">TRUE</span>, horiz = <span class="literal">TRUE</span>) <span class="comment"># type=&#x27;scatter&#x27;</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_27_0.png" alt="png"></p>
+<p><img src="output_27_0.png" alt="png"></p>
 <h2 id="Cluster-R-package"><a href="#Cluster-R-package" class="headerlink" title="Cluster R package"></a>Cluster R package</h2><p>The R package <code>cluster</code> makes it easy to perform cluster analysis in R. It provides the function agnes() and diana() for computing agglomerative and divisive clustering, respectively. These functions perform all the necessary steps for you. You don’t need to execute the scale(), dist() and hclust() function separately.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">library(<span class="string">&quot;cluster&quot;</span>)</span><br><span class="line"><span class="comment"># Agglomerative Nesting (Hierarchical Clustering)</span></span><br><span class="line">res.agnes &lt;- agnes(x = USArrests, <span class="comment"># data matrix</span></span><br><span class="line">                   stand = <span class="literal">TRUE</span>, <span class="comment"># Standardize the data</span></span><br><span class="line">                   metric = <span class="string">&quot;euclidean&quot;</span>, <span class="comment"># metric for distance matrix</span></span><br><span class="line">                   method = <span class="string">&quot;ward&quot;</span> <span class="comment"># Linkage method</span></span><br><span class="line">                   )</span><br><span class="line"></span><br><span class="line"><span class="comment"># DIvisive ANAlysis Clustering</span></span><br><span class="line">res.diana &lt;- diana(x = USArrests, <span class="comment"># data matrix</span></span><br><span class="line">                   stand = <span class="literal">TRUE</span>, <span class="comment"># standardize the data</span></span><br><span class="line">                   metric = <span class="string">&quot;euclidean&quot;</span> <span class="comment"># metric for distance matrix</span></span><br><span class="line">                   )</span><br></pre></td></tr></table></figure>
 
@@ -227,7 +239,7 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fviz_dend(res.diana, cex = <span class="number">0.7</span>, k = <span class="number">4</span>, horiz = <span class="built_in">T</span>, type = <span class="string">&#x27;circular&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_31_0.png" alt="png"></p>
+<p><img src="output_31_0.png" alt="png"></p>
 <h2 id="Application-of-hierarchical-clustering-to-gene-expression-data-analysis"><a href="#Application-of-hierarchical-clustering-to-gene-expression-data-analysis" class="headerlink" title="Application of hierarchical clustering to gene expression data analysis"></a>Application of hierarchical clustering to gene expression data analysis</h2><p>In gene expression data analysis, clustering is generaly used as one of the first step to explore the data.<br>We are interested in whether there are groups of genes or groups of samples that have similar gene expression patterns.  </p>
 <p>Several <a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/clustering-distance-measures/">clustering distance measures</a> have been described for assessing the similarity or the dissimilarity between items, in order to decide which items have to be grouped together or not.<br>These measures can be used to cluster genes or samples that are similar.</p>
 <p>For most common clustering softwares, the default distance measure is the Euclidean distance.<br>The most popular methods for gene expression data are to use log2(expression + 0.25), correlation distance and complete linkage clustering agglomerative-clustering.  </p>
@@ -243,7 +255,7 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Align and plot two dendrograms side by side</span></span><br><span class="line">dendlist(dend1, dend2) %&gt;%</span><br><span class="line">  untangle(method = <span class="string">&quot;step1side&quot;</span>) %&gt;% <span class="comment"># Find the best alignment layout</span></span><br><span class="line">  tanglegram()                       <span class="comment"># Draw the two dendrograms</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_41_0.png" alt="png"></p>
+<p><img src="output_41_0.png" alt="png"></p>
 <h2 id="Heatmap-in-R-Static-and-Interactive-Visualization"><a href="#Heatmap-in-R-Static-and-Interactive-Visualization" class="headerlink" title="Heatmap in R: Static and Interactive Visualization"></a>Heatmap in R: Static and Interactive Visualization</h2><h3 id="R-Packages-functions-for-drawing-heatmaps"><a href="#R-Packages-functions-for-drawing-heatmaps" class="headerlink" title="R Packages/functions for drawing heatmaps"></a>R Packages/functions for drawing heatmaps</h3><ul>
 <li>heatmap() [R base function, stats package]: Draws a simple heatmap</li>
 <li>heatmap.2() [gplots R package]: Draws an enhanced heatmap compared to the R base function.</li>
@@ -256,7 +268,7 @@
 <h3 id="R-base-heatmap-heatmap"><a href="#R-base-heatmap-heatmap" class="headerlink" title="R base heatmap: heatmap()"></a>R base heatmap: heatmap()</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heatmap(df, scale = <span class="string">&quot;row&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_48_0.png" alt="png"></p>
+<p><img src="output_48_0.png" alt="png"></p>
 <p>It’s possible to specify a color palette using the argument col, which can be defined as follow:</p>
 <ul>
 <li>use custom colors</li>
@@ -272,29 +284,29 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use RColorBrewer color palette names</span></span><br><span class="line">library(<span class="string">&quot;RColorBrewer&quot;</span>)</span><br><span class="line">col &lt;- colorRampPalette(brewer.pal(<span class="number">10</span>, <span class="string">&quot;RdYlBu&quot;</span>))(<span class="number">256</span>)</span><br><span class="line">heatmap(df, scale = <span class="string">&quot;none&quot;</span>, col =  col, </span><br><span class="line">        RowSideColors = <span class="built_in">rep</span>(<span class="built_in">c</span>(<span class="string">&quot;blue&quot;</span>, <span class="string">&quot;pink&quot;</span>), each = <span class="number">16</span>),</span><br><span class="line">        ColSideColors = <span class="built_in">c</span>(<span class="built_in">rep</span>(<span class="string">&quot;purple&quot;</span>, <span class="number">5</span>), <span class="built_in">rep</span>(<span class="string">&quot;orange&quot;</span>, <span class="number">6</span>)))</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_55_0.png" alt="png"></p>
+<p><img src="output_55_0.png" alt="png"></p>
 <h3 id="Enhanced-heat-maps-heatmap-2"><a href="#Enhanced-heat-maps-heatmap-2" class="headerlink" title="Enhanced heat maps: heatmap.2()"></a>Enhanced heat maps: heatmap.2()</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install.packages(&quot;gplots&quot;)</span></span><br><span class="line">suppressPackageStartupMessages(library(<span class="string">&quot;gplots&quot;</span>))</span><br><span class="line">heatmap.2(df, scale = <span class="string">&quot;none&quot;</span>, col = bluered(<span class="number">100</span>), </span><br><span class="line">          trace = <span class="string">&quot;none&quot;</span>, density.info = <span class="string">&quot;none&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_57_0.png" alt="png"></p>
+<p><img src="output_57_0.png" alt="png"></p>
 <h3 id="Pretty-heat-maps-pheatmap"><a href="#Pretty-heat-maps-pheatmap" class="headerlink" title="Pretty heat maps: pheatmap()"></a>Pretty heat maps: pheatmap()</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(<span class="string">&quot;pheatmap&quot;</span>)</span><br><span class="line">pheatmap(df, cutree_rows = <span class="number">4</span>, cutree_cols = <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_59_0.png" alt="png"></p>
+<p><img src="output_59_0.png" alt="png"></p>
 <h3 id="Interactive-heat-maps-d3heatmap"><a href="#Interactive-heat-maps-d3heatmap" class="headerlink" title="Interactive heat maps: d3heatmap()"></a>Interactive heat maps: d3heatmap()</h3><h3 id="Complex-heatmap"><a href="#Complex-heatmap" class="headerlink" title="Complex heatmap"></a>Complex heatmap</h3><h4 id="simple-heatmap"><a href="#simple-heatmap" class="headerlink" title="simple heatmap"></a>simple heatmap</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">suppressPackageStartupMessages(library(ComplexHeatmap))</span><br><span class="line">Heatmap(df, </span><br><span class="line">        name = <span class="string">&quot;mtcars&quot;</span>, <span class="comment">#title of legend</span></span><br><span class="line">        column_title = <span class="string">&quot;Variables&quot;</span>, row_title = <span class="string">&quot;Samples&quot;</span>,</span><br><span class="line">        row_title_gp = gpar(fontsize = <span class="number">14</span>),</span><br><span class="line">        row_names_gp = gpar(fontsize = <span class="number">10</span>), <span class="comment"># Text size for row names</span></span><br><span class="line">        column_names_gp = gpar(fontsize = <span class="number">14</span>)</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_63_0.png" alt="png"></p>
+<p><img src="output_63_0.png" alt="png"></p>
 <p>To specify a custom colors, you must use the the <code>colorRamp2()</code> function [circlize package], as follow</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">suppressPackageStartupMessages(library(circlize))</span><br><span class="line">mycols &lt;- colorRamp2(breaks = <span class="built_in">c</span>(-<span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>), </span><br><span class="line">                    colors = <span class="built_in">c</span>(<span class="string">&quot;green&quot;</span>, <span class="string">&quot;white&quot;</span>, <span class="string">&quot;red&quot;</span>))</span><br><span class="line">Heatmap(df, name = <span class="string">&quot;mtcars&quot;</span>, col = mycols)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_65_0.png" alt="png"></p>
+<p><img src="output_65_0.png" alt="png"></p>
 <p>We can also customize the appearance of dendograms using the function <code>color_branches()</code> [dendextend package]</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">library(dendextend)</span><br><span class="line">row_dend &lt;- hclust(dist(df))</span><br><span class="line">col_dend &lt;- hclust(dist(t(df)))</span><br><span class="line">Heatmap(df, name=<span class="string">&#x27;mtcars&#x27;</span>,</span><br><span class="line">        row_names_gp = gpar(fontsize = <span class="number">11</span>),</span><br><span class="line">        cluster_rows = color_branches(row_dend,k=<span class="number">4</span>),</span><br><span class="line">        cluster_columns = color_branches(col_dend,k=<span class="number">2</span>)</span><br><span class="line">       )</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_67_0.png" alt="png"></p>
+<p><img src="output_67_0.png" alt="png"></p>
 <h4 id="Splitting-heatmap-by-rows"><a href="#Splitting-heatmap-by-rows" class="headerlink" title="Splitting heatmap by rows"></a>Splitting heatmap by rows</h4><p>You can split the heatmap using either the k-means algorithm or a grouping variable</p>
 <ul>
 <li>by k-means</li>
@@ -302,18 +314,18 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Divide into 2 groups</span></span><br><span class="line">set.seed(<span class="number">2</span>)</span><br><span class="line">Heatmap(df, name = <span class="string">&quot;mtcars&quot;</span>, k = <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_71_0.png" alt="png"></p>
+<p><img src="output_71_0.png" alt="png"></p>
 <ul>
 <li>grouping variables</li>
 </ul>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># split by a vector specifying rowgroups</span></span><br><span class="line">Heatmap(df, name = <span class="string">&quot;mtcars&quot;</span>, split = mtcars$cyl,</span><br><span class="line">        row_names_gp = gpar(fontsize = <span class="number">7</span>))</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_73_0.png" alt="png"></p>
+<p><img src="output_73_0.png" alt="png"></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Split by combining multiple variables</span></span><br><span class="line">Heatmap(df, name =<span class="string">&quot;mtcars&quot;</span>, </span><br><span class="line">        split = data.frame(cyl = mtcars$cyl, am = mtcars$am),</span><br><span class="line">        row_names_gp = gpar(fontsize = <span class="number">7</span>))</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_74_0.png" alt="png"></p>
+<p><img src="output_74_0.png" alt="png"></p>
 <h3 id="Heatmap-annotation"><a href="#Heatmap-annotation" class="headerlink" title="Heatmap annotation"></a>Heatmap annotation</h3><p>For the example below, we’ll transpose our data to have the observations in columns and the variables in rows.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df &lt;- t(df)</span><br></pre></td></tr></table></figure>
 
@@ -330,15 +342,15 @@
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Heatmap(df, name=<span class="string">&#x27;mtcars&#x27;</span>,</span><br><span class="line">       top_annotation = ha)</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_82_0.png" alt="png"></p>
+<p><img src="output_82_0.png" alt="png"></p>
 <h4 id="complex-annotation"><a href="#complex-annotation" class="headerlink" title="*complex annotation"></a>*complex annotation</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define some graphics to display the distribution of columns</span></span><br><span class="line">.hist = anno_histogram(df, gp = gpar(fill = <span class="string">&quot;lightblue&quot;</span>))</span><br><span class="line">.density = anno_density(df, type = <span class="string">&quot;line&quot;</span>, gp = gpar(col = <span class="string">&quot;blue&quot;</span>))</span><br><span class="line">ha_mix_top = HeatmapAnnotation(</span><br><span class="line">  hist = .hist, density = .density,</span><br><span class="line">  height = unit(<span class="number">3.8</span>, <span class="string">&quot;cm&quot;</span>)</span><br><span class="line">  )</span><br><span class="line"><span class="comment"># Define some graphics to display the distribution of rows</span></span><br><span class="line">.violin = anno_density(df, type = <span class="string">&quot;violin&quot;</span>, </span><br><span class="line">                       gp = gpar(fill = <span class="string">&quot;lightblue&quot;</span>), which = <span class="string">&quot;row&quot;</span>)</span><br><span class="line">.boxplot = anno_boxplot(df, which = <span class="string">&quot;row&quot;</span>)</span><br><span class="line">ha_mix_right = HeatmapAnnotation(violin = .violin, bxplt = .boxplot,</span><br><span class="line">                              which = <span class="string">&quot;row&quot;</span>, width = unit(<span class="number">4</span>, <span class="string">&quot;cm&quot;</span>))</span><br><span class="line"><span class="comment"># Combine annotation with heatmap</span></span><br><span class="line">Heatmap(df, name = <span class="string">&quot;mtcars&quot;</span>, </span><br><span class="line">        column_names_gp = gpar(fontsize = <span class="number">8</span>),</span><br><span class="line">        top_annotation = ha_mix_top) + ha_mix_right</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_84_0.png" alt="png"></p>
+<p><img src="output_84_0.png" alt="png"></p>
 <h4 id="Combining-multiple-heatmaps"><a href="#Combining-multiple-heatmaps" class="headerlink" title="*Combining multiple heatmaps"></a>*Combining multiple heatmaps</h4><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Heatmap 1</span></span><br><span class="line">ht1 = Heatmap(df, name = <span class="string">&quot;ht1&quot;</span>, km = <span class="number">2</span>,</span><br><span class="line">              column_names_gp = gpar(fontsize = <span class="number">9</span>))</span><br><span class="line"><span class="comment"># Heatmap 2</span></span><br><span class="line">ht2 = Heatmap(df, name = <span class="string">&quot;ht2&quot;</span>, </span><br><span class="line">        col = circlize::colorRamp2(<span class="built_in">c</span>(-<span class="number">2</span>, <span class="number">0</span>, <span class="number">2</span>), <span class="built_in">c</span>(<span class="string">&quot;green&quot;</span>, <span class="string">&quot;white&quot;</span>, <span class="string">&quot;red&quot;</span>)),</span><br><span class="line">        column_names_gp = gpar(fontsize = <span class="number">9</span>))</span><br><span class="line"><span class="comment"># Combine the two heatmaps</span></span><br><span class="line">ht1 + ht2</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_86_0.png" alt="png"></p>
+<p><img src="output_86_0.png" alt="png"></p>
 <h3 id="Application-to-gene-expression-matrix"><a href="#Application-to-gene-expression-matrix" class="headerlink" title="Application to gene expression matrix"></a>Application to gene expression matrix</h3><p>In gene expression data, <u>rows are genes</u> and <u>columns are samples</u>.   </p>
 <p>More information about genes can be attached after the expression heatmap such as gene length and type of genes.</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">expr &lt;- readRDS(paste0(system.file(package = <span class="string">&quot;ComplexHeatmap&quot;</span>),</span><br><span class="line">                      <span class="string">&quot;/extdata/gene_expression.rds&quot;</span>))</span><br></pre></td></tr></table></figure>
@@ -372,7 +384,7 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mat &lt;- as.matrix(expr[,grep(<span class="string">&quot;cell&quot;</span>,colnames(expr))])</span><br><span class="line">type &lt;- gsub(<span class="string">&#x27;s\\d+_&#x27;</span>,<span class="string">&#x27;&#x27;</span>,colnames(mat))</span><br><span class="line">ha = HeatmapAnnotation(</span><br><span class="line">  df = data.frame(type = type),</span><br><span class="line">    annotation_height = unit(<span class="number">4</span>, <span class="string">&quot;mm&quot;</span>)</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">Heatmap(mat, name=<span class="string">&#x27;expression&#x27;</span> , km = <span class="number">5</span>, top_annotation = ha,</span><br><span class="line">        show_column_names = <span class="built_in">F</span>, show_row_names = <span class="built_in">F</span>) + </span><br><span class="line">Heatmap(expr$<span class="built_in">length</span>, name = <span class="string">&#x27;length&#x27;</span>, width = unit(<span class="number">5</span>, <span class="string">&quot;mm&quot;</span>),</span><br><span class="line">        col = circlize::colorRamp2(<span class="built_in">c</span>(<span class="number">0</span>,<span class="number">100000</span>),<span class="built_in">c</span>(<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;orange&#x27;</span>))) +</span><br><span class="line">Heatmap(expr$type, name = <span class="string">&#x27;type&#x27;</span>, width = unit(<span class="number">5</span>, <span class="string">&quot;mm&quot;</span>)) +</span><br><span class="line">Heatmap(expr$chr, name = <span class="string">&#x27;chr&#x27;</span>, width = unit(<span class="number">5</span>, <span class="string">&quot;mm&quot;</span>),</span><br><span class="line">       col = circlize::rand_color(<span class="built_in">length</span>(unique(expr$chr))))</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="img/output_92_0.png" alt="png"></p>
+<p><img src="output_92_0.png" alt="png"></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">set.seed(<span class="number">123</span>)</span><br><span class="line">mydata &lt;- matrix(rnorm(<span class="number">200</span>), <span class="number">20</span>, <span class="number">10</span>)</span><br><span class="line">mydata[<span class="number">1</span>:<span class="number">10</span>, seq(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>)] = mydata[<span class="number">1</span>:<span class="number">10</span>, seq(<span class="number">1</span>, <span class="number">10</span>, <span class="number">2</span>)] + <span class="number">3</span></span><br><span class="line">mydata[<span class="number">11</span>:<span class="number">20</span>, seq(<span class="number">2</span>, <span class="number">10</span>, <span class="number">2</span>)] = mydata[<span class="number">11</span>:<span class="number">20</span>, seq(<span class="number">2</span>, <span class="number">10</span>, <span class="number">2</span>)] + <span class="number">2</span></span><br><span class="line">mydata[<span class="number">15</span>:<span class="number">20</span>, seq(<span class="number">2</span>, <span class="number">10</span>, <span class="number">2</span>)] = mydata[<span class="number">15</span>:<span class="number">20</span>, seq(<span class="number">2</span>, <span class="number">10</span>, <span class="number">2</span>)] + <span class="number">4</span></span><br><span class="line">colnames(mydata) = paste(<span class="string">&quot;Sple&quot;</span>, <span class="number">1</span>:<span class="number">10</span>, sep = <span class="string">&quot;&quot;</span>)</span><br><span class="line">rownames(mydata) = paste(<span class="string">&quot;Gene&quot;</span>, <span class="number">1</span>:<span class="number">20</span>, sep = <span class="string">&quot;&quot;</span>)</span><br><span class="line">head(mydata[, <span class="number">1</span>:<span class="number">4</span>], <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 
 
@@ -397,25 +409,36 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
 <pre><code>Warning message:
 &quot;package &#39;pheatmap&#39; was built under R version 4.0.3&quot;
 </code></pre>
-<p><img src="img/output_94_1.png" alt="png"></p>
+<p><img src="output_94_1.png" alt="png"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/30/Hierarchical_clustering_in_R/" data-id="ckxswolvl0002qwmk516j4akm" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/30/Hierarchical_clustering_in_R/" data-id="ckxsygp1e0004lne8dfkb4b4i" data-title="HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hierarchical-clustering/" rel="tag">hierarchical clustering</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
+    <a href="/2021/12/30/Git_instructions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git/github basic usage guide
+        
+      </div>
+    </a>
   
-    <a href="/2021/12/30/GSEA%20instruction/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2021/12/30/GSEA_instruction/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">GSEA富集分析笔记</div>
     </a>
   
 </nav>
@@ -432,9 +455,23 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GSEA/" rel="tag">GSEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-and-github/" rel="tag">git and github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hierarchical-clustering/" rel="tag">hierarchical clustering</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GSEA/" style="font-size: 10px;">GSEA</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/git-and-github/" style="font-size: 10px;">git and github</a> <a href="/tags/hierarchical-clustering/" style="font-size: 10px;">hierarchical clustering</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -453,15 +490,15 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
       <ul>
         
           <li>
-            <a href="/2021/12/30/Hierarchical_clustering_in_R/">(no title)</a>
+            <a href="/2021/12/30/Git_instructions/">git/github basic usage guide</a>
           </li>
         
           <li>
-            <a href="/2021/12/30/GSEA%20instruction/">(no title)</a>
+            <a href="/2021/12/30/Hierarchical_clustering_in_R/">HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)</a>
           </li>
         
           <li>
-            <a href="/2021/12/30/Git_instructions/">(no title)</a>
+            <a href="/2021/12/30/GSEA_instruction/">GSEA富集分析笔记</a>
           </li>
         
           <li>

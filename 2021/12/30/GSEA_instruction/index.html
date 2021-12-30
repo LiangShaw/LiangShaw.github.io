@@ -4,25 +4,26 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>GSEA富集分析笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Gene Set Enrichment Analysisreference:GSEA user guideGSEA PNAS paper一文掌握GSEA,超詳細教程 GSEA vs GO&#x2F;KEGGAccording to expression profile(or something else), the genes can be ranked in a list L.   GO&#x2F;KEGG foc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/12/30/GSEA%20instruction/index.html">
+<meta property="og:title" content="GSEA富集分析笔记">
+<meta property="og:url" content="http://example.com/2021/12/30/GSEA_instruction/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Gene Set Enrichment Analysisreference:GSEA user guideGSEA PNAS paper一文掌握GSEA,超詳細教程 GSEA vs GO&#x2F;KEGGAccording to expression profile(or something else), the genes can be ranked in a list L.   GO&#x2F;KEGG foc">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.pnas.org/content/pnas/102/43/15545/F1.large.jpg?width=800&height=600&carousel=1">
-<meta property="og:image" content="http://example.com/2021/12/30/GSEA%20instruction/img/prepare_data_files.jpg">
-<meta property="og:image" content="http://example.com/2021/12/30/GSEA%20instruction/img/GSEA_example_datasets.jpg">
-<meta property="og:image" content="http://example.com/2021/12/30/GSEA%20instruction/img/expression_dataset_snapshot.jpg">
-<meta property="og:image" content="http://example.com/2021/12/30/GSEA%20instruction/img/phenotype_label_shot.jpg">
-<meta property="og:image" content="http://example.com/2021/12/30/GSEA%20instruction/img/Gmx_format_snapshot.gif">
-<meta property="og:image" content="http://example.com/2021/12/30/GSEA%20instruction/img/GSEA_main_windows.jpg">
-<meta property="article:published_time" content="2021-12-30T11:34:17.213Z">
-<meta property="article:modified_time" content="2021-12-30T11:34:17.213Z">
+<meta property="og:image" content="http://example.com/2021/12/30/GSEA_instruction/prepare_data_files.jpg">
+<meta property="og:image" content="http://example.com/2021/12/30/GSEA_instruction/GSEA_example_datasets.jpg">
+<meta property="og:image" content="http://example.com/2021/12/30/GSEA_instruction/expression_dataset_snapshot.jpg">
+<meta property="og:image" content="http://example.com/2021/12/30/GSEA_instruction/phenotype_label_shot.jpg">
+<meta property="og:image" content="http://example.com/2021/12/30/GSEA_instruction/Gmx_format_snapshot.gif">
+<meta property="og:image" content="http://example.com/2021/12/30/GSEA_instruction/GSEA_main_windows.jpg">
+<meta property="article:published_time" content="2021-12-30T12:17:53.360Z">
+<meta property="article:modified_time" content="2021-12-30T12:17:53.360Z">
 <meta property="article:author" content="shaoboliang">
+<meta property="article:tag" content="GSEA">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.pnas.org/content/pnas/102/43/15545/F1.large.jpg?width=800&height=600&carousel=1">
   
@@ -81,15 +82,25 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-GSEA instruction" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-GSEA_instruction" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/12/30/GSEA%20instruction/" class="article-date">
-  <time class="dt-published" datetime="2021-12-30T11:34:17.213Z" itemprop="datePublished">2021-12-30</time>
+    <a href="/2021/12/30/GSEA_instruction/" class="article-date">
+  <time class="dt-published" datetime="2021-12-30T12:17:53.360Z" itemprop="datePublished">2021-12-30</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      GSEA富集分析笔记
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -132,12 +143,12 @@
 <p>高得分基因集（all Leading-Edge Subset）可以根据它们共享的前沿基因子集进行分组。这样的分组可以揭示哪些基因组对应于相同的生物过程，哪些代表不同的过程。  </p>
 <p>GSEA-P 软件包包括检查和聚类前沿子集(支持文本)的工具。</p>
 <h2 id="Usage-protocol"><a href="#Usage-protocol" class="headerlink" title="Usage protocol"></a>Usage protocol</h2><h3 id="Prepare-data-files"><a href="#Prepare-data-files" class="headerlink" title="Prepare data files"></a>Prepare data files</h3><p>See <a target="_blank" rel="noopener" href="https://www.gsea-msigdb.org/gsea/doc/GSEAUserGuideTEXT.htm#_Preparing_Data_Files">Preparing data files for GSEA</a>  </p>
-<img src="img/prepare_data_files.jpg" width=700 />  
+<img src="prepare_data_files.jpg" width=700 />  
 
 <p>*all files are tab-seperated. Refered <a target="_blank" rel="noopener" href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats">GSEA data format</a></p>
-<p><strong>GSEA官网提供了<a target="_blank" rel="noopener" href="http://www.gsea-msigdb.org/gsea/datasets.jsp">实例文件</a></strong><br><img src="img/GSEA_example_datasets.jpg" width=800 /></p>
+<p><strong>GSEA官网提供了<a target="_blank" rel="noopener" href="http://www.gsea-msigdb.org/gsea/datasets.jsp">实例文件</a></strong><br><img src="GSEA_example_datasets.jpg" width=800 /></p>
 <h4 id="Expression-Datasets"><a href="#Expression-Datasets" class="headerlink" title="Expression Datasets"></a>Expression Datasets</h4><p>有效格式有: res, gct, pcl, or txt.<br>包含的信息都是相同的，包括 gene id, sample name, feature value</p>
-<p><code>Gender_hgu133a.gct</code> 和 <code>Gender_collapsed.gct</code> 都是 <font color='blue'>Expression dataset</font>,内容如下：<br><img src="img/expression_dataset_snapshot.jpg" width=1000/>  </p>
+<p><code>Gender_hgu133a.gct</code> 和 <code>Gender_collapsed.gct</code> 都是 <font color='blue'>Expression dataset</font>,内容如下：<br><img src="expression_dataset_snapshot.jpg" width=1000/>  </p>
 <ul>
 <li>第一行格式固定，“#”开头，标注版本号（#1.2）</li>
 <li>第二行两列，symbol number和 sample number</li>
@@ -149,7 +160,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="Phenotype-Labels"><a href="#Phenotype-Labels" class="headerlink" title="Phenotype Labels"></a>Phenotype Labels</h4><p><code>Gender.cls</code> 是 <font color='blue'>phenotype labels</font> 文件<br><img src="img/phenotype_label_shot.jpg" width=500/>  </p>
+<h4 id="Phenotype-Labels"><a href="#Phenotype-Labels" class="headerlink" title="Phenotype Labels"></a>Phenotype Labels</h4><p><code>Gender.cls</code> 是 <font color='blue'>phenotype labels</font> 文件<br><img src="phenotype_label_shot.jpg" width=500/>  </p>
 <p>First Line format:</p>
 <ul>
 <li>(number of samples) (space) (number of classes) (space) 1  </li>
@@ -167,18 +178,20 @@
 <li>the gene set name</li>
 <li>the list of genes in that gene set.  </li>
 </ul>
-<p><a target="_blank" rel="noopener" href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMX:_Gene_MatriX_file_format_.28.2A.gmx.29">gmx and gmt</a><br><img src="img/Gmx_format_snapshot.gif" width=600 />  </p>
+<p><a target="_blank" rel="noopener" href="http://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMX:_Gene_MatriX_file_format_.28.2A.gmx.29">gmx and gmt</a><br><img src="Gmx_format_snapshot.gif" width=600 />  </p>
 <p>gene sets can be downloaded from <a target="_blank" rel="noopener" href="https://www.gsea-msigdb.org/gsea/msigdb/index.jsp">MSigDB</a> or created yourself.</p>
 <h3 id="Loading-Data"><a href="#Loading-Data" class="headerlink" title="Loading Data"></a>Loading Data</h3><p><font color='blue'>expression dataset</font> (res, gct, pcl, or txt), <font color='blue'>phenotype labels</font> (cls), 一般准备这两个文件就好了.<br><font color='blue'>gene set files</font> (gmx or gmt) 文件可以通过下拉菜单的方式选择<br><font color='blue'>chip annotation</font> 文件是为了转换 id, 所以已经提前转换好id, 就不需要这个文件. 平常得到的 gene symbol 文件就是已经转换好的.</p>
-<p>添加文件的方法可以是点击鼠标的方式, 也可以是拖拽的方式<br><img src="img/GSEA_main_windows.jpg" width=1200 /></p>
+<p>添加文件的方法可以是点击鼠标的方式, 也可以是拖拽的方式<br><img src="GSEA_main_windows.jpg" width=1200 /></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/30/GSEA%20instruction/" data-id="ckxswolve0000qwmk26bo12v1" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/30/GSEA_instruction/" data-id="ckxsygp150000lne84bsfeh89" data-title="GSEA富集分析笔记" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GSEA/" rel="tag">GSEA</a></li></ul>
+
     </footer>
   </div>
   
@@ -189,15 +202,15 @@
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)
         
       </div>
     </a>
   
   
-    <a href="/2021/12/30/Git_instructions/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/12/30/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">Hello World</div>
     </a>
   
 </nav>
@@ -214,9 +227,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GSEA/" rel="tag">GSEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R/" rel="tag">R</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git-and-github/" rel="tag">git and github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hierarchical-clustering/" rel="tag">hierarchical clustering</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GSEA/" style="font-size: 10px;">GSEA</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/git-and-github/" style="font-size: 10px;">git and github</a> <a href="/tags/hierarchical-clustering/" style="font-size: 10px;">hierarchical clustering</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -235,15 +262,15 @@
       <ul>
         
           <li>
-            <a href="/2021/12/30/Hierarchical_clustering_in_R/">(no title)</a>
+            <a href="/2021/12/30/Git_instructions/">git/github basic usage guide</a>
           </li>
         
           <li>
-            <a href="/2021/12/30/GSEA%20instruction/">(no title)</a>
+            <a href="/2021/12/30/Hierarchical_clustering_in_R/">HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)</a>
           </li>
         
           <li>
-            <a href="/2021/12/30/Git_instructions/">(no title)</a>
+            <a href="/2021/12/30/GSEA_instruction/">GSEA富集分析笔记</a>
           </li>
         
           <li>
