@@ -1072,6 +1072,8 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
 <style>
     .aplayer .aplayer-lrc p {
         
+        display: none;
+        
         font-size: 12px;
         font-weight: 700;
         line-height: 16px !important;
@@ -1079,8 +1081,19 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
 
     .aplayer .aplayer-lrc p.aplayer-lrc-current {
         
+        display: none;
+        
         font-size: 15px;
         color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
     }
 
     
@@ -1090,7 +1103,7 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
     <div class="row">
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
-                   type="list"
+                   type="playlist"
                    id="2322582635"
                    fixed='true'
                    autoplay='true'
@@ -1098,7 +1111,7 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
                    loop='all'
                    order='random'
                    preload='auto'
-                   volume='0.7'
+                   volume='0.5'
                    list-folded='true'
         >
         </meting-js>
@@ -1229,6 +1242,9 @@ chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX
 </div>
     </div>
 </footer>
+
+<div class="progress-bar"></div>
+
 
     <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
