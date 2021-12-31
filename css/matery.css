@@ -36,9 +36,9 @@
 body {
     background-color: #FDFEFE ;
     margin: 0;
-    color: #FDFEFE ;
-    overflow-x: hidden;
-    overflow-y: auto;
+    color: #34495e; /*#FDFEFE ;*/
+    /*overflow-x: hidden;
+    overflow-y: auto;*/
 }
 
 h1 {
@@ -603,6 +603,8 @@ header .go-back i {
 
 @-webkit-keyframes rainbow {
     0%,
+}
+    /*
     100% {
         background: rgba(129, 212, 250, 0.6);
         background: linear-gradient(45deg, rgba(129, 212, 250, 0.6) 0%, rgba(129, 212, 250, 0.45) 100%);
@@ -614,8 +616,7 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(248, 187, 208, 0.6) 0%, rgba(248, 187, 208, 0.45) 100%);
         background: -moz-linear-gradient(135deg, rgba(248, 187, 208, 0.75) 0%, rgba(248, 187, 208, 0.6) 100%);
         background: -webkit-linear-gradient(135deg, rgba(248, 187, 208, 0.75) 0%, rgba(248, 187, 208, 0.6) 100%);
-    }
-}
+    } */
 
     /*
 
@@ -694,7 +695,6 @@ header .go-back i {
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
     }*/
-}
 
 .index-card {
     margin-top: -10px;
