@@ -140,7 +140,7 @@ Cannot o">
         <div class="logo-name">Shaobo Liang</div>
         <div class="logo-desc">
             
-            成长之中，wait for me~
+            Never really desperate, only the lost of the soul.
             
         </div>
     </div>
@@ -439,6 +439,9 @@ Cannot o">
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -460,53 +463,57 @@ Cannot o">
 </ul>
 <h2 id="config-git"><a href="#config-git" class="headerlink" title="config git"></a>config git</h2><ul>
 <li>totally new env<ul>
-<li>create ssh key<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"your_email@youremail.com"</span></span>  </span><br></pre></td></tr></tbody></table></figure></li>
+<li>create ssh key<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; ssh-keygen -t rsa -C "your_email@youremail.com"  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 </li>
-<li>set user info<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git config --global user.name <span class="string">"your name"</span></span>  </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git config --global user.email <span class="string">"your_email@youremail.com"</span></span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>check user<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git config user.name</span>  </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git config user.email</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>set user info<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git config --global user.name "your name"  
+&gt; git config --global user.email "your_email@youremail.com"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>check user<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git config user.name  
+&gt; git config user.email<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
-<h2 id="repository-initialization"><a href="#repository-initialization" class="headerlink" title="repository initialization"></a>repository initialization</h2><h3 id="method1"><a href="#method1" class="headerlink" title="method1"></a>method1</h3><p><strong>clone a reposiroty from remote server</strong><br>  </p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git <span class="built_in">clone</span> repository_address</span>  </span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>*can reate a clone for local repository<br>  </p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git <span class="built_in">clone</span> /path/to/<span class="built_in">local</span>/repository</span> </span><br></pre></td></tr></tbody></table></figure><p></p>
-<h3 id="method2"><a href="#method2" class="headerlink" title="method2"></a>method2</h3><p><strong>initialize a local folder as a repository</strong><br>  </p><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> target_folder</span>  </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git init</span>  </span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> git remote add origin &lt;git url&gt;  <span class="comment"># connect to remote repository</span></span></span><br></pre></td></tr></tbody></table></figure><p></p>
+<h2 id="repository-initialization"><a href="#repository-initialization" class="headerlink" title="repository initialization"></a>repository initialization</h2><h3 id="method1"><a href="#method1" class="headerlink" title="method1"></a>method1</h3><p><strong>clone a reposiroty from remote server</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git clone repository_address  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<p>*can reate a clone for local repository<br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git clone /path/to/local/repository <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
+<h3 id="method2"><a href="#method2" class="headerlink" title="method2"></a>method2</h3><p><strong>initialize a local folder as a repository</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; cd target_folder  
+&gt; git init  
+&gt; git remote add origin &lt;git url&gt;  # connect to remote repository<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
 <h2 id="repository-operation"><a href="#repository-operation" class="headerlink" title="repository operation"></a>repository operation</h2><p>local repository trilayer structure  </p>
 <img src="https://www.runoob.com/wp-content/uploads/2014/05/trees.png" width="500" alt="local repository trilayer structure" align="center">  
 
 <ul>
 <li><p>add files to index(cache space)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git add file1 file2 ...</span>  </span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git add file1 file2 ...  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>add version annatation</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git commit -m <span class="string">"modification_annotation"</span></span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git commit -m "modification_annotation"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>view current git status</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git status</span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>push modification to remote repository</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git push origin master</span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>pull latest version from repostory</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git pull</span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git pull<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <h2 id="about-version"><a href="#about-version" class="headerlink" title="about version"></a>about version</h2><ul>
 <li><p>get version list (<strong>not</strong> incluede the versions <strong>hereafter</strong>)</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git <span class="built_in">log</span> [ --pretty=online ]</span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git log [ --pretty=online ]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>set current version</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git reset --hard version_number</span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git reset --hard version_number<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>get all versions</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git reflog</span></span><br></pre></td></tr></tbody></table></figure></li>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git reflog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <h2 id="branch-command"><a href="#branch-command" class="headerlink" title="branch command"></a>branch command</h2><p>branch pattern  </p>
 <img src="https://www.runoob.com/wp-content/uploads/2014/05/branches.png" width="500" alt="branch pattern" align="center">
 
 <ul>
-<li>list branch<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git branch</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>create branch<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git branch name</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>switch branch<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git checkout name</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>creat and switch branch<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git checkout -b name</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>delete <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git branch -d name</span></span><br></pre></td></tr></tbody></table></figure></li>
-<li>merge <figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> git merge names</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>list branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git branch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>create branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git branch name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>switch branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git checkout name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>creat and switch branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git checkout -b name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>delete <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git branch -d name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>merge <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; git merge names<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p>Note: the operations in different branches do not influence each other. Merge operation is in need af final.</p>
 <h3 id="solve-conflicts"><a href="#solve-conflicts" class="headerlink" title="solve conflicts"></a>solve conflicts</h3><h3 id="add-git-sshkey-into-Github"><a href="#add-git-sshkey-into-Github" class="headerlink" title="add git sshkey into Github"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ayseeing/p/3572582.html">add git sshkey into Github</a></h3><ul>
 <li><p>create a SSH key</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&gt; ssh-keygen -t rsa -C "your_email@example.com"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>default generated file <code>~/.ssh/id_rsa.pub</code>  </p>
 </li>
 <li><p>add SSH key content into github SSH<br><code>setting</code> -&gt; <code>SSH and GPG keys</code></p>
@@ -897,7 +904,7 @@ Cannot o">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022-2021</span>
+                <span id="year">2022</span>
             
             <a href="/about" target="_blank">梁绍波</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
