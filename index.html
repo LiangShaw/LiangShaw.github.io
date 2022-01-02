@@ -119,6 +119,17 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -194,6 +205,17 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
 		</a>
           
         </li>
@@ -319,6 +341,13 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
+        <div id="prev-cover" class="left waves-effect carousel-control">
+            <i class="icon fa fa-angle-left"></i>
+        </div>
+        <div id="next-cover" class="right waves-effect carousel-control">
+            <i class="icon fa fa-angle-right"></i>
+        </div>
+    
 
     <div class="carousel-item  white-text bg-cover about-cover">
         <div class="container">
@@ -409,6 +438,56 @@
     </div>
 
     
+        
+
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/18.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">R数据可视化手册-上</div>
+                            <div class="description center-align">
+                                
+                                    博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/01/02/RDataVisualization-1/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/17.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">R数据可视化手册-下</div>
+                            <div class="description center-align">
+                                
+                                    博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2022/01/02/RDataVisualization-2/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    
 </div>
 
 <script>
@@ -443,19 +522,8 @@
 
         let carouselIntervalId;
         
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
 
         function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
             
         };
 
@@ -511,7 +579,7 @@
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2022/01/01/Git_instructions/">
+                    <a href="/2022/01/02/Git_instructions/">
                         <div class="card-image">
                             
                             
@@ -524,16 +592,12 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Git/Github Usage and Instructionnote:  
-
-make sure that target local files are located in repository folder.  
-
-Cannot o
+                                一些 git 常用命令，用作备忘录、使用手册，方便快速查阅
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
                             </span>
                             <span class="publish-author">
                                 
@@ -547,8 +611,12 @@ Cannot o
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/git-and-github/">
-                            <span class="chip bg-color">git and github</span>
+                        <a href="/tags/git/">
+                            <span class="chip bg-color">git</span>
+                        </a>
+                        
+                        <a href="/tags/Github/">
+                            <span class="chip bg-color">Github</span>
                         </a>
                         
                     </div>
@@ -560,23 +628,25 @@ Cannot o
              <!-- 隐藏某个文章 -->
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/12/30/404/404/">
+                    <a href="/2022/01/02/hello-world/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo auto generated">
                             
-                            <span class="card-title">404</span>
+                            <span class="card-title">Hexo auto generated</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
+                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
                             </span>
                             <span class="publish-author">
                                 
@@ -587,6 +657,120 @@ Cannot o
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/hexo/">
+                            <span class="chip bg-color">hexo</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/02/RDataVisualization-1/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="R数据可视化手册-上">
+                            
+                            <span class="card-title">R数据可视化手册-上</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                梁绍波
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/R/">
+                            <span class="chip bg-color">R</span>
+                        </a>
+                        
+                        <a href="/tags/ggplot2/">
+                            <span class="chip bg-color">ggplot2</span>
+                        </a>
+                        
+                        <a href="/tags/handbook/">
+                            <span class="chip bg-color">handbook</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+              <!-- 隐藏某个文章 -->
+            
+             <!-- 隐藏某个文章 -->
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2022/01/02/RDataVisualization-2/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="R数据可视化手册-下">
+                            
+                            <span class="card-title">R数据可视化手册-下</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                梁绍波
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/R/">
+                            <span class="chip bg-color">R</span>
+                        </a>
+                        
+                        <a href="/tags/ggplot2/">
+                            <span class="chip bg-color">ggplot2</span>
+                        </a>
+                        
+                        <a href="/tags/handbook/">
+                            <span class="chip bg-color">handbook</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -683,43 +867,6 @@ GSEA vs GO/KEGGAccording to expressio
                         </a>
                         
                     </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/12/30/hello-world/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Hello World">
-                            
-                            <span class="card-title">Hello World</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                梁绍波
-                                
-                            </span>
-                        </div>
-                    </div>
-
                     
                 </div>
             </div>

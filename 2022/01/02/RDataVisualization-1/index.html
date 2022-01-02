@@ -1,0 +1,3914 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="R数据可视化手册-上, Shaobo Liang">
+    <meta name="description" content="博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>R数据可视化手册-上 | Shaobo Liang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(http://h2.ioliu.cn/bing/BulgariaPerseids_EN-AU11585904087_1920x1080.jpg?imageslim&quot);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Shaobo Liang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Shaobo Liang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">R数据可视化手册-上</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/R/">
+                                <span class="chip bg-color">R</span>
+                            </a>
+                        
+                            <a href="/tags/ggplot2/">
+                                <span class="chip bg-color">ggplot2</span>
+                            </a>
+                        
+                            <a href="/tags/handbook/">
+                                <span class="chip bg-color">handbook</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-01-02
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-01-02
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressMessages(library(ggplot2))
+suppressMessages(library(gcookbook))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'gcookbook' was built under R version 4.0.3"
+</code></pre>
+<h1 id="使用ggplot2和RColorBrewer扩展调色板"><a href="#使用ggplot2和RColorBrewer扩展调色板" class="headerlink" title="使用ggplot2和RColorBrewer扩展调色板"></a>使用ggplot2和RColorBrewer扩展调色板</h1><p>❗注意：此部分内容作为 ggplot2 绘图调色板(palette)的参考内容，<font color="red">新入门绘图的各位请跳过</font>。</p>
+<hr>
+<p>对于颜色选择，使用 scale 函数族中的其中一种选择 <code>scale_fill_brewer()</code> 和 <code>scale_color_brewer()</code>:</p>
+<p>参数 <strong>palette</strong> 控制着 <code>scale_fill_brewer()</code> 中的颜色选择</p>
+<p><strong>Palettes</strong> 在包 RColorBrewer 中 - 运行 <code>display.brewer.all()</code> 可以看到所有的选择：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(RColorBrewer)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=10, repr.plot.height=8)
+display.brewer.all()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_6_0.png" alt="png"></p>
+<p>有 3 类调色板（palettes）- sequential，diverging，和 qualitative - 每一类调色板包含 8 到 12 种颜色（可以利用 <code>brewer.pal.info</code> 或者 <code>?RColorBrewer</code> 看到更多的细节）。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">brewer.pal.info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 35 × 3</caption>
+<thead>
+    <tr><th></th><th scope="col">maxcolors</th><th scope="col">category</th><th scope="col">colorblind</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">BrBG</th><td>11</td><td>div </td><td> TRUE</td></tr>
+    <tr><th scope="row">PiYG</th><td>11</td><td>div </td><td> TRUE</td></tr>
+    <tr><th scope="row">PRGn</th><td>11</td><td>div </td><td> TRUE</td></tr>
+    <tr><th scope="row">PuOr</th><td>11</td><td>div </td><td> TRUE</td></tr>
+    <tr><th scope="row">RdBu</th><td>11</td><td>div </td><td> TRUE</td></tr>
+    <tr><th scope="row">RdGy</th><td>11</td><td>div </td><td>FALSE</td></tr>
+    <tr><th scope="row">RdYlBu</th><td>11</td><td>div </td><td> TRUE</td></tr>
+    <tr><th scope="row">RdYlGn</th><td>11</td><td>div </td><td>FALSE</td></tr>
+    <tr><th scope="row">Spectral</th><td>11</td><td>div </td><td>FALSE</td></tr>
+    <tr><th scope="row">Accent</th><td> 8</td><td>qual</td><td>FALSE</td></tr>
+    <tr><th scope="row">Dark2</th><td> 8</td><td>qual</td><td> TRUE</td></tr>
+    <tr><th scope="row">Paired</th><td>12</td><td>qual</td><td> TRUE</td></tr>
+    <tr><th scope="row">Pastel1</th><td> 9</td><td>qual</td><td>FALSE</td></tr>
+    <tr><th scope="row">Pastel2</th><td> 8</td><td>qual</td><td>FALSE</td></tr>
+    <tr><th scope="row">Set1</th><td> 9</td><td>qual</td><td>FALSE</td></tr>
+    <tr><th scope="row">Set2</th><td> 8</td><td>qual</td><td> TRUE</td></tr>
+    <tr><th scope="row">Set3</th><td>12</td><td>qual</td><td>FALSE</td></tr>
+    <tr><th scope="row">Blues</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">BuGn</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">BuPu</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">GnBu</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">Greens</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">Greys</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">Oranges</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">OrRd</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">PuBu</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">PuBuGn</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">PuRd</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">Purples</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">RdPu</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">Reds</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">YlGn</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">YlGnBu</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">YlOrBr</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+    <tr><th scope="row">YlOrRd</th><td> 9</td><td>seq </td><td> TRUE</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">brewer.pal(name = 'Set2', n=8)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'#66C2A5'</li><li>'#FC8D62'</li><li>'#8DA0CB'</li><li>'#E78AC3'</li><li>'#A6D854'</li><li>'#FFD92F'</li><li>'#E5C494'</li><li>'#B3B3B3'</li></ol>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">display.brewer.pal(name = 'Pastel1', n=8)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_10_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">append(c(1,2),2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>2</li><li>2</li></ol>
+
+
+
+<p>如果分组变量的类型数量超过调色板颜色种类，就会出现麻烦</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(mtcars, aes(x=factor(hp), fill=factor(hp))) + geom_bar() + 
+ scale_fill_brewer(palette = "Set2")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message in RColorBrewer::brewer.pal(n, pal):
+"n too large, allowed maximum for palette Set2 is 8
+Returning the palette you asked for with that many colors
+"
+</code></pre>
+<p><img src="output_13_1.png" alt="png"></p>
+<p>RColorBrewer为我们提供了一种通过使用构造函数colorRampPalette插入现有调色板来生成更大调色板的方法。<br>它生成实际工作的函数：它们通过插入现有的调色板来构建具有任意数量颜色的调色板。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">colorRampPalette(brewer.pal(9, 'Set1'))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="language-r"><code>function (n) 
+{
+<span style="white-space:pre-wrap">    x &lt;- ramp(seq.int(0, 1, length.out = n))</span>
+<span style="white-space:pre-wrap">    if (ncol(x) == 4L) </span>
+<span style="white-space:pre-wrap">        rgb(x[, 1L], x[, 2L], x[, 3L], x[, 4L], maxColorValue = 255)</span>
+<span style="white-space:pre-wrap">    else rgb(x[, 1L], x[, 2L], x[, 3L], maxColorValue = 255)</span>
+}</code></pre>
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">colorCount = length(unique(mtcars$hp))
+getPalette = colorRampPalette(brewer.pal(9, "Set1"))
+
+ggplot(mtcars, aes(x=factor(hp), fill=factor(hp))) + geom_bar() + 
+ scale_fill_manual(values=getPalette(colorCount)) + 
+ theme(legend.position = "bottom") +  # 修改图例位置
+ guides(fill=guide_legend(nrow = 2))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_16_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(mtcars, aes(x=factor(hp), fill=factor(hp))) + geom_bar() + 
+ scale_fill_manual(values=colorRampPalette(brewer.pal(8, "Accent"))(colorCount))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_17_0.png" alt="png"></p>
+<h1 id="第一章-R基础"><a href="#第一章-R基础" class="headerlink" title="第一章 R基础"></a>第一章 R基础</h1><p>略</p>
+<h1 id="第二章-快速探索数据"><a href="#第二章-快速探索数据" class="headerlink" title="第二章 快速探索数据"></a>第二章 快速探索数据</h1><p>要快速探索数据，有时使用R基础包中的绘图函数会很有用，无需另行安装附加包。它们简短易输入，处理简单问题时使用方便，且运行速度极快。<br>如果你想要绘制较为复杂的图形，那么，转用ggplot2包通常是更好的选择。部分原因在于ggplot2提供了一个统一的接口和若干选项来替代基础绘图系统中对图形的修修补补和各种特例。一旦掌握了ggplot2的工作机制，就可以应用这些知识来绘制从散点图、直方图到小提琴图和地图等各种统计图形了。</p>
+<p>本章介绍的技巧演示了用基础绘图系统绘制统计图形的方法，也对如何用ggplot2中的qplot()函数绘制同样的图形做出了说明。qplot()函数的语法与基础绘图系统类似，对于每一个由qplot()函数绘制的图形，技巧中也提供了更强大的ggplot()函数来绘图的等价解决方案。</p>
+<h2 id="绘制散点图"><a href="#绘制散点图" class="headerlink" title="绘制散点图"></a>绘制散点图</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">head(mtcars,5)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 5 × 11</caption>
+<thead>
+    <tr><th></th><th scope="col">mpg</th><th scope="col">cyl</th><th scope="col">disp</th><th scope="col">hp</th><th scope="col">drat</th><th scope="col">wt</th><th scope="col">qsec</th><th scope="col">vs</th><th scope="col">am</th><th scope="col">gear</th><th scope="col">carb</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">Mazda RX4</th><td>21.0</td><td>6</td><td>160</td><td>110</td><td>3.90</td><td>2.620</td><td>16.46</td><td>0</td><td>1</td><td>4</td><td>4</td></tr>
+    <tr><th scope="row">Mazda RX4 Wag</th><td>21.0</td><td>6</td><td>160</td><td>110</td><td>3.90</td><td>2.875</td><td>17.02</td><td>0</td><td>1</td><td>4</td><td>4</td></tr>
+    <tr><th scope="row">Datsun 710</th><td>22.8</td><td>4</td><td>108</td><td> 93</td><td>3.85</td><td>2.320</td><td>18.61</td><td>1</td><td>1</td><td>4</td><td>1</td></tr>
+    <tr><th scope="row">Hornet 4 Drive</th><td>21.4</td><td>6</td><td>258</td><td>110</td><td>3.08</td><td>3.215</td><td>19.44</td><td>1</td><td>0</td><td>3</td><td>1</td></tr>
+    <tr><th scope="row">Hornet Sportabout</th><td>18.7</td><td>8</td><td>360</td><td>175</td><td>3.15</td><td>3.440</td><td>17.02</td><td>0</td><td>0</td><td>3</td><td>2</td></tr>
+</tbody>
+</table>
+
+
+
+<p>用基础绘图系统</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">plot(mtcars$wt, mtcars$mpg)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_25_0.png" alt="png"></p>
+<p>ggplot2系统</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(ggplot2)
+qplot(mtcars$wt, mtcars$mpg)
+# 等价于
+qplot(wt, mpg, data = mtcars)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_27_0.png" alt="png"></p>
+<p><img src="output_27_1.png" alt="png"></p>
+<h2 id="绘制折线图"><a href="#绘制折线图" class="headerlink" title="绘制折线图"></a>绘制折线图</h2><p>使用plot()函数绘制折线图时需向其传递一个包含x值的向量和一个包含y值的向量，并使用参数<code>type="l"</code>:</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">plot(pressure$temperature, pressure$pressure, type="l")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_30_0.png" alt="png"></p>
+<p>如果要向图形中添加数据点或者多条折线，则需先用<code>plot()</code>函数绘制第一条折线，再通过<code>points()</code>函数和<code>lines()</code>函数分别添加数据点和更多折线：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">plot(pressure$temperature, pressure$pressure, type="l")
+points(pressure$temperature, pressure$pressure)
+
+lines(pressure$temperature/2, pressure$pressure/2, type="l",col = 'red')
+points(pressure$temperature/2, pressure$pressure/2, col="red")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_32_0.png" alt="png"></p>
+<p>在ggplot2中，可以使用qplot()函数并将参数设定为<code>geom="line"</code>得到类似的绘图结果</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">qplot(pressure$temperature, pressure$pressure, geom = "line")
+
+qplot(temperature, pressure, data = pressure, geom = c("line","point"))
+# 等价于
+ggplot(pressure, aes(x=temperature,y=pressure)) + geom_line() + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_34_0.png" alt="png"></p>
+<p><img src="output_34_1.png" alt="png"></p>
+<h2 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h2><p>对变量的值绘制条形图，可以使用<code>barplot()</code>函数，并向其传递两个向量作为参数，第一个是高度，第二个是对应的标签（可选）。<br>如果向量中的元素已被命名，则系统会自动使用元素的名字作为条形标签：  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">barplot(BOD$demand, names.arg = BOD$Time)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_37_0.png" alt="png"></p>
+<p>有时候，“条形图”表示的是分组数据中各个元素的频数。这种条形图跟直方图类型，不过，其用离散值的x轴替代了直方图中连续取值的x轴。<br>要计算各个类别的频数，可以使用<code>table()</code>函数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">table(mtcars$cyl)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre><code> 4  6  8 
+11  7 14 
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">barplot(table(mtcars$cyl))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_40_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">BOD<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+    <tr><th scope="col">Time</th><th scope="col">demand</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>1</td><td> 8.3</td></tr>
+    <tr><td>2</td><td>10.3</td></tr>
+    <tr><td>3</td><td>19.0</td></tr>
+    <tr><td>4</td><td>16.0</td></tr>
+    <tr><td>5</td><td>15.6</td></tr>
+    <tr><td>7</td><td>19.8</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">barplot(BOD$demand, names.arg = BOD$Time)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_42_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">#qplot(BOD$Time, BOD$demand, geom = "bar", stat = "identity")
+
+ggplot(mtcars, aes(x=factor(cyl))) +geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_43_0.png" alt="png"></p>
+<h2 id="绘制直方图"><a href="#绘制直方图" class="headerlink" title="绘制直方图"></a>绘制直方图</h2><p>使用<code>hist()</code>绘制直方图来查看一维数据的分布特征，使用时需向其传递一个向量：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">hist(mtcars$mpg)
+
+# break 设置组距
+hist(mtcars$mpg, breaks = 10)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_46_0.png" alt="png"></p>
+<p><img src="output_46_1.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">qplot(mpg, data = mtcars, binwidth=4)
+ggplot(mtcars, aes(x=mpg)) +geom_histogram(binwidth = 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_47_0.png" alt="png"></p>
+<p><img src="output_47_1.png" alt="png"></p>
+<h2 id="绘制箱线图"><a href="#绘制箱线图" class="headerlink" title="绘制箱线图"></a>绘制箱线图</h2><p>使用<code>plot()</code>函数绘制箱线图时向其传递两个向量x和y。当x为因子型变量（与数值变量对应）时，它会默认绘制箱线图</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(ToothGrowth)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+    <tr><th></th><th scope="col">len</th><th scope="col">supp</th><th scope="col">dose</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td> 4.2</td><td>VC</td><td>0.5</td></tr>
+    <tr><th scope="row">2</th><td>11.5</td><td>VC</td><td>0.5</td></tr>
+    <tr><th scope="row">3</th><td> 7.3</td><td>VC</td><td>0.5</td></tr>
+    <tr><th scope="row">4</th><td> 5.8</td><td>VC</td><td>0.5</td></tr>
+    <tr><th scope="row">5</th><td> 6.4</td><td>VC</td><td>0.5</td></tr>
+    <tr><th scope="row">6</th><td>10.0</td><td>VC</td><td>0.5</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">plot(ToothGrowth$supp, ToothGrowth$len)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_51_0.png" alt="png"></p>
+<p>当两个参数向量包含在同一个数据框中时，也可以使用公式语法。公式语法允许我们在x轴上使用变量组合。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 公式语法
+boxplot(len~supp, data = ToothGrowth)
+# 在x轴上引入两变量的交互
+boxplot(len ~ supp + dose, data = ToothGrowth)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_53_0.png" alt="png"></p>
+<p><img src="output_53_1.png" alt="png"></p>
+<p>ggplot2包，使用qplot()函数绘制同样的图形，使用时将参数设定为geom=”boxplot”:</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">qplot(ToothGrowth$supp, ToothGrowth$len, geom = "boxplot")
+# 等价于
+qplot(supp, len, data = ToothGrowth, geom = "boxplot")
+# 等价于
+ggplot(ToothGrowth, aes(x=supp,y=len)) + geom_boxplot()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_55_0.png" alt="png"></p>
+<p>使用<code>interaction()</code>函数将分组变量组合在一起也可以绘制基于多分组变量的箱线图。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">qplot(interaction(ToothGrowth$supp, ToothGrowth$dose), ToothGrowth$len,geom = "boxplot")
+# 等价于
+qplot(interaction(supp, dose), len, data = ToothGrowth, geom = "boxplot")
+# 等价于
+ggplot(ToothGrowth,aes(x=interaction(supp, dose),y=len)) + geom_boxplot()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_57_0.png" alt="png"></p>
+<h2 id="绘制函数图像"><a href="#绘制函数图像" class="headerlink" title="绘制函数图像"></a>绘制函数图像</h2><p>可以使用<code>curve()</code>函数绘制函数图像。使用时需要向其传递一个关于变量x的表达式：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">curve(x^3 - 5*x, from = -4, to=4)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_60_0.png" alt="png"></p>
+<p>将参数设置为<code>add=TRUE</code>可以向已有图形添加函数图像</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 自定义函数
+myfun &lt;- function(xvar){
+    1/(1 + exp(-xvar + 10))
+}
+
+
+curve(myfun(x), from = 0, to = 20)
+curve(1-myfun(x), add = TRUE, col="red")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_62_0.png" alt="png"></p>
+<p>对于ggplot2，可以使用<code>qplot()</code>函数绘制得到同样的结果。使用时需要设定<code>stat="function"</code>和<code>geom="line"</code>,并向其传递一个输入和输出皆为数值型向量的函数：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data.frame(x=c(0,20)), aes(x=x)) + stat_function(fun=myfun, geom = "line")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_64_0.png" alt="png"></p>
+<h1 id="第三章-条形图"><a href="#第三章-条形图" class="headerlink" title="第三章 条形图"></a>第三章 条形图</h1><p>绘制条形图时需要注意的一个重要星界：有时条形图的高度表示的是数据集中变量的频率，有时则表示变量取值本身。</p>
+<h2 id="绘制简单条形图"><a href="#绘制简单条形图" class="headerlink" title="绘制简单条形图"></a>绘制简单条形图</h2><p>使用<code>ggplot()</code>函数和<code>geom_bar(stat="identity")</code>绘制上述条形图，并分别指定与x轴和y轴对应的变量</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(pg_mean,aes(x=group, y=weight)) + geom_bar(stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_69_0.png" alt="png"></p>
+<p>当x是连续型（数值型）变量时，条形图的结果会与上图略有不同。此时，ggplot不是只在实际取值处绘制条形，而将在x轴上介于最大值和最小值之间所有可能的取值处绘制条形。可以使用<code>factor()</code>函数将连续型变量转化为离散型变量。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">BOD<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+    <tr><th scope="col">Time</th><th scope="col">demand</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>1</td><td> 8.3</td></tr>
+    <tr><td>2</td><td>10.3</td></tr>
+    <tr><td>3</td><td>19.0</td></tr>
+    <tr><td>4</td><td>16.0</td></tr>
+    <tr><td>5</td><td>15.6</td></tr>
+    <tr><td>7</td><td>19.8</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">str(BOD)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>'data.frame':    6 obs. of  2 variables:
+ $ Time  : num  1 2 3 4 5 7
+ $ demand: num  8.3 10.3 19 16 15.6 19.8
+ - attr(*, "reference")= chr "A1.4, p. 270"
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(BOD, aes(x=Time,y=demand)) + geom_bar(stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_73_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 使用factor()函数将Time转化为离散型（分类）变量
+ggplot(BOD, aes(x=factor(Time),y=demand)) + geom_bar(stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_74_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(pg_mean,aes(y=group, x=weight))+
+ theme_classic() + 
+ geom_bar(stat="identity",fill="#FFE4B5",color=NA, width = 0.2) + 
+ geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_75_0.png" alt="png"></p>
+<h2 id="绘制簇状条形图"><a href="#绘制簇状条形图" class="headerlink" title="绘制簇状条形图"></a>绘制簇状条形图</h2><p>将分类变量映射到fill参数，并运行命令<code>geom_bar(position="dodge")</code>.</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">cabbage_exp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+    <tr><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td></tr>
+    <tr><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td></tr>
+    <tr><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td></tr>
+    <tr><td>c52</td><td>d16</td><td>2.26</td><td>0.4452215</td><td>10</td><td>0.14079141</td></tr>
+    <tr><td>c52</td><td>d20</td><td>3.11</td><td>0.7908505</td><td>10</td><td>0.25008887</td></tr>
+    <tr><td>c52</td><td>d21</td><td>1.47</td><td>0.2110819</td><td>10</td><td>0.06674995</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + geom_bar(position="dodge",stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_79_0.png" alt="png"></p>
+<p>要想额外添加一个分类变量跟x轴上的分类变量一起对数据进行分组，可通过将该分类变量映射给fill参数来绘制簇状条形图，这里的fill参数用来指定条形的填充色。<br>在这一过程中必须令参数<code>position="dodge"</code>以使得两组条形在水平方向上错开排列，否则，系统会输出堆积条形图。</p>
+<p>与映射给条形图x轴的变量类似，映射给条形填充色参数的变量应该是分类变量而不是连续型变量。</p>
+<p>通过<code>scale_fill_brewer()</code>或者<code>scale_fill_manual()</code>函数对图形颜色进行设置。这里使用RColorBrewer包中的Pastel1调色盘对图形进行调色。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+geom_bar(position = "dodge", stat="identity", colour="black") +
+scale_fill_brewer(palette="Pastel1")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_83_0.png" alt="png"></p>
+<h2 id="绘制频数条形图"><a href="#绘制频数条形图" class="headerlink" title="绘制频数条形图"></a>绘制频数条形图</h2><p>如果数据集中每行数据对应于一个样本，使用<code>geom_bar()</code>函数，同时不要映射到任何变量到y参数</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(diamonds, aes(x=cut)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_86_0.png" alt="png"></p>
+<p><code>geom_bar()</code>函数在默认情况下将参数设定为<code>stat="bin"</code>，该操作会自动计算每组（根据x轴上面的变量进行分组）变量对应的观测数。从图中可以看到，切工精美的钻石大概有23000颗。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(diamonds,aes(x=carat)) + geom_bar()
+ggplot(diamonds,aes(x=carat)) + geom_histogram(binwidth = 0.1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_88_0.png" alt="png"></p>
+<p><img src="output_88_1.png" alt="png"></p>
+<h2 id="条形图着色"><a href="#条形图着色" class="headerlink" title="条形图着色"></a>条形图着色</h2><p>将合适的变量映射到填充色（fill）即可。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">upc &lt;- subset(uspopchange, rank(Change) &gt; 40)
+upc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 10 × 4</caption>
+<thead>
+    <tr><th></th><th scope="col">State</th><th scope="col">Abb</th><th scope="col">Region</th><th scope="col">Change</th></tr>
+    <tr><th></th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">3</th><td>Arizona       </td><td>AZ</td><td>West </td><td>24.6</td></tr>
+    <tr><th scope="row">6</th><td>Colorado      </td><td>CO</td><td>West </td><td>16.9</td></tr>
+    <tr><th scope="row">10</th><td>Florida       </td><td>FL</td><td>South</td><td>17.6</td></tr>
+    <tr><th scope="row">11</th><td>Georgia       </td><td>GA</td><td>South</td><td>18.3</td></tr>
+    <tr><th scope="row">13</th><td>Idaho         </td><td>ID</td><td>West </td><td>21.1</td></tr>
+    <tr><th scope="row">29</th><td>Nevada        </td><td>NV</td><td>West </td><td>35.1</td></tr>
+    <tr><th scope="row">34</th><td>North Carolina</td><td>NC</td><td>South</td><td>18.5</td></tr>
+    <tr><th scope="row">41</th><td>South Carolina</td><td>SC</td><td>South</td><td>15.3</td></tr>
+    <tr><th scope="row">44</th><td>Texas         </td><td>TX</td><td>South</td><td>20.6</td></tr>
+    <tr><th scope="row">45</th><td>Utah          </td><td>UT</td><td>West </td><td>23.8</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(upc, aes(x=Abb, y=Change, fill=Region)) + geom_bar(stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_92_0.png" alt="png"></p>
+<p>条形图的默认颜色不太吸引眼球，因此，可能需要借助函数<code>scale_fill_brewer()</code>或<code>scale_fill_manual()</code>重新设定图形颜色。这里使用后者，通过参数指定<code>color="black"</code>将条形的边框线设定为黑色。<br>注意：颜色的映射设定是在<code>aes()</code>内部完成的，而颜色的重新设定是在<code>aes()</code>外部完成的：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(upc, aes(x=reorder(Abb, Change), y=Change, fill=Region)) + geom_bar(stat = "identity", color="black") + scale_fill_manual(values = c("#669933", "#FFCC66")) +
+xlab("State")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_94_0.png" alt="png"></p>
+<p>使用<code>reorder()</code>函数，在本例中，根据条形图的高度进行排序。</p>
+<h2 id="对正负条形图分别着色"><a href="#对正负条形图分别着色" class="headerlink" title="对正负条形图分别着色"></a>对正负条形图分别着色</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">head(climate)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+    <tr><th></th><th scope="col">Source</th><th scope="col">Year</th><th scope="col">Anomaly1y</th><th scope="col">Anomaly5y</th><th scope="col">Anomaly10y</th><th scope="col">Unc10y</th></tr>
+    <tr><th></th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>Berkeley</td><td>1800</td><td>NA</td><td>NA</td><td>-0.435</td><td>0.505</td></tr>
+    <tr><th scope="row">2</th><td>Berkeley</td><td>1801</td><td>NA</td><td>NA</td><td>-0.453</td><td>0.493</td></tr>
+    <tr><th scope="row">3</th><td>Berkeley</td><td>1802</td><td>NA</td><td>NA</td><td>-0.460</td><td>0.486</td></tr>
+    <tr><th scope="row">4</th><td>Berkeley</td><td>1803</td><td>NA</td><td>NA</td><td>-0.493</td><td>0.489</td></tr>
+    <tr><th scope="row">5</th><td>Berkeley</td><td>1804</td><td>NA</td><td>NA</td><td>-0.536</td><td>0.483</td></tr>
+    <tr><th scope="row">6</th><td>Berkeley</td><td>1805</td><td>NA</td><td>NA</td><td>-0.541</td><td>0.475</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">csub &lt;- subset(climate, Source=="Berkeley" &amp; Year &gt;= 1900)
+csub$pos &lt;- csub$Anomaly10y &gt;= 0
+head(csub,4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 4 × 7</caption>
+<thead>
+    <tr><th></th><th scope="col">Source</th><th scope="col">Year</th><th scope="col">Anomaly1y</th><th scope="col">Anomaly5y</th><th scope="col">Anomaly10y</th><th scope="col">Unc10y</th><th scope="col">pos</th></tr>
+    <tr><th></th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;lgl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">101</th><td>Berkeley</td><td>1900</td><td>NA</td><td>NA</td><td>-0.171</td><td>0.108</td><td>FALSE</td></tr>
+    <tr><th scope="row">102</th><td>Berkeley</td><td>1901</td><td>NA</td><td>NA</td><td>-0.162</td><td>0.109</td><td>FALSE</td></tr>
+    <tr><th scope="row">103</th><td>Berkeley</td><td>1902</td><td>NA</td><td>NA</td><td>-0.177</td><td>0.108</td><td>FALSE</td></tr>
+    <tr><th scope="row">104</th><td>Berkeley</td><td>1903</td><td>NA</td><td>NA</td><td>-0.199</td><td>0.104</td><td>FALSE</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(csub, aes(x=Year, y=Anomaly10y, fill=pos)) + 
+geom_bar(stat="identity", position = "identity")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_99_0.png" alt="png"></p>
+<p>可以通过<code>scale_fill_manual()</code>参数对图形颜色进行调整.同时，通过设定边框颜色（color）和边框线宽度（size）为图形添加一个系黑色边框。其中，边框线（size）宽度参数，单位mm。用<code>guide="none"</code>移除图例</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=13, repr.plot.height=6)
+
+ggplot(csub, aes(x=Year, y=Anomaly10y, fill=pos)) + 
+geom_bar(stat="identity", position = "identity", color="black",size=0.25) +
+scale_fill_manual(values = c("#CCEEFF", "#FFDDDD"), guide = "none" )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_101_0.png" alt="png"></p>
+<h2 id="调整条形宽度和条形间距"><a href="#调整条形宽度和条形间距" class="headerlink" title="调整条形宽度和条形间距"></a>调整条形宽度和条形间距</h2><p>通过设定<code>geom_bar()</code>函数的参数width。默认值：0.9.</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(pg_mean, aes(x=group, y=weight)) + geom_bar(stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_104_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(pg_mean, aes(x=group, y=weight)) + geom_bar(stat="identity", width = 0.4)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_105_0.png" alt="png"></p>
+<p>簇状条形图默认组内的条形间距为0.如果希望增加组内条形的间距，则可以通过<code>position_dodge()</code>,默认值也是0.9</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+geom_bar(stat="identity", width = 0.5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_107_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+geom_bar(stat="identity", width = 0.5, position = "dodge")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_108_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+geom_bar(stat="identity", width = 0.5, position = position_dodge(0.7) )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_109_0.png" alt="png"></p>
+<h2 id="绘制堆积条形图"><a href="#绘制堆积条形图" class="headerlink" title="绘制堆积条形图"></a>绘制堆积条形图</h2><p>使用<code>geom_bar()</code>函数，并映射一个变量给填充色参数(fill)即可。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">cabbage_exp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+    <tr><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td></tr>
+    <tr><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td></tr>
+    <tr><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td></tr>
+    <tr><td>c52</td><td>d16</td><td>2.26</td><td>0.4452215</td><td>10</td><td>0.14079141</td></tr>
+    <tr><td>c52</td><td>d20</td><td>3.11</td><td>0.7908505</td><td>10</td><td>0.25008887</td></tr>
+    <tr><td>c52</td><td>d21</td><td>1.47</td><td>0.2110819</td><td>10</td><td>0.06674995</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp,aes(x=Date, y=Weight, fill=Cultivar)) + 
+geom_bar(stat="identity")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_113_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp,aes(x=Date, y=Weight, fill=Cultivar)) +
+geom_bar(stat="identity") + 
+guides(fill=guide_legend(reverse = F)) # 可以更改图例顺序，在这里，图例顺序没有改变<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_114_0.png" alt="png"></p>
+<p>可通过指定图形映射中的参数<code>order=desc()</code>来实现条形的堆叠顺序. <code>desc()</code>函数存在于<code>plyr</code>包中</p>
+<p>为了获得更好效果的条形图，我们保持逆序的图例顺序不变，同时，使用<code>scale_fill_brewer()</code>函数得到一个新的调色板，最后设定<code>color="black"</code>为条形添加一个黑色边框线</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) + 
+ geom_bar(stat="identity", color="black") + 
+ scale_fill_brewer(palette = "Pastel1") + 
+ theme_classic(base_size = 25)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_117_0.png" alt="png"></p>
+<h2 id="绘制百分比堆积条形图"><a href="#绘制百分比堆积条形图" class="headerlink" title="绘制百分比堆积条形图"></a>绘制百分比堆积条形图</h2><p>首先，通过plyr包中的<code>ddply()</code>函数和<code>transform()</code>函数将每组条形对应的数据标准化为100%格式，之后，针对计算得到的结果绘制堆积条形图。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(plyr)
+# 以Date为切割变量 对每组数据进行transform()
+ce &lt;- ddply(cabbage_exp, "Date", transform,
+           percent_weight = Weight / sum(Weight) * 100 )
+
+ggplot(ce, aes(x=Date, y=percent_weight, fill=Cultivar)) + 
+ geom_bar(stat="identity") + 
+ scale_fill_brewer(palette = 'Set1') + 
+ theme_classic(base_size = 20) + 
+ scale_x_continuous<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_120_0.png" alt="png"></p>
+<p><strong>讨论</strong><br>用<code>ddply()</code>函数计算每组Date变量对应的百分比。ddply()函数根据指定的变量Date对数据框cabbage_exp进行分组，并对各组数据执行<code>transform()</code>函数(ddply()函数中设定的其他参数也会传递给该函数)。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(cabbage_exp,3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 3 × 6</caption>
+<thead>
+    <tr><th></th><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td></tr>
+    <tr><th scope="row">2</th><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td></tr>
+    <tr><th scope="row">3</th><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ddply(cabbage_exp, "Date", transform,
+      percent_weight = Weight / sum(Weight) * 100 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 7</caption>
+<thead>
+    <tr><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th><th scope="col">percent_weight</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td><td>58.45588</td></tr>
+    <tr><td>c52</td><td>d16</td><td>2.26</td><td>0.4452215</td><td>10</td><td>0.14079141</td><td>41.54412</td></tr>
+    <tr><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td><td>47.37733</td></tr>
+    <tr><td>c52</td><td>d20</td><td>3.11</td><td>0.7908505</td><td>10</td><td>0.25008887</td><td>52.62267</td></tr>
+    <tr><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td><td>65.08314</td></tr>
+    <tr><td>c52</td><td>d21</td><td>1.47</td><td>0.2110819</td><td>10</td><td>0.06674995</td><td>34.91686</td></tr>
+</tbody>
+</table>
+
+
+
+<p>计算出百分比之后，就可以按照绘制常规堆积条形图的方法来绘制百分比堆积条形图了</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(ce, aes(x=Date,y=percent_weight,fill=Cultivar)) + 
+geom_bar(stat="identity", color="black") + 
+scale_fill_brewer(palette = "Pastel1")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_125_0.png" alt="png"></p>
+<h2 id="添加数据标签"><a href="#添加数据标签" class="headerlink" title="添加数据标签"></a>添加数据标签</h2><p>在绘图命令中加上<code>geom_text()</code>即可为条形图添加数据标签。运行命令时，需要分别指定一个变量映射给x、y和标签本身。<br>通过设定vjust(竖直调整数据标签位置)可以将标签位置移动至条形图顶端的上方或下方。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight)) + 
+ geom_bar(stat="identity") +
+ geom_text(aes(label=Weight), vjust=1.5,color="white")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_128_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight)) + 
+ geom_bar(stat="identity") +
+ geom_text(aes(label=Weight), vjust=-0.2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_129_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=interaction(Date, Cultivar), y=Weight)) + 
+ geom_bar(stat="identity") +
+ geom_text(aes(label=Weight))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_130_0.png" alt="png"></p>
+<p>对于簇状条形图，需要设定position=position_dodge()并给其一个参数来设定分类间距。分类间距的默认值是0.9.<br>因为簇状条形图的条形更窄，所以需要字号（size）来缩小数据标签的字体大小以匹配条形宽度.<br>数据标签默认字号是5</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cabbage_exp, aes(x=Date, y=Weight, fill=Cultivar)) +
+ geom_bar(stat="identity", position="dodge") +
+ geom_text(aes(label=Weight), vjust=1.5, color="white",
+           position = position_dodge(0.9))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_132_0.png" alt="png"></p>
+<p>向堆积条形图添加数据标签之前,要先对每组条形对应的数据进行累积求和.  在进行本操作之前,须保证数据的合理排序,否则,可能计算出错误的累积和.<br>可以用plyr包中的<code>arrange()</code>函数完成上述操作,plyr包是一个随ggplot2包加载的软件包.</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ce &lt;- arrange(cabbage_exp, Date, desc(Cultivar))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">cabbage_exp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+    <tr><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td></tr>
+    <tr><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td></tr>
+    <tr><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td></tr>
+    <tr><td>c52</td><td>d16</td><td>2.26</td><td>0.4452215</td><td>10</td><td>0.14079141</td></tr>
+    <tr><td>c52</td><td>d20</td><td>3.11</td><td>0.7908505</td><td>10</td><td>0.25008887</td></tr>
+    <tr><td>c52</td><td>d21</td><td>1.47</td><td>0.2110819</td><td>10</td><td>0.06674995</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ce<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+    <tr><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>c52</td><td>d16</td><td>2.26</td><td>0.4452215</td><td>10</td><td>0.14079141</td></tr>
+    <tr><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td></tr>
+    <tr><td>c52</td><td>d20</td><td>3.11</td><td>0.7908505</td><td>10</td><td>0.25008887</td></tr>
+    <tr><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td></tr>
+    <tr><td>c52</td><td>d21</td><td>1.47</td><td>0.2110819</td><td>10</td><td>0.06674995</td></tr>
+    <tr><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td></tr>
+</tbody>
+</table>
+
+
+
+<p>确认数据合理排序之后,可以借助<code>ddply()</code>函数以Date为分组变量对数据进行分组,并分别计算每组数据对应的变量weight的累积和</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ce &lt;- ddply(ce, "Date", transform, label_y = cumsum(Weight))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ce<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 7</caption>
+<thead>
+    <tr><th scope="col">Cultivar</th><th scope="col">Date</th><th scope="col">Weight</th><th scope="col">sd</th><th scope="col">n</th><th scope="col">se</th><th scope="col">label_y</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>c52</td><td>d16</td><td>2.26</td><td>0.4452215</td><td>10</td><td>0.14079141</td><td>2.26</td></tr>
+    <tr><td>c39</td><td>d16</td><td>3.18</td><td>0.9566144</td><td>10</td><td>0.30250803</td><td>5.44</td></tr>
+    <tr><td>c52</td><td>d20</td><td>3.11</td><td>0.7908505</td><td>10</td><td>0.25008887</td><td>3.11</td></tr>
+    <tr><td>c39</td><td>d20</td><td>2.80</td><td>0.2788867</td><td>10</td><td>0.08819171</td><td>5.91</td></tr>
+    <tr><td>c52</td><td>d21</td><td>1.47</td><td>0.2110819</td><td>10</td><td>0.06674995</td><td>1.47</td></tr>
+    <tr><td>c39</td><td>d21</td><td>2.74</td><td>0.9834181</td><td>10</td><td>0.31098410</td><td>4.21</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(ce,aes(x=Date, y=Weight, fill=Cultivar)) + geom_bar(stat="identity", color = "black") + 
+geom_text(aes(y=label_y,label=Weight),vjust=1.5, color="white") +
+scale_fill_brewer(palette = "Pastel1")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_140_0.png" alt="png"></p>
+<p>如果想把数据标签置于条形中部，须对累计求和的结果加以调整，并同时略去<code>geom_bar()</code>函数中对y偏移量（offset）的设置</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ce &lt;- arrange(cabbage_exp, Date, desc(Cultivar))
+
+# 计算y轴的位置
+ce &lt;- ddply(ce, "Date", transform, label_y = cumsum(Weight)-0.5*Weight)
+
+ggplot(ce, aes(x=Date, y=Weight, fill=Cultivar)) + geom_bar(stat="identity", color="black") +
+ geom_text(aes(y=label_y,label=paste0(format(Weight,nsmall = 2),'kg')),size=5, color="black") + 
+ scale_fill_brewer(palette = "Pastel1")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_142_0.png" alt="png"></p>
+<p>为了得到效果更好的条形图，使用<code>format</code>函数保留标签的两位小数，并调用<code>paste0</code>在后面添加”kg”</p>
+<h2 id="绘制Cleveland点图"><a href="#绘制Cleveland点图" class="headerlink" title="绘制Cleveland点图"></a>绘制Cleveland点图</h2><p>有时人们会用Cleveland点图来代替条形图以减少图形造成的视觉混乱，并使图形具有可读性</p>
+<p>最简单的绘制Cleveland点图的方法是直接运行<code>geom_point()</code>命令</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">tophit &lt;- tophitters2001[1:25,]
+head(tophit,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 26</caption>
+<thead>
+    <tr><th></th><th scope="col">id</th><th scope="col">first</th><th scope="col">last</th><th scope="col">name</th><th scope="col">year</th><th scope="col">stint</th><th scope="col">team</th><th scope="col">lg</th><th scope="col">g</th><th scope="col">ab</th><th scope="col">...</th><th scope="col">sb</th><th scope="col">cs</th><th scope="col">bb</th><th scope="col">so</th><th scope="col">ibb</th><th scope="col">hbp</th><th scope="col">sh</th><th scope="col">sf</th><th scope="col">gidp</th><th scope="col">avg</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">...</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>walkela01</td><td>Larry </td><td>Walker</td><td>Larry Walker </td><td>2001</td><td>1</td><td>COL</td><td>NL</td><td>142</td><td>497</td><td>...</td><td>14</td><td> 5</td><td>82</td><td>103</td><td> 6</td><td>14</td><td>0</td><td>8</td><td>9</td><td>0.3501</td></tr>
+    <tr><th scope="row">2</th><td>suzukic01</td><td>Ichiro</td><td>Suzuki</td><td>Ichiro Suzuki</td><td>2001</td><td>1</td><td>SEA</td><td>AL</td><td>157</td><td>692</td><td>...</td><td>56</td><td>14</td><td>30</td><td> 53</td><td>10</td><td> 8</td><td>4</td><td>4</td><td>3</td><td>0.3497</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tophit, aes(x=avg,y=name)) + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_148_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tophit,aes(x=avg,y=reorder(name,avg))) + geom_point(size=3) + 
+ theme_bw() + 
+ theme(panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.major.y = element_line(color = "grey60", linetype = "dashed"))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_149_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=13, repr.plot.height=6)
+
+ggplot(tophit, aes(x=reorder(name,avg),y=avg)) + 
+ geom_point(size=3) +
+ theme_bw() +
+ theme(axis.text.x = element_text(angle = 60,hjust = 1,size = 12),
+       axis.text.y = element_text(size = 12),
+       panel.grid.major.y = element_blank(),
+       panel.grid.minor.y = element_blank(),
+       panel.grid.major.x = element_line(color = "grey60", linetype = "dashed"))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_150_0.png" alt="png"></p>
+<p>有时候，根据其他变量对样本进行分组很有用。这里我们根据因子lg对样本进行分组，因子lg有两个水平：国家队（NL）和美国队（AL）。<br>依次根据lg和avg对变量进行排序。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">tophit.reorder &lt;- arrange(tophit, lg, avg)
+
+nameorder &lt;- tophit.reorder$name
+tophit.reorder$name &lt;- factor(tophit.reorder$name,levels = nameorder)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>绘制点图时，我们把lg变量映射到点的颜色属性上。借助geom_segment()函数用“以数据点为端点的线段”代替贯通全图的网格线。<br><code>geom_segment()</code>函数要设定x, y, xend 和 yend四个参数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">nameorder &lt;- tophit$name[order(tophit$lg, tophit$avg)]
+tophit$name &lt;- factor(tophit$name, levels = nameorder)
+# tophit.reorder$name &lt;- factor(tophit.reorder$name)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 以队为分组变量的火柴杆图
+options(repr.plot.width=6, repr.plot.height=7)
+
+ggplot(tophit.reorder, aes(x=avg,y=name)) + 
+ geom_segment(aes(yend=name),xend=0,color="grey50") + 
+ geom_point(size=3,aes(color=lg)) + 
+ scale_color_brewer(palette = "Set1") + 
+ theme_bw() + 
+ theme(legend.justification = c(1,0.5),
+       legend.position = c(1,0.55),
+       panel.grid.major.y = element_blank(),
+       axis.text.y = element_text(size = 12))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_155_0.png" alt="png"></p>
+<p>另外一种分组展示数据的方式是分面。要修改分面显示的堆叠顺序只有通过调整lg变量的因子水平来实现。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 以队为分组变量分面绘图
+ggplot(tophit.reorder, aes(x=avg,y=name)) + 
+ geom_segment(aes(yend=name),xend=0,color="grey50") + 
+ geom_point(size=3,aes(color=lg)) + 
+ scale_color_brewer(palette = "Set1",limits=c('NL','AL'),guide="none") + 
+ theme_bw() + 
+ theme(panel.grid.major.y = element_blank(),
+       axis.text.y = element_text(size = 12)) +
+ facet_grid(lg ~ ., scales = "free_y", space = "free_y")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_157_0.png" alt="png"></p>
+<h1 id="第四章-折线图"><a href="#第四章-折线图" class="headerlink" title="第四章 折线图"></a>第四章 折线图</h1><h2 id="绘制简单折线图"><a href="#绘制简单折线图" class="headerlink" title="绘制简单折线图"></a>绘制简单折线图</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">BOD<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+    <tr><th scope="col">Time</th><th scope="col">demand</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>1</td><td> 8.3</td></tr>
+    <tr><td>2</td><td>10.3</td></tr>
+    <tr><td>3</td><td>19.0</td></tr>
+    <tr><td>4</td><td>16.0</td></tr>
+    <tr><td>5</td><td>15.6</td></tr>
+    <tr><td>7</td><td>19.8</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(BOD,aes(x=Time,y=demand)) + geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_161_0.png" alt="png"></p>
+<p>当x对应于因子型变量时，必须使用命令aes(group=1)以确保ggplot()知道这些数据点属于同一个分组，从而应该用一条折线连在一起（关于为什么因子型变量必须设定group的内容可以参见 <a href="#%E7%BB%98%E5%88%B6%E5%A4%9A%E9%87%8D%E6%8A%98%E7%BA%BF%E5%9B%BE">第四章 第三节</a> ）</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">BOD1 &lt;- BOD
+BOD1$Time &lt;- factor(BOD1$Time)
+ggplot(BOD1, aes(x=Time, y=demand, group=1)) + geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_163_0.png" alt="png"></p>
+<p>数据集BOD中没有对应于<code>Time=6</code>的数据点，因此当Time被转化为因子型变量时，它并没有6这个水平。因子型变量对应于分类值。</p>
+<p>可以运行<code>ylim()</code>设定y轴范围或者运行含一个参数的<code>expand_limit()</code>拓展y轴的范围。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=8, repr.plot.height=5)
+ggplot(BOD,aes(x=Time, y=demand)) + geom_line() + ylim(0, max(BOD$demand)) + theme_bw()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_166_0.png" alt="png"></p>
+<h2 id="向折线图添加数据标记"><a href="#向折线图添加数据标记" class="headerlink" title="向折线图添加数据标记"></a>向折线图添加数据标记</h2><p>添加 <code>geom_point()</code></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(BOD, aes(x=Time, y=demand)) + geom_line(linetype="dashed") + geom_point(size=3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_169_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(worldpop)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">Year</th><th scope="col">Population</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>-10000</td><td> 2431</td></tr>
+    <tr><th scope="row">2</th><td> -9000</td><td> 3564</td></tr>
+    <tr><th scope="row">3</th><td> -8000</td><td> 5136</td></tr>
+    <tr><th scope="row">4</th><td> -7000</td><td> 7562</td></tr>
+    <tr><th scope="row">5</th><td> -6000</td><td>11461</td></tr>
+    <tr><th scope="row">6</th><td> -5000</td><td>17920</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(worldpop, aes(x=Year,y=Population)) + geom_line() + geom_point(size=2) + scale_y_log10()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_171_0.png" alt="png"></p>
+<h2 id="绘制多重折线图"><a href="#绘制多重折线图" class="headerlink" title="绘制多重折线图"></a>绘制多重折线图</h2><p>在分别设定一个映射给x和y的基础上，再将另外一个（离散型）变量映射给颜色（color）或者线型（linetype）即可。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(plyr)
+tg &lt;- ddply(ToothGrowth, c("supp", "dose"), summarise, length=mean(len))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(ToothGrowth,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 3</caption>
+<thead>
+    <tr><th></th><th scope="col">len</th><th scope="col">supp</th><th scope="col">dose</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td> 4.2</td><td>VC</td><td>0.5</td></tr>
+    <tr><th scope="row">2</th><td>11.5</td><td>VC</td><td>0.5</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">tg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+    <tr><th scope="col">supp</th><th scope="col">dose</th><th scope="col">length</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>OJ</td><td>0.5</td><td>13.23</td></tr>
+    <tr><td>OJ</td><td>1.0</td><td>22.70</td></tr>
+    <tr><td>OJ</td><td>2.0</td><td>26.06</td></tr>
+    <tr><td>VC</td><td>0.5</td><td> 7.98</td></tr>
+    <tr><td>VC</td><td>1.0</td><td>16.77</td></tr>
+    <tr><td>VC</td><td>2.0</td><td>26.14</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 将supp映射给颜色
+ggplot(tg, aes(x=dose, y=length, color=supp)) + geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_177_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 将supp映射给线型
+ggplot(tg, aes(x=dose, y=length, linetype=supp)) + geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_178_0.png" alt="png"></p>
+<p>折线图的x轴既可以对应连续型变量，也可以对应离散型变量。有时候，映射给x的变量虽然是数值型变量，但被看作分类变量来处理。本例中，dose变量有三个取值：0.5、1.0、2.或许你更想将其当作分类变量而不是连续型变量来处理，那么运行<code>factor()</code>函数将其转化为因子。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tg, aes(x=factor(dose), y=length, color=supp, group=supp)) + geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_180_0.png" alt="png"></p>
+<p><strong>PS</strong>:有疑问时，或者如果你的折线图看起来不太合理，可以试着用<font color="red"><strong>group</strong></font>明确指定分组变量。这种问题十分常见，因为<code>ggplot()</code>不知道如何对折线图数据进行分组。</p>
+<p>如果折线图上有数据标记，也可以将分组变量映射给数据标记的属性，诸如*<code>shape</code><em>和</em><code>fill</code>*</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tg, aes(x=dose, y=length, shape=supp)) + geom_line() + geom_point(size=4)
+ggplot(tg, aes(x=dose, y=length, fill=supp)) + geom_line() + geom_point(size=4, shape=21)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_183_0.png" alt="png"></p>
+<p><img src="output_183_1.png" alt="png"></p>
+<p><strong>折线图的偏移</strong><br>有时数据标记会相互重叠。我们需要令其彼此错开。这意味着要将它们的位置左移或右移。同时需要相应移动连接线以避免点线分离。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tg, aes(x=dose, y=length, shape=supp)) +
+ geom_line(position = position_dodge(0.2)) +
+ geom_point(size=4, position = position_dodge(0.2))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_185_0.png" alt="png"></p>
+<h2 id="修改线条样式"><a href="#修改线条样式" class="headerlink" title="修改线条样式"></a>修改线条样式</h2><p><strong>方法</strong>：<br>通过设置线型(linetype)、线宽(size)和颜色(color)参数可以分别修改折线的线型、线宽和颜色。<br>将这些参数的值传递给<code>geom_line()</code>函数可以设置折线图的对应属性。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(BOD, aes(x=Time, y=demand)) + 
+ geom_line(linetype="dashed", size=1, color="blue") <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_188_0.png" alt="png"></p>
+<p>对于多重折线图而言，设定图形属性会对图上的<strong>所有</strong>折线产生影响。而将<u>变量映射给图形属性</u>则会得到外观不同的折线。</p>
+<p>默认颜色并不是很吸引眼球，所以，我们可能希望使用其他调色板为图形着色，可以调用<code>scale_color_brewer()</code>和<code>scale_color_manual</code>函数</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tg, aes(x=dose, y=length, color=supp)) + 
+ geom_line() +
+ scale_color_brewer(palette = "Set1")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_191_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tg, aes(x=dose, y=length, color=supp)) + 
+ geom_line(linetype="dashed") + 
+ geom_point(shape=22,size=3,fill="white")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_192_0.png" alt="png"></p>
+<h2 id="修改数据标记样式"><a href="#修改数据标记样式" class="headerlink" title="修改数据标记样式"></a>修改数据标记样式</h2><p>如果将数据标记和折线设定为不同的颜色，我们必须在折线绘制完毕后再行设定数据标记的颜色，此时，数据标记被绘制在更上面的层面，从而，避免被折线遮盖</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">tg &lt;- ddply(ToothGrowth, c("supp", "dose"), summarise, length=mean(len))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">tg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+    <tr><th scope="col">supp</th><th scope="col">dose</th><th scope="col">length</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>OJ</td><td>0.5</td><td>13.23</td></tr>
+    <tr><td>OJ</td><td>1.0</td><td>22.70</td></tr>
+    <tr><td>OJ</td><td>2.0</td><td>26.06</td></tr>
+    <tr><td>VC</td><td>0.5</td><td> 7.98</td></tr>
+    <tr><td>VC</td><td>1.0</td><td>16.77</td></tr>
+    <tr><td>VC</td><td>2.0</td><td>26.14</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">pd &lt;- position_dodge(0.2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(tg, aes(x=dose, y=length, fill=supp)) + 
+ geom_line(position = pd) + 
+ geom_point(shape=21, size=3, position = pd) + 
+ scale_fill_manual(values = c("black", "white"))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_198_0.png" alt="png"></p>
+<h2 id="绘制面积图"><a href="#绘制面积图" class="headerlink" title="绘制面积图"></a>绘制面积图</h2><p>运行<code>geom_area()</code>函数即可绘制面积图</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 将sunspot.year 数据集转化为数据框，便于本例使用
+sunspotyear &lt;- data.frame(
+    Year = as.numeric(time(sunspot.year)),
+    Sunspots = as.numeric(sunspot.year)
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=10, repr.plot.height=3)
+ggplot(sunspotyear, aes(x=Year,y=Sunspots)) + geom_area()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_202_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(sunspotyear, aes(x=Year,y=Sunspots)) + geom_area(fill='blue',alpha=.2) + geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_203_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(sunspotyear, aes(x=Year,y=Sunspots)) + geom_area(fill='blue',color='black',alpha=.2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_204_0.png" alt="png"></p>
+<h2 id="绘制堆积面积图"><a href="#绘制堆积面积图" class="headerlink" title="绘制堆积面积图"></a>绘制堆积面积图</h2><p><strong>方法</strong>：<br>运行<code>geom_area()</code>函数，并映射到一个因子型变量给填充色(fill)即可</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(uspopage,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 3</caption>
+<thead>
+    <tr><th></th><th scope="col">Year</th><th scope="col">AgeGroup</th><th scope="col">Thousands</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>1900</td><td><span style="white-space:pre-wrap">&lt;5  </span></td><td> 9181</td></tr>
+    <tr><th scope="row">2</th><td>1900</td><td>5-14</td><td>16966</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=7, repr.plot.height=5)
+ggplot(uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + geom_area()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_208_0.png" alt="png"></p>
+<p>堆积面积图对应的基础数据通常为宽格式(wide format), 但ggplot2要求数据必须是长格式(long format), 在两种格式之间进行转换的内容可参见15.19节</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(uspopage,aes(x=Year, y=Thousands, fill=AgeGroup, order=desc(AgeGroup))) +
+ geom_area(color="black", size=.2, alpha=.4) +
+ scale_fill_brewer(palette = "Blues", breaks=levels(uspopage$AgeGroup))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_210_0.png" alt="png"></p>
+<p>因为堆积面积图中的各个部分是由多边形构成的，因此其具有边框线。这样的效果差强人意。为了对此进行修正，我们可以先绘制一个不带边框线的堆积面积图(将color设定为默认的<em>NA</em>值), 然后，在其顶部添加geom_line():</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(uspopage,aes(x=Year, y=Thousands, fill=AgeGroup)) + # , order=desc(AgeGroup)
+ geom_area(color=NA, alpha=.4) +
+ theme_bw() + 
+ scale_fill_brewer(palette = "Blues") + 
+ geom_line(position = "stack", size=.2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_212_0.png" alt="png"></p>
+<h2 id="绘制百分比堆积面积图"><a href="#绘制百分比堆积面积图" class="headerlink" title="绘制百分比堆积面积图"></a>绘制百分比堆积面积图</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">head(uspopage,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 3</caption>
+<thead>
+    <tr><th></th><th scope="col">Year</th><th scope="col">AgeGroup</th><th scope="col">Thousands</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>1900</td><td><span style="white-space:pre-wrap">&lt;5  </span></td><td> 9181</td></tr>
+    <tr><th scope="row">2</th><td>1900</td><td>5-14</td><td>16966</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">uspopage.prop &lt;- ddply(uspopage, "Year", transform,percent=Thousands/cumsum(Thousands) * 100)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(uspopage.prop, aes(x=Year, y=percent, fill=AgeGroup)) +
+ geom_area(color=NA, size=.2, alpha=.4) + 
+ scale_fill_brewer(palette = "Blues") + 
+ geom_line(position = "stack") + 
+ theme_bw()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_216_0.png" alt="png"></p>
+<h2 id="添加置信域"><a href="#添加置信域" class="headerlink" title="添加置信域"></a>添加置信域</h2><p>运行<code>geom_ribbon()</code>，然后分别映射一个变量给ylim和ymax</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 使用数据集climate
+clim &lt;- subset(climate, Source="Berkeley", Year&lt;1850,
+              select=c("Year","Anomaly10y", "Unc10y"))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width = 10, repr.plot.height=5)
+ggplot(clim, aes(x=Year, y=Anomaly10y)) + 
+ geom_ribbon(aes(ymin=Anomaly10y-Unc10y, ymax=Anomaly10y+Unc10y), alpha=0.2) +
+ geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_220_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(clim, aes(x=Year, y=Anomaly10y)) + 
+ geom_line(aes(y=Anomaly10y-Unc10y), linetype="dotted") + 
+ geom_line(aes(y=Anomaly10y+Unc10y), linetype="dotted") + 
+ geom_line()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_221_0.png" alt="png"></p>
+<p>除了表示置信区间外，阴影区域还可以用来表示其他内容，比如两个变量之间的差值等。  </p>
+<h1 id="第五章-散点图"><a href="#第五章-散点图" class="headerlink" title="第五章 散点图"></a>第五章 散点图</h1><p>散点图通常用来刻画两个连续型变量之间的关系。绘制散点图时，数据集中的每一个观测值都由散点图中的一个点来表示。<br>通常，人们还会向散点图中添加一些直线，以用来表示基于某些统计模型的预测值。<br>当散点图中的数据趋势难以用肉眼识别时，这些直线对于我们理解数据的特征很有帮助。</p>
+<h2 id="绘制基本散点图"><a href="#绘制基本散点图" class="headerlink" title="绘制基本散点图"></a>绘制基本散点图</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">head(heightweight[,c("ageYear", "heightIn")],2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">ageYear</th><th scope="col">heightIn</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>11.92</td><td>56.3</td></tr>
+    <tr><th scope="row">2</th><td>12.92</td><td>62.3</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn)) + geom_point(shape=16,size=3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_227_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, color=sex)) + geom_point(shape=16,size=3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_228_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, shape=sex)) + geom_point(size=3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_229_0.png" alt="png"></p>
+<p>散点图默认的点形和颜色可能不是很吸引人，通过调用<code>scale_shape_manual()</code>函数可以使用其他点形；调用<code>scale_color_brewer()</code>或者<code>scale_color_manual()</code>函数可以使用其他调色板</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, shape=sex, color=sex)) +
+ geom_point(size=3) + 
+ scale_shape_manual(values = c(1,2)) +  # 修改点形
+ scale_color_brewer(palette = "Set1") + 
+ theme_bw()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_231_0.png" alt="png"></p>
+<h2 id="使用不同于默认设置的点形"><a href="#使用不同于默认设置的点形" class="headerlink" title="使用不同于默认设置的点形"></a>使用不同于默认设置的点形</h2><p>通过指定<code>geom_point()</code>函数中的点形(shape)参数可以设定散点图中所有数据点的点形</p>
+<p>如果已经将分组变量映射给shape，则可以调用<code>scale_shape_manual()</code>函数修改点形</p>
+<p><img src="https://plobimage.scicdn.com/wp-content/uploads/2011/04/1.png" alt="R绘图系统可以调用的点形"></p>
+<p>点形 1-20 的点的颜色包括实心区域的颜色都可以由color参数控制。对于点形 21-25 而言，边框线和实心区域的颜色则分别由color和fill参数控制。</p>
+<p>我们可以用点形和填充色（空心或实心）属性分别表示两个不同的变量</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">hw &lt;- heightweight
+head(hw,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 5</caption>
+<thead>
+    <tr><th></th><th scope="col">sex</th><th scope="col">ageYear</th><th scope="col">ageMonth</th><th scope="col">heightIn</th><th scope="col">weightLb</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>f</td><td>11.92</td><td>143</td><td>56.3</td><td> 85</td></tr>
+    <tr><th scope="row">2</th><td>f</td><td>12.92</td><td>155</td><td>62.3</td><td>105</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 在数据集中增加一列标记体重是否超过100磅
+hw$weightGroup &lt;- cut(hw$weightLb, breaks = c(-Inf, 100, Inf),   
+                      labels = c("&lt;100", "&gt;100"))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(hw, aes(x=ageYear, y=heightIn, shape=sex, fill=weightGroup)) + 
+ geom_point(size=3) + 
+ scale_shape_manual(values = c(21,24)) + 
+ scale_fill_manual(values = c(NA, "black"),
+                  guide=guide_legend(override.aes = list(shape=21)))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_240_0.png" alt="png"></p>
+<h2 id="将连续型变量映射到点的颜色或大小属性上"><a href="#将连续型变量映射到点的颜色或大小属性上" class="headerlink" title="将连续型变量映射到点的颜色或大小属性上"></a>将连续型变量映射到点的颜色或大小属性上</h2><p><strong>方法</strong>：<br>将连续型变量映射到size或color属性上即可。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(heightweight[,c("sex","ageYear","heightIn","weightLb")],2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 4</caption>
+<thead>
+    <tr><th></th><th scope="col">sex</th><th scope="col">ageYear</th><th scope="col">heightIn</th><th scope="col">weightLb</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>f</td><td>11.92</td><td>56.3</td><td> 85</td></tr>
+    <tr><th scope="row">2</th><td>f</td><td>12.92</td><td>62.3</td><td>105</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(expr.plot.width=5, expr.plot.height=5)
+ggplot(heightweight, aes(x=ageYear, y=heightIn, color=weightLb)) + 
+ geom_point(size=3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_244_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, size=weightLb)) + 
+ geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_245_0.png" alt="png"></p>
+<p>人类对于感知空间位置的微笑变化很擅长，因此，我们可以以较高的精度解释被映射到x轴和y轴上的变量。<br>但我们对图形的颜色和大小变化不太敏锐。所以，我们只能以较低的精度对映射到这些属性上的变量进行解释。<br>因此，只有当一个变量不需要高精度的解释时，它才适合被映射给图形的大小和颜色属性。</p>
+<p>对于颜色，实际上有fill和color两个属性使用。当数据点颜色较浅时，带边框线的点形就显得非常有用，以将数据点和背景色区分开。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, fill=weightLb)) + 
+ geom_point(size=3,shape=21) + 
+ scale_fill_gradient(low = "white", high = "black") + 
+ theme_bw() + 
+ theme(axis.text.y = element_text(size=12),
+       axis.text.x = element_text(size=12),
+       axis.line.y = element_blank(),
+       axis.line.x = element_blank())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_248_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, fill=weightLb)) + 
+ geom_point(size=3,shape=21) + 
+ scale_fill_gradient(low = "white", high = "black", breaks = seq(70,170,by = 20), guide = guide_legend()) +
+ theme_bw()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_249_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(heightweight,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 5</caption>
+<thead>
+    <tr><th></th><th scope="col">sex</th><th scope="col">ageYear</th><th scope="col">ageMonth</th><th scope="col">heightIn</th><th scope="col">weightLb</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>f</td><td>11.92</td><td>143</td><td>56.3</td><td> 85</td></tr>
+    <tr><th scope="row">2</th><td>f</td><td>12.92</td><td>155</td><td>62.3</td><td>105</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, size=weightLb, color=sex)) + 
+ theme_bw() +
+ geom_point(alpha = .5) + 
+ scale_size_area() + 
+ scale_color_brewer(palette = "Set1")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_251_0.png" alt="png"></p>
+<h2 id="处理图形重叠"><a href="#处理图形重叠" class="headerlink" title="处理图形重叠"></a>处理图形重叠</h2><p>如果图形的重叠程度较低，可以通过使用较小的数据点或者使用不会遮盖其他数据点的点形（如空心圆）来避免数据重叠。</p>
+<p>如果图形的重叠程度较高，可：</p>
+<ul>
+<li>使用半透明的点</li>
+<li>将数据分箱，并用矩形表示（适用于量化分析）</li>
+<li>将数据分箱，并用六边形表示</li>
+<li>使用箱线图</li>
+</ul>
+<p>示例：<br>下图包含54000个数据点，数据点重叠严重，很难看清楚图中点的密度</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p &lt;- ggplot(diamonds, aes(x=carat, y=price))
+p + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_256_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + geom_point(alpha=.1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_257_0.png" alt="png"></p>
+<p>另外一个解决方案就是将数据点分箱(bin)并以矩阵来表示，同时将数据点的密度映射为矩形的填充色。调用<code>stat_bin2d()</code>函数对数据进行分箱</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p +stat_bin2d() # 默认横纵30个分箱<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_259_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p +stat_bin2d(bins = 50) + 
+ scale_fill_gradient(low = "lightblue", high = "red", limits=c(0,6000))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_260_0.png" alt="png"></p>
+<p>如果不想数据分箱并以矩形表示的话，可以调用<code>stat_binhex()</code>函数使用六边形代替。该函数的工作机制与<code>stat_bin2d()</code>类似。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + stat_binhex(bins = 50) + 
+ scale_fill_gradient(low = "lightblue", high = "red",
+                     breaks = c(0,250,500,1000,2000,4000,6000),
+                     limits=c(0,6000))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_262_0.png" alt="png"></p>
+<p>当散点图的其中一个数据轴或者两个数据轴都对应于离散型数据时，也会出现图形重叠的情况，这时候，可以调用<code>position_jitter()</code>函数给数据点增加随机扰动。<br>默认情况，该函数在每个方向上添加的扰动值为数据点最小精度的40%，不过也可以通过width和height参数对该值进行调整。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(ChickWeight,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A nfnGroupedData: 2 × 4</caption>
+<thead>
+    <tr><th></th><th scope="col">weight</th><th scope="col">Time</th><th scope="col">Chick</th><th scope="col">Diet</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;ord&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>42</td><td>0</td><td>1</td><td>1</td></tr>
+    <tr><th scope="row">2</th><td>51</td><td>2</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp1 &lt;- ggplot(ChickWeight, aes(x=Time, y=weight))
+
+sp1 + geom_point()
+
+sp1 + geom_point(position = position_jitter())
+
+sp1 + geom_point(position = position_jitter(width=.5, height=0))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_265_0.png" alt="png"></p>
+<p><img src="output_265_1.png" alt="png"></p>
+<p><img src="output_265_2.png" alt="png"></p>
+<p><strong>箱线图</strong><br>对于ChickWeight 数据集，其对应的x轴本质上是离散的，但其被存储为数值型向量，因此，ggplot()函数不知如何对该数据集分组(如下图一)。<br>调用aes(group=…)可以告诉ggplot如何对数据进行分组。下面，按Time变量的取值对数据进行分组：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp1 + geom_boxplot()
+
+sp1 + geom_boxplot(aes(group=Time))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"Continuous x aesthetic -- did you forget aes(group=...)?"
+</code></pre>
+<p><img src="output_267_1.png" alt="png"></p>
+<p><img src="output_267_2.png" alt="png"></p>
+<h2 id="添加回归模型拟合线"><a href="#添加回归模型拟合线" class="headerlink" title="添加回归模型拟合线"></a>添加回归模型拟合线</h2><p>运行<code>stat_smooth()</code>函数并设定 <u>method=lm</u> 即可向散点图中添加线性回归拟合线,这将调用lm()函数对数据拟合线性模型。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp &lt;- ggplot(heightweight, aes(x=ageYear, y=heightIn))
+
+sp + geom_point() + stat_smooth(method = lm)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using formula 'y ~ x'
+</code></pre>
+<p><img src="output_270_1.png" alt="png"></p>
+<p>默认情况下，<code>stat_smooth()</code>函数会为回归拟合线添加 <u>95%</u> 的置信域, 置信域对应的置信水平可通过设置 <u>level</u>参数来进行调整。设定参数se=FALSE时，系统将不会对回归拟合线添加置信域。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + geom_point() + stat_smooth(method = lm, level = 0.99)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using formula 'y ~ x'
+</code></pre>
+<p><img src="output_272_1.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + geom_point(color='grey60') + stat_smooth(method = lm, se=FALSE, color='black')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using formula 'y ~ x'
+</code></pre>
+<p><img src="output_273_1.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># stat_smooth()默认使用 loess（局部加权多项式拟合线）
+sp + geom_point(color='grey60') + stat_smooth(color='black')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+</code></pre>
+<p><img src="output_274_1.png" alt="png"></p>
+<p>另一种常用的模型是Logistic回归。Logistic回归对heightweight数据集不适用，但对MASS包中的biopsy数据集拟合效果良好。</p>
+<p>MASS包中的biopsy数据集拟合效果良好。该数据集包含9个与乳腺癌活检组织相关的指标以及肿瘤的分类，包括良性(benign)和恶性(malignant)两种。<br>在预处理Logistic回归的数值时，必须将含有两个水平benign和malignant的因子型变量转化为具有0和1取值的向量。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(MASS)
+
+b &lt;- biopsy
+
+b$classn[b$class=="benign"] &lt;- 0
+b$classn[b$class=="malignant"] &lt;- 1
+head(b,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 12</caption>
+<thead>
+    <tr><th></th><th scope="col">ID</th><th scope="col">V1</th><th scope="col">V2</th><th scope="col">V3</th><th scope="col">V4</th><th scope="col">V5</th><th scope="col">V6</th><th scope="col">V7</th><th scope="col">V8</th><th scope="col">V9</th><th scope="col">class</th><th scope="col">classn</th></tr>
+    <tr><th></th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>1000025</td><td>5</td><td>1</td><td>1</td><td>1</td><td>2</td><td> 1</td><td>3</td><td>1</td><td>1</td><td>benign</td><td>0</td></tr>
+    <tr><th scope="row">2</th><td>1002945</td><td>5</td><td>4</td><td>4</td><td>5</td><td>7</td><td>10</td><td>3</td><td>2</td><td>1</td><td>benign</td><td>0</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p &lt;- ggplot(b, aes(x=V1, y=classn))
+p + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_278_0.png" alt="png"></p>
+<p>图中数据点重叠程度严重，因此需要添加扰动,设置点为半透明、点形设置为空心圆，并使用略小的数据点。令stat_smooth()函数使用选项为family=binormal的gln()函数向散点图添加logistic回归拟合线。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + geom_point(position = position_jitter(width = 0.3, height = 0.06), 
+               alpha = 0.3, shape=21, size=1.5) + 
+ stat_smooth(method = glm, method.args = list(family="binomial"), color='black')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using formula 'y ~ x'
+</code></pre>
+<p><img src="output_280_1.png" alt="png"></p>
+<p>男性分组的蓝色拟合线并没有绘制到图形的右边界。其中有两个原因：<br>第一：默认情况下stat_smooth函数将预测值的范围限定在预测数据对应的范围内<br>第二：即使对模型进行外推，loess()函数也只能根据整组数据对应的x轴的范围进行预测</p>
+<p>如果想基于数据集对拟合线进行外推，必须保证绘图过程中能够调用的是支持外推的模型，比如lm()，并将选项 <u>fullrange=TRUE</u> 传递给<code>stat_smooth()</code>函数</p>
+<h2 id="根据已有模型向散点图添加拟合线"><a href="#根据已有模型向散点图添加拟合线" class="headerlink" title="根据已有模型向散点图添加拟合线"></a>根据已有模型向散点图添加拟合线</h2><p>本例中，使用<code>lm()</code>函数建立一个以 <u>ageYear</u> 为预测变量对 <u>heightIn</u> 进行预测的模型。<br>然后，调用predict()函数计算预测模型 <u>ageYear</u> 各取值所对应的 <u>heightIn</u> 变量的预测值：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">model &lt;- lm(heightIn ~ ageYear + I(ageYear^2), heightweight)
+model<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre><code>Call:
+lm(formula = heightIn ~ ageYear + I(ageYear^2), data = heightweight)
+
+Coefficients:
+ (Intercept)       ageYear  I(ageYear^2)  
+    -10.3136        8.6673       -0.2478  
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 创建一个包含变量ageYear的列，并对其进行插值
+xmin &lt;- min(heightweight$ageYear)
+xmax &lt;- max(heightweight$ageYear)
+
+predicted &lt;- data.frame(ageYear=seq(xmin, xmax, length.out = 100))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 计算变量heightIn的预测值
+predicted$heightIn &lt;- predict(model, predicted)
+head(predicted,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">ageYear</th><th scope="col">heightIn</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>11.5800</td><td>56.82624</td></tr>
+    <tr><th scope="row">2</th><td>11.6398</td><td>57.00047</td></tr>
+</tbody>
+</table>
+
+
+
+<p>现在，我们可以将数据点和模型预测值一起绘制在图形上</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp &lt;- ggplot(heightweight, aes(x=ageYear, y=heightIn)) + 
+       geom_point(color='grey10')
+
+sp + geom_line(data = predicted, size = 1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_289_0.png" alt="png"></p>
+<p>无论哪种模型，只要有对应的predict()方法，则其都可用来绘制拟合线。<br>例如：<code>lm()</code>和<code>loess()</code>对应的predict()方法分别是predict.lm()和predict.loess()等，因此，这两个模型都可以用来绘制模型拟合线。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">predictvals &lt;- function(model, xvar, yvar, xrange=NULL, samples=100, ...){
+    if (is.null(xrange)) {
+        if (any(class(model) %in% c('lm', 'glm')))
+            xrange &lt;- range(model$model[[xvar]])
+        else if (any(class(model) %in% 'loess'))
+            xrange &lt;- range(model$x)
+    }
+    
+    newdata &lt;- data.frame(x = seq(xrange[1], xrange[2], length.out = samples))
+    names(newdata) &lt;- xvar
+    newdata[[yvar]] &lt;- predict(model, newdata = newdata, ...)
+    newdata
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>调用<code>lm()</code>函数和<code>loess()</code>函数对数据集建立线性模型和loess模型</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">modlinear &lt;- lm(heightIn ~ ageYear, heightweight)
+modloess &lt;- loess(heightIn ~ ageYear, heightweight)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>针对两个模型分别调用<code>predictvals()</code>函数，并将得到的结果（数据框）传递给geom_line():</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">lm_predicted &lt;- predictvals(modlinear, "ageYear", "heightIn")
+loess_predicted &lt;- predictvals(modloess, "ageYear", "heightIn")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + geom_line(data = lm_predicted, color='red', size=.8) + 
+ geom_line(data = loess_predicted, color = 'blue', size=.8)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_296_0.png" alt="png"></p>
+<p>对于具有非线性连接函数的glm模型，需要将predictvals()函数的参数设定为<code>type="response"</code>。这样做的原因在于，默认情况下该函数返回的预测结果是基于线性项的，而不是基于响应变量(y)的。</p>
+<p>以MASS包中的biopsy数据为例演示一下上述过程。<br>用变量V1来预测变量class。logistic模型对应的值须是介于0到1之间的数值，这里变量class是因子型变量，因此，要先将变量class的取值转化为0和1。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(MASS)
+b &lt;- biopsy<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'MASS' was built under R version 4.0.5"
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(b,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 11</caption>
+<thead>
+    <tr><th></th><th scope="col">ID</th><th scope="col">V1</th><th scope="col">V2</th><th scope="col">V3</th><th scope="col">V4</th><th scope="col">V5</th><th scope="col">V6</th><th scope="col">V7</th><th scope="col">V8</th><th scope="col">V9</th><th scope="col">class</th></tr>
+    <tr><th></th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>1000025</td><td>5</td><td>1</td><td>1</td><td>1</td><td>2</td><td> 1</td><td>3</td><td>1</td><td>1</td><td>benign</td></tr>
+    <tr><th scope="row">2</th><td>1002945</td><td>5</td><td>4</td><td>4</td><td>5</td><td>7</td><td>10</td><td>3</td><td>2</td><td>1</td><td>benign</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">b$classn[b$class=="benign"] &lt;- 0
+b$classn[b$class=="malignant"] &lt;- 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 建立logistic回归模型
+fitlogistic &lt;- glm(classn ~ V1, b, family = binomial)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 获取预测值
+glm_predicted &lt;- predictvals(fitlogistic, "V1", "classn", type="response")
+
+ggplot(b, aes(x=V1, y=classn)) + 
+ geom_point(position = position_jitter(width = .3, height = .08), alpha = .4,
+           shape=21, size=1.5) + 
+ geom_line(data=glm_predicted, color='blue', size=1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_303_0.png" alt="png"></p>
+<h2 id="添加来自多个模型的拟合线"><a href="#添加来自多个模型的拟合线" class="headerlink" title="添加来自多个模型的拟合线"></a>添加来自多个模型的拟合线</h2><p><strong>问题：</strong><br>对数据集建立了回归模型之后，如何绘制模型对应的拟合线？<br><strong>方法：</strong><br>使用上文提到的predictvals()函数和来自plyr包的<code>dlply()</code>及<code>ldply()</code>函数即可。</p>
+<p>根据变量sex的水平对heightweight数据集进行分组，调用<code>lm()</code>函数对每组数据分别建立线性模型，并将模型结果存放在一个列表内。随后，通过下面定义的make_model()函数建立模型。调用该函数时，向其输入一个数据框作为参数，该函数会返回一个lm对象。也可以根据数据集自定义模型：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">make_model &lt;- function(data){
+    lm(heightIn ~ ageYear, data)
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>有了上面的函数之后，可以调用<code>dlply()</code>函数分别针对数据集的各个子集建立模型。<br>在执行过程中，函数会根据分组变量sex将数据集切分为不同的子集，并对各个子集执行<code>make_model()</code>函数。<br>本例中，heightweight数据集被切分为男性组和女性组，make_model()函数分别对两个组的数据建立模型。调用<code>dlply()</code>函数将模型结果输出到列表中，并返回列表：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(plyr)
+
+models &lt;- dlply(heightweight, 'sex', .fun = make_model)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">models<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre><code>$f
+
+Call:
+lm(formula = heightIn ~ ageYear, data = data)
+
+Coefficients:
+(Intercept)      ageYear  
+     43.963        1.209  
+
+
+$m
+
+Call:
+lm(formula = heightIn ~ ageYear, data = data)
+
+Coefficients:
+(Intercept)      ageYear  
+     30.658        2.301  
+
+
+attr(,"split_type")
+[1] "data.frame"
+attr(,"split_labels")
+  sex
+1   f
+2   m
+</code></pre>
+<p>得到模型对象之后，配合使用<code>ldply()</code>函数和<code>predictvals()</code>函数即可获取两个模型对应的预测值。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">predvals &lt;- ldply(models, .fun = predictvals, xvar='ageYear', yvar='heightIn')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最后绘制带预测值的散点图</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, color=sex)) + 
+ geom_point() + 
+ geom_line(data = predvals)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_314_0.png" alt="png"></p>
+<p><strong>讨论：</strong><br><code>dlply()</code>和<code>ldply()</code>函数的作用是切分数据，对各个部分执行某一函数，并对执行结果进行重组。<br>上面两个模型预测变量均在各自的ageYear变量范围内，没有进行延申。<br>为了使两组数据预测先对应的x轴范围与整个数据集对应的x范围相同，可以像下面这样向其传递一个xrange参数：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">predvals &lt;- ldply(models, .fun = predictvals, xvar='ageYear', yvar='heightIn', xrange=range(heightweight$ageYear))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=ageYear, y=heightIn, color=sex)) + 
+ geom_point() + 
+ geom_line(data = predvals) + 
+ facet_grid(sex ~ .)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_317_0.png" alt="png"></p>
+<p><font color="red">warning</font><strong>谨记一点：</strong>外推的拟合线并非总适用的，其适用与否要视数据特性及模型假设而定</p>
+<p>👀 🆘 ❀ 五星红旗🚫🔞🚳🚯🚷❗❕红旗o(<em>￣︶￣</em>)o(●’◡’●)👏💏</p>
+<h2 id="向散点图添加模型系数"><a href="#向散点图添加模型系数" class="headerlink" title="向散点图添加模型系数"></a>向散点图添加模型系数</h2><p>简单的文本以注释形式添加到图形上面即可。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">model &lt;- lm(heightIn ~ ageYear, heightweight)
+summary(model)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre><code>Call:
+lm(formula = heightIn ~ ageYear, data = heightweight)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.3517 -1.9006  0.1378  1.9071  8.3371 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  37.4356     1.8281   20.48   &lt;2e-16 ***
+ageYear       1.7483     0.1329   13.15   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.989 on 234 degrees of freedom
+Multiple R-squared:  0.4249,    Adjusted R-squared:  0.4225 
+F-statistic: 172.9 on 1 and 234 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<p>上面的结果表明模型的 r<sup>2</sup>=0.4249. 我们创建一个图形，并调用<code>annotate()</code>函数向其手动添加文本：  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 首先生成预测值
+pred &lt;- predictvals(model, 'ageYear', 'heightIn')
+sp &lt;- ggplot(heightweight, aes(x=ageYear, y=heightIn)) + 
+       geom_point(color = 'grey60') + 
+       geom_line(data = pred, size=0.6) 
+
+sp + annotate('text', label='r^2=0.42', x=16.5, y=52)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_324_0.png" alt="png"></p>
+<p>如果不想使用纯文本字符串当注释的话，可以通过设置<code>parse=TRUE</code>调用R的数学表达式语法来输入公式</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + annotate('text', label = 'r^2 == 0.42', size=6,parse = TRUE, x=16.5, y=52)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_326_0.png" alt="png"></p>
+<p>💬<strong>讨论：</strong><br>ggplot2中的文本对象不能直接以表达式对象作为输入，其参数通常是一个字符串，接受字符串后，通过<code>parse(text="a" + "b")</code>函数将其转化为公式。<br>使用数学公式作为注释时，必须使用正确的语法才能保证系统输出一个合法的R表达式对象。把公式封装在<code>expression()</code>内部，检验其输出结果可以辅助判断R表达式的有效性(确保公式两边没有引号)。<br>== 是公式中等号的合法字符，而 = 则是非法字符。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">expression(r^2 == 0.42)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre><code>expression(r^2 == 0.42)
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">expression(r^2 = 0.42)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre><code>Error in parse(text = x, srcfile = src): &lt;text&gt;:1:16: 意外的'='
+1: expression(r^2 =
+                   ^
+Traceback:
+</code></pre>
+<p>还可以自动提取模型对象的值并创建一个引用这些值的公式。在接下来的例子中，我们创建一个字符串。对其进行解析后，会返回一个合法的公式：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">eqn &lt;- as.character(as.expression(
+         substitute(italic(y) == a + b * italic(x) * "," ~~ italic(r)^2 ~ "=" ~ r2,
+                   list(a = format(coef(model)[1], digits = 3),
+                        b = format(coef(model)[2], digits = 3),
+                        r2 = format(summary(model)$r.squared, digits=2))))
+                   )
+
+parse(text = eqn)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre><code>expression(italic(y) == c(`(Intercept)` = "37.4") + c(ageYear = "1.75") * 
+    italic(x) * "," ~ ~italic(r)^2 ~ "=" ~ "0.42")
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + annotate("text", label=eqn, parse=TRUE, x=Inf, y=-Inf, hjust=1.1,vjust=-.5)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_332_0.png" alt="png"></p>
+<h2 id="向散点图添加边际地毯"><a href="#向散点图添加边际地毯" class="headerlink" title="向散点图添加边际地毯"></a>向散点图添加边际地毯</h2><p><strong>添加marginal rugs</strong><br>调用geom_rug()函数即可。 下面以faithful数据集为例，该数据集包含两列关于“老忠实喷泉”的信息：<br>其中，一列是变量eruptions，记录的是喷泉每次喷发的时长：另一列是waiting，记录的是喷泉在两次喷发之间的时间间隔：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=eruptions, y=waiting)) + 
+ geom_point(size=3, alpha=.5, shape = 20) + 
+ geom_rug()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_335_0.png" alt="png"></p>
+<p>边际地毯图本质上是一个一维的散点图，它可被用于展示每个坐标轴上数据的公布情况。<br>对于本例中的数据集，边际地毯传递的信息量十分有限。因为变量waiting的最小刻度是分钟，因此，图中相应的边际地毯线重叠严重。通过向边际地毯线的位置坐标添加扰动并设定size减小线宽可以减轻边际地毯线的重叠程度。上述操作有助于看清数据的分布情况。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=eruptions, y=waiting)) + 
+ geom_point() + 
+ geom_rug(position = position_jitter(), size=.2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_337_0.png" alt="png"></p>
+<h2 id="向散点图添加标签"><a href="#向散点图添加标签" class="headerlink" title="向散点图添加标签"></a>向散点图添加标签</h2><p>调用<code>annotate()</code>函数或者<code>geom_text()</code>函数可以为一个或几个数据点添加标签。<br>下面以countries数据集为例，对各国医疗保健支出 与 婴儿死亡率之间的关系进行可视化。为了便于操作，选取人均支出大于2000美元的国家的数据子集进行分析：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">top.entries &lt;- subset(countries, Year==2009 &amp; healthexp&gt;2000)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(top.entries,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 7</caption>
+<thead>
+    <tr><th></th><th scope="col">Name</th><th scope="col">Code</th><th scope="col">Year</th><th scope="col">GDP</th><th scope="col">laborrate</th><th scope="col">healthexp</th><th scope="col">infmortality</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">254</th><td>Andorra  </td><td>AND</td><td>2009</td><td>      NA</td><td>  NA</td><td>3089.636</td><td>3.1</td></tr>
+    <tr><th scope="row">560</th><td>Australia</td><td>AUS</td><td>2009</td><td>42130.82</td><td>65.2</td><td>3867.429</td><td>4.2</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp &lt;- ggplot(top.entries, aes(x=healthexp, y=infmortality)) + geom_point()
+
+sp + annotate("text", x=4350, y=5.4, label="Canada") + 
+ annotate("text", x=7400, y=6.8, label="USA")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_342_0.png" alt="png"></p>
+<p>要根据数据集自动向散点图添加数据标签，可以使用geom_text()函数，此时，只需映射一个因子型或者字符串型的向量给标签(label)属性。同时为了避免数据点过于拥挤，我们使用略小一点的字号。默认标签 size=5 </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + geom_text(aes(label=Name), size=4)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_344_0.png" alt="png"></p>
+<p>💬<strong>讨论：</strong><br>系统自动放置注释时，会将其中心置于x坐标和y坐标的位置。 </p>
+<p><strong>上下对齐</strong><br>设定vjust=0时，标签文本的基线会与数据点对齐；设定vjust=1时，标签文本的顶部会与数据点对齐，但有时这样还不够，可以通过增加或者减少vjust参数的值来调高或调低文本标签的位置；也可以通过对y的映射增加或者减少一个值得到相同的效果</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + geom_text(aes(label=Name), size=4, vjust=-0.5)
+
+sp + geom_text(aes(y=infmortality, label=Name))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_346_0.png" alt="png"></p>
+<p><strong>左右对齐</strong><br>有时候，有必要根据数据点的位置令注释左对齐，或右对齐。</p>
+<ul>
+<li>hjust=0 左对齐</li>
+<li>hjust=1 右对齐</li>
+</ul>
+<p>然而最好不要通过增加或者减少hjust的值对此进行修正，因为调整hjust的值时，系统会按照文本标签长度的一定比例来移动文本标签的位置。这时候，较长的文本标签会比端文本标签移动的位置更大。<br>此时，最好将hjust设定为0或1，然后，通过对x增加或者减去一个值来调整文本标签的位置：  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sp + geom_text(aes(label=Name), size=4, hjust=0)
+sp + geom_text(aes(x=healthexp + 100, label=Name), size=4, hjust=0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_348_0.png" alt="png"></p>
+<p><img src="output_348_1.png" alt="png"></p>
+<p>❗ps:<br>如果绘图时用的是对数坐标，要想将文本标签移动同样的位置，就不能通过增加 x 或 y 的数值来实现了，此时需要令 x 或者 y 乘以一个数值才行<br>因为对数运算：  <font color="red">log(x*n) = logx + logn</font></p>
+<p><strong>部分数据点自动添加标签</strong><br>如果只想给为数不多的几个点添加标签，但希望R自动设定标签位置的话，可以给数据框增加一个只包含拟使用的标签的新列。<br>一个可行方案是：首先，将所有数据复制一个副本，并将列Name复制为Name1：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">cdat &lt;- subset(countries, Year==2009 &amp; healthexp &gt; 2000)
+
+cdat$Name1 &lt;- cdat$Name<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>接下来。用 %in% 运算符找出绘图时希望保有的标签所处的位置。本操作将返回一个逻辑向量，该向量标识了cdat$Name1中哪些元素出现在第二个向量中，其中第二个向量指定的是我们希望标示出来的国家的名字：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">idx &lt;- cdat$Name1 %in% c('Canada', 'Ireland', 'United Kingdom', 'United States',
+                        'New Zealand', 'Iceland', 'Japan', 'Luxembourg')
+idx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li></ol>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 重写不在第二个向量中的取值
+cdat$Name1[!idx] &lt;- NA<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(cdat, aes(x=healthexp, y=infmortality)) +
+ geom_point() +
+ geom_text(aes(x=healthexp + 100, label=Name1), size=4, hjust=0) + 
+ xlim(2000, 10000)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"Removed 19 rows containing missing values (geom_text)."
+</code></pre>
+<p><img src="output_355_1.png" alt="png"></p>
+<p>如果还有个别点要调整，就保存为pdf用 Illustrator 软件编辑吧</p>
+<h2 id="绘制气泡图"><a href="#绘制气泡图" class="headerlink" title="绘制气泡图"></a>绘制气泡图</h2><p>❓<strong>问题</strong><br>如何绘制气泡图，并令点的面积正比于变量值？<br>💡<strong>方法</strong><br>调用<code>geom_point()</code>和<code>scale_size_area()</code>函数即可绘制气泡图。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">cdat &lt;- subset(countries, Year==2009 &amp; Name %in% c('Canada', 'Ireland', 'United Kingdom', 'United States', 'New Zealand', 'Iceland', 'Japan', 'Netherlands', 'Switzerland'))
+head(cdat,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 7</caption>
+<thead>
+    <tr><th></th><th scope="col">Name</th><th scope="col">Code</th><th scope="col">Year</th><th scope="col">GDP</th><th scope="col">laborrate</th><th scope="col">healthexp</th><th scope="col">infmortality</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1733</th><td>Canada </td><td>CAN</td><td>2009</td><td>39599.04</td><td>67.8</td><td>4379.761</td><td>5.2</td></tr>
+    <tr><th scope="row">4436</th><td>Iceland</td><td>ISL</td><td>2009</td><td>37972.24</td><td>77.5</td><td>3130.391</td><td>1.7</td></tr>
+</tbody>
+</table>
+
+
+
+<p>如果只是将 GDP 映射给size属性，则GDP的值被映射给了点的半径。若想将GDP映射给点的面积，可以调用 <code>scale_size_area()</code> 来完成这一操作</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p &lt;- ggplot(cdat, aes(x=healthexp, y=infmortality, size=GDP)) + 
+      geom_point(shape=21, color='black', fill='cornsilk')
+
+p 
+
+p + scale_size_area(max_size = 15) + theme_bw()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_361_0.png" alt="png"></p>
+<p><img src="output_361_1.png" alt="png"></p>
+<p>本例中的气泡图实际上还是散点图， 但气泡图也有其他用法。比如，当x轴和y轴皆为分类变量时，气泡图可以用来表示网格点上的变量值</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">hec &lt;- HairEyeColor[,,'Male'] + HairEyeColor[,,'Female']
+hec<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre><code>       Eye
+Hair    Brown Blue Hazel Green
+  Black    68   20    15     5
+  Brown   119   84    54    29
+  Red      26   17    14    14
+  Blond     7   94    10    16
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(reshape2)
+
+hec &lt;- melt(hec, value.name='count')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(hec, aes(x=Eye, y=Hair)) + 
+ geom_point(aes(size=count), shape=21, color='black', fill='cornsilk') + 
+ scale_size_area(max_size = 20, guide='none') +
+ geom_text(aes(y=as.numeric(Hair)-sqrt(count)/40, label=count), vjust=1, color='grey60', size=4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_365_0.png" alt="png"></p>
+<h2 id="绘制散点图矩阵"><a href="#绘制散点图矩阵" class="headerlink" title="绘制散点图矩阵"></a>绘制散点图矩阵</h2><p>💡<strong>方法</strong><br>调用R基础绘图系统中的<code>pairs()</code>函数可以绘制散点图矩阵。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">c2009 &lt;- subset(countries, Year==2009, select=c(Name, GDP, laborrate, healthexp, infmortality))
+head(c2009,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 5</caption>
+<thead>
+    <tr><th></th><th scope="col">Name</th><th scope="col">GDP</th><th scope="col">laborrate</th><th scope="col">healthexp</th><th scope="col">infmortality</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">50</th><td>Afghanistan</td><td>      NA</td><td>59.8</td><td> 50.88597</td><td>103.2</td></tr>
+    <tr><th scope="row">101</th><td>Albania    </td><td>3772.605</td><td>59.5</td><td>264.60406</td><td> 17.2</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">pairs(c2009[,2:5])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_369_0.png" alt="png"></p>
+<p><strong>讨论</strong><br>此处，我们没有使用ggplot2是因为它不能绘制散点图矩阵(至少绘制的效果不佳)。</p>
+<p>我们定义一个panel.cor函数来展示变量两两之间的相关系数以代替默认的散点图。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">panel.cor &lt;- function(x, y, digits=2, prefix='', cex.cor, ...){
+    usr = par('usr')
+    on.exit(par(usr))
+    par(usr = c(0, 1, 0, 1))
+    r &lt;- abs(cor(x,y, use='complete.obs'))
+    txt &lt;- format(c(r, 0.123456789),digits = digits)[1]
+    txt &lt;- paste0(prefix, txt)
+    if(missing(cex.cor)) cex.cor &lt;- 0.8/strwidth(txt)
+    text(0.5, 0.5, txt, cex = cex.cor * (1+r)/2 )
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>为了在面板的对角线上展示各个变量的直方图，我们定义<code>panel.hist</code>函数:</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">panel.hist &lt;- function(x, ...){
+    usr &lt;- par('usr')
+    on.exit(par(usr))
+    par(usr = c(usr[1:2], 0, 1.5) )
+    h &lt;- hist(x, plot = FALSE)
+    breaks &lt;- h$breaks
+    nB &lt;- length(breaks)
+    y &lt;- h$counts
+    y &lt;- y/max(y)
+    rect(breaks[-nB], 0, breaks[-1], y, col='white', ...)
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的函数都取自于<code>pairs()</code>函数的相关帮助。<br>定义了这些函数之后，我们可以调用它们来绘制散点图矩阵。令<code>pairs()</code>函数在面板上三角执行<code>panel.cor</code>函数;在面板的对角线执行<code>panel.hist()</code>函数。  </p>
+<p>绘图时也增加了一点东西：在面板的下三角执行panel.smooth()函数。该函数将在散点图矩阵的下三角绘制散点图，并添加一个LOWESS平滑曲线。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">pairs(c2009[,2:5], upper.panel = panel.cor,
+     diag.panel = panel.hist,
+     lower.panel = panel.smooth)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_377_0.png" alt="png"></p>
+<p>也许，我们会希望用线性模型代替LOWESS模型，panel.lm函数可以完成该操作（与前面的面板函数不同，这里的函数不在pairs函数的帮助页面中）：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">panel.lm &lt;- function(x, y, col = par('col'), bg=NA, pch = par('pch'),
+                    cex = 1, col.smooth = 'black', ...){
+    points(x, y, pch=pch, col=col, bg=bg, cex=cex)
+    abline(stats::lm(y~x), col=col.smooth, ...)
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这次， 系统默认的线条颜色不再是红色，而是黑色。调用参数pairs()时（与函数panel.smooth配合使用）设定col.smooth参数可以对线条颜色进行修改。</p>
+<p>为了便于辨认数据点，我们在图中使用更小一些的点。该操作可以通过设定pch=”.”来完成：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">pairs(c2009[,2:5], pch='.',
+      upper.panel = panel.cor,
+      diag.panel = panel.hist,
+      lower.panel = panel.smooth)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_382_0.png" alt="png"></p>
+<p>🧠<strong>更多</strong><br>关于创建相关系数矩阵的内容，可参见”其他图形”章第一节。<br>GGally包中的<code>ggpairs()</code>函数也可以绘制散点图矩阵。</p>
+<h1 id="第六章-描述数据分布"><a href="#第六章-描述数据分布" class="headerlink" title="第六章 描述数据分布"></a>第六章 描述数据分布</h1><h2 id="绘制简单直方图"><a href="#绘制简单直方图" class="headerlink" title="绘制简单直方图"></a>绘制简单直方图</h2><p>运行<code>geom_histogram()</code>函数并映射一个连续型变量到参数x</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting)) + geom_histogram(bins = 40, fill='white', color='black')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_387_0.png" alt="png"></p>
+<p>如果想快速看一下未包含在数据框中的数据的直方图，可以在运行上述命令时，将数据框参数设定为NULL，同时，向ggplot()函数传递一个向量作为参数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">w &lt;- faithful$waiting
+
+ggplot(NULL, aes(x=w)) + geom_histogram()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_389_1.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">binsize &lt;- diff(range(faithful$waiting))/15
+
+ggplot(faithful, aes(x=waiting)) + 
+ geom_histogram(binwidth = binsize, fill='white', color='black')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_390_0.png" alt="png"></p>
+<p>有时，直方图的外观会非常依赖于组距及组边界。我们将组距设定为8.同时设定分组原点(origin)参数令左图的组边界分别位于31、39、47等；右图中，对origin参数增加4，令组边界分别位于35、43、51等</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">h &lt;- ggplot(faithful, aes(x=waiting))
+
+h + geom_histogram(binwidth = 8, fill = 'white', color = 'black', boundary=31)
+h + geom_histogram(binwidth = 8, fill = 'white', color = 'black', boundary=35)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_392_0.png" alt="png"></p>
+<p><img src="output_392_1.png" alt="png"></p>
+<p>两图对应的分组数目相同，但绘图结果差异很大。因此，绘制图形时，最好尝试一下不同的分组数目和分组边界。</p>
+<p>当数据集包含离散型数据时，直方图的非对称性不可忽略。数据分组时，各分组区间左闭右开。</p>
+<p><strong>另见</strong><br>绘制多个数据对应的分布时，频数多边形(frequency)是一个更佳的方案，因为，它避免了多个条形之间的相互干扰。</p>
+<h2 id="基于分组数据绘制分组直方图"><a href="#基于分组数据绘制分组直方图" class="headerlink" title="基于分组数据绘制分组直方图"></a>基于分组数据绘制分组直方图</h2><p>💡<strong>方法</strong><br>运行<code>geom_histogram()</code>函数并使用分面绘图即可  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(MASS)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'MASS' was built under R version 4.0.5"
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(birthwt, 2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 10</caption>
+<thead>
+    <tr><th></th><th scope="col">low</th><th scope="col">age</th><th scope="col">lwt</th><th scope="col">race</th><th scope="col">smoke</th><th scope="col">ptl</th><th scope="col">ht</th><th scope="col">ui</th><th scope="col">ftv</th><th scope="col">bwt</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">85</th><td>0</td><td>19</td><td>182</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2523</td></tr>
+    <tr><th scope="row">86</th><td>0</td><td>33</td><td>155</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>2551</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">unique(birthwt$smoke)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>0</li><li>1</li></ol>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=bwt)) + geom_histogram(fill='white', color='black') + 
+ facet_grid(smoke ~ .)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_401_1.png" alt="png"></p>
+<p>绘制上图时，要求所有用到的数据都包含在一个数据框里，且数据框其中一列是可用于分组的分类变量。</p>
+<p>分面绘图有一个问题，即分面标签只有 0 和 1 ，且没有指明这个标签是变量smoke的取值。想要修改标签，需要修改因子水平的名称。依照相同的顺序向它们赋予新的名字：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">birthwt$smoke &lt;- factor(birthwt$smoke)
+
+levels(birthwt$smoke)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'0'</li><li>'1'</li></ol>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(plyr)
+birthwt$smoke &lt;- revalue(birthwt$smoke, c('0'='No Smoke', '1'='Smoke'))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>重新绘图，图形中为新的分面标签。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=bwt)) + geom_histogram(fill='white', color='black') + facet_grid(smoke ~ .)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_407_1.png" alt="png"></p>
+<p>分面绘图时，各分面对应的y轴标度是相同的，当各组数据包含的样本数目不同时，可能会难以比较各组数据的分布形状。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=bwt)) + geom_histogram(fill='white', color='black') + facet_grid(race ~ .)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_409_1.png" alt="png"></p>
+<p>设置<code>scales='free'</code>可以单独设定各个分面的y轴标度</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=bwt)) + geom_histogram(fill='white', color='black') + facet_grid(race ~ ., scales = 'free')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_411_1.png" alt="png"></p>
+<p>分组绘图的另一种做法是把分组变量映射给fill。此处的分组变量必须是因子型或者字符型的向量。对于birthwt 数据集，变量smoke是合适的分组变量，由于其被存储为数值型，所以，我们使用前面创建的birthwt数据集，该数据集中的smoke变量是因子型变量：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 把smoke转化为因子
+birthwt$smoke &lt;- factor(birthwt$smoke)
+
+options(repr.plot.width=10, repr.plot.height=6)
+# 把smoke映射给fill，取消条形堆叠，并使图形半透明
+ggplot(birthwt, aes(x=bwt, fill=smoke)) + 
+ geom_histogram(position = 'identity', alpha = 0.4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_413_1.png" alt="png"></p>
+<p>语句position = ‘identity’ 很重要。没有它，ggplot()函数会将直方图的条形进行垂直堆积，这样的话更难以看清每组数据的分布信息.</p>
+<h2 id="绘制密度曲线"><a href="#绘制密度曲线" class="headerlink" title="绘制密度曲线"></a>绘制密度曲线</h2><p>💡<strong>方法</strong><br>运行 geom_density()函数，并映射一个连续型变量到x</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(faithful,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">eruptions</th><th scope="col">waiting</th></tr>
+    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>3.6</td><td>79</td></tr>
+    <tr><th scope="row">2</th><td>1.8</td><td>54</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting)) + geom_density()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_418_0.png" alt="png"></p>
+<p>与<code>geom_histogram()</code>函数类似，geom_density()函数只需要数据框中的一列作为参数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting)) + geom_line(stat='density') + 
+ expand_limits(y=0)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_420_0.png" alt="png"></p>
+<p>上面提到的第二种方法是使用<code>geom_line()</code>函数，并告诉其使用<code>density()</code>统计变换.这种方法与第一种使用<code>geom_density()</code>函数的方法在本质上是相同的</p>
+<p>与使用<code>geom_histogram()</code>函数类似,如果想快速地绘制未在数据框中地数据地直方图，可以在运行上述命令时，将数据框设定为NULL，同时向ggplot()函数传递一个包含所需数据地向量作为参数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(NULL, aes(x=faithful$waiting)) + geom_density()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_423_0.png" alt="png"></p>
+<p>核密度曲线是基于样本数据对总体分布做出的一个估计，曲线的光滑程度取决于核函数地带宽，带宽越大，曲线越光滑。带宽可以通过adjust参数进行设置，其默认值为1.</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(waiting)) + 
+ theme_bw() +
+ geom_line(stat='density', adjust=.25, color='red') + 
+ geom_line(stat='density') + 
+ geom_line(stat='density', adjust=2, color='blue')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_425_0.png" alt="png"></p>
+<p>本例中，x轴地坐标范围是自动设定的，以使其能包含相应的数据，但这会导致曲线的边缘被剪裁。想要展示曲线的更多部分，可以手动设定x轴的范围。同时，设置alpha=.2 使填充色的透明度为80%</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting)) + geom_density(fill='blue', alpha=.2) + xlim(35, 105) + theme_classic()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_427_0.png" alt="png"></p>
+<p>将密度曲线叠加到直方图上，可以对观测值的理论分布和实际分布进行比较。由于密度曲线对应的y轴坐标较小，如果将其叠加到未做任何变换的直方图上，曲线可能会很难看清楚。通过设置y=..density..可以减少直方图的标度以使其与密度曲线的标度相匹配。这里，我们先运行geom_histogram()函数绘制直方图之后，运行geom_density()函数将密度曲线绘制到更上一层的图层上</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting, y=..density..)) + 
+ geom_histogram(fill='cornsilk', color='grey60', size=.2) + 
+ geom_density() + 
+ xlim(35,105)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+Warning message:
+"Removed 1 rows containing missing values (geom_bar)."
+</code></pre>
+<p><img src="output_429_1.png" alt="png"></p>
+<h2 id="基于分组数据绘制分组密度曲线"><a href="#基于分组数据绘制分组密度曲线" class="headerlink" title="基于分组数据绘制分组密度曲线"></a>基于分组数据绘制分组密度曲线</h2><p>使用<code>geom_density()</code>函数，将分组变量映射给color或fill等图形属性即可。分组变量必须是因子型或者字符串向量。数据集birthwt对应的最佳分组变量smoke被存储为数值型，所以，我们必须先将其转化为因子：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(MASS)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'MASS' was built under R version 4.0.5"
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">birthwt1 &lt;- birthwt
+
+# 把变量smoke转化为因子
+birthwt1$smoke &lt;- factor(birthwt1$smoke)
+
+# 把变量smoke映射给color
+ggplot(birthwt1, aes(x=bwt, color=smoke)) + geom_density()
+
+# 把变量smoke映射给fill, 设置alpha使填充色半透明
+ggplot(birthwt1, aes(x=bwt, fill=smoke)) + geom_density(alpha=.3)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_433_0.png" alt="png"></p>
+<p><img src="output_433_1.png" alt="png"></p>
+<p>💬<strong>讨论</strong><br>绘制上图时，要求所用到的数据都包含在一个数据框里，且数据框的其中一列是可用于分组的分类变量。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">print(head(birthwt,1))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>   low age lwt race smoke ptl ht ui ftv  bwt
+85   0  19 182    2     0   0  0  1   0 2523
+</code></pre>
+<p>观察一下变量smoke（抽烟与否）与变量bwt（出生体重，单位是克）的关系。变量smoke对应的取值是0和1，但由于其被存储为数值型向量，因而ggplot()函数不知道应当将其作为分类变量来处理。这时有两种方法可以选择，一是将数据框中相应的列转化为因子，而是通过在<code>aes()</code>函数内部使用命令factor(smoke)，来告诉ggplot函数把smoke当作因子来处理。</p>
+<p>另一种对分组数据分布进行可视化的方法是使用分面(facet)。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt1, aes(x=bwt)) + geom_density() + facet_grid(smoke ~ .)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_438_0.png" alt="png"></p>
+<p>修改分面标签</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">levels(birthwt1$smoke)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'0'</li><li>'1'</li></ol>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(plyr)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">birthwt1$smoke &lt;- revalue(birthwt1$smoke, c('0'='No Smoke', '1'='Smoke'))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt1, aes(x=bwt)) + geom_density() + facet_grid(smoke ~ .)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_443_0.png" alt="png"></p>
+<p>如果要将直方图和密度曲线绘制在一张图上，最佳方案是利用分面，这是因为将两个直方图绘制在同一张图上的其他方法都不易于解释。<br>操作时，需设定y=..density..,这样系统会将直方图的y轴标度降到跟密度曲线相同。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt1, aes(x=bwt, y=..density..)) + 
+ geom_histogram(binwidth = 200, fill='cornsilk', color='grey60', size=.2) + # 累计图
+ geom_density() + # 密度图
+ facet_grid(smoke ~ .) # 分面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_445_0.png" alt="png"></p>
+<h2 id="绘制频数多边形"><a href="#绘制频数多边形" class="headerlink" title="绘制频数多边形"></a>绘制频数多边形</h2><p>💡<strong>方法</strong><br>使用geom_freqpoly()函数即可  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting)) + geom_freqpoly()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_448_1.png" alt="png"></p>
+<p>💬<strong>讨论</strong><br>频数多边形看起来跟核密度曲线相似，但其传递的信息类似于直方图。它跟直方图都描述了数据本身的信息，而核密度曲线只是一个估计，且需要人为输入带宽参数。</p>
+<p>与直方图类似，可用 binwidth 参数控制频数duo’bian’xing</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(faithful, aes(x=waiting)) + geom_freqpoly(binwidth=4)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_451_0.png" alt="png"></p>
+<h2 id="绘制基本箱线图"><a href="#绘制基本箱线图" class="headerlink" title="绘制基本箱线图"></a>绘制基本箱线图</h2><p>使用<code>geom_boxplot()</code>函数，分别映射一个连续型变量和一个离散型变量到y和x即可</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(MASS)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'MASS' was built under R version 4.0.5"
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(birthwt,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 2 × 10</caption>
+<thead>
+    <tr><th></th><th scope="col">low</th><th scope="col">age</th><th scope="col">lwt</th><th scope="col">race</th><th scope="col">smoke</th><th scope="col">ptl</th><th scope="col">ht</th><th scope="col">ui</th><th scope="col">ftv</th><th scope="col">bwt</th></tr>
+    <tr><th></th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">85</th><td>0</td><td>19</td><td>182</td><td>2</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>2523</td></tr>
+    <tr><th scope="row">86</th><td>0</td><td>33</td><td>155</td><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>2551</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=factor(race), y=bwt)) +
+ theme_bw() + 
+ geom_boxplot(width=0.2) # 修改箱的宽度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_456_0.png" alt="png"></p>
+<p>系统按变量race将数据分为三组。变量race对应的值为1、2、3，然而，由于其被存储为数值型向量，ggplot()不知道如何将其当作分组变量来处理。为了使ggplot()能将其作为分组变量处理，我们可以调整数据框把变量race转化为因子，或者通过在aes()语句内部使用factor(race)告诉ggplot()函数把race当作因子处理。</p>
+<p>箱线由 箱 和 “须”(whisker)两部分组成。<br>箱的范围是从数据的下四分位数到上四分位数，也就是常说的四分位距（IQR）。箱的中间有一条表示中位数的线。<br>须则是从箱的边缘出发延伸至1.5倍四分位距内的最远的点。如果图中有超过须的数据点，则其被视为异常值，并以点来表示。  </p>
+<p><img src="https://pic3.zhimg.com/80/v2-2c3a44229a91ba47590c2c1735de45b6_1440w.png" alt="Boxplot on a normal distribution"></p>
+<p>💡 如果图中异常值较多且图形有重叠的话，可以通过设置 <code>outlier.size</code> 和 <code>outlier.shape</code> 参数修改异常点的大小和点形。异常点默认的大小是2，点形是16（实心圆）。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=factor(race), y=bwt)) +
+ theme_bw() + 
+ geom_boxplot(width=0.2, outlier.size = 1.5, outlier.shape = 21)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_460_0.png" alt="png"></p>
+<p>⚠单组数据绘制箱线图<br>必须给x参数映射一个特定值。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width = 3, repr.plot.height = 6)
+ggplot(birthwt, aes(x=1, y=bwt)) + geom_boxplot() + 
+ scale_x_continuous(breaks = NULL) + 
+ theme(axis.title.x = element_blank())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_462_0.png" alt="png"></p>
+<p>🧠 ：这里计算分位数的方法与 R base 包中 <code>boxplot()</code> 函数所使用的计算方法略有不同。当样本量较小时，这个差异会很明显。</p>
+<h2 id="向箱线图添加槽口"><a href="#向箱线图添加槽口" class="headerlink" title="向箱线图添加槽口"></a>向箱线图添加槽口</h2><p>❓ 如何向箱线图添加槽口（notch）以比较各组数据的中位数是否有差异？<br>💡 在<code>geom_boxplot()</code>函数设定notch=TRUE</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width = 6, repr.plot.height = 6)
+ggplot(birthwt, aes(x=factor(race), y=bwt)) + geom_boxplot(width=0.5, notch = TRUE)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>notch went outside hinges. Try setting notch=FALSE.
+</code></pre>
+<p><img src="output_466_1.png" alt="png"></p>
+<p>以上信息表明：置信域（槽口）超过了某个箱子的边界。本例中，中间箱子对应的槽口的上边界溢出箱体，但由于溢出的距离较小，因此，在最终的绘图输出中几乎看不到。槽口溢出到箱体的边界并没有什么实质错误，只是在一些极端案例中会看起来很奇怪。</p>
+<p>💬箱线图中的槽口用来帮助查看不同分布的中位数是否有差异。如果各箱线图的槽口互不重合，说明各中位数有差异。  </p>
+<h2 id="向箱线图添加均值"><a href="#向箱线图添加均值" class="headerlink" title="向箱线图添加均值"></a>向箱线图添加均值</h2><p>💡 用<code>stat_summary()</code>函数。箱线图中的均值常以钻石形状来表示。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(birthwt, aes(x=factor(race), y=bwt)) + geom_boxplot() +
+ stat_summary(fun = "mean", size = 1, shape = 23, fill = 'white')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"Removed 3 rows containing missing values (geom_segment)."
+</code></pre>
+<p><img src="output_471_1.png" alt="png"></p>
+<p>💬 箱线图中间的水平线表示的是 <font color="blue">中位数</font> , 而不是 <font color="red">均值</font> .</p>
+<h2 id="绘制小提琴图"><a href="#绘制小提琴图" class="headerlink" title="绘制小提琴图"></a>绘制小提琴图</h2><p>💡 使用<code>geom_violin()</code>函数即可</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p &lt;- ggplot(heightweight, aes(x=sex, y=heightIn))
+p + geom_violin()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_475_0.png" alt="png"></p>
+<p>小提琴图也是核密度估计，但绘图时对核密度曲线取了镜像以使形状对称。<br>设置<code>outlier.color=NA</code>可以隐去箱线图中的异常点。<br>默认坐标范围是最小值到最大值，扁平的尾部在这两个位置处截断。通过设置<code>trim=FALSE</code>可以保留小提琴的尾部。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + geom_violin(trim = FALSE) + 
+ geom_boxplot(width=0.1, fill='black', outlier.color = NA) + 
+ stat_summary(fun = median, geom = 'point', fill = 'white', shape = 21, size = 2.5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_477_0.png" alt="png"></p>
+<p>🧠 <strong>小提琴图的面积</strong><br>默认情况下，系统会对小提琴图进行标准化以使得各组数据对应的图的面积一样（截断尾部时也如此）。如果不想使各组数据对应的图的面积一样，可以通过设置 <code>scale="count"</code> 使得图的面积与每组观测值数目成正比。</p>
+<p>使用 <code>adjust</code> 参数可以调整小提琴图的平滑程度，该参数的默认值是1：更大的值对应于更平滑的曲线。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 更平滑
+p + geom_violin(adjust = 2 )
+
+# 欠平滑
+p + geom_violin(adjust = 0.5  )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_480_0.png" alt="png"></p>
+<p><img src="output_480_1.png" alt="png"></p>
+<h2 id="绘制-Wilkinson-点图"><a href="#绘制-Wilkinson-点图" class="headerlink" title="绘制 Wilkinson 点图"></a>绘制 Wilkinson 点图</h2><p>使用 geom_dotplot() 函数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">countries2009<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A data.frame: 0 × 7</caption>
+<thead>
+    <tr><th scope="col">Name</th><th scope="col">Code</th><th scope="col">Year</th><th scope="col">GDP</th><th scope="col">laborrate</th><th scope="col">healthexp</th><th scope="col">infmortality</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">countries2009 &lt;- subset(countries, Year==2009 &amp; healthexp&gt;2000)
+
+p &lt;- ggplot(countries2009 ,aes(x=infmortality))
+
+p + geom_dotplot()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>Bin width defaults to 1/30 of the range of the data. Pick better value with `binwidth`.
+</code></pre>
+<p><img src="output_484_1.png" alt="png"></p>
+<p>💬<strong>讨论</strong><br>这种点图有时叫 <code>Wilkinson</code> 点图。与Cleveland点图不同。这种图中，点的分组和排列取决于数据，每个点的宽度对应了最大的组距。系统默认的最大组距是数据范围的1/30，我们可以通过binwidth参数对其进行调整。<br>默认情况下，<code>geom_dotplot()</code>函数沿着x轴方向对数据进行分组，并在y轴方向上对点进行堆积。图中各点看起来是堆积的，但受限于ggplot2的技术，图形上y轴的刻度线没有明确的含义。使用<code>scale_y_continuous()</code>函数可以移除y轴标签。<br>使用<code>geom_rug()</code>函数以标示数据点的具体位置。  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + geom_dotplot(binwidth=.25) + geom_rug() + 
+ scale_y_continuous(breaks = NULL) +   # 移除刻度线
+ theme(axis.title.y = element_blank()) # 移除坐标轴标签<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_486_0.png" alt="png"></p>
+<p>你可能会注意到数据堆在水平方向上不是均匀分布的。根据默认的dotdensity分组算法，每个数据堆都放置在它表示的数据点的中心位置。要使用像直方图那样的固定间距的分组算法，可以令<code>method="histodot"</code>。你将会发现图中的数据堆并不是居中放置的。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + geom_dotplot(method = "histodot", binwidth = .25) + 
+ geom_rug() + 
+ scale_y_continuous(breaks = NULL) + theme(axis.title.y = element_blank())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_488_0.png" alt="png"></p>
+<p>点图也能进行中心堆叠，或者采用一种奇数与偶数数量保持一致的中心堆叠方式。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 设置 stackdir="center" 或者 stackdir="centerwhole"
+options(repr.plot.width = 6, repr.plot.height = 3)
+p + geom_dotplot(binwidth = .25, stackdir = "center") + 
+ scale_y_continuous(breaks = NULL) + theme(axis.title.y = element_blank())
+
+p + geom_dotplot(binwidth = .25, stackdir = "centerwhole") + 
+ scale_y_continuous(breaks = NULL) + theme(axis.title.y = element_blank())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_490_0.png" alt="png"></p>
+<p><img src="output_490_1.png" alt="png"></p>
+<h2 id="基于分组数据绘制分组点图"><a href="#基于分组数据绘制分组点图" class="headerlink" title="基于分组数据绘制分组点图"></a>基于分组数据绘制分组点图</h2><p>为了比较多组数据，可以通过设定binaxis=”y”将数据点沿着y轴进行堆叠，并沿着x轴分组。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width = 6, repr.plot.height = 6)
+
+ggplot(heightweight, aes(x=sex, y=heightIn)) + 
+ geom_dotplot(binaxis="y", binwidth = .5, stackdir = "center")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_493_0.png" alt="png"></p>
+<p>💬<strong>讨论</strong><br>有时，我们会将点图叠加在箱线图上。这种情况应该将数据点变为空心，同时隐去箱线图上的异常点。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=sex, y=heightIn)) + 
+ geom_boxplot(outlier.color = NA, width = .4) + 
+ geom_dotplot(binaxis="y", binwidth = .5, stackdir = "center", fill= 'black', dotsize = .9)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_495_0.png" alt="png"></p>
+<p>💡 也可以将点图置于箱线图旁边。<br>🧠 通过将x变量视作数值型变量并对其加减一个微小的数值移动箱线图和点图的位置，使点图位于箱线图的左边。<br>当x变量被视为数值型变量时，必须同时指定group,否则，数据会被视为单独一组，从而，只绘制一个箱线图和点图。最后，由于x轴被视为数值型，系统会默认x轴刻度标签的数值：必须通过<code>scale_x_continous()</code>函数对其进行调整，以使得x轴的刻度标签显示为与因子水平相对应的文本：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(heightweight, aes(x=sex, y=heightIn)) + 
+ geom_boxplot(aes(x=as.numeric(sex) + .25, group=sex), width=.15) + 
+ geom_dotplot(aes(x=as.numeric(sex) - .25, group=sex), binaxis = 'y',
+             binwidth=.5, stackdir='center') + 
+ scale_x_continuous(breaks = 1:nlevels(heightweight$sex),
+                   labels = levels(heightweight$sex))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_497_0.png" alt="png"></p>
+<h2 id="绘制二维数据的密度图"><a href="#绘制二维数据的密度图" class="headerlink" title="绘制二维数据的密度图"></a>绘制二维数据的密度图</h2><p>使用<code>stat_density2d()</code>函数。该函数会给出一个基于数据的二维核密度估计。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 基础图：绘制数据点和密度等高线图
+p &lt;- ggplot(faithful, aes(x=eruptions, y=waiting)) 
+
+p + geom_point() + geom_density2d()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_500_0.png" alt="png"></p>
+<p>也可以使用 ..level.. 将密度曲面的高度映射给等高线的颜色</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 将height映射到颜色的等高线
+p + stat_density2d(aes(color=..level..))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_502_0.png" alt="png"></p>
+<p>💬<strong>讨论</strong><br>二维核密度估计类似于stat_density()函数生成的一维核密度估计，不过，前者展示图形的方法有所不同。系统默认使用等高线，也可以使用瓦片图（tile）将密度估计映射给填充色或者瓦片图的透明度。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + stat_density2d(aes(fill=..density..), geom='raster', contour=FALSE)
+
+p + geom_point() + 
+ stat_density2d(aes(alpha=..density..), geom='tile', contour=FALSE)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_504_0.png" alt="png"></p>
+<p><img src="output_504_1.png" alt="png"></p>
+<p>与一维密度估计一样，可以对估计的带宽进行控制。传递一个指定x和y带宽的向量到h，这个参数会被传递给直接生成密度估计的函数<code>kde2d()</code>。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">p + stat_density2d(aes(fill=..density..), geom = 'raster',
+                  contour=FALSE, h=c(.5,5))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_506_0.png" alt="png"></p>
+<p>🔗<strong>另见</strong><br><code>stat_density2d()</code>函数和stat_bin2d()函数的关系与它们各自的一维情形，即密度曲线和直方图之间的关系类似。密度曲线是在特定假设下对分布的估计，而分组可视化是直接表示观测值。</p>
+<p>如果想使用不同的调色板，参见<a href="">对连续型变量使用自定义调色板</a></p>
+<p><code>stat_density2d()</code>可将选项传递到<code>kde2d()</code>函数；输入?kde2d可以查看函数选项的信息。</p>
+<h1 id="画图实践经验谈"><a href="#画图实践经验谈" class="headerlink" title="画图实践经验谈"></a>画图实践经验谈</h1><p>ggplot对于同一个dataframe，同一张图中，不同的数据展现形式可使用<code>aes()</code>函数指定不同的列，不过，分组应该是固定的，如上。</p>
+<p>⚠数据处理能力还需要加强</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">梁绍波</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://liangshaw.github.io/2022/01/02/RDataVisualization-1/">https://liangshaw.github.io/2022/01/02/RDataVisualization-1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">梁绍波</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/R/">
+                                    <span class="chip bg-color">R</span>
+                                </a>
+                            
+                                <a href="/tags/ggplot2/">
+                                    <span class="chip bg-color">ggplot2</span>
+                                </a>
+                            
+                                <a href="/tags/handbook/">
+                                    <span class="chip bg-color">handbook</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'QweMbL6pJuEjzHeRLcd4sxIW-gzGzoHsz',
+        appKey: 'JdA69Wq6tDpDu1DWdKmY4DJy',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请留下友善的评论~'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/01/02/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Hexo auto generated">
+                        
+                        <span class="card-title">Hexo auto generated</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/01/02/RDataVisualization-2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="R数据可视化手册-下">
+                        
+                        <span class="card-title">R数据可视化手册-下</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R/">
+                        <span class="chip bg-color">R</span>
+                    </a>
+                    
+                    <a href="/tags/ggplot2/">
+                        <span class="chip bg-color">ggplot2</span>
+                    </a>
+                    
+                    <a href="/tags/handbook/">
+                        <span class="chip bg-color">handbook</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Shaobo Liang<br />'
+            + '文章作者: 梁绍波<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="3171388577"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">梁绍波</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "1";
+                        var startDate = "1";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiangShaw" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:shaoboliang@whu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1323909095" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1323909095" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
