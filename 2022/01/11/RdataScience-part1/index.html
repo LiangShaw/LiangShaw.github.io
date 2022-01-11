@@ -1,0 +1,2146 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="R数据科学，第一部分：探索, Shaobo Liang">
+    <meta name="description" content="第一部分主要是R入门和 ggplot2 的基础，由于之前已经走过一遍 《R数据可视化手册》， 所以这里并没有消耗太多精力。其中 `dyplr`包的几个函数还是非常使用的。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>R数据科学，第一部分：探索 | Shaobo Liang</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(http://h2.ioliu.cn/bing/BulgariaPerseids_EN-AU11585904087_1920x1080.jpg?imageslim&quot);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Shaobo Liang</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Shaobo Liang</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">R数据科学，第一部分：探索</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/R/">
+                                <span class="chip bg-color">R</span>
+                            </a>
+                        
+                            <a href="/tags/data-science/">
+                                <span class="chip bg-color">data science</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/R-for-data-science/" class="post-category">
+                                R for data science
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-01-11
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-01-11
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><font size="5"> Part1 探索</font></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressMessages(library(tidyverse))
+suppressMessages(library(ggplot2))
+suppressMessages(library(dplyr))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'tidyverse' was built under R version 4.0.5"
+Warning message:
+"package 'tibble' was built under R version 4.0.5"
+Warning message:
+"package 'tidyr' was built under R version 4.0.4"
+Warning message:
+"package 'readr' was built under R version 4.0.5"
+Warning message:
+"package 'dplyr' was built under R version 4.0.5"
+Warning message:
+"package 'forcats' was built under R version 4.0.3"
+</code></pre>
+<h1 id="使用ggplot2进行数据可视化"><a href="#使用ggplot2进行数据可视化" class="headerlink" title="使用ggplot2进行数据可视化"></a>使用ggplot2进行数据可视化</h1><pre class="line-numbers language-R" data-language="R"><code class="language-R">head(mpg,3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 3 × 11</caption>
+<thead>
+    <tr><th scope="col">manufacturer</th><th scope="col">model</th><th scope="col">displ</th><th scope="col">year</th><th scope="col">cyl</th><th scope="col">trans</th><th scope="col">drv</th><th scope="col">cty</th><th scope="col">hwy</th><th scope="col">fl</th><th scope="col">class</th></tr>
+    <tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>audi</td><td>a4</td><td>1.8</td><td>1999</td><td>4</td><td>auto(l5)  </td><td>f</td><td>18</td><td>29</td><td>p</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>1.8</td><td>1999</td><td>4</td><td>manual(m5)</td><td>f</td><td>21</td><td>29</td><td>p</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>2.0</td><td>2008</td><td>4</td><td>manual(m6)</td><td>f</td><td>20</td><td>31</td><td>p</td><td>compact</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">options(repr.plot.width=8, repr.plot.height=6)
+ggplot(data = mpg, aes(x=displ, y=hwy, color=class)) + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p>&lt;img src=’output_4_0.png’ width=50 /0&gt;<br>&lt;&gt; <img src="output_4_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy, alpha=class)) + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+“Using alpha for a discrete variable is not advised.”
+</code></pre>
+<p><img src="output_5_1.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"># 分面
+ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nrow = 2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_6_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_smooth(method = 'loess') + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using formula 'y ~ x'
+</code></pre>
+<p><img src="output_7_1.png" alt="png"></p>
+<p><code>geom_smooth()</code>函数可以按照不同的线型绘制出不同的曲线，每条曲线对应映射到线型的变量的一个唯一值</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_smooth(method = 'loess',aes(color=drv, linetype=drv)) + geom_point(aes(color=drv))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using formula 'y ~ x'
+</code></pre>
+<p><img src="output_9_1.png" alt="png"></p>
+<p>也可以为不同的图层指定不同的数据。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy)) + 
+ geom_point(aes(color=class)) + 
+ geom_smooth(data = filter(mpg, class=='subcompact'), se = FALSE) # se: whether show confidence level or not<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+</code></pre>
+<p><img src="output_11_1.png" alt="png"></p>
+<p>绘图时用来计算新数据的算法称为stat（statistical transformtaion，统计变换）。</p>
+<p>通过查看stat参数的默认值，可以知道几何对象函数使用了哪些统计变换。例如，?geom_bar显示出stat的默认值是count，这说明geom_bar()使用stat_count()函数进行统计变换。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>通常来说，几何对象函数和统计变换函数可以互换使用。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">gplot(data = diamonds) + geom_bar(mapping = aes(x=cut))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_16_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut)) + stat_count()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_17_0.png" alt="png"></p>
+<p>可以这样做的原因是，每个几何对象函数都有一个默认统计变换，每个统计变换函数都有一个默认几何对象</p>
+<p>想要显示使用某个统计变换的3个原因：  </p>
+<ul>
+<li>覆盖默认的统计变换</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">demo &lt;- tribble(
+ ~a, ~b,
+ "bar_1", 20,
+ "bar_2", 30,
+ "bar_3", 40)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = demo, aes(x=a, y=b)) + geom_bar(stat = "identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_21_0.png" alt="png"></p>
+<ul>
+<li>覆盖从统计变换生成的变量到图形属性的默认映射。（例如，想显示一张表示比例的条性图，而不是计数）</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_23_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, y=..prop.., group=1)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_24_0.png" alt="png"></p>
+<p>ggplot2提供了20多个统计变换以供你使用。每个统计变换都是一个函数，通过<code>?stat_bin</code>来获取帮助。如果想要查看全部的统计变换，可以使用ggplot2速查表。</p>
+<h2 id="位置探索"><a href="#位置探索" class="headerlink" title="位置探索"></a>位置探索</h2><p>用<code>fill</code>和<code>color</code>为图形属性上色</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_28_0.png" alt="png"></p>
+<p>这种堆叠是由<code>position</code>参数设定的<strong>位置调整</strong>功能自动完成的，如果不想生成堆叠条形图，有以下三种选项供选择：</p>
+<ul>
+<li>identity</li>
+<li>fill</li>
+<li>dodge</li>
+</ul>
+<p>position = “fill”的效果与堆叠相似，但每组堆叠条形具有同样的高度，可以轻松看出各组间的比例</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar(position = "fill")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_31_0.png" alt="png"></p>
+<p>position = “dodge”将每组条形依次并列放置</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar(position = "dodge")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p><img src="output_33_0.png" alt="png"></p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x = displ, y=hwy)) + 
+ geom_point(position = 'jitter')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_34_0.png" alt="png"></p>
+<h1 id="使用dplyr进行数据转换"><a href="#使用dplyr进行数据转换" class="headerlink" title="使用dplyr进行数据转换"></a>使用dplyr进行数据转换</h1><h2 id="dplyr基础"><a href="#dplyr基础" class="headerlink" title="dplyr基础"></a>dplyr基础</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressMessages(library(nycflights13))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'nycflights13' was built under R version 4.0.5"
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(flights,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 19</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>517</td><td>515</td><td>2</td><td>830</td><td>819</td><td>11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>227</td><td>1400</td><td>5</td><td>15</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>533</td><td>529</td><td>4</td><td>850</td><td>830</td><td>20</td><td>UA</td><td>1714</td><td>N24211</td><td>LGA</td><td>IAH</td><td>227</td><td>1416</td><td>5</td><td>29</td><td>2013-01-01 05:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+<p>5个dplyr核心函数：</p>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8filter()%E7%AD%9B%E9%80%89%E8%A1%8C">按值筛选观测（filter)</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8arrange()%E6%8E%92%E5%88%97%E8%A1%8C">对行进行重新排序（arrange）</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8select()%E9%80%89%E6%8B%A9%E5%88%97">按行选取变量（select）</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8mutate()%E6%B7%BB%E5%8A%A0%E6%96%B0%E5%8F%98%E9%87%8F">使用现有变量的函数创建新变量（mutate）</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8summarize()%E8%BF%9B%E8%A1%8C%E5%88%86%E7%BB%84%E6%91%98%E8%A6%81">将多个值总结为一个摘要统计量（summarize)</a></li>
+</ul>
+<p>这些函数都可以和<code>group_by()</code>函数联合起来使用，<code>group_by</code>函数可以改变以上每个函数的作用范围，让其从在整个数据集上操作变为在每个分组上分别操作。</p>
+<p>工作方式：<br>1）第一个参数是数据框<br>2）随后的参数使用变量名称（不带引号）描述了在数据框上进行的操作<br>3）输出结果是一个新的数据框</p>
+<h2 id="使用filter-筛选行"><a href="#使用filter-筛选行" class="headerlink" title="使用filter()筛选行"></a>使用filter()筛选行</h2><p><code>filter()</code>函数可以基于观测值筛选出一个观测子集。第一个参数是数据框名称，第二个及以后的参数是用来筛选数据框的表达式。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">nrow(filter(flights, month == 1, day == 1))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>842</p>
+<p>dplyr不修改输入，所以想要得到新的数据框需要重新赋值。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">jan1 &lt;- filter(flights, month == 1, day == 1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>R要么输出结果，要么将结果保存在一个变量中。如果想同时完成这两项操作，可以用括号将赋值语句括起来。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head((jan1 &lt;- filter(flights, month == 1, day == 1)))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 6 × 19</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>517</td><td>515</td><td> 2</td><td> 830</td><td> 819</td><td> 11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>227</td><td>1400</td><td>5</td><td>15</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>533</td><td>529</td><td> 4</td><td> 850</td><td> 830</td><td> 20</td><td>UA</td><td>1714</td><td>N24211</td><td>LGA</td><td>IAH</td><td>227</td><td>1416</td><td>5</td><td>29</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>542</td><td>540</td><td> 2</td><td> 923</td><td> 850</td><td> 33</td><td>AA</td><td>1141</td><td>N619AA</td><td>JFK</td><td>MIA</td><td>160</td><td>1089</td><td>5</td><td>40</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>544</td><td>545</td><td>-1</td><td>1004</td><td>1022</td><td>-18</td><td>B6</td><td> 725</td><td>N804JB</td><td>JFK</td><td>BQN</td><td>183</td><td>1576</td><td>5</td><td>45</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>554</td><td>600</td><td>-6</td><td> 812</td><td> 837</td><td>-25</td><td>DL</td><td> 461</td><td>N668DN</td><td>LGA</td><td>ATL</td><td>116</td><td> 762</td><td>6</td><td> 0</td><td>2013-01-01 06:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>554</td><td>558</td><td>-4</td><td> 740</td><td> 728</td><td> 12</td><td>UA</td><td>1696</td><td>N39463</td><td>EWR</td><td>ORD</td><td>150</td><td> 719</td><td>5</td><td>58</td><td>2013-01-01 05:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+<h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><blockquote>
+<blockquote>
+<p>= &lt;= == !=</p>
+</blockquote>
+</blockquote>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><p>与（&amp;）、或（|）、非（！）</p>
+<h3 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h3><p>对于缺失值<code>NA</code>的操作，一般结果也是<code>NA</code></p>
+<p>如果想要确定一个值是否为缺失值，可以使用<code>is.na()</code>函数</p>
+<h2 id="使用arrange-排列行"><a href="#使用arrange-排列行" class="headerlink" title="使用arrange()排列行"></a>使用arrange()排列行</h2><p><code>arrange()</code>函数与<code>filter()</code>函数工作方式相似，只是功能上前者是改变行的顺序</p>
+<p>多个排列条件，靠前的条件，优先级越高</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    arrange(flights, year, month, day)
+,1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 1 × 19</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>517</td><td>515</td><td>2</td><td>830</td><td>819</td><td>11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>227</td><td>1400</td><td>5</td><td>15</td><td>2013-01-01 05:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+<p>使用<code>desc()</code>可以进行降序排列</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    arrange(flights, desc(arr_delay))
+    ,1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 1 × 19</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>9</td><td>641</td><td>900</td><td>1301</td><td>1242</td><td>1530</td><td>1272</td><td>HA</td><td>51</td><td>N384HA</td><td>JFK</td><td>HNL</td><td>640</td><td>4983</td><td>9</td><td>0</td><td>2013-01-09 09:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+<p>缺失值总是排在最后</p>
+<h2 id="使用select-选择列"><a href="#使用select-选择列" class="headerlink" title="使用select()选择列"></a>使用<code>select()</code>选择列</h2><p>通过基于变量名的操作，select()函数可诶让你快速生成一个有用的变量集</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    select(flights, year, month, day)
+    ,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 3</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    select(flights, year:day)
+    ,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 3</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+
+
+
+<p>用<code>-</code>进行反向选择</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    select(flights, -(year:day))
+,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 16</caption>
+<thead>
+    <tr><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>517</td><td>515</td><td>2</td><td>830</td><td>819</td><td>11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>227</td><td>1400</td><td>5</td><td>15</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>533</td><td>529</td><td>4</td><td>850</td><td>830</td><td>20</td><td>UA</td><td>1714</td><td>N24211</td><td>LGA</td><td>IAH</td><td>227</td><td>1416</td><td>5</td><td>29</td><td>2013-01-01 05:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+<p>还可以在<code>select()</code>函数中使用一些辅助函数</p>
+<ul>
+<li>starts_with()</li>
+<li>ends_with()</li>
+<li>contains()</li>
+<li>matches(“(.)\1”):选择匹配正则表达式的变量</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    rename(flights, tail_num = tailnum)
+    ,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 19</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tail_num</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>517</td><td>515</td><td>2</td><td>830</td><td>819</td><td>11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>227</td><td>1400</td><td>5</td><td>15</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>533</td><td>529</td><td>4</td><td>850</td><td>830</td><td>20</td><td>UA</td><td>1714</td><td>N24211</td><td>LGA</td><td>IAH</td><td>227</td><td>1416</td><td>5</td><td>29</td><td>2013-01-01 05:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+<p>另一种用法是将<code>select()</code>函数和<code>everything()</code>辅助函数结合起来使用。当想要将几个变量移到开头时，这种用法非常奏效</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    select(flights, time_hour, air_time, everything())
+    ,2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 19</caption>
+<thead>
+    <tr><th scope="col">time_hour</th><th scope="col">air_time</th><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th></tr>
+    <tr><th scope="col">&lt;dttm&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013-01-01 05:00:00</td><td>227</td><td>2013</td><td>1</td><td>1</td><td>517</td><td>515</td><td>2</td><td>830</td><td>819</td><td>11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>1400</td><td>5</td><td>15</td></tr>
+    <tr><td>2013-01-01 05:00:00</td><td>227</td><td>2013</td><td>1</td><td>1</td><td>533</td><td>529</td><td>4</td><td>850</td><td>830</td><td>20</td><td>UA</td><td>1714</td><td>N24211</td><td>LGA</td><td>IAH</td><td>1416</td><td>5</td><td>29</td></tr>
+</tbody>
+</table>
+
+
+
+<h2 id="使用mutate-添加新变量"><a href="#使用mutate-添加新变量" class="headerlink" title="使用mutate()添加新变量"></a>使用<code>mutate()</code>添加新变量</h2><p>除了选择现有的列，我们还经常需要添加新列，新列是现有列的函数。这就是<code>mutate()</code>函数的作用</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">flights_sml &lt;- select(flights,
+                     year:day,
+                     ends_with('delay'),
+                     distance,
+                     air_time)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(flights_sml,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 7</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_delay</th><th scope="col">arr_delay</th><th scope="col">distance</th><th scope="col">air_time</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>2</td><td>11</td><td>1400</td><td>227</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>4</td><td>20</td><td>1416</td><td>227</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">mutate(flights_sml,
+      gain = arr_delay - dep_delay,
+      speed = distance / air_time * 60)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 336776 × 9</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_delay</th><th scope="col">arr_delay</th><th scope="col">distance</th><th scope="col">air_time</th><th scope="col">gain</th><th scope="col">speed</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 2</td><td> 11</td><td>1400</td><td>227</td><td>  9</td><td>370.0441</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 4</td><td> 20</td><td>1416</td><td>227</td><td> 16</td><td>374.2731</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 2</td><td> 33</td><td>1089</td><td>160</td><td> 31</td><td>408.3750</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-1</td><td>-18</td><td>1576</td><td>183</td><td>-17</td><td>516.7213</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-6</td><td>-25</td><td> 762</td><td>116</td><td>-19</td><td>394.1379</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-4</td><td> 12</td><td> 719</td><td>150</td><td> 16</td><td>287.6000</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-5</td><td> 19</td><td>1065</td><td>158</td><td> 24</td><td>404.4304</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-3</td><td>-14</td><td> 229</td><td> 53</td><td>-11</td><td>259.2453</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-3</td><td> -8</td><td> 944</td><td>140</td><td> -5</td><td>404.5714</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-2</td><td>  8</td><td> 733</td><td>138</td><td> 10</td><td>318.6957</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-2</td><td> -2</td><td>1028</td><td>149</td><td>  0</td><td>413.9597</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-2</td><td> -3</td><td>1005</td><td>158</td><td> -1</td><td>381.6456</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-2</td><td>  7</td><td>2475</td><td>345</td><td>  9</td><td>430.4348</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-2</td><td>-14</td><td>2565</td><td>361</td><td>-12</td><td>426.3158</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-1</td><td> 31</td><td>1389</td><td>257</td><td> 32</td><td>324.2802</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 0</td><td> -4</td><td> 187</td><td> 44</td><td> -4</td><td>255.0000</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-1</td><td> -8</td><td>2227</td><td>337</td><td> -7</td><td>396.4985</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 0</td><td> -7</td><td>1076</td><td>152</td><td> -7</td><td>424.7368</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 0</td><td> 12</td><td> 762</td><td>134</td><td> 12</td><td>341.1940</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 1</td><td> -6</td><td>1023</td><td>147</td><td> -7</td><td>417.5510</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-8</td><td> -8</td><td>1020</td><td>170</td><td>  0</td><td>360.0000</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-3</td><td> 16</td><td> 502</td><td>105</td><td> 19</td><td>286.8571</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-4</td><td>-12</td><td>1085</td><td>152</td><td> -8</td><td>428.2895</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>-4</td><td> -8</td><td> 760</td><td>128</td><td> -4</td><td>356.2500</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 0</td><td>-17</td><td>1085</td><td>157</td><td>-17</td><td>414.6497</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 8</td><td> 32</td><td> 719</td><td>139</td><td> 24</td><td>310.3597</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>11</td><td> 14</td><td>2586</td><td>366</td><td>  3</td><td>423.9344</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 3</td><td>  4</td><td>1074</td><td>175</td><td>  1</td><td>368.2286</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 0</td><td>-21</td><td>1598</td><td>182</td><td>-21</td><td>526.8132</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td> 0</td><td> -9</td><td> 746</td><td>120</td><td> -9</td><td>373.0000</td></tr>
+    <tr><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -2</td><td>-24</td><td> 305</td><td> 45</td><td>-22</td><td>406.6667</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -2</td><td> -9</td><td> 529</td><td> 72</td><td> -7</td><td>440.8333</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -2</td><td>-31</td><td>1626</td><td>213</td><td>-29</td><td>458.0282</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 30</td><td> -2</td><td> 292</td><td> 45</td><td>-32</td><td>389.3333</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -9</td><td>-30</td><td> 213</td><td> 36</td><td>-21</td><td>355.0000</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>  0</td><td>-30</td><td>2475</td><td>298</td><td>-30</td><td>498.3221</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 13</td><td> 11</td><td> 284</td><td> 47</td><td> -2</td><td>362.5532</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>  0</td><td>-25</td><td>1598</td><td>192</td><td>-25</td><td>499.3750</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 10</td><td>  3</td><td>1076</td><td>139</td><td> -7</td><td>464.4604</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -7</td><td>-23</td><td> 200</td><td> 37</td><td>-16</td><td>324.3243</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -9</td><td>-16</td><td> 209</td><td> 39</td><td> -7</td><td>321.5385</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>194</td><td>194</td><td> 301</td><td> 50</td><td>  0</td><td>361.2000</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -2</td><td>  8</td><td> 378</td><td> 61</td><td> 10</td><td>371.8033</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 27</td><td>  7</td><td> 764</td><td> 97</td><td>-20</td><td>472.5773</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 72</td><td> 57</td><td> 872</td><td>120</td><td>-15</td><td>436.0000</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>-14</td><td>-21</td><td> 273</td><td> 48</td><td> -7</td><td>341.2500</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 80</td><td> 42</td><td>2565</td><td>318</td><td>-38</td><td>483.9623</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>154</td><td>130</td><td> 944</td><td>123</td><td>-24</td><td>460.4878</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -8</td><td> -8</td><td> 266</td><td> 43</td><td>  0</td><td>371.1628</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -5</td><td>-17</td><td> 209</td><td> 41</td><td>-12</td><td>305.8537</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>-10</td><td>-20</td><td> 301</td><td> 52</td><td>-10</td><td>347.3077</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> -5</td><td>-16</td><td> 264</td><td> 47</td><td>-11</td><td>337.0213</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> 12</td><td>  1</td><td> 187</td><td> 33</td><td>-11</td><td>340.0000</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td>-10</td><td>-25</td><td>1617</td><td>196</td><td>-15</td><td>495.0000</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> NA</td><td> NA</td><td> 764</td><td> NA</td><td> NA</td><td>      NA</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> NA</td><td> NA</td><td> 213</td><td> NA</td><td> NA</td><td>      NA</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> NA</td><td> NA</td><td> 198</td><td> NA</td><td> NA</td><td>      NA</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> NA</td><td> NA</td><td> 764</td><td> NA</td><td> NA</td><td>      NA</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> NA</td><td> NA</td><td> 419</td><td> NA</td><td> NA</td><td>      NA</td></tr>
+    <tr><td>2013</td><td>9</td><td>30</td><td> NA</td><td> NA</td><td> 431</td><td> NA</td><td> NA</td><td>      NA</td></tr>
+</tbody>
+</table>
+
+
+
+<p>一旦创建，新列就可以立即使用</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    mutate(flights_sml,
+          gain = arr_delay - dep_delay,
+          hours = air_time / 60,
+          gain_per_hour = gain / hours),
+    2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 10</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_delay</th><th scope="col">arr_delay</th><th scope="col">distance</th><th scope="col">air_time</th><th scope="col">gain</th><th scope="col">hours</th><th scope="col">gain_per_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>2</td><td>11</td><td>1400</td><td>227</td><td> 9</td><td>3.783333</td><td>2.378855</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>4</td><td>20</td><td>1416</td><td>227</td><td>16</td><td>3.783333</td><td>4.229075</td></tr>
+</tbody>
+</table>
+
+
+
+<p>如果只想保留新变量，可以使用<code>transmute()</code>函数</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(
+    transmute(flights_sml,
+          gain = arr_delay - dep_delay,
+          hours = air_time / 60,
+          gain_per_hour = gain / hours),
+    2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 3</caption>
+<thead>
+    <tr><th scope="col">gain</th><th scope="col">hours</th><th scope="col">gain_per_hour</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td> 9</td><td>3.783333</td><td>2.378855</td></tr>
+    <tr><td>16</td><td>3.783333</td><td>4.229075</td></tr>
+</tbody>
+</table>
+
+
+
+<h2 id="使用summarize-进行分组摘要"><a href="#使用summarize-进行分组摘要" class="headerlink" title="使用summarize()进行分组摘要"></a>使用summarize()进行分组摘要</h2><p>summarize()，可以将数据框折叠成一行：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">summarize(flights, delay = mean(dep_delay, na.rm = T))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 1 × 1</caption>
+<thead>
+    <tr><th scope="col">delay</th></tr>
+    <tr><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>12.63907</td></tr>
+</tbody>
+</table>
+
+
+
+<p>如果不与 group_by() 一起使用，那么 summarize() 也就没什么大用，group_by() 可以将分析单位从整个数据集更改为单个分组。<br>在分组后的数据框上使用 dplyr 函数时，它们会自动地应用到每个分组。  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">by_day &lt;- group_by(flights, year, month, day)
+delay_everyday &lt;- summarize(by_day, delay = mean(dep_delay, na.rm = T))
+head(delay_everyday)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`summarise()` has grouped output by 'year', 'month'. You can override using the `.groups` argument.
+</code></pre>
+<table class="dataframe">
+<caption>A grouped_df: 6 × 4</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">delay</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>11.548926</td></tr>
+    <tr><td>2013</td><td>1</td><td>2</td><td>13.858824</td></tr>
+    <tr><td>2013</td><td>1</td><td>3</td><td>10.987832</td></tr>
+    <tr><td>2013</td><td>1</td><td>4</td><td> 8.951595</td></tr>
+    <tr><td>2013</td><td>1</td><td>5</td><td> 5.732218</td></tr>
+    <tr><td>2013</td><td>1</td><td>6</td><td> 7.148014</td></tr>
+</tbody>
+</table>
+
+
+
+<p>✏ group_by() 和 summarize() 的组合构成了使用 dplyr 包时最常用的操作之一：分组摘要。</p>
+<p>在此之前，先介绍一个功能强大的新概念：<font color="blue">管道</font></p>
+<h3 id="使用管道组合多种操作"><a href="#使用管道组合多种操作" class="headerlink" title="使用管道组合多种操作"></a>使用管道组合多种操作</h3><p>假设我们想要研究每个目的地的距离和平均延误时间之间的关系。一般会写出以下代码：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">by_dest &lt;- group_by(flights, dest)
+delay &lt;- summarise(by_dest,
+                   count = n(),
+                   dist = mean(distance, na.rm = TRUE),
+                   delay = mean(arr_delay, na.rm = TRUE)
+                  )
+
+delay &lt;- filter(delay, count &gt; 20, dest != 'NHL')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>完成数据准备需要三步：</p>
+<ol>
+<li>按照目的地对航安进行分组</li>
+<li>进行摘要统计，计算距离、平均延误时间和航班数量</li>
+<li>通过筛选除去噪声点</li>
+</ol>
+<p>在这个过程中，我们不得不对不关心的中间变量进行命名，这会影响我们的分析速度</p>
+<p>所以就引出了<strong>管道</strong>，<code>%&gt;%</code>：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(flights,2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 2 × 19</caption>
+<thead>
+    <tr><th scope="col">year</th><th scope="col">month</th><th scope="col">day</th><th scope="col">dep_time</th><th scope="col">sched_dep_time</th><th scope="col">dep_delay</th><th scope="col">arr_time</th><th scope="col">sched_arr_time</th><th scope="col">arr_delay</th><th scope="col">carrier</th><th scope="col">flight</th><th scope="col">tailnum</th><th scope="col">origin</th><th scope="col">dest</th><th scope="col">air_time</th><th scope="col">distance</th><th scope="col">hour</th><th scope="col">minute</th><th scope="col">time_hour</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dttm&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>2013</td><td>1</td><td>1</td><td>517</td><td>515</td><td>2</td><td>830</td><td>819</td><td>11</td><td>UA</td><td>1545</td><td>N14228</td><td>EWR</td><td>IAH</td><td>227</td><td>1400</td><td>5</td><td>15</td><td>2013-01-01 05:00:00</td></tr>
+    <tr><td>2013</td><td>1</td><td>1</td><td>533</td><td>529</td><td>4</td><td>850</td><td>830</td><td>20</td><td>UA</td><td>1714</td><td>N24211</td><td>LGA</td><td>IAH</td><td>227</td><td>1416</td><td>5</td><td>29</td><td>2013-01-01 05:00:00</td></tr>
+</tbody>
+</table>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">delays &lt;- flights %&gt;%
+    group_by(dest) %&gt;% 
+    summarize(
+        count = n(),
+        dist = mean(distance, na.rm = T),
+        delay = mean(arr_delay, na.rm = T)
+    ) %&gt;%
+    filter(count &gt; 20, dest != 'HNL')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这种方法的重点在于转换的过程，而不是转换的对象，这使得代码具有更好的可读性。<br>将上述读作一串命令式语句：分组，然后摘要，然后进行筛选。 阅读时<code>%&gt;%</code>可读作然后。  </p>
+<p>使用这种方法时，x %&gt;% y 会转换为 f(x, y), <font color="blue">x %&gt;% f(y) %&gt;% g(z)</font> 会转换为 <font color="blue">g(f(x, y), z)</font>,以此类推。</p>
+<p>如果你熟悉 Linux 命令行的话，上述看起来就像：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> flights <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">''</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>支持管道操作是 tidyverse 中的R包的核心原则之一。唯一的例外就是 ggplot2 ：ggplot2 的下一个版本 ggvis 支持管道操作</p>
+<h3 id="缺失值-NA"><a href="#缺失值-NA" class="headerlink" title="缺失值(NA)"></a>缺失值(NA)</h3><p>聚合函数遵循缺失值的一般规则，如果输入中有缺失值，则输出也是缺失值。<br>好在，所有聚合函数<strong>都有</strong>一个 na.rm 参数，它可以在计算前，排除 NA。</p>
+<p><code>is.na()</code> 用来判断是否是缺失值</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">not_cancelled &lt;- flights %&gt;% 
+    filter(!is.na(dep_delay), !is.na(arr_delay))
+
+mean_delay &lt;- not_cancelled %&gt;% 
+    group_by(year,month,day) %&gt;%
+    summarize(mean = mean(dep_delay))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`summarise()` has grouped output by 'year', 'month'. You can override using the `.groups` argument.
+</code></pre>
+<h3 id="计数-n"><a href="#计数-n" class="headerlink" title="计数, n()"></a>计数, n()</h3><p>mean_delay个计数（<code>n()</code>）或非缺失值计数（<code>sum(!is.na())</code>）</p>
+<p>例如，查看一下具有最长平均延误时间的飞机（通过机尾编号进行识别）：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">delays &lt;- not_cancelled %&gt;%
+    group_by(tailnum) %&gt;%
+    summarize(delay = mean(arr_delay, na.rm = T),
+             n = n())
+
+ggplot(data = delays, mapping = aes(x=n, y = delay)) + 
+ geom_point(alpha = 1/10)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_106_0.png" alt="png"></p>
+<p>筛掉样本数很小的分组。</p>
+<p>下面展示了将 ggplot2 集成到 dplyr 工作流的一种有效方式。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">delays %&gt;%
+    filter(n&gt;25) %&gt;%
+    ggplot(mapping = aes(x=n, y=delay)) + 
+        geom_point(alpha = 1/10)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p><img src="output_109_0.png" alt="png"></p>
+<h3 id="常用的摘要函数"><a href="#常用的摘要函数" class="headerlink" title="常用的摘要函数"></a>常用的摘要函数</h3><p>除了 均值<code>mean()</code>、计数<code>n()</code>、求和<code>sum()</code>，R中还提供了很多其他常用的摘要函数</p>
+<ul>
+<li>位置度量<ul>
+<li>median()</li>
+<li>均方误差（标准误差, standard deviation，<code>sd</code>）是分散程度的标准度量方式</li>
+<li>四分位距<code>IQR()</code>,基本等价于中位差<code>mad(x)</code></li>
+</ul>
+</li>
+<li>秩的度量<ul>
+<li>min(x)</li>
+<li>max(x)</li>
+<li>quantile(x, 0.25)</li>
+</ul>
+</li>
+<li>定位度量<ul>
+<li>first()</li>
+<li>nth(x, 2)</li>
+<li>last(x)</li>
+</ul>
+</li>
+<li>计数<ul>
+<li>n()</li>
+<li>count()</li>
+</ul>
+</li>
+<li>逻辑值的计数和比例<ul>
+<li>TRUE 会 转换为1， FALSE会转换为 0.</li>
+<li>sum(x&gt;10)，找出 x 中TRUE的数量</li>
+<li>mean(y==0)，找出 y 中为了 0 的比例</li>
+</ul>
+</li>
+</ul>
+<h3 id="按照多个变量分组"><a href="#按照多个变量分组" class="headerlink" title="按照多个变量分组"></a>按照多个变量分组</h3><h3 id="取消分组"><a href="#取消分组" class="headerlink" title="取消分组"></a>取消分组</h3><p>如果想要取消分组，并回到为分组的数据继续操作，那么可以使用<code>ungroup()</code>函数：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">daily &lt;- group_by(flights, year, month, day)
+daily %&gt;%
+    ungroup() %&gt;%   # 不再按日期分组
+    summarize(flights = n()) # 所有航班<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<table class="dataframe">
+<caption>A tibble: 1 × 1</caption>
+<thead>
+    <tr><th scope="col">flights</th></tr>
+    <tr><th scope="col">&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>336776</td></tr>
+</tbody>
+</table>
+
+
+
+<h1 id="工作流：脚本"><a href="#工作流：脚本" class="headerlink" title="工作流：脚本"></a>工作流：脚本</h1><p>这里有几点写<code>R</code>脚本的建议：</p>
+<ol>
+<li>建议将所用的包放在脚本开头，这样就很容易知道需要什么包了</li>
+<li>不要在分享的脚本中包含 <code>install.packages()</code> 或 <code>setwd()</code>函数，这种改变别人计算机设置的行为会引起众怒。</li>
+</ol>
+<h1 id="探索性数据分析"><a href="#探索性数据分析" class="headerlink" title="探索性数据分析"></a>探索性数据分析</h1><p>探索性数据分析(exploratory data analysis, EDA)。</p>
+<p>这一部分，我就不再复刻代码了。想表达的就是快速实现各种可能的想法，通过考察结果，不断迭代来进一步过滤、找到更进一步的问题，整理成文，与他人交流。</p>
+<p>数据清洗只是EDA的一项具体应用，此时你提出的问题是，数据是否符合预期。想要使用所有的EDA工具：<font color="blue">可视化</font>、<font color="blue">数据转换</font>和<font color="blue">建模</font>。</p>
+<p>经常数据的以下几方面特征：</p>
+<ul>
+<li>数据分布</li>
+<li>典型值</li>
+<li>异常值</li>
+<li>缺失值</li>
+<li>相关变动<ul>
+<li>变量变量与连续变量</li>
+<li>两个分类变量</li>
+<li>两个连续变量</li>
+</ul>
+</li>
+<li>模式和模型<ul>
+<li>线性</li>
+<li>非线性</li>
+</ul>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">梁绍波</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://liangshaw.github.io/2022/01/11/RdataScience-part1/">https://liangshaw.github.io/2022/01/11/RdataScience-part1/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">梁绍波</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/R/">
+                                    <span class="chip bg-color">R</span>
+                                </a>
+                            
+                                <a href="/tags/data-science/">
+                                    <span class="chip bg-color">data science</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'QweMbL6pJuEjzHeRLcd4sxIW-gzGzoHsz',
+        appKey: 'JdA69Wq6tDpDu1DWdKmY4DJy',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'retro',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请留下友善的评论~'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/01/11/RdataScience-part1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="R数据科学，第一部分：探索">
+                        
+                        <span class="card-title">R数据科学，第一部分：探索</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            第一部分主要是R入门和 ggplot2 的基础，由于之前已经走过一遍 《R数据可视化手册》， 所以这里并没有消耗太多精力。其中 `dyplr`包的几个函数还是非常使用的。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/R-for-data-science/" class="post-category">
+                                    R for data science
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R/">
+                        <span class="chip bg-color">R</span>
+                    </a>
+                    
+                    <a href="/tags/data-science/">
+                        <span class="chip bg-color">data science</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/01/11/RNA-Splicing-Factors-SRRM3-and-SRRM4-Distinguish-Molecular-Phenotypes-of-Castration-Resistant-Neuroendocrine-Prostate-Cancer/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="RNA 剪接因子 SRRM3 和 SRRM4 能够作为去势抵抗性的神经内分泌性前列腺癌的分子表征">
+                        
+                        <span class="card-title">RNA 剪接因子 SRRM3 和 SRRM4 能够作为去势抵抗性的神经内分泌性前列腺癌的分子表征</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/paper/" class="post-category">
+                                    paper
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/splicing-factor/">
+                        <span class="chip bg-color">splicing factor</span>
+                    </a>
+                    
+                    <a href="/tags/prostate-cancer/">
+                        <span class="chip bg-color">prostate cancer</span>
+                    </a>
+                    
+                    <a href="/tags/NEPC/">
+                        <span class="chip bg-color">NEPC</span>
+                    </a>
+                    
+                    <a href="/tags/SRRM3/">
+                        <span class="chip bg-color">SRRM3</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Shaobo Liang<br />'
+            + '文章作者: 梁绍波<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="3171388577"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">梁绍波</a>
+            |&nbsp;版权所有
+            |&nbsp;Theme Source&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            <i class="fas fa-chart-area"></i>&nbsp;
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "1";
+                        var startDate = "1";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiangShaw" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:shaoboliang@whu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1323909095" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1323909095" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
