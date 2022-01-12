@@ -439,8 +439,7 @@
 <li><code>analysis/</code>: 这个目录里面包含了该项目所有执行数据分析的Rmarkdown源文件，<code>index.Rmd</code>文件是初始化产生的，用来产生网页主页<code>index.html</code>。<code>_site.yml</code>可用来编辑主题、导航栏和其他的页面布局，详情参考: <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown websites</a>.</li>
 <li><code>docs/</code>:这个目录里面包含了该项目所有生成的 HTML 文件。HTML 文件基于 <code>analysis/</code>里面的 Rmarkdown 文件创建的。另外，Rmarkdown 文件创建的 figures图片，都会保存到这里，保存模式为：<code>docs/figure/&lt;insert Rmd filename&gt;/&lt;insert chunk name&gt;-#.png</code>.</li>
 </ul>
-<p><code>_workflowr.yml</code>用来检查所有Rmarkdown文件的可重复性。最重要的一个设置就是<code>knit_root_dir</code>,默认是<code>.</code>，如果只想执行 <code>analysis/</code>中的代码，改成<code>knit_root_dir: "analysis"</code>就好了。更多细节见<code>?wflowr_html</code></p>
-<p><code>myproject.Rproj</code>不要删除，即使没有使用Rstudio。</p>
+<p><code>_workflowr.yml</code>用来检查所有Rmarkdown文件的可重复性。最重要的一个设置就是<code>knit_root_dir</code>,默认是<code>.</code>，如果只想执行 <code>analysis/</code>中的代码，改成<code>knit_root_dir: "analysis"</code>就好了。更多细节见<code>?wflowr_html</code><br><br><br>❗warning: <code>myproject.Rproj</code>不要删除，即使没有使用Rstudio。</p>
 <p>可选的子文件夹是：</p>
 <ul>
 <li><code>data/</code>：存放原始文件</li>
@@ -450,7 +449,7 @@
 <h1 id="build-the-website，创建网页"><a href="#build-the-website，创建网页" class="headerlink" title="build the website，创建网页"></a>build the website，创建网页</h1><p>目前<code>docs/</code>还是空，因为还没有生成HTML文件。所以接下来要做的就是创建网页。</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_build()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>这条命令为所有<code>analysis/</code>文件创建对应的 HTML 文件存放到 <code>docs/</code>中。每个文件都是使用其自己的 R session，从而避免了不同文件中相同名字变量的冲突。最后，会在Rstudio viewer 或 默认的浏览器打开生成的网页，默认是打开 index.html 。<br>每次重建网页，都只会针对有改动的文件，没有改动则不会重新生成 HTML 文件。</p>
+<p>这条命令为所有<code>analysis/</code>中的 Rmd 文件创建对应的 HTML 文件, 存放到 <code>docs/</code>中。每个文件都是使用其自己的 R session，从而避免了不同文件中相同名字变量的冲突。<br>最后，会在Rstudio viewer 或 默认的浏览器打开生成的网页，默认是打开 index.html 。<br>每次重建网页，都只会针对有改动的文件，没有改动则不会重新生成 HTML 文件。除非设置参数<code>republish = TRUE</code>(没必要)。</p>
 <h1 id="publish-the-website，公开网页"><a href="#publish-the-website，公开网页" class="headerlink" title="publish the website，公开网页"></a>publish the website，公开网页</h1><p>workflowr 与 Rmarkdown 最大的一点不同，就是可以 publish。<br>查看 workflowr project 的状态：</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_status()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-none"><code class="language-none">## Status of 3 Rmd files
@@ -480,7 +479,7 @@
 <p>输出显示了文件 published 的情况。</p>
 <p>接下来就是对<code>analysis/</code>里面的文件进行 publish  </p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_publish(c("analysis/index.Rmd", "analysis/about.Rmd", "analysis/license.Rmd"),"Publish the initial files for myproject")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>主要设置是 <strong>文件</strong> 和 <strong>message</strong>两个信息。<br>对输出结果的主要进行了摘录，如下：</p>
+<p>主要设置是 <strong>文件</strong> 和 <strong>message</strong>两个参数。<br>对输出结果的主要进行了摘录，如下：</p>
 <pre class="line-numbers language-none"><code class="language-none">## **Step 1: Commit analysis files**
 ## Summary from wflow_git_commit
 ## The following was run: 
@@ -526,7 +525,7 @@
 <li>step2. build HTML 文件</li>
 <li>step3. git commit 创建的 HTML 文件和网页的配置文件（如 CSS 和 JavaScript 文件）</li>
 </ul>
-<p>这就保证了 网页和源码一直是同步的。<br>当再次使用<code>wflow_status()</code>查看 workflowr project 状态时，就会报告所有文件都 published 和 up-to-date：</p>
+<p>省的自己手动逐步执行，保证了 网页和源码一直是同步的。<br>当再次使用<code>wflow_status()</code>查看 workflowr project 状态时，就会报告所有文件都 published 和 up-to-date：</p>
 <pre class="line-numbers language-none"><code class="language-none">## Status of 3 Rmd files
 ## 
 ## Totals:
@@ -548,7 +547,7 @@
 <li><code>wflow_publish(files, "commit-message")</code> 保留阶段性成果。</li>
 <li>如果你要上传到GitHub上，再<code>push</code>到GitHub。</li>
 </ol>
-<h1 id="further-reading，进一步了解"><a href="#further-reading，进一步了解" class="headerlink" title="further reading，进一步了解"></a>further reading，进一步了解</h1><p>关于如何使用 R markdown 文件组织分析流程，可以阅读 R data science 中的 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown workflow</a>部分，也就是本站的<code>R数据科学系列</code>的<code>沟通部分</code>。  </p>
+<h1 id="further-reading，进一步了解"><a href="#further-reading，进一步了解" class="headerlink" title="further reading，进一步了解"></a>further reading，进一步了解</h1><p>关于如何使用 R markdown 文件组织分析流程，可以阅读 R data science 中的 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown workflow</a>部分，也就是本站的<code>R数据科学系列</code>的<code>沟通</code>部分。  </p>
 
                 
             </div>
