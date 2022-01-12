@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="R数据科学，第一部分：探索, Shaobo Liang">
-    <meta name="description" content="第一部分主要是R入门和 ggplot2 的基础，由于之前已经走过一遍 《R数据可视化手册》， 所以这里并没有消耗太多精力。其中 `dyplr`包的几个函数还是非常使用的。">
+    <meta name="description" content="第一部分主要是R入门和 ggplot2 的基础，由于之前已经走过一遍 《R数据可视化手册》， 所以这里并没有消耗太多精力。其中 dyplr 包的几个函数还是非常实用的。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-11
+                    2022-01-12
                 </div>
                 
 
@@ -456,29 +456,51 @@ Warning message:
 ggplot(data = mpg, aes(x=displ, y=hwy, color=class)) + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
-<p>&lt;img src=’output_4_0.png’ width=50 /0&gt;<br>&lt;&gt; <img src="output_4_0.png" alt="png"></p>
+<img src="output_4_0.png" align="center" width="500">
+    
+
+
+
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy, alpha=class)) + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre><code>Warning message:
 “Using alpha for a discrete variable is not advised.”
 </code></pre>
-<p><img src="output_5_1.png" alt="png"></p>
+<img src="output_5_1.png" align="center" width="500">
+<!-- ![png](output_5_1.png) -->
+    
+
+
+
 <pre class="line-numbers language-R" data-language="R"><code class="language-R"># 分面
 ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nrow = 2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
-<p><img src="output_6_0.png" alt="png"></p>
+<img src="output_6_0.png" align="center" width="500">
+<!--- ![png](output_6_0.png) -->
+    
+
+
+
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_smooth(method = 'loess') + geom_point()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre><code>`geom_smooth()` using formula 'y ~ x'
 </code></pre>
-<p><img src="output_7_1.png" alt="png"></p>
+<img src="output_7_1.png" align="center" width="500">
+<!-- ![png](output_7_1.png) -->
+    
+
+
 <p><code>geom_smooth()</code>函数可以按照不同的线型绘制出不同的曲线，每条曲线对应映射到线型的变量的一个唯一值</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_smooth(method = 'loess',aes(color=drv, linetype=drv)) + geom_point(aes(color=drv))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre><code>`geom_smooth()` using formula 'y ~ x'
 </code></pre>
-<p><img src="output_9_1.png" alt="png"></p>
+<img src="output_9_1.png" align="center" width="500">
+<!-- ![png](output_9_1.pn<g) -->
+    
+
+
 <p>也可以为不同的图层指定不同的数据。</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x=displ, y=hwy)) + 
  geom_point(aes(color=class)) + 
@@ -486,7 +508,11 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 
 <pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'
 </code></pre>
-<p><img src="output_11_1.png" alt="png"></p>
+<img src="output_11_1.png" align="center" width="500">
+<!-- ![png](output_11_1.png) -->
+    
+
+
 <p>绘图时用来计算新数据的算法称为stat（statistical transformtaion，统计变换）。</p>
 <p>通过查看stat参数的默认值，可以知道几何对象函数使用了哪些统计变换。例如，?geom_bar显示出stat的默认值是count，这说明geom_bar()使用stat_count()函数进行统计变换。</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -495,11 +521,20 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">gplot(data = diamonds) + geom_bar(mapping = aes(x=cut))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_16_0.png" alt="png"></p>
+<img src="output_16_0.png" align="center" width="500">
+<!--![png](output_16_0.png) -->
+    
+
+
+
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut)) + stat_count()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_17_0.png" alt="png"></p>
+<img src="output_17_0.png" align="center" width="500">
+<!-- ![png](output_17_0.png) -->
+    
+
+
 <p>可以这样做的原因是，每个几何对象函数都有一个默认统计变换，每个统计变换函数都有一个默认几何对象</p>
 <p>想要显示使用某个统计变换的3个原因：  </p>
 <ul>
@@ -515,24 +550,41 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = demo, aes(x=a, y=b)) + geom_bar(stat = "identity")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_21_0.png" alt="png"></p>
+<img src="output_21_0.png" align="center" width="500">
+<!-- ![png](output_21_0.png) -->
+    
+
+
 <ul>
 <li>覆盖从统计变换生成的变量到图形属性的默认映射。（例如，想显示一张表示比例的条性图，而不是计数）</li>
 </ul>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_23_0.png" alt="png"></p>
+<img src="output_23_0.png" align="center" width="500">
+<!-- ![png](output_23_0.png) -->
+    
+
+
+
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, y=..prop.., group=1)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_24_0.png" alt="png"></p>
+<img src="output_24_0.png" align="center" width="500">
+<!-- ![png](output_24_0.png) -->
+    
+
+
 <p>ggplot2提供了20多个统计变换以供你使用。每个统计变换都是一个函数，通过<code>?stat_bin</code>来获取帮助。如果想要查看全部的统计变换，可以使用ggplot2速查表。</p>
 <h2 id="位置探索"><a href="#位置探索" class="headerlink" title="位置探索"></a>位置探索</h2><p>用<code>fill</code>和<code>color</code>为图形属性上色</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_28_0.png" alt="png"></p>
+<img src="output_28_0.png" align="center" width="500">
+<!-- ![png](output_28_0.png) -->
+    
+
+
 <p>这种堆叠是由<code>position</code>参数设定的<strong>位置调整</strong>功能自动完成的，如果不想生成堆叠条形图，有以下三种选项供选择：</p>
 <ul>
 <li>identity</li>
@@ -543,17 +595,30 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar(position = "fill")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_31_0.png" alt="png"></p>
+<img src="output_31_0.png" align="center" width="500">
+<!-- ![png](output_31_0.png) -->
+    
+
+
 <p>position = “dodge”将每组条形依次并列放置</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar(position = "dodge")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_33_0.png" alt="png"></p>
+<img src="output_33_0.png" align="center" width="500">
+<!-- ![png](output_33_0.png) -->
+
+
+
+
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = mpg, aes(x = displ, y=hwy)) + 
  geom_point(position = 'jitter')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
-<p><img src="output_34_0.png" alt="png"></p>
+<img src="output_34_0.png" align="center" width="500">
+<!-- ![png](output_34_0.png) -->
+    
+
+
 <h1 id="使用dplyr进行数据转换"><a href="#使用dplyr进行数据转换" class="headerlink" title="使用dplyr进行数据转换"></a>使用dplyr进行数据转换</h1><h2 id="dplyr基础"><a href="#dplyr基础" class="headerlink" title="dplyr基础"></a>dplyr基础</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressMessages(library(nycflights13))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre><code>Warning message:
@@ -1037,7 +1102,11 @@ ggplot(data = delays, mapping = aes(x=n, y = delay)) +
  geom_point(alpha = 1/10)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<p><img src="output_106_0.png" alt="png"></p>
+<img src="output_106_0.png" align="center" width="500">
+<!-- ![png](output_106_0.png) -->
+    
+
+
 <p>筛掉样本数很小的分组。</p>
 <p>下面展示了将 ggplot2 集成到 dplyr 工作流的一种有效方式。</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">delays %&gt;%
@@ -1046,7 +1115,11 @@ ggplot(data = delays, mapping = aes(x=n, y = delay)) +
         geom_point(alpha = 1/10)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<p><img src="output_109_0.png" alt="png"></p>
+<img src="output_109_0.png" align="center" width="500">
+<!-- ![png](output_109_0.png) -->
+    
+
+
 <h3 id="常用的摘要函数"><a href="#常用的摘要函数" class="headerlink" title="常用的摘要函数"></a>常用的摘要函数</h3><p>除了 均值<code>mean()</code>、计数<code>n()</code>、求和<code>sum()</code>，R中还提供了很多其他常用的摘要函数</p>
 <ul>
 <li>位置度量<ul>
@@ -1508,52 +1581,42 @@ daily %&gt;%
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/01/11/RdataScience-part1/">
+                <a href="/2022/01/12/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="R数据科学，第一部分：探索">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hexo automatical generation">
                         
-                        <span class="card-title">R数据科学，第一部分：探索</span>
+                        <span class="card-title">Hexo automatical generation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一部分主要是R入门和 ggplot2 的基础，由于之前已经走过一遍 《R数据可视化手册》， 所以这里并没有消耗太多精力。其中 `dyplr`包的几个函数还是非常使用的。
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>

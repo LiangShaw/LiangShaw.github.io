@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="R数据科学系列, Shaobo Liang">
-    <meta name="description" content="以OReilly系列《R for data science》中译版《R数据科学》（陈光欣译）为教案，学习R中的数据处理。能够在 R 中得心应手得处理数据、改造数据，会大大提高工作效率。由于内容很多，所以划分成5个部分。">
+    <meta name="keywords" content="workflowr 日常使用简易指南, Shaobo Liang">
+    <meta name="description" content="学习使用 R包 workflowr 来做研究记录，期望实现项目管理、重复性、协作和结果分享。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>R数据科学系列 | Shaobo Liang</title>
+    <title>workflowr 日常使用简易指南 | Shaobo Liang</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -236,12 +236,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">R数据科学系列</h1>
+                    <h1 class="description center-align post-title">workflowr 日常使用简易指南</h1>
                 </div>
             </div>
         </div>
@@ -361,23 +361,14 @@
                                 <span class="chip bg-color">R</span>
                             </a>
                         
-                            <a href="/tags/data-science/">
-                                <span class="chip bg-color">data science</span>
+                            <a href="/tags/workflowr/">
+                                <span class="chip bg-color">workflowr</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                R for data science
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -386,7 +377,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-10
+                    2022-01-12
                 </div>
                 
 
@@ -415,17 +406,149 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="持续填坑中…"><a href="#持续填坑中…" class="headerlink" title="持续填坑中…"></a>持续填坑中…</h1><p>以OReilly系列的《R for data science》为教案，学习R中的数据处理。能够在 R 中得心应手得处理数据、改造数据，会大大提高工作效率。  </p>
-<p>在一个典型的数据科学项目中，需要的工具模型大体如下：<br><img src="https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png" alt="工具模型大体结构" width="700" align="center"></p>
-<p>由于内容很多，所以划分成5个部分：</p>
+                <p><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/workflowr/vignettes/wflow-01-getting-started.html">workflowr官方指南</a></p>
+<p><code>workflowr</code>是干什么的，安装方法，特性，优点等直接到官方指南上看，跳过啦！<br>另外需要 <code>git</code> 进行版本控制。</p>
+<p>准备工作完成后，打开 Rstudio，官方建议以下命令都在 R console(控制台)中运行，不要用 Rmarkdown。</p>
+<pre class="line-numbers language-none"><code class="language-none">library(workflowr)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="start-the-project-开启项目"><a href="#start-the-project-开启项目" class="headerlink" title="start the project, 开启项目"></a>start the project, 开启项目</h1><p>在创建项目前，注意目标路径，以下命令会在当前工作目录下创建</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_start("myproject")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以通过<code>setwd()</code>设置工作路径，或者对<code>wflow_start</code>设置 directory 参数。</p>
+<p>创建的<code>myproject/</code>目录结构：</p>
+<pre class="line-numbers language-none"><code class="language-none">myproject/
+├── .gitignore
+├── .Rprofile
+├── _workflowr.yml
+├── analysis/
+│   ├── about.Rmd
+│   ├── index.Rmd
+│   ├── license.Rmd
+│   └── _site.yml
+├── code/
+│   ├── README.md
+├── data/
+│   └── README.md
+├── docs/
+├── myproject.Rproj
+├── output/
+│   └── README.md
+└── README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>其中，<code>analysis/</code> 和 <code>docs/</code>是两个必要的子文件夹：</p>
 <ul>
-<li>第一部分：探索</li>
-<li>第二部分：数据处理</li>
-<li>第三部分：编程</li>
-<li>第四部分：模型</li>
-<li>第五部分：沟通</li>
+<li><code>analysis/</code>: 这个目录里面包含了该项目所有执行数据分析的Rmarkdown源文件，<code>index.Rmd</code>文件是初始化产生的，用来产生网页主页<code>index.html</code>。<code>_site.yml</code>可用来编辑主题、导航栏和其他的页面布局，详情参考: <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown websites</a>.</li>
+<li><code>docs/</code>:这个目录里面包含了该项目所有生成的 HTML 文件。HTML 文件基于 <code>analysis/</code>里面的 Rmarkdown 文件创建的。另外，Rmarkdown 文件创建的 figures图片，都会保存到这里，保存模式为：<code>docs/figure/&lt;insert Rmd filename&gt;/&lt;insert chunk name&gt;-#.png</code>.</li>
 </ul>
-<p>我会根据个人需要，对不同部分进行侧重，并且各部分的先后顺序可能也不会严格按照这五部分进行。<br>其中<strong>数据处理</strong>将会是本系列的重点，模型将是提升部分；编程部分和沟通部分锦上添花。</p>
+<p><code>_workflowr.yml</code>用来检查所有Rmarkdown文件的可重复性。最重要的一个设置就是<code>knit_root_dir</code>,默认是<code>.</code>，如果只想执行 <code>analysis/</code>中的代码，改成<code>knit_root_dir: "analysis"</code>就好了。更多细节见<code>?wflowr_html</code></p>
+<p><code>myproject.Rproj</code>不要删除，即使没有使用Rstudio。</p>
+<p>可选的子文件夹是：</p>
+<ul>
+<li><code>data/</code>：存放原始文件</li>
+<li><code>code</code>：存放各种脚本</li>
+<li><code>output</code>：可存放处理/预处理的文件，如代码生成的中间文件，以及其他途径产生的数据文件</li>
+</ul>
+<h1 id="build-the-website，创建网页"><a href="#build-the-website，创建网页" class="headerlink" title="build the website，创建网页"></a>build the website，创建网页</h1><p>目前<code>docs/</code>还是空，因为还没有生成HTML文件。所以接下来要做的就是创建网页。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_build()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这条命令为所有<code>analysis/</code>文件创建对应的 HTML 文件存放到 <code>docs/</code>中。每个文件都是使用其自己的 R session，从而避免了不同文件中相同名字变量的冲突。最后，会在Rstudio viewer 或 默认的浏览器打开生成的网页，默认是打开 index.html 。<br>每次重建网页，都只会针对有改动的文件，没有改动则不会重新生成 HTML 文件。</p>
+<h1 id="publish-the-website，公开网页"><a href="#publish-the-website，公开网页" class="headerlink" title="publish the website，公开网页"></a>publish the website，公开网页</h1><p>workflowr 与 Rmarkdown 最大的一点不同，就是可以 publish。<br>查看 workflowr project 的状态：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_status()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">## Status of 3 Rmd files
+## 
+## Totals:
+##  3 Unpublished
+## 
+## The following Rmd files require attention:
+## 
+## Unp analysis/about.Rmd
+## Unp analysis/index.Rmd
+## Unp analysis/license.Rmd
+## 
+## Key: Unp = Unpublished
+## 
+## The current Git status is:
+## 
+##    status substatus                 file
+##  unstaged  modified   analysis/about.Rmd
+##  unstaged  modified   analysis/index.Rmd
+##  unstaged  modified analysis/license.Rmd
+## 
+## To publish your changes as part of your website, use `wflow_publish()`.
+## To commit your changes without publishing them yet, use
+## `wflow_git_commit()`.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出显示了文件 published 的情况。</p>
+<p>接下来就是对<code>analysis/</code>里面的文件进行 publish  </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_publish(c("analysis/index.Rmd", "analysis/about.Rmd", "analysis/license.Rmd"),"Publish the initial files for myproject")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>主要设置是 <strong>文件</strong> 和 <strong>message</strong>两个信息。<br>对输出结果的主要进行了摘录，如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">## **Step 1: Commit analysis files**
+## Summary from wflow_git_commit
+## The following was run: 
+## 
+##   $ git add analysis/index.Rmd analysis/about.Rmd analysis/license.Rmd 
+##   $ git commit -m "Publish the initial files for myproject" 
+## 
+## The following file(s) were included in commit 5c625e2:
+## analysis/about.Rmd
+## analysis/index.Rmd
+## analysis/license.Rmd
+## 
+## **Step 2: Build HTML files**
+## Summary from wflow_build
+## Settings:
+##  combine: "or" clean_fig_files: TRUE
+## 
+## The following were built externally each in their own fresh R session: 
+## 
+## docs/index.html
+## docs/about.html
+## docs/license.html
+## 
+## **Step 3: Commit HTML files**
+## Summary from wflow_git_commit
+## The following was run: 
+## 
+##   $ git add docs/index.html docs/about.html docs/license.html docs/figure/index.Rmd docs/figure/about.Rmd docs/figure/license.Rmd docs/site_libs docs/.nojekyll 
+##   $ git commit -m "Build site." 
+## 
+## The following file(s) were included in commit fd97598:
+## docs/about.html
+## docs/index.html
+## docs/license.html
+## docs/site_libs/bootstrap-3.3.5/
+## docs/site_libs/header-attrs-2.11/
+## docs/site_libs/highlightjs-9.12.0/
+## docs/site_libs/jquery-3.6.0/
+## docs/site_libs/navigation-1.1/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>publish 命令办了三件事：</p>
+<ul>
+<li>step1. R 的 git commit 保存 Rmd 文件</li>
+<li>step2. build HTML 文件</li>
+<li>step3. git commit 创建的 HTML 文件和网页的配置文件（如 CSS 和 JavaScript 文件）</li>
+</ul>
+<p>这就保证了 网页和源码一直是同步的。<br>当再次使用<code>wflow_status()</code>查看 workflowr project 状态时，就会报告所有文件都 published 和 up-to-date：</p>
+<pre class="line-numbers language-none"><code class="language-none">## Status of 3 Rmd files
+## 
+## Totals:
+##  3 Published
+## 
+## The current Git status is: working directory clean
+## 
+## Rmd files are up-to-date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="deploy-the-website，部署网页"><a href="#deploy-the-website，部署网页" class="headerlink" title="*deploy the website，部署网页"></a>*deploy the website，部署网页</h1><p>如果需要公开到 GitHub，还需有GitHub的账户，并在本地进行配置（官方指南有详细说明）。<br>这和把文件上传到GitHub本质上是一样的，只不过在workflowr中有其自己的命令。<br>因为我是不打算上传到 GitHub 的，所以这一部分也跳过了。  </p>
+<p>可以将 <code>index.html</code> 文件加到 nginx 或者 apache 等服务器代理中，分享给在同一个局域网中的其他人。</p>
+<h1 id="add-a-new-analysis-file，添加新的分析文件"><a href="#add-a-new-analysis-file，添加新的分析文件" class="headerlink" title="add a new analysis file，添加新的分析文件"></a>add a new analysis file，添加新的分析文件</h1><p>自己在<code>analysis/</code>文件夹中创建新的 Rmd 文件进行编辑就好了，或者使用命令<code>wflow_open("analysis/new.Rmd")</code>。  </p>
+<p>所以，平时使用的时候，流程很简单：</p>
+<ol>
+<li><code>wflow_start("ProjectName")</code>开启项目</li>
+<li>在<code>analysis/</code>、<code>code</code>中增加分析流程</li>
+<li><code>wflow_build()</code>预览网页效果（可选）</li>
+<li>循环2、3步，直到满意</li>
+<li><code>wflow_publish(files, "commit-message")</code> 保留阶段性成果。</li>
+<li>如果你要上传到GitHub上，再<code>push</code>到GitHub。</li>
+</ol>
+<h1 id="further-reading，进一步了解"><a href="#further-reading，进一步了解" class="headerlink" title="further reading，进一步了解"></a>further reading，进一步了解</h1><p>关于如何使用 R markdown 文件组织分析流程，可以阅读 R data science 中的 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown workflow</a>部分，也就是本站的<code>R数据科学系列</code>的<code>沟通部分</code>。  </p>
 
                 
             </div>
@@ -452,7 +575,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/01/10/RDataSci/">https://liangshaw.github.io/2022/01/10/RDataSci/</a>
+                    <a href="https://liangshaw.github.io/2022/01/12/workflowr-learning/">https://liangshaw.github.io/2022/01/12/workflowr-learning/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -494,8 +617,8 @@
                                     <span class="chip bg-color">R</span>
                                 </a>
                             
-                                <a href="/tags/data-science/">
-                                    <span class="chip bg-color">data science</span>
+                                <a href="/tags/workflowr/">
+                                    <span class="chip bg-color">workflowr</span>
                                 </a>
                             
                         </div>
@@ -809,54 +932,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/10/Pervasive-Chromatin-RNA-Binding-Protein-Interactions-Enable-RNA-Based-Regulation-of-Transcription/">
+                <a href="/2022/01/12/workflowr-learning/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="广泛的染色质-RNA结合蛋白互作使得基于RNA的转录调控成为可能">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="workflowr 日常使用简易指南">
                         
-                        <span class="card-title">广泛的染色质-RNA结合蛋白互作使得基于RNA的转录调控成为可能</span>
+                        <span class="card-title">workflowr 日常使用简易指南</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            学习使用 R包 workflowr 来做研究记录，期望实现项目管理、重复性、协作和结果分享。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/paper/" class="post-category">
-                                    paper
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RBP/">
-                        <span class="chip bg-color">RBP</span>
+                    <a href="/tags/R/">
+                        <span class="chip bg-color">R</span>
                     </a>
                     
-                    <a href="/tags/ChIP-seq/">
-                        <span class="chip bg-color">ChIP-seq</span>
-                    </a>
-                    
-                    <a href="/tags/transcription/">
-                        <span class="chip bg-color">transcription</span>
+                    <a href="/tags/workflowr/">
+                        <span class="chip bg-color">workflowr</span>
                     </a>
                     
                 </div>
@@ -870,24 +987,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/02/Git_instructions/">
+                <a href="/2022/01/12/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="git/github basic usage guide">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hexo automatical generation">
                         
-                        <span class="card-title">git/github basic usage guide</span>
+                        <span class="card-title">Hexo automatical generation</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一些 git 常用命令，用作备忘录、使用手册，方便快速查阅
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-12
                             </span>
                         <span class="publish-author">
                             
@@ -900,12 +1017,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
-                    </a>
-                    
-                    <a href="/tags/Github/">
-                        <span class="chip bg-color">Github</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
