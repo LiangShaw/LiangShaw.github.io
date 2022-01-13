@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-12
+                    2022-01-13
                 </div>
                 
 
@@ -3513,26 +3513,6 @@ dcast(plum, length + time ~ survival, value.var = 'count')<span aria-hidden="tru
 </tbody>
 </table>
 
-
-
-<h1 id="ComplexHeatmap"><a href="#ComplexHeatmap" class="headerlink" title="ComplexHeatmap"></a>ComplexHeatmap</h1><pre class="line-numbers language-R" data-language="R"><code class="language-R">library(ComplexHeatmap)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre><code>Loading required package: grid
-
-========================================
-ComplexHeatmap version 2.4.3
-Bioconductor page: http://bioconductor.org/packages/ComplexHeatmap/
-Github page: https://github.com/jokergoo/ComplexHeatmap
-Documentation: http://jokergoo.github.io/ComplexHeatmap-reference
-
-If you use it in published research, please cite:
-Gu, Z. Complex heatmaps reveal patterns and correlations in multidimensional 
-  genomic data. Bioinformatics 2016.
-
-This message can be suppressed by:
-  suppressPackageStartupMessages(library(ComplexHeatmap))
-========================================
-</code></pre>
 <h1 id="在ggplot2图形上添加显著性差异注释"><a href="#在ggplot2图形上添加显著性差异注释" class="headerlink" title="在ggplot2图形上添加显著性差异注释"></a>在ggplot2图形上添加显著性差异注释</h1><p>参考资料:<br><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1692505">如何在ggplot2图形上添加显著性差异注释</a></p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">library(ggsignif)
 library(ggplot2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -3581,11 +3561,7 @@ library(ggplot2)<span aria-hidden="true" class="line-numbers-rows"><span></span>
               y_position = 9.3, tip_length = 0.04, vjust=0.2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-<pre><code>Error in ggplot(dat, aes(Group, Value)): 找不到对象'dat'
-Traceback:
-
-
-1. ggplot(dat, aes(Group, Value))
+<pre><code>1. ggplot(dat, aes(Group, Value))
 </code></pre>
 <h2 id="参数解释"><a href="#参数解释" class="headerlink" title="参数解释"></a>参数解释</h2><p>mapping # 由aes()或aes_()创建的美学映射集。如果指定且inherit.aes=TRUE（默认值），它将与绘图顶层的默认映射结合。如果没有绘图映射，则必须提供映射。<br>data # 绘图数据所在的数据框<br>position # 位置调整；可以是字符串，也可以是位置调整函数的结果<br>na.rm # 逻辑词，默认为FALSE，移除缺失值时显示警告信息，为TRUE，则不显示警告信息。<br>show.legend # 逻辑词，是否显示图例<br>comparisons # 长度为2的向量列表<br>test # 进行统计检验的方法名称，如t.test、wilcox.test、aov()、anova()、kruskal.test() 等。<br>test.args # 检验方法的其他参数<br>annotations # 替换P值注释的字符向量<br>map_signif_level # 布尔值，检验结果P值使用注释或者星号代替<br>y_position # 括号线在对齐y轴高度的数字向量<br>xmin # 括号线左侧位置的数字向量<br>xmax # 括号线右侧位置的数字向量<br>step_increase # 数字向量，减少括号线的重叠<br>tip_length # 数字向量，显示括号线两端的下降的小竖线，用来指向精确的组别<br>size # 设置括号线的宽度<br>textsize # 设置文本字体大小<br>family # 设置文本字体<br>vjust # 相对于括号线，上下调整文本的距离<br>parse # 逻辑词，为TRUE，则标签将解析为表达式  </p>
 
