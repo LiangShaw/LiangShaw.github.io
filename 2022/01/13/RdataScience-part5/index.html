@@ -445,25 +445,30 @@
 <li>手工输入标记符 ```{r} code ```</li>
 </ul>
 <p><code>Ctrl+Enter</code> 或 <code>Ctrl+Shift+Enter</code> 组合键来运行代码段内的全部代码。<br>接下来介绍代码的头部 ，由 ```{r 开头可选的代码段名称，由逗号分隔的代码段选项， 其他}。```为结尾</p>
-<h3 id="代码段名称"><a href="#代码段名称" class="headerlink" title="代码段名称"></a>代码段名称</h3><p><code>\</code>``{r by-name}`. 命名一段代码有几个好处：</p>
-<ul>
-<li>使用脚本编辑器左下角的弹出式代码浏览菜单，更方便浏览特定的代码段<img src="R-markdown-codeheader-1.png" width="300" align="center" alt="代码浏览菜单截图"></li>
-<li>可以使代码段生成的图形具备有意义的名称，从而更容易在其他地方使用</li>
-<li>可以建立缓存代码段的网格，以避免每次运行都重新调用昂贵的计算资源</li>
-</ul>
-<p><font color="blue">setup</font> 这个代码段名称具有特殊意义。当处于笔记本模式时，名称为 setup 的代码段会在其他代码运行前运行一次。所以可以在 setup 代码段中设置<a href="#%E5%85%A8%E5%B1%80%E9%80%89%E9%A1%B9">全局选项</a></p>
-<h3 id="代码段选项"><a href="#代码段选项" class="headerlink" title="代码段选项"></a>代码段选项</h3><p>可以使用 <strong>选项</strong> 来定制代码段输出，选项是提供给代码段头部的参数。<a target="_blank" rel="noopener" href="https://yihui.org/knitr/">knitr</a>提供了很多选项，可以用来定制自己的代码段。完整的选项列表: <a target="_blank" rel="noopener" href="https://yihui.org/knitr/options/">knitr options</a><br>接下来介绍几个最重要的代码段选项列表：</p>
-<ul>
-<li>eval = FALSE 禁止对代码进行求值。（也就是不能运行）通常用于显示 示例代码 或 不通过每行注释 禁用大段代码。</li>
-<li>include = FALSE 可以运行，但不会再最终结果中显示代码和结果。如果不想让 setup 代码出现在报告中，就可以用这个选项。</li>
-<li>echo = FALSE 禁止代码出现在最终结果中，但不会禁止结果。</li>
-<li>message = FALSE 或 warning = FALSE 可以防止消息或警告出现在最终报告中。</li>
-<li>results = ‘hide’ 可以隐藏 文本 输出；fig.show = ‘hide’ 可以隐藏图形输出。</li>
-<li>error = TRUE 在代码出现错误时仍然可以生成最终报告。在报告的最终版中，我们很少需要包括出错信息，但在调试 .Rmd 文件中，出错信息是非常有用的。如果使用 R 进行教学活动，并特意想要包括出错信息的话，这个选项是非常有用的。否则，默认情况下，即使只有一个错误，文档也会生成失败❌。</li>
-</ul>
-<p>因为我之前都是用 jupyter 中的 R kernel 写， 然后输出成 markdown，再转化为 HTML。因为没有这些控制元件，所以 类似 warning、error 都会显示出来，我现在脑子里面已经有画面了.<br><img src="R-markdown-codeheader-代码段选项.png" alt="输出控制总结表格" width="500"></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>默认情况下，R markdown输出数据框和矩阵的格式与我们在控制台中看到的相同：</p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r">mtcars<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="代码段名称"><a href="#代码段名称" class="headerlink" title="代码段名称"></a>代码段名称</h3><pre class="line-numbers language-{r" data-language="{r"><div class="caption"><span>by-name}```. 命名一段代码有几个好处：</span></div><code class="language-{r">- 使用脚本编辑器左下角的弹出式代码浏览菜单，更方便浏览特定的代码段
+  &lt;img src='R-markdown-codeheader-1.png' width=300 align='center' alt='代码浏览菜单截图'/&gt;
+- 可以使代码段生成的图形具备有意义的名称，从而更容易在其他地方使用
+- 可以建立缓存代码段的网格，以避免每次运行都重新调用昂贵的计算资源
+
+&lt;font color='blue'&gt;setup&lt;/font&gt; 这个代码段名称具有特殊意义。当处于笔记本模式时，名称为 setup 的代码段会在其他代码运行前运行一次。所以可以在 setup 代码段中设置[全局选项](#全局选项)
+
+### 代码段选项
+可以使用 **选项** 来定制代码段输出，选项是提供给代码段头部的参数。[knitr](https://yihui.org/knitr/)提供了很多选项，可以用来定制自己的代码段。完整的选项列表: [knitr options](https://yihui.org/knitr/options/)  
+接下来介绍几个最重要的代码段选项列表：
+- eval = FALSE 禁止对代码进行求值。（也就是不能运行）通常用于显示 示例代码 或 不通过每行注释 禁用大段代码。
+- include = FALSE 可以运行，但不会再最终结果中显示代码和结果。如果不想让 setup 代码出现在报告中，就可以用这个选项。
+- echo = FALSE 禁止代码出现在最终结果中，但不会禁止结果。
+- message = FALSE 或 warning = FALSE 可以防止消息或警告出现在最终报告中。
+- results = 'hide' 可以隐藏 文本 输出；fig.show = 'hide' 可以隐藏图形输出。
+- error = TRUE 在代码出现错误时仍然可以生成最终报告。在报告的最终版中，我们很少需要包括出错信息，但在调试 .Rmd 文件中，出错信息是非常有用的。如果使用 R 进行教学活动，并特意想要包括出错信息的话，这个选项是非常有用的。否则，默认情况下，即使只有一个错误，文档也会生成失败❌。
+
+因为我之前都是用 jupyter 中的 R kernel 写， 然后输出成 markdown，再转化为 HTML。因为没有这些控制元件，所以 类似 warning、error 都会显示出来，我现在脑子里面已经有画面了.  
+&lt;img src='R-markdown-codeheader-代码段选项.png' alt='输出控制总结表格' width=500 /&gt;
+
+### 表格
+默认情况下，R markdown输出数据框和矩阵的格式与我们在控制台中看到的相同：
+```r
+mtcars<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里省略输出  </p>
 <p>如果更喜欢用表格来显示数据，可以使用 <code>knitr::kable</code> 函数。</p>
 <pre class="line-numbers language-r" data-language="r"><code class="language-r">knitr<span class="token operator">::</span>kable<span class="token punctuation">(</span>
