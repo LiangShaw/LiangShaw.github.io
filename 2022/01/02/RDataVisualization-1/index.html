@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-12
+                    2022-01-14
                 </div>
                 
 
@@ -504,9 +504,6 @@ display.brewer.all()<span aria-hidden="true" class="line-numbers-rows"><span></s
 
 
 <p><img src="output_10_0.png" alt="png"></p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">append(c(1,2),2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
 .list-inline>li {display: inline-block}
@@ -526,7 +523,7 @@ Returning the palette you asked for with that many colors
 "
 </code></pre>
 <p><img src="output_13_1.png" alt="png"></p>
-<p>RColorBrewer为我们提供了一种通过使用构造函数colorRampPalette插入现有调色板来生成更大调色板的方法。<br>它生成实际工作的函数：它们通过插入现有的调色板来构建具有任意数量颜色的调色板。</p>
+<p>RColorBrewer为我们提供了一种通过使用构造函数<code>colorRampPalette</code>插入现有调色板来生成更大调色板的方法。<br>它生成实际工作的函数：它们通过插入现有的调色板来构建具有任意数量颜色的调色板。</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">colorRampPalette(brewer.pal(9, 'Set1'))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -2848,8 +2845,8 @@ p + geom_point() +
 <p>🔗<strong>另见</strong><br><code>stat_density2d()</code>函数和stat_bin2d()函数的关系与它们各自的一维情形，即密度曲线和直方图之间的关系类似。密度曲线是在特定假设下对分布的估计，而分组可视化是直接表示观测值。</p>
 <p>如果想使用不同的调色板，参见<a href="">对连续型变量使用自定义调色板</a></p>
 <p><code>stat_density2d()</code>可将选项传递到<code>kde2d()</code>函数；输入?kde2d可以查看函数选项的信息。</p>
-<h1 id="画图实践经验谈"><a href="#画图实践经验谈" class="headerlink" title="画图实践经验谈"></a>画图实践经验谈</h1><p>ggplot对于同一个dataframe，同一张图中，不同的数据展现形式可使用<code>aes()</code>函数指定不同的列，不过，分组应该是固定的，如上。</p>
-<p>⚠数据处理能力还需要加强</p>
+<h1 id="画图实践经验谈"><a href="#画图实践经验谈" class="headerlink" title="画图实践经验谈"></a>画图实践经验谈</h1><p>ggplot2对于同一个dataframe，同一张图中，不同的数据展现形式可使用<code>aes()</code>函数指定不同的列，不过，分组应该是固定的，如上。</p>
+<p>ggplot2 是逐层渲染的，所以很容易会发现，先添加的图形，会被后添加的图形覆盖掉（重复部分）。<br>数据先后顺序也是如此。例如在画散点图的时候，数据框中靠前位置的信息是在最下面的，所以利用这个特性，可以通过修改数据在数据框中的位置，来突出/覆盖指定的点。<br>每一个 <code>geom_</code> 或 <code>stat_</code>，都可以通过设置 <code>data</code> 和 <code>mapping</code> 来指定不同数据框中不同的列。</p>
 
                 
             </div>
@@ -3241,6 +3238,55 @@ p + geom_point() +
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2022/01/02/Git_instructions/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="git/github basic usage guide">
+                        
+                        <span class="card-title">git/github basic usage guide</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一些 git 常用命令，用作备忘录、使用手册，方便快速查阅
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/Github/">
+                        <span class="chip bg-color">Github</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2022/01/02/RDataVisualization-2/">
                     <div class="card-image">
                         
@@ -3257,9 +3303,9 @@ p + geom_point() +
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -3285,55 +3331,6 @@ p + geom_point() +
                     
                     <a href="/tags/handbook/">
                         <span class="chip bg-color">handbook</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/12/30/Hierarchical_clustering_in_R/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)">
-                        
-                        <span class="card-title">HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-30
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            梁绍波
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hierarchical-clustering/">
-                        <span class="chip bg-color">hierarchical clustering</span>
-                    </a>
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
                     </a>
                     
                 </div>
