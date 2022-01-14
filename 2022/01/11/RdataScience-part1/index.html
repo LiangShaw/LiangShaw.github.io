@@ -424,19 +424,6 @@
 suppressMessages(library(ggplot2))
 suppressMessages(library(dplyr))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<pre><code>Warning message:
-"package 'tidyverse' was built under R version 4.0.5"
-Warning message:
-"package 'tibble' was built under R version 4.0.5"
-Warning message:
-"package 'tidyr' was built under R version 4.0.4"
-Warning message:
-"package 'readr' was built under R version 4.0.5"
-Warning message:
-"package 'dplyr' was built under R version 4.0.5"
-Warning message:
-"package 'forcats' was built under R version 4.0.3"
-</code></pre>
 <h1 id="使用ggplot2进行数据可视化"><a href="#使用ggplot2进行数据可视化" class="headerlink" title="使用ggplot2进行数据可视化"></a>使用ggplot2进行数据可视化</h1><pre class="line-numbers language-R" data-language="R"><code class="language-R">head(mpg,3)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -519,8 +506,6 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 
 <p>绘图时用来计算新数据的算法称为stat（statistical transformtaion，统计变换）。</p>
 <p>通过查看stat参数的默认值，可以知道几何对象函数使用了哪些统计变换。例如，?geom_bar显示出stat的默认值是count，这说明geom_bar()使用stat_count()函数进行统计变换。</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
 <p>通常来说，几何对象函数和统计变换函数可以互换使用。</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">gplot(data = diamonds) + geom_bar(mapping = aes(x=cut))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 

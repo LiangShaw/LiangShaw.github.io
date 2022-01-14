@@ -422,12 +422,12 @@
                 <p><font size="5"> Part5 沟通</font></p>
 <p>分析者通过转换、可视化与建模来理解数据，最终的目的是同甲方/老板汇报结果，否则无论数据分析做的多么精彩，都没什么用。<br>因此，<strong>沟通</strong>工作成果至关重要。<br><br><br>本部分分为四块：</p>
 <ul>
-<li>[R markdown](#R markdown)。<a target="_blank" rel="noopener" href="https://rmarkdown.rstudio.com/">R markdown 官方网址</a></li>
-<li>[使用 ggplot2 进行图形化沟通](#使用 ggplot2 进行图形化沟通)</li>
-<li>[R markdown 输出类型](#R markdown 输出类型). 其中包括仪表盘、网站和书籍</li>
-<li>[R markdown 工作流](#R markdown 工作流). 介绍如何制作“分析式笔记本”，以及如何系统地记录工作中的成功和失败</li>
+<li><a href="#r-markdown">R markdown</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-ggplot2-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E5%BD%A2%E5%8C%96%E6%B2%9F%E9%80%9A">使用 ggplot2 进行图形化沟通</a></li>
+<li><a href="#R-markdown-%E8%BE%93%E5%87%BA%E7%B1%BB%E5%9E%8B">R markdown 输出类型</a>. 其中包括仪表盘、网站和书籍</li>
+<li><a href="#R-markdown-%E5%B7%A5%E4%BD%9C%E6%B5%81">R markdown 工作流</a>. 介绍如何制作“分析式笔记本”，以及如何系统地记录工作中的成功和失败</li>
 </ul>
-<h1 id="R-markdown"><a href="#R-markdown" class="headerlink" title="R markdown"></a>R markdown</h1><p>R markdown 提供了统一的写作框架，可以集成代码、输出结果和文本注释。<br>R markdown 完全可重用，支持多种输出形式，包括PDF、Word、PPT等。<br>R markdown 集成了一些 R 包和外部工具。基本上不能使用<code>?</code>来获取帮助。不过，在 Rstudio 中有参考资料可用:  </p>
+<h1 id="R-markdown"><a href="#R-markdown" class="headerlink" title="R markdown"></a>R markdown</h1><p><a target="_blank" rel="noopener" href="https://rmarkdown.rstudio.com/">R markdown 官方网址</a><br><br><br>R markdown 提供了统一的写作框架，可以集成代码、输出结果和文本注释。<br>R markdown 完全可重用，支持多种输出形式，包括PDF、Word、PPT等。<br>R markdown 集成了一些 R 包和外部工具。基本上不能使用<code>?</code>来获取帮助。不过，在 Rstudio 中有参考资料可用:  </p>
 <ul>
 <li>R markdown 速查表：Help → Cheatsheets → R Markdown Cheat Sheet</li>
 <li>R markdown 用户指南： Help → Cheatsheets → R Markdown Reference Guide</li>
@@ -435,7 +435,7 @@
 <p>R markdown 文件三个主要组成部分： </p>
 <ul>
 <li>markdown 文本。此处不再做介绍，多加练习就好。</li>
-<li><a href="##%E4%BB%A3%E7%A0%81%E6%AE%B5">代码段</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E6%AE%B5">代码段</a></li>
 <li>YAML文件头</li>
 </ul>
 <h2 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h2><p>可运行代码，插入方法：</p>
@@ -447,10 +447,7 @@
 <p><code>Ctrl+Enter</code> 或 <code>Ctrl+Shift+Enter</code> 组合键来运行代码段内的全部代码。<br>接下来介绍代码的头部 ，由 ```{r 开头可选的代码段名称，由逗号分隔的代码段选项， 其他}。```为结尾</p>
 <h3 id="代码段名称"><a href="#代码段名称" class="headerlink" title="代码段名称"></a>代码段名称</h3><p><code>\</code>``{r by-name}`. 命名一段代码有几个好处：</p>
 <ul>
-<li>使用脚本编辑器左下角的弹出式代码浏览菜单，更方便浏览特定的代码段<ul>
-<li><img src="R-markdown-codeheader-1.png" width="300" align="center" alt="代码浏览菜单截图"></li>
-</ul>
-</li>
+<li>使用脚本编辑器左下角的弹出式代码浏览菜单，更方便浏览特定的代码段<img src="R-markdown-codeheader-1.png" width="300" align="center" alt="代码浏览菜单截图"></li>
 <li>可以使代码段生成的图形具备有意义的名称，从而更容易在其他地方使用</li>
 <li>可以建立缓存代码段的网格，以避免每次运行都重新调用昂贵的计算资源</li>
 </ul>
@@ -475,8 +472,7 @@
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>表格输出省略  </p>
 <p>使用 <code>?knitr::kable</code>阅读相关文档，学习定制表格的其他方式。<br>同样，很多选项可以控制在最终报告中嵌入图形的方式。  </p>
-<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>一般来说，R markdown 在每次生成文档时都是完全从头开始。这对于文档的可重复性非常重要。<br>但如果有些计算需要花费大量时间，那么每次重新生成文档将非常痛苦。所以使用 cache = TRUE 来解决这个问题。<br>当使用这个选项时，R markdown 会将代码输出保存在磁盘上的一个具有特殊名称的文件中。在此后的运行中， knitr 会检查代码是否进行了修改，如果没有修改，则继续使用缓存结果。  </p>
-<p>❗ 必须谨慎使用这种缓存机制，因为 knitr 在默认情况下只检查代码，不检查代码的依赖关系。<br>简单地说，如果一段代码 <font color="green">processed_data</font>设置了cache = TRUE，并用到了 另一段代码 <font color="green">raw_data</font> 中的数据，如果<code>processed_data</code>代码段没变，无论 <code>raw_data</code> 中是否发生了变化，<code>processed_data</code> 都不会重新运行。<br>为了解决依赖关系的问题，可以设置 <code>dependson</code>。<code>dependson=c('depend_code1','depend_code2')</code> (我猜是这样写，还没实践)应该包含每个代码段的一个字符向量，其中包含缓存代码段依赖的所有代码段。  </p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>一般来说，R markdown 在每次生成文档时都是完全从头开始。这对于文档的可重复性非常重要。<br>但如果有些计算需要花费大量时间，那么每次重新生成文档将非常痛苦。所以使用 cache = TRUE 来解决这个问题。<br>当使用这个选项时，R markdown 会将代码输出保存在磁盘上的一个具有特殊名称的文件中。在此后的运行中， knitr 会检查代码是否进行了修改，如果没有修改，则继续使用缓存结果。<br><br><br>❗ 必须谨慎使用这种缓存机制，因为 knitr 在默认情况下只检查代码，不检查代码的依赖关系。<br><br><br>简单地说，如果一段代码 <font color="green">processed_data</font>设置了cache = TRUE，并用到了 另一段代码 <font color="green">raw_data</font> 中的数据，如果<code>processed_data</code>代码段没变，无论 <code>raw_data</code> 中是否发生了变化，<code>processed_data</code> 都不会重新运行。<br>为了解决依赖关系的问题，可以设置 <code>dependson</code>。<code>dependson=c('depend_code1','depend_code2')</code> (我猜是这样写，还没实践)应该包含每个代码段的一个字符向量，其中包含缓存代码段依赖的所有代码段。  </p>
 <p>还有一点就是，<code>cache=TRUE</code> 不会跟踪导入的外部文件的变化，想要跟踪外部文件的变化，可以使用 <code>cache.extra</code> 选项。这是一个非常霸道的 R 表达式，只要其内容发生变化，缓存就会失效。可以同时使用 <code>file.info()</code> 函数，它可以返回大量关于文件的信息，其中包括最后修改的时间：</p>
 <pre class="line-numbers language-r" data-language="r"><code class="language-r">```<span class="token punctuation">{</span>r raw_data<span class="token punctuation">,</span> cache.extra <span class="token operator">=</span> file.info<span class="token punctuation">(</span><span class="token string">'a_very_large_file.csv'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
 rawdata <span class="token operator">&lt;-</span> readr<span class="token operator">::</span>read_csv<span class="token punctuation">(</span><span class="token string">'a_very_large_file.csv'</span><span class="token punctuation">)</span>
