@@ -420,7 +420,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/workflowr/vignettes/wflow-01-getting-started.html">workflowr官方指南</a></p>
-<p><code>workflowr</code>是干什么的，安装方法，特性，优点等直接到官方指南上看，跳过啦！<br>另外需要 <code>git</code> 进行版本控制。</p>
+<p><code>workflowr</code>是干什么的，特性，优点等直接到官方指南上看，跳过啦！  </p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 安装</span>
+install.packages<span class="token punctuation">(</span><span class="token string">"workflowr"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>另外需要 <code>git</code> 进行版本控制。</p>
 <p>准备工作完成后，打开 Rstudio，官方建议以下命令都在 R console(控制台)中运行，不要用 Rmarkdown。</p>
 <pre class="line-numbers language-none"><code class="language-none">library(workflowr)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -550,17 +553,36 @@
 
 <h1 id="deploy-the-website，部署网页"><a href="#deploy-the-website，部署网页" class="headerlink" title="*deploy the website，部署网页"></a>*deploy the website，部署网页</h1><p>如果需要公开到 GitHub，还需有GitHub的账户，并在本地进行配置（官方指南有详细说明）。<br>这和把文件上传到GitHub本质上是一样的，只不过在workflowr中有其自己的命令。<br>因为我是不打算上传到 GitHub 的，所以这一部分也跳过了。  </p>
 <p>可以将 <code>index.html</code> 文件加到 nginx 或者 apache 等服务器代理中，分享给在同一个局域网中的其他人。</p>
-<h1 id="add-a-new-analysis-file，添加新的分析文件"><a href="#add-a-new-analysis-file，添加新的分析文件" class="headerlink" title="add a new analysis file，添加新的分析文件"></a>add a new analysis file，添加新的分析文件</h1><p>自己在<code>analysis/</code>文件夹中创建新的 Rmd 文件进行编辑就好了，或者使用命令<code>wflow_open("analysis/new.Rmd")</code>。  </p>
+<h1 id="add-a-new-analysis-file，添加新的分析文件"><a href="#add-a-new-analysis-file，添加新的分析文件" class="headerlink" title="add a new analysis file，添加新的分析文件"></a>add a new analysis file，添加新的分析文件</h1><p>自己在<code>analysis/</code>文件夹中创建新的 .Rmd 文件进行编辑就好了，或者使用命令<code>wflow_open("analysis/new.Rmd")</code>。<br>为了更方面地导航到新的分析文件，你可以在 index page 中加上链接。首先，打开<code>analysis/index.Rmd</code>，然后在其中合适的位置加入链接，如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">Click on this [link](first-analysis.html) to see my results.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>所以，平时使用的时候，流程很简单：</p>
 <ol>
 <li><code>wflow_start("ProjectName")</code>开启项目</li>
 <li>在<code>analysis/</code>、<code>code</code>中增加分析流程</li>
 <li><code>wflow_build()</code>预览网页效果（可选）</li>
 <li>循环2、3步，直到满意</li>
-<li><code>wflow_publish(files, "commit-message")</code> 保留阶段性成果。</li>
-<li>如果你要上传到GitHub上，再<code>push</code>到GitHub。</li>
+<li><code>wflow_publish(files, "commit-message")</code> 保留阶段性成果</li>
+<li>修改 index.Rmd 文件，将新的分析文件加入到 index.html 中</li>
+<li>如果你要上传到GitHub上，再<code>push</code>到GitHub</li>
 </ol>
 <h1 id="further-reading，进一步了解"><a href="#further-reading，进一步了解" class="headerlink" title="further reading，进一步了解"></a>further reading，进一步了解</h1><p>关于如何使用 R markdown 文件组织分析流程，可以阅读 R data science 中的 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown workflow</a>部分，也就是本站的 <a href="/2022/01/13/RdataScience-part5/" title="R数据科学，第五部分：沟通">R数据科学，第五部分：沟通</a>。  </p>
+<h1 id="有用链接"><a href="#有用链接" class="headerlink" title="有用链接"></a>有用链接</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30586226">关于rstudio的一些快捷键</a></p>
+<h1 id="个人经验"><a href="#个人经验" class="headerlink" title="*个人经验"></a>*个人经验</h1><p>在写 .Rmd 时注意：</p>
+<ol>
+<li>注意设置 setup 中的 knitr options:<pre class="line-numbers language-r" data-language="r"><code class="language-r">```<span class="token punctuation">{</span>r setup<span class="token punctuation">,</span> include<span class="token operator">=</span><span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+  knitr<span class="token operator">::</span>opts_chunk<span class="token operator">$</span>set<span class="token punctuation">(</span>
+    echo <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> message <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> warning <span class="token operator">=</span> <span class="token boolean">FALSE</span>
+    <span class="token punctuation">)</span>
+```         '<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>之前使用 jupyter 有个习惯：每段数据处理的代码最后，都会 <code>head(data)</code> 看一下数据结构。但在 workflowr 中生成网页时，尤其是设置代码不可见，突然出现的数据会让别人看得一头雾水。所以，在 workflowr 中避免这样的操作</li>
+<li>R markdown 中想要插入 bash ，或其他类型的代码（如 python），并且不想运行它，仅仅是做个记录，可以这样写:<pre class="line-numbers language-r" data-language="r"><code class="language-r">```bash
+ls .<span class="token operator">/</span>
+```         '<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+如果写成 <code>{bash}</code>， 在创建网页时也会运行。在 Windows 下面这样往往会产生错误</li>
+<li>代码标记符 ``` 顶格写和不顶格写 形成的网页效果是不一样的。建议顶格写，会形成一个代码框出来，类似这种：<pre class="line-numbers language-none"><code class="language-none">顶格写 ```<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+而不顶格效果类似 这种：<code>不顶格长这样</code>。</li>
+</ol>
 
                 
             </div>

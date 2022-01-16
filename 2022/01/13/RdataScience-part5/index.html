@@ -410,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-15
+                    2022-01-16
                 </div>
                 
 
@@ -551,6 +551,11 @@ buttonbutton<br>Rstudio 中的 knitr 按钮的下拉菜单，也可以生成其�
 <li><code>rtf_document</code> Rich Text Format(.rtf)</li>
 <li><code>md_document</code> </li>
 <li><code>github_document</code></li>
+<li><code>workflowr::wflow_html</code>. 这个格式出现在 workflowr （<a href="/2022/01/12/workflowr-learning/" title="workflowr 日常使用简易指南">workflowr 日常使用简易指南</a>）中, 有两个特性：<ul>
+<li>继承了 <code>html_document</code> 格式</li>
+<li>有 workflowr 的可重复性特质<br>通常用在 workflowr 项目中，不过也可以单独使用。config 可参见 <code>html_document</code></li>
+</ul>
+</li>
 </ul>
 <p>记住，当为决策者生成文档时，应该在 setup 代码段中修改全局设置，关闭默认的显示代码选项：</p>
 <pre class="line-numbers language-r" data-language="r"><code class="language-r">knitr<span class="token operator">::</span>opts_chunk<span class="token operator">$</span>set<span class="token punctuation">(</span>echo <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
