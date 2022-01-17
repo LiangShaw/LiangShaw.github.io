@@ -410,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-16
+                    2022-01-17
                 </div>
                 
 
@@ -521,7 +521,145 @@ comma<span class="token punctuation">(</span><span class="token number">.1235812
 <p>这一部分因为目前还没有需求，所以把官方文档的链接甩在这里了。<br><a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/parameterized-reports.html">文档参数</a></p>
 <p><a target="_blank" rel="noopener" href="https://pandoc.org/MANUAL.html#citations">参考文献与引用</a></p>
 <p>最后，还是提醒大家勤于动手，多写文档，多查资料，与君共勉！</p>
-<h1 id="使用-ggplot2-进行图形化沟通"><a href="#使用-ggplot2-进行图形化沟通" class="headerlink" title="使用 ggplot2 进行图形化沟通"></a>使用 ggplot2 进行图形化沟通</h1><p>学习中…</p>
+<h1 id="使用-ggplot2-进行图形化沟通"><a href="#使用-ggplot2-进行图形化沟通" class="headerlink" title="使用 ggplot2 进行图形化沟通"></a>使用 ggplot2 进行图形化沟通</h1><p>本章将用到 dplyr 包的一些功能来进行数据处理，并选择 ggplot2 的几个拓展包，其中包括 ggrepel 和 viridis。我们不用加载这些包，而是选择使用<code>::</code>表示法显式地引用其中地函数，这样可以更清楚地分辨出哪些函数是 ggplot2 地内置函数，哪些函数来自于其他拓展包。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressMessages(library(tidyverse))
+library(ggplot2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p>用 <code>labs()</code> 添加标签. <code>labs</code> 有很多的标签</p>
+<p>一方面包括：</p>
+<ul>
+<li>横纵坐标轴(x,y). <code>labs(x='x axis name')</code></li>
+<li>其他命名的值(如使用了 color 设置后，可用 <code>labs(color='colorname')</code> 进行设置), fill 同理</li>
+</ul>
+<p>另一方面是 labs 的内置字段：</p>
+<ul>
+<li>title</li>
+<li>subtitle</li>
+<li>caption. 在图形右下角添加文本，常用于描述数据来源</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(mpg, aes(displ, hwy)) + 
+ geom_point(aes(color = class)) + 
+ geom_smooth(se = FALSE) + 
+ labs(
+     title = paste("Fuel efficiency generally decreases with", "engine size"),
+     subtitle = paste("Two weaters (sports cars) are an exception","because of their light weight"),
+     caption = "Data from fueleconomy.gov"
+ )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+</code></pre>
+<img src="output_7_1.png" width="500" align="center">
+<!-- ![png](output_7_1.png) -->
+
+
+
+<p>还可以在标题中使用数学表达式代替字符串文本，用 <code>quote()</code> 函数代替 “”, 再使用 <code>?plotmath</code> 命令查看可用选项：</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>为单个观测或分组观测添加标签</p>
+<h3 id="geom-text-函数"><a href="#geom-text-函数" class="headerlink" title="geom_text() 函数"></a><code>geom_text()</code> 函数</h3><p>基本用法与 <code>geom_point()</code> 相同，但具有一个额外的属性：label。这使得我们可以向图形中添加文本标签。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">best_in_class &lt;- mpg %&gt;% 
+    group_by(class) %&gt;%
+    filter(row_number(desc(hwy)) == 1)
+
+ggplot(mpg, aes(displ, hwy)) + 
+ geom_point(aes(color = class)) + 
+ geom_text(aes(label = model), data = best_in_class)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="output_13_0.png" width="500" align="center">
+<!--![png](output_13_0.png) -->
+
+
+
+<h3 id="geom-label-函数"><a href="#geom-label-函数" class="headerlink" title="geom_label() 函数"></a><code>geom_label()</code> 函数</h3><p><code>geom_label()</code> 函数，可以为文本加上方框。还可以用 nudge_y 参数让标签定位于相应数据点的正上方：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(mpg, aes(displ, hwy)) + 
+ geom_point(aes(color = class)) + 
+ geom_label(aes(label = model), data = best_in_class, nudge_y = 2, alpha = 0.5)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="output_16_0.png" width="500" align="center">
+<!-- ![png](output_16_0.png) -->
+
+
+<h3 id="ggrepel-包"><a href="#ggrepel-包" class="headerlink" title="ggrepel 包"></a>ggrepel 包</h3><p>上图比第一幅图效果好了一些，但仍有个问题：左上角的两个标签几乎完全重叠。<br>ggrepel 包非常有用，可以自动调整标签的位置，使它们免于重叠：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(mpg, aes(displ, hwy)) + 
+ geom_point(aes(color = class)) + 
+ geom_point(size = 3, shape = 1, data = best_in_class) +  # 添加了一个图层，用较大的空心圆来强调添加了标签的数据点
+ ggrepel::geom_label_repel(
+     aes(label = model),
+     data = best_in_class
+ )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<img src="output_19_0.png" width="500" align="center">
+<!-- ![png](output_19_0.png) -->
+
+
+<h3 id="str-wrap-函数实现自动换行"><a href="#str-wrap-函数实现自动换行" class="headerlink" title="str_wrap() 函数实现自动换行"></a>str_wrap() 函数实现自动换行</h3><p>在文本中，除了添加 ‘\n’ 来控制换行外，另一种方法是使用 <code>stringr::str_wrap()</code> 函数来自动换行，此时需要给出每行的字符数：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">"Increasing engine size related to decreasing fuel economy." %&gt;%
+ stringr::str_wrap(width = 40) %&gt;%
+ writeLines()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>Increasing engine size related to
+decreasing fuel economy.
+</code></pre>
+<h3 id="hjust-和-vjust-控制标签对齐方式"><a href="#hjust-和-vjust-控制标签对齐方式" class="headerlink" title="hjust 和 vjust 控制标签对齐方式"></a><code>hjust</code> 和 <code>vjust</code> 控制标签对齐方式</h3><ul>
+<li>hjust: horizonal justification. 水平调整. 可以设置成 [0,1] 的值，或者 ‘left’, ‘right’, ‘center’  </li>
+<li>vjust: vertical justification. 垂直调整. 可以设置成 [0,1] 的值，或者 ‘top’, ‘bottom’, ‘center’  </li>
+</ul>
+<h3 id="其他添加注释的函数"><a href="#其他添加注释的函数" class="headerlink" title="其他添加注释的函数"></a>其他添加注释的函数</h3><ul>
+<li><code>geom_hline()</code> 和 <code>geom_vline()</code> 函数添加参考线。经常使用加粗(size=2)和白色(color=’white’) 的直线作为参考线，绘制在基本数据层的最下面。这样的参考线既清晰可见，又不至于喧宾夺主</li>
+<li><code>geom_rect()</code> 绘制一个举行，矩形的边界由图形属性 xmin、xmax、ymin 和 ymax 确定</li>
+<li><code>geom_segment()</code> 函数及 <code>arrow</code> 参数绘制箭头，指向需要关注的数据点。使用图形属性 x 和 y 来定义开始位置，使用 xend 和 yend 来定义结束位置</li>
+</ul>
+<h2 id="标度"><a href="#标度" class="headerlink" title="标度"></a>标度</h2><h3 id="图例布局"><a href="#图例布局" class="headerlink" title="图例布局"></a>图例布局</h3><p>如果要控制图例的整体位置，需要使用 <code>theme()</code> 函数进行设置。后面会有详细内容。简而言之，主题的作用就是控制图形中与数据无关的部分。主题设置中 <code>legend.psition</code> 可以控制图例的位置。<br><code>theme(legend.position = 'left')</code>. left, right, top, bottom. <strong>none</strong> 来取消整个图例的显示。  </p>
+<p>想要控制单个图例的显示，可以配合 <code>guide_legend()</code> 或 <code>guide_colorbar()</code> 函数来使用 <code>guides()</code> 函数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(mpg, aes(displ, hwy)) + 
+ geom_point(aes(color = class)) + 
+ geom_smooth(se = FALSE) + 
+ theme(legend.position = 'bottom') + 
+ guides(
+     color = guide_legend(nrow = 1, override.aes = list(size = 4))
+ )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>`geom_smooth()` using method = 'loess' and formula 'y ~ x'
+</code></pre>
+<img src="output_31_1.png" width="500" align="center">
+<!-- ![png](output_31_1.png) -->
+
+
+<h3 id="标度替换（颜色）"><a href="#标度替换（颜色）" class="headerlink" title="标度替换（颜色）"></a>标度替换（颜色）</h3><p>如果数据值和颜色间的映射，可以使用 <code>scale_color_manual()</code> 函数。</p>
+<p>对于连续的颜色标度，可以使用内置函数 <code>scale_color_gradient()</code> 或 <code>scale_fill_gradient()</code> 来表示。如果想要表示发散性的颜色标度，可以使用 <code>scale_color_gradient2()</code>，它可以使用正数和负数来表示不同的颜色。 </p>
+<p>另一个可以选用的函数是由 viridis 包提供的 <code>scale_color_viridis()</code>，它是对 ColorBrewer 分类标度的一种连续模拟。</p>
+<p>💡 所有的颜色标度都可以分为两类: <code>scale_color_x()</code> 对应于 color 图形属性， <code>scale_fill_x()</code> 对应于 fill 图形属性。</p>
+<h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h2><p>控制图形范围的方法有三种：</p>
+<ul>
+<li>调整绘图所用数据</li>
+<li>设置标度范围</li>
+<li>在 <code>coord_cartesian()</code> 中设置 xlim 和 ylim 参数值</li>
+</ul>
+<p>如果想要放大图形的一片区域，最好使用 <code>coord_cartesian()</code> 函数。</p>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p><code>theme()</code> 定制图形中的非数据元素</p>
+<p>ggplot2 默认可以使用 8 种主题</p>
+<ul>
+<li>theme_bw()</li>
+<li>theme_light()</li>
+<li>theme_classic()</li>
+<li>theme_linedraw()</li>
+<li>theme_dark()</li>
+<li>theme_minimal()</li>
+<li>theme_gray()</li>
+<li>theme_void()</li>
+</ul>
+<p>ggthemes 拓展包中，有更多主题</p>
+<h2 id="图形大小"><a href="#图形大小" class="headerlink" title="图形大小"></a>图形大小</h2><p>在 R markdown 中，关于图形的最大问题是如何确定其大小和形状。</p>
+<p>控制图形大小的选项主要有 5 个：</p>
+<ul>
+<li>fig.width. 默认是6（6英寸）</li>
+<li>fig.height</li>
+<li>fig.asp（宽高比）. 默认是0.618（黄金分割比）</li>
+<li>out.width</li>
+<li>out.height</li>
+</ul>
+<p>之所以说图形大小是个难题，是因为图形大小有两种（R 生成的图形的大小，以及插入到输出文档中的图形的大小）</p>
+<p>如果想在一行中放置多个图形，可以将 out.width 设置为 50% 以放置 2 个图形</p>
 <h1 id="R-markdown-输出类型"><a href="#R-markdown-输出类型" class="headerlink" title="R markdown 输出类型"></a>R markdown 输出类型</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>设置 R markdown 文档的输出类型的方式有两种。</p>
 <ol>
 <li>修改 YAML 文件头可以进行永久性设置。<pre class="line-numbers language-none"><code class="language-none">output: html_document<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
