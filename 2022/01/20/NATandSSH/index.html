@@ -4,11 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="广泛的染色质-RNA结合蛋白互作使得基于RNA的转录调控成为可能, Shaw">
-    <meta name="description" content="Pervasive Chromatin-RNA Binding Protein Interactions Enable RNA-Based Regulation of Transcription  
-原文链接：  
-
-online: Sci">
+    <meta name="keywords" content="内网穿透与端口转发, Shaw">
+    <meta name="description" content="简要的端口转发使用指南">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +17,7 @@ online: Sci">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>广泛的染色质-RNA结合蛋白互作使得基于RNA的转录调控成为可能 | Shaw</title>
+    <title>内网穿透与端口转发 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -252,12 +249,12 @@ online: Sci">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/27.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">广泛的染色质-RNA结合蛋白互作使得基于RNA的转录调控成为可能</h1>
+                    <h1 class="description center-align post-title">内网穿透与端口转发</h1>
                 </div>
             </div>
         </div>
@@ -373,31 +370,18 @@ online: Sci">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/RBP/">
-                                <span class="chip bg-color">RBP</span>
+                            <a href="/tags/NAT/">
+                                <span class="chip bg-color">NAT</span>
                             </a>
                         
-                            <a href="/tags/ChIP-seq/">
-                                <span class="chip bg-color">ChIP-seq</span>
-                            </a>
-                        
-                            <a href="/tags/transcription/">
-                                <span class="chip bg-color">transcription</span>
+                            <a href="/tags/SSH/">
+                                <span class="chip bg-color">SSH</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/paper/" class="post-category">
-                                paper
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -406,14 +390,14 @@ online: Sci">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-10
+                    2022-01-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-17
+                    2022-01-20
                 </div>
                 
 
@@ -435,59 +419,50 @@ online: Sci">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><font size="5">Pervasive Chromatin-RNA Binding Protein Interactions Enable RNA-Based Regulation of Transcription</font>  </p>
-<p>原文链接：  </p>
+                <p>作为生信人，远程工作是必要的，所以最近简单了解了一下两项重要的远程技术。想要了解详细原理，请翻阅参考资料，这里仅记录常用命令。  </p>
+<h1 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h1><p>主机或服务器处于 局域网/内网 当中，是不能直接通过 公网/外网 进行访问的。所以为了实现远程访问，就要将内网服务器地址端口映射到外网，实现内网穿透，允许外网访问。  </p>
+<p>主要资料:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0092867419306294">online: ScienceDirect</a></li>
-<li><a href="paper.pdf">local pdf</a></li>
+<li><a target="_blank" rel="noopener" href="https://hsk.oray.com/news/11533.html">内网端口映射怎么设置？内网穿透工具有哪些？</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1873612">常见内网穿透工具使用总结</a></li>
 </ul>
-<h1 id="挑选RBP做大规模的-ChIP-seq"><a href="#挑选RBP做大规模的-ChIP-seq" class="headerlink" title="挑选RBP做大规模的 ChIP-seq"></a>挑选RBP做大规模的 ChIP-seq</h1><p>在 HepG2 和 K562 细胞中做 RBP 的 ChIP-seq。有两种细胞才能谈common 和 cell-type dependent。<br>RBP挑选原则：</p>
+<p>师兄已经做好了实验室服务器的内网穿透，我就坐享其成了，先把资料放在这里，以后有需要再来细说。</p>
+<h1 id="ssh-端口转发"><a href="#ssh-端口转发" class="headerlink" title="ssh 端口转发"></a>ssh 端口转发</h1><p>ssh 平时主要被我用来登录服务器，其实还有很多用途，其中一个就是<strong>端口转发</strong>，搭建两台服务器之间通信加密跳板。<br>百度百科：<br>端口转发（Port forwarding）是安全壳(SSH) 为网络安全通信使用的一种方法。SSH可以利用端口转发技术来传输其他TCP/IP协议的报文，当使用这种方式时，SSH就为其他服务在客户端和服务器端建立了一条安全的传输管道。端口转发利用本客户机端口映射到服务器端口来工作。  </p>
+<p>主要资料：</p>
 <ul>
-<li>部分或完全定位在核内</li>
-<li>抗体要特异性和有效性足够强</li>
-<li>RBP-binding domain 和 功能类型 要有代表性和多样性</li>
-<li><strong>以前有报道RBP是会影响转录的</strong>（转录复合物的组分或者有研究表明该RBP确实对转录有影响）</li>
-<li><strong>在两种细胞中都有表达</strong></li>
+<li><a target="_blank" rel="noopener" href="https://wangdoc.com/ssh/port-forwarding.html#%E4%B8%A4%E7%BA%A7%E8%B7%B3%E6%9D%BF">SSH端口转发</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94624842">利用SSH隧道构建多级Tunnel</a></li>
 </ul>
-<p>除了 RBP 的 ChIP-seq，还需要其他层面的支持，包括：</p>
-<ul>
-<li>HepG2 和 K562 的 RNA-seq，用于表达量定量</li>
-<li>pol II 的 ChIP-seq 数据，用于关联RBP与转录<br>POLR2G(an RNAPII subunit with the documented ability to bind RNA)<br>POLR2A(the largest subunit of RNAPII)<br>二者的 pattern（figS1A） 高度一致，表达了ChIP-seq结果的高可信度。</li>
-</ul>
-<img src="figS1A.png" align="center" width="300/">
+<p>本地转发：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -C -f -N -L listen_port:DST_Host:DST_port user@Tunnel_Host -p Tunnel_Host_sshport<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>参数说明：</p>
+<pre class="line-numbers language-none"><code class="language-none"># -N 不打开远程shell，处于等待状态，只是搭好了隧道，不ssh连接远端。用于转发端口（PS：无ssh登陆日志）
+# -f 后台执行
+# -C 数据压缩传输
 
-<h1 id="ChIP-seq-details"><a href="#ChIP-seq-details" class="headerlink" title="ChIP-seq details"></a>ChIP-seq details</h1><p>文章的发展，主要就是基于ChIP-seq的结果的，所以先把ChIP-seq的内容先简单描述一下。</p>
-<h2 id="ChIP-seq-library-构建方法"><a href="#ChIP-seq-library-构建方法" class="headerlink" title="ChIP-seq library 构建方法"></a>ChIP-seq library 构建方法</h2><p>因为 RBP 和染色质的结合没有 TF 那么强，所以，该文章对 ChIP-seq 的方法做了调整。</p>
-<h2 id="ChIP-seq-data处理"><a href="#ChIP-seq-data处理" class="headerlink" title="ChIP-seq data处理"></a>ChIP-seq data处理</h2><h3 id="identification-and-annotation-of-RBP-ChIP-seq-peaks-peak的鉴定和注释"><a href="#identification-and-annotation-of-RBP-ChIP-seq-peaks-peak的鉴定和注释" class="headerlink" title="identification and annotation of RBP ChIP-seq peaks (peak的鉴定和注释)"></a>identification and annotation of RBP ChIP-seq peaks (peak的鉴定和注释)</h3><p>RBP ChIP-seq 数据处理使用的是 ENCODE 数据库中统一的<a target="_blank" rel="noopener" href="https://www.encodeproject.org/chip-seq/transcription_factor/">转录因子 ChIP-seq 分析流程</a><br>挑选的可用的数据集，有如下标准：</p>
-<ul>
-<li>每个 replicate（每个RBP做了两个重复） 包含 10 million以上的 usable（or alignable but not PCR duplicates） reads</li>
-<li>replicate 要通过 <a target="_blank" rel="noopener" href="https://github.com/nboley/idr"><code>IDR</code></a>（IDR，irreproducible discovery rate, 的用法，有时间，我还记得的话，再整理一下） 的 cutoff（set as 0.02） 过滤</li>
-<li>找到的 peaks 数量要超过 200 个（太少的话，可能 ChIP 的效果不太好）</li>
-</ul>
-<p>其他层面的注释信息来自不同的数据库, 我本人并不关注这些，所以就把原文粘贴过来:<br>DNaseI HS data, histone modification profiles generated by ENCODE/Broad Institute, and combined chromatin state segmentation by ChromHMM and Segway are available on the UCSC genome browser.</p>
-<p>figure1C 的全基因组组蛋白修饰和 ChIP-seq peak 概览图看起来很高大上，有兴趣可以了解一下: Circos visualization of the date(<a target="_blank" rel="noopener" href="https://genome.cshlp.org/content/19/9/1639">Krzywinski et al., 2009</a>).<br><img src="fig1C.png" align="center" width="500/"><br>keypoint：<strong>sum</strong> of RBP ChIP-seq signals in each <strong>2Mb</strong> interval in the human genome，不过sum是否仅仅是简单的加和，我不是很确定。  </p>
-<h3 id="promoter-分类"><a href="#promoter-分类" class="headerlink" title="promoter 分类"></a>promoter 分类</h3><ul>
-<li><p>在表观修饰层面：<br>两种表观修饰marker：H3K4me3（与转录激活相关），H3K27me3（与转录抑制相关，谈论 H3K27ac激活转录）<br>根据这两种表观修饰的 ChIP-seq peaks 与 TSS 上下游 2kb 区域 是否有至少 500bp overlap 的情况，将 promoter 分为了四种类型：</p>
-<ul>
-<li>bivalent（两种 marker 都有）</li>
-<li>K4-only</li>
-<li>K27-only</li>
-<li>none</li>
-</ul>
-</li>
-<li><p>在CpG岛这个层面：<br>利用UCSC基因组浏览器中CpG岛的信息，根据 TSS 上下游 2kb 区域内有无 CpG岛，将 promoter 分为了 CpG promoter 和 non-CpG promoter</p>
-</li>
-<li><p>在基因功能层面：<br>根据基因组注释信息，按照 promoter 所属基因的 biotype，将 promoter 分成了三类：protein-coding genes（蛋白质编码基因），small RMA genes，all other non-coding RNA genes</p>
-</li>
-</ul>
-<h3 id="RBP-染色质互作的细胞类型保守性"><a href="#RBP-染色质互作的细胞类型保守性" class="headerlink" title="RBP-染色质互作的细胞类型保守性"></a>RBP-染色质互作的细胞类型保守性</h3><p>为了说明保守性，也就是要使用在被研究的两种细胞类型中“处于同样地位”的基因中的情况。<br>这里对于“处于同样地位”的定义是：根据两种细胞的 RNA-seq 数据对基因表达量定量，会分别得到每个基因在这两种细胞中的表达量排序，同一个基因在两种细胞中排序百分比相差不超过5%，即认为是“处于同样地位”：<br><font align="center">abs( Order(HepG2) - Order(K562) ) &lt;=0.05 </font>  </p>
-<p>这些“处于同样地位”的基因，根据表达量，被进一步划分：</p>
-<ul>
-<li>non-expressed genes（RPKM = 0 in both cell lines）</li>
-<li>expressed genes(按照数量，被三等分成，低表达、中表达和高表达基因)</li>
-</ul>
-<h1 id="ChIP-seq-peaks-结果解读"><a href="#ChIP-seq-peaks-结果解读" class="headerlink" title="ChIP-seq peaks 结果解读"></a>ChIP-seq peaks 结果解读</h1><p>找到ChIP-seq peaks后，就是将其与其他信息整合起来，进行解读了。</p>
+# listen_port: 本机监听端口
+# DST_host: 目标主机地址，在局域网内可为"localhost"
+# DST_port: 目标主机端口
+# Tunnel_host: 隧道地址
+# Tunnel_host_sshport: 隧道端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果是在局域网内：转发命令可为：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> -Nf -C -L listen_port:localhost:DST_port user@DST_Host<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>两级跳板，我就把<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/94624842">利用SSH隧道构建多级Tunnel</a>中的例子搬过来了：<br>实验环境：</p>
+<pre class="line-numbers language-none"><code class="language-none"># Client A：Windows  Localhost
+# Tunnel B：Linux    ssh 192.168.1.39:22
+# Tunnel C：Linux    ssh 192.168.1.42:55<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="https://pic4.zhimg.com/80/v2-17e1b270d2793dea919a4fc51bcfe08f_720w.jpg" width="600" alt="实验环境">
+
+<p>第一层转发：A(localhost:12345)-&gt;B(192.168.1.39:22)-&gt;C(192.168.1.42:55)：  </p>
+<pre class="line-numbers language-none"><code class="language-none">ssh -Nf -C -L 12345:192.168.1.42:55 rootB@192.168.1.39 -p 22<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这一步是做了本地12345端口到远程C的55端口映射，A与B之间的通信是SSH加密通信。</p>
+<p>第二层转发：ssh(localhost:9833) -&gt; tunnel2(localhost:12345)  </p>
+<pre class="line-numbers language-none"><code class="language-none">ssh -Nf -C -D localhost:9833 rootC@localhost -p 12345<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>目前还用不到。</p>
 
                 
             </div>
@@ -514,7 +489,7 @@ online: Sci">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/01/10/Pervasive-Chromatin-RNA-Binding-Protein-Interactions-Enable-RNA-Based-Regulation-of-Transcription/">https://liangshaw.github.io/2022/01/10/Pervasive-Chromatin-RNA-Binding-Protein-Interactions-Enable-RNA-Based-Regulation-of-Transcription/</a>
+                    <a href="https://liangshaw.github.io/2022/01/20/NATandSSH/">https://liangshaw.github.io/2022/01/20/NATandSSH/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,16 +527,12 @@ online: Sci">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/RBP/">
-                                    <span class="chip bg-color">RBP</span>
+                                <a href="/tags/NAT/">
+                                    <span class="chip bg-color">NAT</span>
                                 </a>
                             
-                                <a href="/tags/ChIP-seq/">
-                                    <span class="chip bg-color">ChIP-seq</span>
-                                </a>
-                            
-                                <a href="/tags/transcription/">
-                                    <span class="chip bg-color">transcription</span>
+                                <a href="/tags/SSH/">
+                                    <span class="chip bg-color">SSH</span>
                                 </a>
                             
                         </div>
@@ -875,58 +846,48 @@ online: Sci">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/11/RNA-Splicing-Factors-SRRM3-and-SRRM4-Distinguish-Molecular-Phenotypes-of-Castration-Resistant-Neuroendocrine-Prostate-Cancer/">
+                <a href="/2022/01/20/NATandSSH/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="RNA 剪接因子 SRRM3 和 SRRM4 能够作为去势抵抗性的神经内分泌性前列腺癌的分子表征">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="内网穿透与端口转发">
                         
-                        <span class="card-title">RNA 剪接因子 SRRM3 和 SRRM4 能够作为去势抵抗性的神经内分泌性前列腺癌的分子表征</span>
+                        <span class="card-title">内网穿透与端口转发</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            简要的端口转发使用指南
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-20
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/paper/" class="post-category">
-                                    paper
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/splicing-factor/">
-                        <span class="chip bg-color">splicing factor</span>
+                    <a href="/tags/NAT/">
+                        <span class="chip bg-color">NAT</span>
                     </a>
                     
-                    <a href="/tags/prostate-cancer/">
-                        <span class="chip bg-color">prostate cancer</span>
-                    </a>
-                    
-                    <a href="/tags/NEPC/">
-                        <span class="chip bg-color">NEPC</span>
-                    </a>
-                    
-                    <a href="/tags/SRRM3/">
-                        <span class="chip bg-color">SRRM3</span>
+                    <a href="/tags/SSH/">
+                        <span class="chip bg-color">SSH</span>
                     </a>
                     
                 </div>
@@ -940,33 +901,29 @@ online: Sci">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/10/RDataSci/">
+                <a href="/2022/01/18/nginx-note/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="R数据科学系列">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="nginx 学习笔记">
                         
-                        <span class="card-title">R数据科学系列</span>
+                        <span class="card-title">nginx 学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            能够在 R 中得心应手得处理数据、改造数据，会大大提高工作效率。
+                            记录自己搭建 nginx 及相关配置
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-18
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
@@ -974,12 +931,8 @@ online: Sci">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
+                    <a href="/tags/nginx/">
+                        <span class="chip bg-color">nginx</span>
                     </a>
                     
                 </div>
