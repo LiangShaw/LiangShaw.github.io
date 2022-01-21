@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="nginx 学习笔记, Shaw">
-    <meta name="description" content="记录自己搭建 nginx 及相关配置">
+    <meta name="keywords" content="scrapy 基础爬虫指南, Shaw">
+    <meta name="description" content="回顾一下自己利用 scrapy 爬取网页内容的经历">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>nginx 学习笔记 | Shaw</title>
+    <title>scrapy 基础爬虫指南 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -236,7 +236,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'nginx';
+        let pwd = 'scrapy';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">nginx 学习笔记</h1>
+                    <h1 class="description center-align post-title">scrapy 基础爬虫指南</h1>
                 </div>
             </div>
         </div>
@@ -370,8 +370,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/nginx/">
-                                <span class="chip bg-color">nginx</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
+                            </a>
+                        
+                            <a href="/tags/scrapy/">
+                                <span class="chip bg-color">scrapy</span>
                             </a>
                         
                     </div>
@@ -386,14 +390,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-18
+                    2022-01-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-19
+                    2022-01-21
                 </div>
                 
 
@@ -415,7 +419,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>part1 selector 解析 html 页面：xpath，css（Google 浏览器，xpath helper 插件）</p>
+<p>part2 爬取网页  </p>
+<p>scrapy 创建项目，修改 items，建立自己的 spider（scrapy 中的 .py 脚本）<br>在终端中，不断尝试解析式的正确与否并修改，直到能够正确获取信息，得到解析式。</p>
+
                 
             </div>
             <hr/>
@@ -441,7 +448,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/01/18/nginx-note/">https://liangshaw.github.io/2022/01/18/nginx-note/</a>
+                    <a href="https://liangshaw.github.io/2022/01/21/scrapy-spider/">https://liangshaw.github.io/2022/01/21/scrapy-spider/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -479,8 +486,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/nginx/">
-                                    <span class="chip bg-color">nginx</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
+                                </a>
+                            
+                                <a href="/tags/scrapy/">
+                                    <span class="chip bg-color">scrapy</span>
                                 </a>
                             
                         </div>
@@ -794,9 +805,60 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/01/21/scrapy-spider/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="scrapy 基础爬虫指南">
+                        
+                        <span class="card-title">scrapy 基础爬虫指南</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            回顾一下自己利用 scrapy 爬取网页内容的经历
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/scrapy/">
+                        <span class="chip bg-color">scrapy</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/01/20/NATandSSH/">
                     <div class="card-image">
@@ -814,9 +876,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -834,63 +896,6 @@
                     
                     <a href="/tags/SSH/">
                         <span class="chip bg-color">SSH</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/01/17/RdataScience-part2/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="R数据科学，第一部分：数据处理">
-                        
-                        <span class="card-title">R数据科学，第一部分：数据处理</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
-                    </a>
-                    
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
                     </a>
                     
                 </div>

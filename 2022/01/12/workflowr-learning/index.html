@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-16
+                    2022-01-21
                 </div>
                 
 
@@ -567,21 +567,31 @@ install.packages<span class="token punctuation">(</span><span class="token strin
 <li>如果你要上传到GitHub上，再<code>push</code>到GitHub</li>
 </ol>
 <h1 id="further-reading，进一步了解"><a href="#further-reading，进一步了解" class="headerlink" title="further reading，进一步了解"></a>further reading，进一步了解</h1><p>关于如何使用 R markdown 文件组织分析流程，可以阅读 R data science 中的 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown workflow</a>部分，也就是本站的 <a href="/2022/01/13/RdataScience-part5/" title="R数据科学，第五部分：沟通">R数据科学，第五部分：沟通</a>。  </p>
-<h1 id="有用链接"><a href="#有用链接" class="headerlink" title="有用链接"></a>有用链接</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30586226">关于rstudio的一些快捷键</a></p>
+<h1 id="有用链接"><a href="#有用链接" class="headerlink" title="有用链接"></a>有用链接</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30586226">关于rstudio的一些快捷键</a><br><a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/html-document.html">html document</a> 设置html<br><a target="_blank" rel="noopener" href="https://bootswatch.com/3/">free themes of bootstrap</a> 爱折腾主题的来看这里  </p>
 <h1 id="个人经验"><a href="#个人经验" class="headerlink" title="*个人经验"></a>*个人经验</h1><p>在写 .Rmd 时注意：</p>
 <ol>
-<li>注意设置 setup 中的 knitr options:<pre class="line-numbers language-r" data-language="r"><code class="language-r">```<span class="token punctuation">{</span>r setup<span class="token punctuation">,</span> include<span class="token operator">=</span><span class="token boolean">FALSE</span><span class="token punctuation">}</span>
+<li><p>注意设置 setup 中的 knitr options:</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">```<span class="token punctuation">{</span>r setup<span class="token punctuation">,</span> include<span class="token operator">=</span><span class="token boolean">FALSE</span><span class="token punctuation">}</span>
   knitr<span class="token operator">::</span>opts_chunk<span class="token operator">$</span>set<span class="token punctuation">(</span>
     echo <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> message <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> warning <span class="token operator">=</span> <span class="token boolean">FALSE</span>
     <span class="token punctuation">)</span>
 ```         '<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>之前使用 jupyter 有个习惯：每段数据处理的代码最后，都会 <code>head(data)</code> 看一下数据结构。但在 workflowr 中生成网页时，尤其是设置代码不可见，突然出现的数据会让别人看得一头雾水。所以，在 workflowr 中避免这样的操作</li>
-<li>R markdown 中想要插入 bash ，或其他类型的代码（如 python），并且不想运行它，仅仅是做个记录，可以这样写:<pre class="line-numbers language-r" data-language="r"><code class="language-r">```bash
+<li><p>之前使用 jupyter 有个习惯：每段数据处理的代码最后，都会 <code>head(data)</code> 看一下数据结构。但在 workflowr 中生成网页时，尤其是设置代码不可见，突然出现的数据会让别人看得一头雾水。所以，在 workflowr 中避免这样的操作</p>
+</li>
+<li><p>R markdown 中想要插入 bash ，或其他类型的代码（如 python），并且不想运行它，仅仅是做个记录，可以这样写:</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">```bash
 ls .<span class="token operator">/</span>
 ```         '<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-如果写成 <code>{bash}</code>， 在创建网页时也会运行。在 Windows 下面这样往往会产生错误</li>
-<li>代码标记符 ``` 顶格写和不顶格写 形成的网页效果是不一样的。建议顶格写，会形成一个代码框出来，类似这种：<pre class="line-numbers language-none"><code class="language-none">顶格写 ```<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-而不顶格效果类似 这种：<code>不顶格长这样</code>。</li>
+<p>这实际上就是 markdown 的书写方式；<br>如果写成 <code>{bash}</code>， 在创建网页时也会运行。在 Windows 下面这样往往会产生错误</p>
+</li>
+<li><p>代码标记符 ``` 顶格写和不顶格写 形成的网页效果是不一样的。建议顶格写，会形成一个代码框出来，类似这种：</p>
+<pre class="line-numbers language-none"><code class="language-none">顶格写 ```是这种效果<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>而不顶格效果类似 这种：<code>不顶格长这样</code>。</p>
+</li>
+<li><p>在 <code>analysis</code>中写 .Rmd 时，运行 R 代码块，位置是在 <code>analysis/</code> 下，而在生成网页的时候，工作路径是在 Project 下面，也就是在 <code>analysis/</code> 上一层（最顶级的目录），这样产生的一个问题就是：在写 .Rmd 的时候，导入，比如 <code>output/input.csv</code> 中的文件，要写为 <code>../output/input.csv</code>，运行代码块正常，而当生成网页的时候，这样写会报错，正确的路径为 <code>output/input.csv</code>。所以在创建网页前，要将 <code>../</code> 删除；<br>而在 .Rmd 中插入图片的时候，比如 <code>docs/figure/outer-image/image1.png</code>，要写为 <code>../docs/figure/outer-image/image1.png</code> 。确实有些困扰。</p>
+</li>
+<li><p>建议在写 <code>.Rmd</code> 的时候，每个 part 分成：目的，实现代码，结果；类似这种三段式结构，将目的和最终结果呈现给决策者/老板。</p>
+</li>
 </ol>
 
                 
