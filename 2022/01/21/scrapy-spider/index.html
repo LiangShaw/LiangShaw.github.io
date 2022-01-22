@@ -236,7 +236,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'scrapy';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -419,33 +419,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>其实自己的爬虫经历比较少，到目前为止也就3次左右的样子。<br>不过这三次却也获得了不少入门经验，值得总结一下，如果以后遇到更有挑战性的项目，再来丰富。（以下爬虫内容均基于 python scrapy 库）<br>参考资料:</p>
+                <p>其实自己的爬虫经历比较少，到目前为止也就3次左右的样子。<br>不过这三次却也获得了不少入门经验，值得总结一下，如果以后遇到更有挑战性的项目，再来丰富。<br>（以下爬虫内容均基于 python scrapy 库）  </p>
+<p>参考资料:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/intro/tutorial.html">Scrapy Tutorial 官方指南</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/html/html-tutorial.html">RUNOOB HTML教程</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.runoob.com/xpath/xpath-tutorial.html">RUNOOB xpath教程</a></li>
 </ul>
 <p>爬虫，个人简单理解，就是反向解析网页的操作。在创建网页的时候，会用到对应的语法，包括 HTML、CSS、JS（JavaScript）。而在爬取网页信息的时候，就是解析这些语法，获得目标信息。所以，爬虫过程，相当一部分时间都花在了确定<code>解析式</code>。  </p>
-<p>在平时需要不高的时候，你甚至可以通过 <code>wget</code> 或 <code>curl</code> 等命令下载网页，使用 <code>grep</code> 等方法利用正则表达式获取想要的信息。<br>当需要更高级、复杂的信息的时候，专门的爬虫工具就非常方便了。  </p>
-<h1 id="part1-使用selector解析-HTML-文本"><a href="#part1-使用selector解析-HTML-文本" class="headerlink" title="part1 使用selector解析 HTML 文本"></a>part1 使用<code>selector</code>解析 HTML 文本</h1><p><code>selector</code> 是 <code>scrapy</code> 内含的提取 HTML 页面信息的函数功能，可通过 CSS 或 xpath 两种方式的表达式对 HTML 进行解析。<br>（练习的时候不妨下载一个准备爬取的网页到本地）。<br>这里我就以生信人经常访问的 NCBI 的 GEO 数据库，查询一个测序项目为例，获取其中的 Title、Organism、Source 等信息。<br><img src="GEO_example.png" width="600" alt="GEO example截图"></p>
-<h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>selector <span class="token keyword">import</span> Selector
+<p>在平时需求不高的时候，你甚至可以通过 <code>wget</code> 或 <code>curl</code> 等命令下载网页，使用 <code>grep</code> 等方法利用正则表达式获取想要的信息。<br>当需要更高级、复杂的信息的时候，专门的爬虫工具就非常方便了。  </p>
+<h1 id="part1-使用-selector-解析-HTML-文本"><a href="#part1-使用-selector-解析-HTML-文本" class="headerlink" title="part1 使用 selector 解析 HTML 文本"></a>part1 使用 selector 解析 HTML 文本</h1><p><code>selector</code> 是 <code>scrapy</code> 内含的提取 HTML 页面信息的函数功能，可通过 CSS 或 xpath 两种方式的表达式对 HTML 进行解析。<br>（练习的时候不妨下载一个准备爬取的网页到本地）。<br>这里我就以生信人经常访问的 NCBI 的 GEO 数据库，查询一个测序项目为例，获取其中的 Title、Organism、Source 等信息。<br><img src="GEO_example.png" width="800" alt="GEO example"></p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>selector <span class="token keyword">import</span> Selector
 
 <span class="token comment"># 把截图中的页面下载到本地</span>
 htmlfile <span class="token operator">=</span> <span class="token string">'GPL10558.html'</span> 
 htmlfo <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>htmlfile<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
 htmlhandle <span class="token operator">=</span> htmlfo<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
 pagedata <span class="token operator">=</span> Selector<span class="token punctuation">(</span>text <span class="token operator">=</span> htmlhandle<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="寻找解析式。"><a href="#寻找解析式。" class="headerlink" title="寻找解析式。"></a>寻找解析式。</h2><p>这也是最重要的部分。<br>前面也谈到过，有 CSS 和 xpath 两种，你可以根据自身情况自行选择。小主我最开始接触 xpath，所以习惯用 xpath 了。scrapy官方文档关于 <a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/intro/tutorial.html#using-spider-arguments">xpath</a> 的指南。  </p>
+<h2 id="寻找解析式"><a href="#寻找解析式" class="headerlink" title="寻找解析式"></a>寻找解析式</h2><p>这也是最重要的部分。<br>前面也谈到过，有 CSS 和 xpath 两种，你可以根据自身情况自行选择。小主我最开始接触 xpath，所以习惯用 xpath 了。scrapy官方文档关于 <a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/intro/tutorial.html#using-spider-arguments">xpath</a> 的指南。  </p>
 <p>这里我介绍两种快速获取解析式的方法：</p>
-<h3 id="网页中按-F12，进入开发者模式审查元素。"><a href="#网页中按-F12，进入开发者模式审查元素。" class="headerlink" title="网页中按 F12，进入开发者模式审查元素。"></a>网页中按 F12，进入开发者模式审查元素。</h3><p>最开始元素都是折叠起来的<br><img src="F12界面.png" width="700" alt="F12界面"></p>
+<h3 id="网页中按-F12，进入开发者模式"><a href="#网页中按-F12，进入开发者模式" class="headerlink" title="网页中按 F12，进入开发者模式"></a>网页中按 F12，进入开发者模式</h3><p>最开始元素都是折叠起来的<br><img src="F12界面.png" width="900" alt="F12界面"></p>
 <ol>
 <li>点击打开折叠。鼠标放在右侧开发栏，左侧对应位置会有蓝色框标记，如上图，可以根据这一点确定目标元素位置</li>
-<li>找到目标元素后，右键→ 复制 → 复制xpath;这里以 title 元素为例。建议<font color="red">复制完整xpath</font><img src="copy-xpath.png" width="700" alt="copy xpath界面"></li>
+<li>找到目标元素后，右键→ 复制 → 复制xpath;这里以 title 元素为例。建议<font color="red">复制完整xpath</font><img src="copy-xpath.png" width="900" alt="copy xpath界面"></li>
 </ol>
 <h3 id="Google-浏览器使用-xpath-插件"><a href="#Google-浏览器使用-xpath-插件" class="headerlink" title="Google 浏览器使用 xpath 插件"></a>Google 浏览器使用 xpath 插件</h3><p>自行查找安装和详细教程。  </p>
 <ol>
 <li><code>Ctrl+Shift+x</code> 快速调出 xpath 界面</li>
-<li>按住 shift，将鼠标放在 目标元素上面，即可获取。<img src="xpath界面.png" width="700" alt="xpath界面"></li>
+<li>按住 shift，将鼠标放在 目标元素上面，即可获取。<img src="xpath界面.png" width="1000" alt="xpath界面"></li>
 </ol>
 <h2 id="根据解析式获取目标元素"><a href="#根据解析式获取目标元素" class="headerlink" title="根据解析式获取目标元素"></a>根据解析式获取目标元素</h2><p>根据第一种方法获得了解析式：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">title_xpath <span class="token operator">=</span> <span class="token string">'/html/body/table/tbody/tr/td/table[6]/tbody/tr[3]/td[2]/table/tbody/tr/td/table/tbody/tr/td/table[2]/tbody/tr/td/table[1]/tbody/tr[3]/td[2]'</span>
@@ -458,7 +459,7 @@ pagedata<span class="token punctuation">.</span>xpath<span class="token punctuat
 <span class="token comment"># output: [].这里就是 tbody 的问题</span>
 pagedata<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'/html/body/table/tr/td/table[6]/tr[3]/td[2]/table/tr/td/table/tr/td/table[2]/tr/td/table[1]/tr[3]/td[2]'</span><span class="token punctuation">)</span>
 <span class="token comment"># output:[&lt;Selector xpath='/html/body/table/tr/td/table[6]/tr[3]/td[2]/table/tr/td/table/tr/td/table[2]/tr/td/table[1]/tr[3]/td[2]' data='&lt;td style="text-align: justify"&gt;Illum...'&gt;]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>到这已经获得了目标元素，获取元素内部的信息，需要加上一些提示：</p>
+<p>到这已经获得了目标元素。为了获取元素内部的信息，需要加上一些提示：</p>
 <ul>
 <li>.get() 获取第一个匹配内容，字符串格式</li>
 <li>.getall() 获取所有匹配内容，形成列表</li>
@@ -518,8 +519,8 @@ pagedata<span class="token punctuation">.</span>xpath<span class="token punctuat
 <h2 id="运行-spider"><a href="#运行-spider" class="headerlink" title="运行 spider"></a>运行 spider</h2><p>回到项目顶级目录下，终端运行：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scrapy crawl quotes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="spider-详解"><a href="#spider-详解" class="headerlink" title="spider 详解"></a>spider 详解</h2><p>你不妨根据官网示例走一遍，以获得成就感，给自己做下去的信心~  </p>
-<p>现在我们再来好好看看 spider 做了什么（scraping cycle）：<br><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/spiders.html">scrapy spider</a></p>
+<p>你不妨根据官网示例走一遍，以获得成就感，给自己做下去的信心~  </p>
+<h2 id="spider-详解"><a href="#spider-详解" class="headerlink" title="spider 详解"></a>spider 详解</h2><p>现在我们再来好好看看 spider 做了什么（scraping cycle）：<br><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/spiders.html">scrapy spider</a></p>
 <ol>
 <li>首先初始化请求，抓取第一个 url，然后指定一个回调函数（cellback function）从请求中下载响应response（其实就是 part1 中的pagedata，实现了在线网页内容的读取）。根据官网示例，第一个请求就是通过 <code>start_requests()</code> 方法获得的，parse 作为 <code>Request</code> 的回调函数。</li>
 <li>在回调函数中，使用 Selector（或者其他的库如，BeautifulSoup, lxml等）解析响应，获得目标信息 item object。</li>
@@ -594,7 +595,7 @@ pagedata<span class="token punctuation">.</span>xpath<span class="token punctuat
 <span class="token comment"># [s]   shelp()           Shell help (print this help)</span>
 <span class="token comment"># [s]   view(response)    View response in a browser</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>就会进入到 ipython 环境中，利用 part1 中的方法，对 response 进行提取文本的测试，直到找到正确的解析式就好了。</p>
+<p>就会进入到 <code>ipython</code> 环境中，利用 part1 中的方法，对 response 进行提取文本的测试，直到找到正确的解析式就好了。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>your_xpath<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
