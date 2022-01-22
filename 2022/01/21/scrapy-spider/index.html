@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-21
+                    2022-01-22
                 </div>
                 
 
@@ -419,10 +419,183 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>part1 selector 解析 html 页面：xpath，css（Google 浏览器，xpath helper 插件）</p>
-<p>part2 爬取网页  </p>
-<p>scrapy 创建项目，修改 items，建立自己的 spider（scrapy 中的 .py 脚本）<br>在终端中，不断尝试解析式的正确与否并修改，直到能够正确获取信息，得到解析式。</p>
+                <p>其实自己的爬虫经历比较少，到目前为止也就3次左右的样子。<br>不过这三次却也获得了不少入门经验，值得总结一下，如果以后遇到更有挑战性的项目，再来丰富。（以下爬虫内容均基于 python scrapy 库）<br>参考资料:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/intro/tutorial.html">Scrapy Tutorial 官方指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/html/html-tutorial.html">RUNOOB HTML教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/xpath/xpath-tutorial.html">RUNOOB xpath教程</a></li>
+</ul>
+<p>爬虫，个人简单理解，就是反向解析网页的操作。在创建网页的时候，会用到对应的语法，包括 HTML、CSS、JS（JavaScript）。而在爬取网页信息的时候，就是解析这些语法，获得目标信息。所以，爬虫过程，相当一部分时间都花在了确定<code>解析式</code>。  </p>
+<p>在平时需要不高的时候，你甚至可以通过 <code>wget</code> 或 <code>curl</code> 等命令下载网页，使用 <code>grep</code> 等方法利用正则表达式获取想要的信息。<br>当需要更高级、复杂的信息的时候，专门的爬虫工具就非常方便了。  </p>
+<h1 id="part1-使用selector解析-HTML-文本"><a href="#part1-使用selector解析-HTML-文本" class="headerlink" title="part1 使用selector解析 HTML 文本"></a>part1 使用<code>selector</code>解析 HTML 文本</h1><p><code>selector</code> 是 <code>scrapy</code> 内含的提取 HTML 页面信息的函数功能，可通过 CSS 或 xpath 两种方式的表达式对 HTML 进行解析。<br>（练习的时候不妨下载一个准备爬取的网页到本地）。<br>这里我就以生信人经常访问的 NCBI 的 GEO 数据库，查询一个测序项目为例，获取其中的 Title、Organism、Source 等信息。<br><img src="GEO_example.png" width="600" alt="GEO example截图"></p>
+<h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> scrapy<span class="token punctuation">.</span>selector <span class="token keyword">import</span> Selector
 
+<span class="token comment"># 把截图中的页面下载到本地</span>
+htmlfile <span class="token operator">=</span> <span class="token string">'GPL10558.html'</span> 
+htmlfo <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>htmlfile<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+htmlhandle <span class="token operator">=</span> htmlfo<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pagedata <span class="token operator">=</span> Selector<span class="token punctuation">(</span>text <span class="token operator">=</span> htmlhandle<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="寻找解析式。"><a href="#寻找解析式。" class="headerlink" title="寻找解析式。"></a>寻找解析式。</h2><p>这也是最重要的部分。<br>前面也谈到过，有 CSS 和 xpath 两种，你可以根据自身情况自行选择。小主我最开始接触 xpath，所以习惯用 xpath 了。scrapy官方文档关于 <a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/intro/tutorial.html#using-spider-arguments">xpath</a> 的指南。  </p>
+<p>这里我介绍两种快速获取解析式的方法：</p>
+<h3 id="网页中按-F12，进入开发者模式审查元素。"><a href="#网页中按-F12，进入开发者模式审查元素。" class="headerlink" title="网页中按 F12，进入开发者模式审查元素。"></a>网页中按 F12，进入开发者模式审查元素。</h3><p>最开始元素都是折叠起来的<br><img src="F12界面.png" width="700" alt="F12界面"></p>
+<ol>
+<li>点击打开折叠。鼠标放在右侧开发栏，左侧对应位置会有蓝色框标记，如上图，可以根据这一点确定目标元素位置</li>
+<li>找到目标元素后，右键→ 复制 → 复制xpath;这里以 title 元素为例。建议<font color="red">复制完整xpath</font><img src="copy-xpath.png" width="700" alt="copy xpath界面"></li>
+</ol>
+<h3 id="Google-浏览器使用-xpath-插件"><a href="#Google-浏览器使用-xpath-插件" class="headerlink" title="Google 浏览器使用 xpath 插件"></a>Google 浏览器使用 xpath 插件</h3><p>自行查找安装和详细教程。  </p>
+<ol>
+<li><code>Ctrl+Shift+x</code> 快速调出 xpath 界面</li>
+<li>按住 shift，将鼠标放在 目标元素上面，即可获取。<img src="xpath界面.png" width="700" alt="xpath界面"></li>
+</ol>
+<h2 id="根据解析式获取目标元素"><a href="#根据解析式获取目标元素" class="headerlink" title="根据解析式获取目标元素"></a>根据解析式获取目标元素</h2><p>根据第一种方法获得了解析式：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">title_xpath <span class="token operator">=</span> <span class="token string">'/html/body/table/tbody/tr/td/table[6]/tbody/tr[3]/td[2]/table/tbody/tr/td/table/tbody/tr/td/table[2]/tbody/tr/td/table[1]/tbody/tr[3]/td[2]'</span>
+pagedata<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>title_xpath<span class="token punctuation">)</span> <span class="token comment"># 如果你用 css 就是 pagedata.css(title_xpath) 了</span>
+<span class="token comment"># output: []</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>既然这么简单就获得了解析式，为什么这一步要花相当多的时间？<br>从上面的例子可以看到，其实根据直接 copy 过来的解析式，输出结果为空，也就是解析式不正确。这个问题的原因很多，有的是因为  tbody 的存在导致的问题，也有其他问题，具体问题，具体分析吧。<br>所以，就要自己手动尝试了：从最开始，一点一点增加信息，直至获得正确的解析式。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pagedata<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'/html/body/table'</span><span class="token punctuation">)</span>
+<span class="token comment"># output: [&lt;Selector xpath='/html/body/table' data='&lt;table width="740" border="0" cellspa...'&gt;]</span>
+pagedata<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'/html/body/table/tbody'</span><span class="token punctuation">)</span>
+<span class="token comment"># output: [].这里就是 tbody 的问题</span>
+pagedata<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'/html/body/table/tr/td/table[6]/tr[3]/td[2]/table/tr/td/table/tr/td/table[2]/tr/td/table[1]/tr[3]/td[2]'</span><span class="token punctuation">)</span>
+<span class="token comment"># output:[&lt;Selector xpath='/html/body/table/tr/td/table[6]/tr[3]/td[2]/table/tr/td/table/tr/td/table[2]/tr/td/table[1]/tr[3]/td[2]' data='&lt;td style="text-align: justify"&gt;Illum...'&gt;]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>到这已经获得了目标元素，获取元素内部的信息，需要加上一些提示：</p>
+<ul>
+<li>.get() 获取第一个匹配内容，字符串格式</li>
+<li>.getall() 获取所有匹配内容，形成列表</li>
+<li>.extract_first() 同 get()</li>
+<li>.extract() </li>
+<li>.extend()</li>
+<li>…</li>
+<li>CSS 还有其他的属性，详见<a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors">scrapy selector</a></li>
+</ul>
+<p>为了获得 title 对应的文本，就可以这样: </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">title_xpath_func <span class="token operator">=</span> title_xpath<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'tbody/'</span><span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+pagedata<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>title_xpath_func<span class="token operator">+</span><span class="token string">'/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># output: 'Illumina HumanHT-12 V4.0 expression beadchip'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>至此，我们就找到了完全正确的解析式。<br>用同样的方法，你可以处理其他目标信息，等所有目标信息的解析式都修正好之后，可以把它们放在一个字典中</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">xpath_dict <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'Title'</span><span class="token punctuation">:</span> title_xpath<span class="token punctuation">,</span>
+    <span class="token string">'Organism'</span><span class="token punctuation">:</span> organism_xpath<span class="token punctuation">,</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后将整个的解析过程，包装成一个函数，每个页面的输出结果形成一个字典，循环处理每个页面，最后合并到一起写入文件。</p>
+<h1 id="part2-scrapy-爬取网页"><a href="#part2-scrapy-爬取网页" class="headerlink" title="part2 scrapy 爬取网页"></a>part2 scrapy 爬取网页</h1><p>在 part1 的基础之下，就可以进一步，爬取在线页面了。<br>scrapy 主体就要来了：</p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>进入你想放置项目代码的文件夹，然后</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">scrapy startproject tutorial<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>项目目录：</p>
+<pre class="line-numbers language-none"><code class="language-none">tutorial/
+    scrapy.cfg            # deploy configuration file
+    tutorial/             # project's Python module, you'll import your code from here
+        __init__.py
+        items.py          # project items definition file
+        middlewares.py    # project middlewares file
+        pipelines.py      # project pipelines file
+        settings.py       # project settings file
+        spiders/          # a directory where you'll later put your spiders
+            __init__.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="添加爬虫-spider"><a href="#添加爬虫-spider" class="headerlink" title="添加爬虫 spider"></a>添加爬虫 spider</h2><p>在 <code>spiders</code> 子文件夹下创建爬虫文件, 例：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+<span class="token keyword">class</span> <span class="token class-name">QuotesSpider</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">"quotes"</span>
+
+    <span class="token keyword">def</span> <span class="token function">start_requests</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        urls <span class="token operator">=</span> <span class="token punctuation">[</span>
+            <span class="token string">'http://quotes.toscrape.com/page/1/'</span><span class="token punctuation">,</span>
+            <span class="token string">'http://quotes.toscrape.com/page/2/'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span>
+        <span class="token keyword">for</span> url <span class="token keyword">in</span> urls<span class="token punctuation">:</span>
+            <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>url<span class="token operator">=</span>url<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        page <span class="token operator">=</span> response<span class="token punctuation">.</span>url<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span>
+        filename <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f'quotes-</span><span class="token interpolation"><span class="token punctuation">{</span>page<span class="token punctuation">}</span></span><span class="token string">.html'</span></span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'Saved file </span><span class="token interpolation"><span class="token punctuation">{</span>filename<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里看不懂不要急，可跳过。</p>
+<h2 id="运行-spider"><a href="#运行-spider" class="headerlink" title="运行 spider"></a>运行 spider</h2><p>回到项目顶级目录下，终端运行：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scrapy crawl quotes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="spider-详解"><a href="#spider-详解" class="headerlink" title="spider 详解"></a>spider 详解</h2><p>你不妨根据官网示例走一遍，以获得成就感，给自己做下去的信心~  </p>
+<p>现在我们再来好好看看 spider 做了什么（scraping cycle）：<br><a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/spiders.html">scrapy spider</a></p>
+<ol>
+<li>首先初始化请求，抓取第一个 url，然后指定一个回调函数（cellback function）从请求中下载响应response（其实就是 part1 中的pagedata，实现了在线网页内容的读取）。根据官网示例，第一个请求就是通过 <code>start_requests()</code> 方法获得的，parse 作为 <code>Request</code> 的回调函数。</li>
+<li>在回调函数中，使用 Selector（或者其他的库如，BeautifulSoup, lxml等）解析响应，获得目标信息 item object。</li>
+<li>把 spider 返回的项目加到数据库中（在 items.py 中定义 item）。</li>
+</ol>
+<h3 id="spider-中的类型"><a href="#spider-中的类型" class="headerlink" title="spider 中的类型"></a>spider 中的类型</h3><ul>
+<li><code>name</code> 指爬虫的名字，在一个项目中，具有唯一性。  </li>
+<li><code>allowed_domains</code> 一个可选的字符串列表，其中包含允许此爬行器爬行的域。假设你的目标网址是 <a target="_blank" rel="noopener" href="https://www.example.com/1.html">https://www.example.com/1.html</a> ，然后在列表中加上 example.com。</li>
+<li><code>start_urls</code> 放置网址的列表。这里可以多说两句，如果，你已经有了所有需要爬取的网页网址，全部放在 start_urls 列表中，循环遍历每个页面即可；需要翻页的话，仅把第一页的网址放入即可，通过修改网页中的页数来进行爬取多个页面（如果网址中显示制定了页数的话，如果没有，需要在页面内寻找相应元素，这里不再拓展）。</li>
+<li>其他设置请参见官网。</li>
+</ul>
+<p>其实官网的例子是实现了每个网页单独存到一个 HTML 文件中的。我觉得这还没有体现 scrapy 最常用的一个保存每个页面目标元素的方法，就是利用 yield 和 items.py，输出结果。<br>下面我自己写的一个 spider 用来爬取 NOcode 数据库中的信息：  </p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
+<span class="token keyword">import</span> re
+<span class="token keyword">from</span> lncrna<span class="token punctuation">.</span>items <span class="token keyword">import</span> LncrnaItem
+
+<span class="token keyword">class</span> <span class="token class-name">collectlncRNAfromNONcode</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Spider<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> <span class="token string">'collect-RNAcent'</span>
+    allowed_domain <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'noncode.org'</span><span class="token punctuation">]</span>
+    count <span class="token operator">=</span> <span class="token number">1</span>
+    base_url <span class="token operator">=</span> <span class="token string">"http://www.noncode.org/browse.php?org=D.Melanogaster&amp;class=transcript&amp;PageSize=500&amp;page="</span>
+    start_urls <span class="token operator">=</span> <span class="token punctuation">[</span>
+        <span class="token string">"http://www.noncode.org/browse.php?org=D.Melanogaster&amp;class=transcript&amp;PageSize=500&amp;page=1"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+    <span class="token keyword">def</span> <span class="token function">parse</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        pages_content <span class="token operator">=</span> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//table[@class='mPlist_infoB']/tr[3]/td/form/table[1]/tbody/tr/td[1]/font/text()"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token comment"># 获取页数</span>
+        page_number <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'Page:\d+'</span><span class="token punctuation">,</span>pages_content<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token comment"># 目标信息</span>
+        <span class="token keyword">for</span> tb <span class="token keyword">in</span> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">"//table[@class='mPlist_infoB']/tr/td/form/table[2]/tr"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            item <span class="token operator">=</span> LncrnaItem<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            item<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> tb<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'td/a/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            content <span class="token operator">=</span> tb<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'td/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>extract<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            item<span class="token punctuation">[</span><span class="token string">'chrom'</span><span class="token punctuation">]</span> <span class="token operator">=</span> content<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'start'</span><span class="token punctuation">]</span> <span class="token operator">=</span> content<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'end'</span><span class="token punctuation">]</span> <span class="token operator">=</span> content<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+            <span class="token comment"># 把 item 中的信息追加到 items 中</span>
+            <span class="token keyword">yield</span> item
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>count <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>page_number<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>count <span class="token operator">+=</span> <span class="token number">1</span>
+            next_url <span class="token operator">=</span> self<span class="token punctuation">.</span>base_url<span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>count<span class="token punctuation">)</span>
+            <span class="token comment"># 转到下一页</span>
+            <span class="token keyword">yield</span> scrapy<span class="token punctuation">.</span>Request<span class="token punctuation">(</span>next_url<span class="token punctuation">,</span> callback<span class="token operator">=</span>self<span class="token punctuation">.</span>parse<span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>关于 yield 的详解，可参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/mieleizhi0522/article/details/82142856">python中yield的用法详解</a></p>
+<p>items.py 中的设置</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scrapy
+
+<span class="token keyword">class</span> <span class="token class-name">LncrnaItem</span><span class="token punctuation">(</span>scrapy<span class="token punctuation">.</span>Item<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># define the fields for your item here like:</span>
+    name <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    chrom <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    start <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    end <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="scrapy-shell-测试解析式"><a href="#scrapy-shell-测试解析式" class="headerlink" title="scrapy shell 测试解析式"></a>scrapy shell 测试解析式</h2><p>之前测试解析式都是使用下载到本地的 HTML，scrapy 也要这样吗？当然不需要啦。<br>在顶级目录下，运行如下命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scrapy shell target_url
+<span class="token comment"># output: </span>
+<span class="token comment"># [s] Available Scrapy objects:</span>
+<span class="token comment"># [s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)</span>
+<span class="token comment"># [s]   crawler    &lt;scrapy.crawler.Crawler object at 0x0000023C3CD891C0&gt;</span>
+<span class="token comment"># [s]   item       {}</span>
+<span class="token comment"># [s]   request    &lt;GET http://www.noncode.org/browse.php?org=D.Melanogaster&amp;class=transcript&amp;PageSize=500&amp;page=1&gt;</span>
+<span class="token comment"># [s]   response   &lt;200 http://www.noncode.org/browse.php?org=D.Melanogaster&amp;class=transcript&amp;PageSize=500&amp;page=1&gt;</span>
+<span class="token comment"># [s]   settings   &lt;scrapy.settings.Settings object at 0x0000023C3CD89250&gt;</span>
+<span class="token comment"># [s]   spider     &lt;DefaultSpider 'default' at 0x23c3d237610&gt;</span>
+<span class="token comment"># [s] Useful shortcuts:</span>
+<span class="token comment"># [s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)</span>
+<span class="token comment"># [s]   fetch(req)                  Fetch a scrapy.Request and update local objects</span>
+<span class="token comment"># [s]   shelp()           Shell help (print this help)</span>
+<span class="token comment"># [s]   view(response)    View response in a browser</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>就会进入到 ipython 环境中，利用 part1 中的方法，对 response 进行提取文本的测试，直到找到正确的解析式就好了。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>your_xpath<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
