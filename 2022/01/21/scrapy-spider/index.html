@@ -579,24 +579,27 @@ pagedata<span class="token punctuation">.</span>xpath<span class="token punctuat
     end <span class="token operator">=</span> scrapy<span class="token punctuation">.</span>Field<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="scrapy-shell-测试解析式"><a href="#scrapy-shell-测试解析式" class="headerlink" title="scrapy shell 测试解析式"></a>scrapy shell 测试解析式</h2><p>之前测试解析式都是使用下载到本地的 HTML，scrapy 也要这样吗？当然不需要啦。<br>在顶级目录下，运行如下命令：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scrapy shell target_url
-<span class="token comment"># output: </span>
-<span class="token comment"># [s] Available Scrapy objects:</span>
-<span class="token comment"># [s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)</span>
-<span class="token comment"># [s]   crawler    &lt;scrapy.crawler.Crawler object at 0x0000023C3CD891C0&gt;</span>
-<span class="token comment"># [s]   item       {}</span>
-<span class="token comment"># [s]   request    &lt;GET http://www.noncode.org/browse.php?org=D.Melanogaster&amp;class=transcript&amp;PageSize=500&amp;page=1&gt;</span>
-<span class="token comment"># [s]   response   &lt;200 http://www.noncode.org/browse.php?org=D.Melanogaster&amp;class=transcript&amp;PageSize=500&amp;page=1&gt;</span>
-<span class="token comment"># [s]   settings   &lt;scrapy.settings.Settings object at 0x0000023C3CD89250&gt;</span>
-<span class="token comment"># [s]   spider     &lt;DefaultSpider 'default' at 0x23c3d237610&gt;</span>
-<span class="token comment"># [s] Useful shortcuts:</span>
-<span class="token comment"># [s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)</span>
-<span class="token comment"># [s]   fetch(req)                  Fetch a scrapy.Request and update local objects</span>
-<span class="token comment"># [s]   shelp()           Shell help (print this help)</span>
-<span class="token comment"># [s]   view(response)    View response in a browser</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">scrapy shell <span class="token string">"https://scrapy.org"</span> --nolog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后，shell 获取 URL (使用 Scrapy 下载程序)并打印可用<strong>对象列表</strong>和 <strong>有用的快捷方式</strong>(这些行都以[s]前缀开头)：</p>
+<pre class="line-numbers language-none"><code class="language-none">[s] Available Scrapy objects:
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)
+[s]   crawler    &lt;scrapy.crawler.Crawler object at 0x7f07395dd690&gt;
+[s]   item       {}
+[s]   request    &lt;GET https://scrapy.org&gt;
+[s]   response   &lt;200 https://scrapy.org/&gt;
+[s]   settings   &lt;scrapy.settings.Settings object at 0x7f07395dd710&gt;
+[s]   spider     &lt;DefaultSpider 'default' at 0x7f0735891690&gt;
+[s] Useful shortcuts:
+[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
+[s]   shelp()           Shell help (print this help)
+[s]   view(response)    View response in a browser<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>就会进入到 <code>ipython</code> 环境中，利用 part1 中的方法，对 response 进行提取文本的测试，直到找到正确的解析式就好了。</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span>your_xpath<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> response<span class="token punctuation">.</span>xpath<span class="token punctuation">(</span><span class="token string">'//title/text()'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">'Scrapy | A Fast and Powerful Scraping and Web Crawling Framework'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>更多玩法请参考<a target="_blank" rel="noopener" href="https://docs.scrapy.org/en/latest/topics/shell.html">scrapy shell</a></p>
+
                 
             </div>
             <hr/>
