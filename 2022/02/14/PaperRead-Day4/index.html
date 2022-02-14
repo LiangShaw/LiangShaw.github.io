@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git/github basic usage guide, Shaw">
-    <meta name="description" content="一些 git 常用命令，用作备忘录、使用手册，方便快速查阅">
+    <meta name="keywords" content="文献阅读 Day4, Shaw">
+    <meta name="description" content="活细胞中 RNA 和 RNA剪接成像新方法Live imaging of RNA and RNA splicing in mammalian cells via the dcas13a-SunTag-BiFC system  
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git/github basic usage guide | Shaw</title>
+    <title>文献阅读 Day4 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +250,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git/github basic usage guide</h1>
+                    <h1 class="description center-align post-title">文献阅读 Day4</h1>
                 </div>
             </div>
         </div>
@@ -368,17 +369,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
-                            </a>
-                        
-                            <a href="/tags/Github/">
-                                <span class="chip bg-color">Github</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -390,14 +383,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-02
+                    2022-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-02
+                    2022-02-14
                 </div>
                 
 
@@ -419,76 +412,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Git-Github-Usage-and-Instruction"><a href="#Git-Github-Usage-and-Instruction" class="headerlink" title="Git/Github Usage and Instruction"></a>Git/Github Usage and Instruction</h1><p><strong>note</strong>:  </p>
-<ul>
-<li><p><strong>make sure that target local files are located in repository folder.</strong>  </p>
-</li>
-<li><p><strong>Cannot operate files outside repository folder.</strong>  </p>
-</li>
-<li><p>two file transferring paths: http and SSH( Recommaded, openssh required)</p>
-</li>
-<li><p>*set authentication(鉴权). </p>
-<ul>
-<li>In .git/config, add username and passwd after url</li>
-</ul>
-</li>
-</ul>
-<h2 id="config-git"><a href="#config-git" class="headerlink" title="config git"></a>config git</h2><ul>
-<li>totally new env<br>create ssh key<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh-keygen -t rsa -C "your_email@youremail.com"  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>set user info<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git config --global user.name "your name"  
-git config --global user.email "your_email@youremail.com"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>check user<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git config user.name  
-git config user.email<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ul>
-<h2 id="repository-initialization"><a href="#repository-initialization" class="headerlink" title="repository initialization"></a>repository initialization</h2><h3 id="method1"><a href="#method1" class="headerlink" title="method1"></a>method1</h3><p><strong>clone a reposiroty from remote server</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone repository_address  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>*can reate a clone for local repository<br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone /path/to/local/repository <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<h3 id="method2"><a href="#method2" class="headerlink" title="method2"></a>method2</h3><p><strong>initialize a local folder as a repository</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd target_folder  
-git init  
-git remote add origin &lt;git url&gt;  # connect to remote repository<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
-<h2 id="repository-operation"><a href="#repository-operation" class="headerlink" title="repository operation"></a>repository operation</h2><p>local repository trilayer structure  </p>
-<img src="https://www.runoob.com/wp-content/uploads/2014/05/trees.png" width="500" alt="local repository trilayer structure" align="center">  
-
-<ul>
-<li><p>add files to index(cache space)</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git add file1 file2 ...  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>add version annatation</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git commit -m "modification_annotation"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>view current git status</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>push modification to remote repository</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>pull latest version from repostory</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git pull<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<h2 id="about-version"><a href="#about-version" class="headerlink" title="about version"></a>about version</h2><ul>
-<li><p>get version list (<strong>not</strong> incluede the versions <strong>hereafter</strong>)</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git log [ --pretty=online ]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>set current version</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git reset --hard version_number<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>get all versions</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git reflog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<h2 id="branch-command"><a href="#branch-command" class="headerlink" title="branch command"></a>branch command</h2><p>branch pattern  </p>
-<img src="https://www.runoob.com/wp-content/uploads/2014/05/branches.png" width="500" alt="branch pattern" align="center">
-
-<ul>
-<li>list branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git branch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>create branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git branch name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>switch branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git checkout name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>creat and switch branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git checkout -b name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>delete <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git branch -d name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>merge <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git merge names<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p>Note: the operations in different branches do not influence each other. Merge operation is in need af final.</p>
-<h3 id="solve-conflicts"><a href="#solve-conflicts" class="headerlink" title="solve conflicts"></a>solve conflicts</h3><h3 id="add-git-sshkey-into-Github"><a href="#add-git-sshkey-into-Github" class="headerlink" title="add git sshkey into Github"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ayseeing/p/3572582.html">add git sshkey into Github</a></h3><ul>
-<li><p>create a SSH key</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh-keygen -t rsa -C "your_email@example.com"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>default generated file <code>~/.ssh/id_rsa.pub</code>  </p>
-</li>
-<li><p>add SSH key content into github SSH<br><code>setting</code> -&gt; <code>SSH and GPG keys</code></p>
-</li>
-</ul>
-
+                <h1 id="活细胞中-RNA-和-RNA剪接成像新方法"><a href="#活细胞中-RNA-和-RNA剪接成像新方法" class="headerlink" title="活细胞中 RNA 和 RNA剪接成像新方法"></a>活细胞中 RNA 和 RNA剪接成像新方法</h1><p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0956566322001142?via=ihub">Live imaging of RNA and RNA splicing in mammalian cells via the dcas13a-SunTag-BiFC system</a>  </p>
+<img src="https://ars.els-cdn.com/content/image/1-s2.0-S0956566322001142-gr1_lrg.jpg" width="800" alt="dcas13-SunTag-BiFC 系统的构建">
                 
             </div>
             <hr/>
@@ -514,7 +439,7 @@ git remote add origin &lt;git url&gt;  # connect to remote repository<span aria-
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/01/02/Git_instructions/">https://liangshaw.github.io/2022/01/02/Git_instructions/</a>
+                    <a href="https://liangshaw.github.io/2022/02/14/PaperRead-Day4/">https://liangshaw.github.io/2022/02/14/PaperRead-Day4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,15 +476,7 @@ git remote add origin &lt;git url&gt;  # connect to remote repository<span aria-
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
-                                </a>
-                            
-                                <a href="/tags/Github/">
-                                    <span class="chip bg-color">Github</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -871,53 +788,39 @@ git remote add origin &lt;git url&gt;  # connect to remote repository<span aria-
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/10/RDataSci/">
+                <a href="/2022/02/14/PaperRead-Day4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="R数据科学系列">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="文献阅读 Day4">
                         
-                        <span class="card-title">R数据科学系列</span>
+                        <span class="card-title">文献阅读 Day4</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            能够在 R 中得心应手得处理数据、改造数据，会大大提高工作效率。
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -928,52 +831,32 @@ git remote add origin &lt;git url&gt;  # connect to remote repository<span aria-
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/02/RDataVisualization-1/">
+                <a href="/2022/02/13/PaperRead-Day3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="R数据可视化手册-上">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="PaperRead-Day3">
                         
-                        <span class="card-title">R数据可视化手册-上</span>
+                        <span class="card-title">PaperRead-Day3</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-13
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%8B%E5%86%8C/" class="post-category">
-                                    R数据可视化手册
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
-                    </a>
-                    
-                    <a href="/tags/ggplot2/">
-                        <span class="chip bg-color">ggplot2</span>
-                    </a>
-                    
                 </div>
                 
             </div>
