@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="workflowr 日常使用简易指南, Shaw">
-    <meta name="description" content="学习使用 R包 workflowr 来做研究记录，期望实现项目管理、重复性、协作和结果分享。">
+    <meta name="keywords" content="文献阅读 Day7, Shaw">
+    <meta name="description" content="RNA pairing 阻止了“先来先服务”的剪接原则，促进了果蝇中 Dscam1 多种转录本的产生Hidden RNA pairings counteract the “first-come, first-served” splicing">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>workflowr 日常使用简易指南 | Shaw</title>
+    <title>文献阅读 Day7 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://www.seyens.com/wp-content/uploads/2016/07/reading-journal-papers-project-grant-funding-proposals.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">workflowr 日常使用简易指南</h1>
+                    <h1 class="description center-align post-title">文献阅读 Day7</h1>
                 </div>
             </div>
         </div>
@@ -370,18 +370,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/R/">
-                                <span class="chip bg-color">R</span>
-                            </a>
-                        
-                            <a href="/tags/workflowr/">
-                                <span class="chip bg-color">workflowr</span>
+                            <a href="/tags/RNA-secondary-structure/">
+                                <span class="chip bg-color">RNA secondary structure</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/paper/" class="post-category">
+                                paper
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -390,14 +395,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-12
+                    2022-02-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-16
+                    2022-02-17
                 </div>
                 
 
@@ -419,183 +424,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/workflowr/vignettes/wflow-01-getting-started.html">workflowr官方指南</a></p>
-<p><code>workflowr</code>是干什么的，特性，优点等直接到官方指南上看，跳过啦！  </p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 安装</span>
-install.packages<span class="token punctuation">(</span><span class="token string">"workflowr"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>另外需要 <code>git</code> 进行版本控制。</p>
-<p>准备工作完成后，打开 Rstudio，官方建议以下命令都在 R console(控制台)中运行，不要用 Rmarkdown。</p>
-<pre class="line-numbers language-none"><code class="language-none">library(workflowr)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="RNA-pairing-阻止了“先来先服务”的剪接原则，促进了果蝇中-Dscam1-多种转录本的产生"><a href="#RNA-pairing-阻止了“先来先服务”的剪接原则，促进了果蝇中-Dscam1-多种转录本的产生" class="headerlink" title="RNA pairing 阻止了“先来先服务”的剪接原则，促进了果蝇中 Dscam1 多种转录本的产生"></a>RNA pairing 阻止了“先来先服务”的剪接原则，促进了果蝇中 Dscam1 多种转录本的产生</h1><p><a target="_blank" rel="noopener" href="https://www.science.org/doi/10.1126/sciadv.abm1763">Hidden RNA pairings counteract the “first-come, first-served” splicing principle to drive stochastic choice in Dscam1 splice variants</a></p>
+<p>杂志: Sci Adv(Science Advance)</p>
+<p>Drosophila melanogaster Dscam1 encodes 38,016 isoforms via mutually exclusive splicing.  </p>
+<p>The intronic docking site downstream of exon 5 can pair competitively with selector sequences upstream of each exon 6 variant</p>
+<img src="https://www.science.org/cms/10.1126/sciadv.abm1763/asset/fce0b16f-93b9-45b6-888b-cf0cffcb4137/assets/images/large/sciadv.abm1763-f1.jpg" alt="CRISPR-Cas9 mutagenesis verifies cluster-wide docking site–selector pairing in the exon 6 cluster" width="800/">
 
-<h1 id="start-the-project-开启项目"><a href="#start-the-project-开启项目" class="headerlink" title="start the project, 开启项目"></a>start the project, 开启项目</h1><p>在创建项目前，注意目标路径，以下命令会在当前工作目录下创建</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_start("myproject")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>可以通过<code>setwd()</code>设置工作路径，或者对<code>wflow_start</code>设置 directory 参数。</p>
-<p>创建的<code>myproject/</code>目录结构：</p>
-<pre class="line-numbers language-none"><code class="language-none">myproject/
-├── .gitignore
-├── .Rprofile
-├── _workflowr.yml
-├── analysis/
-│   ├── about.Rmd
-│   ├── index.Rmd
-│   ├── license.Rmd
-│   └── _site.yml
-├── code/
-│   ├── README.md
-├── data/
-│   └── README.md
-├── docs/
-├── myproject.Rproj
-├── output/
-│   └── README.md
-└── README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>其中，<code>analysis/</code> 和 <code>docs/</code>是两个必要的子文件夹：</p>
-<ul>
-<li><code>analysis/</code>: 这个目录里面包含了该项目所有执行数据分析的Rmarkdown源文件，<code>index.Rmd</code>文件是初始化产生的，用来产生网页主页<code>index.html</code>。<code>_site.yml</code>可用来编辑主题、导航栏和其他的页面布局，详情参考: <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown websites</a>.</li>
-<li><code>docs/</code>:这个目录里面包含了该项目所有生成的 HTML 文件。HTML 文件基于 <code>analysis/</code>里面的 Rmarkdown 文件创建的。另外，Rmarkdown 文件创建的 figures图片，都会保存到这里，保存模式为：<code>docs/figure/&lt;insert Rmd filename&gt;/&lt;insert chunk name&gt;-#.png</code>.</li>
-</ul>
-<p><code>_workflowr.yml</code>用来检查所有Rmarkdown文件的可重复性。最重要的一个设置就是<code>knit_root_dir</code>,默认是<code>.</code>，如果只想执行 <code>analysis/</code>中的代码，改成<code>knit_root_dir: "analysis"</code>就好了。更多细节见<code>?wflowr_html</code><br><br><br>❗warning: <code>myproject.Rproj</code>不要删除，即使没有使用Rstudio。</p>
-<p>可选的子文件夹是：</p>
-<ul>
-<li><code>data/</code>：存放原始文件</li>
-<li><code>code/</code>：存放各种脚本</li>
-<li><code>output/</code>：可存放处理/预处理的文件，如代码生成的中间文件，以及其他途径产生的数据文件</li>
-</ul>
-<h1 id="build-the-website，创建网页"><a href="#build-the-website，创建网页" class="headerlink" title="build the website，创建网页"></a>build the website，创建网页</h1><p>目前<code>docs/</code>还是空，因为还没有生成HTML文件。所以接下来要做的就是创建网页。</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_build()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>这条命令为所有<code>analysis/</code>中的 Rmd 文件创建对应的 HTML 文件, 存放到 <code>docs/</code>中。每个文件都是使用其自己的 R session，从而避免了不同文件中相同名字变量的冲突。<br>最后，会在Rstudio viewer 或 默认的浏览器打开生成的网页，默认是打开 index.html 。<br>每次重建网页，都只会针对有改动的文件，没有改动则不会重新生成 HTML 文件。除非设置参数<code>republish = TRUE</code>(没必要)。</p>
-<h1 id="publish-the-website，公开网页"><a href="#publish-the-website，公开网页" class="headerlink" title="publish the website，公开网页"></a>publish the website，公开网页</h1><p>workflowr 与 Rmarkdown 最大的一点不同，就是可以 publish。<br>查看 workflowr project 的状态：</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_status()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">## Status of 3 Rmd files
-## 
-## Totals:
-##  3 Unpublished
-## 
-## The following Rmd files require attention:
-## 
-## Unp analysis/about.Rmd
-## Unp analysis/index.Rmd
-## Unp analysis/license.Rmd
-## 
-## Key: Unp = Unpublished
-## 
-## The current Git status is:
-## 
-##    status substatus                 file
-##  unstaged  modified   analysis/about.Rmd
-##  unstaged  modified   analysis/index.Rmd
-##  unstaged  modified analysis/license.Rmd
-## 
-## To publish your changes as part of your website, use `wflow_publish()`.
-## To commit your changes without publishing them yet, use
-## `wflow_git_commit()`.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>输出显示了文件 published 的情况。</p>
-<p>接下来就是对<code>analysis/</code>里面的文件进行 publish  </p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">wflow_publish(c("analysis/index.Rmd", "analysis/about.Rmd", "analysis/license.Rmd"),"Publish the initial files for myproject")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>主要设置是 <strong>文件</strong> 和 <strong>message</strong>两个参数。<br>对输出结果的主要进行了摘录，如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">## **Step 1: Commit analysis files**
-## Summary from wflow_git_commit
-## The following was run: 
-## 
-##   $ git add analysis/index.Rmd analysis/about.Rmd analysis/license.Rmd 
-##   $ git commit -m "Publish the initial files for myproject" 
-## 
-## The following file(s) were included in commit 5c625e2:
-## analysis/about.Rmd
-## analysis/index.Rmd
-## analysis/license.Rmd
-## 
-## **Step 2: Build HTML files**
-## Summary from wflow_build
-## Settings:
-##  combine: "or" clean_fig_files: TRUE
-## 
-## The following were built externally each in their own fresh R session: 
-## 
-## docs/index.html
-## docs/about.html
-## docs/license.html
-## 
-## **Step 3: Commit HTML files**
-## Summary from wflow_git_commit
-## The following was run: 
-## 
-##   $ git add docs/index.html docs/about.html docs/license.html docs/figure/index.Rmd docs/figure/about.Rmd docs/figure/license.Rmd docs/site_libs docs/.nojekyll 
-##   $ git commit -m "Build site." 
-## 
-## The following file(s) were included in commit fd97598:
-## docs/about.html
-## docs/index.html
-## docs/license.html
-## docs/site_libs/bootstrap-3.3.5/
-## docs/site_libs/header-attrs-2.11/
-## docs/site_libs/highlightjs-9.12.0/
-## docs/site_libs/jquery-3.6.0/
-## docs/site_libs/navigation-1.1/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>publish 命令办了三件事：</p>
-<ul>
-<li>step1. R 的 git commit 保存 Rmd 文件</li>
-<li>step2. build HTML 文件</li>
-<li>step3. git commit 创建的 HTML 文件和网页的配置文件（如 CSS 和 JavaScript 文件）</li>
-</ul>
-<p>省的自己手动逐步执行，保证了 网页和源码一直是同步的。<br>当再次使用<code>wflow_status()</code>查看 workflowr project 状态时，就会报告所有文件都 published 和 up-to-date：</p>
-<pre class="line-numbers language-none"><code class="language-none">## Status of 3 Rmd files
-## 
-## Totals:
-##  3 Published
-## 
-## The current Git status is: working directory clean
-## 
-## Rmd files are up-to-date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="deploy-the-website，部署网页"><a href="#deploy-the-website，部署网页" class="headerlink" title="*deploy the website，部署网页"></a>*deploy the website，部署网页</h1><p>如果需要公开到 GitHub，还需有GitHub的账户，并在本地进行配置（官方指南有详细说明）。<br>这和把文件上传到GitHub本质上是一样的，只不过在workflowr中有其自己的命令。<br>因为我是不打算上传到 GitHub 的，所以这一部分也跳过了。  </p>
-<p>可以将 <code>index.html</code> 文件加到 nginx 或者 apache 等服务器代理中，分享给在同一个局域网中的其他人。</p>
-<h1 id="add-a-new-analysis-file，添加新的分析文件"><a href="#add-a-new-analysis-file，添加新的分析文件" class="headerlink" title="add a new analysis file，添加新的分析文件"></a>add a new analysis file，添加新的分析文件</h1><p>自己在<code>analysis/</code>文件夹中创建新的 .Rmd 文件进行编辑就好了，或者使用命令<code>wflow_open("analysis/new.Rmd")</code>。<br>为了更方面地导航到新的分析文件，你可以在 index page 中加上链接。首先，打开<code>analysis/index.Rmd</code>，然后在其中合适的位置加入链接，如下：</p>
-<pre class="line-numbers language-none"><code class="language-none">Click on this [link](first-analysis.html) to see my results.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>所以，平时使用的时候，流程很简单：</p>
-<ol>
-<li><code>wflow_start("ProjectName")</code>开启项目</li>
-<li>在<code>analysis/</code>、<code>code</code>中增加分析流程</li>
-<li><code>wflow_build()</code>预览网页效果（可选）</li>
-<li>循环2、3步，直到满意</li>
-<li><code>wflow_publish(files, "commit-message")</code> 保留阶段性成果</li>
-<li>修改 index.Rmd 文件，将新的分析文件加入到 index.html 中</li>
-<li>如果你要上传到GitHub上，再<code>push</code>到GitHub</li>
-</ol>
-<h1 id="further-reading，进一步了解"><a href="#further-reading，进一步了解" class="headerlink" title="further reading，进一步了解"></a>further reading，进一步了解</h1><p>关于如何使用 R markdown 文件组织分析流程，可以阅读 R data science 中的 <a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html">R markdown workflow</a>部分，也就是本站的 <a href="/2022/01/13/RdataScience-part5/" title="R数据科学，第五部分：沟通">R数据科学，第五部分：沟通</a>。  </p>
-<h1 id="有用链接"><a href="#有用链接" class="headerlink" title="有用链接"></a>有用链接</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30586226">关于rstudio的一些快捷键</a><br><a target="_blank" rel="noopener" href="https://bookdown.org/yihui/rmarkdown/html-document.html">html document</a> 设置html<br><a target="_blank" rel="noopener" href="https://bootswatch.com/3/">free themes of bootstrap</a> 爱折腾主题的来看这里  </p>
-<h1 id="个人经验"><a href="#个人经验" class="headerlink" title="*个人经验"></a>*个人经验</h1><p>在写 .Rmd 时注意：</p>
-<ol>
-<li><p>注意设置 setup 中的 knitr options:</p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r">```<span class="token punctuation">{</span>r setup<span class="token punctuation">,</span> include<span class="token operator">=</span><span class="token boolean">FALSE</span><span class="token punctuation">}</span>
-  knitr<span class="token operator">::</span>opts_chunk<span class="token operator">$</span>set<span class="token punctuation">(</span>
-    echo <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> message <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> warning <span class="token operator">=</span> <span class="token boolean">FALSE</span>
-    <span class="token punctuation">)</span>
-```         '<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>之前使用 jupyter 有个习惯：每段数据处理的代码最后，都会 <code>head(data)</code> 看一下数据结构。但在 workflowr 中生成网页时，尤其是设置代码不可见，突然出现的数据会让别人看得一头雾水。所以，在 workflowr 中避免这样的操作</p>
-</li>
-<li><p>R markdown 中想要插入 bash ，或其他类型的代码（如 python），并且不想运行它，仅仅是做个记录，可以这样写:</p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r">```bash
-ls .<span class="token operator">/</span>
-```         '<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>这实际上就是 markdown 的书写方式；<br>如果写成 <code>{bash}</code>， 在创建网页时也会运行。在 Windows 下面这样往往会产生错误</p>
-</li>
-<li><p>代码标记符 ``` 顶格写和不顶格写 形成的网页效果是不一样的。建议顶格写，会形成一个代码框出来，类似这种：</p>
-<pre class="line-numbers language-none"><code class="language-none">顶格写 ```是这种效果<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>而不顶格效果类似 这种：<code>不顶格长这样</code>。</p>
-</li>
-<li><p>在 <code>analysis</code>中写 .Rmd 时，运行 R 代码块，位置是在 <code>analysis/</code> 下，而在生成网页的时候，工作路径是在 Project 下面，也就是在 <code>analysis/</code> 上一层（最顶级的目录），这样产生的一个问题就是：在写 .Rmd 的时候，导入，比如 <code>output/input.csv</code> 中的文件，要写为 <code>../output/input.csv</code>，运行代码块正常，而当生成网页的时候，这样写会报错，正确的路径为 <code>output/input.csv</code>。所以在创建网页前，要将 <code>../</code> 删除；<br>而在 .Rmd 中插入图片的时候，比如 <code>docs/figure/outer-image/image1.png</code>，要写为 <code>../docs/figure/outer-image/image1.png</code> 。确实有些困扰。</p>
-</li>
-<li><p>建议在写 <code>.Rmd</code> 的时候，每个 part 分成：目的，实现代码，结果；类似这种三段式结构，将目的和最终结果呈现给决策者/老板。</p>
-</li>
-<li><p>Rmarkdown 中链接文件时，要将文件放在 <code>docs/</code>或其子文件夹下，否则会找不到文件，链接失败。</p>
-</li>
-</ol>
-
+<h1 id="nascent-转录组测序揭示的-lncRNA-合成机制"><a href="#nascent-转录组测序揭示的-lncRNA-合成机制" class="headerlink" title="nascent 转录组测序揭示的 lncRNA 合成机制"></a>nascent 转录组测序揭示的 lncRNA 合成机制</h1><p><a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41580-021-00447-6">Mechanisms of lncRNA biogenesis as revealed by nascent transcriptomics</a></p>
+<p>杂志: Nat Rev Mol Cell Biol*(Nature Reviews Molecular Cell Biology)</p>
+<img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41580-021-00447-6/MediaObjects/41580_2021_447_Fig1_HTML.png?as=webp" alt="Unstable lncRNAs and other mammalian transcription units" width="800">
                 
             </div>
             <hr/>
@@ -621,7 +458,7 @@ ls .<span class="token operator">/</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/01/12/workflowr-learning/">https://liangshaw.github.io/2022/01/12/workflowr-learning/</a>
+                    <a href="https://liangshaw.github.io/2022/02/17/PapreRead-Day7/">https://liangshaw.github.io/2022/02/17/PapreRead-Day7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -659,12 +496,8 @@ ls .<span class="token operator">/</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/R/">
-                                    <span class="chip bg-color">R</span>
-                                </a>
-                            
-                                <a href="/tags/workflowr/">
-                                    <span class="chip bg-color">workflowr</span>
+                                <a href="/tags/RNA-secondary-structure/">
+                                    <span class="chip bg-color">RNA secondary structure</span>
                                 </a>
                             
                         </div>
@@ -982,31 +815,31 @@ ls .<span class="token operator">/</span>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/01/13/RdataScience-part5/">
+                <a href="/2022/02/17/RDataVisualization-3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="R数据科学，第五部分：沟通">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="R数据可视化(金字塔图|镜面图)">
                         
-                        <span class="card-title">R数据科学，第五部分：沟通</span>
+                        <span class="card-title">R数据可视化(金字塔图|镜面图)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这一部分包含了 Rmarkdown 和多样化的输出结果，以更好地向他人展示和交流结果
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-13
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
+                            <a href="/categories/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%8B%E5%86%8C/" class="post-category">
+                                    R数据可视化手册
                                 </a>
                             
                             
@@ -1020,12 +853,8 @@ ls .<span class="token operator">/</span>
                         <span class="chip bg-color">R</span>
                     </a>
                     
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
-                    </a>
-                    
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
+                    <a href="/tags/ggplot2/">
+                        <span class="chip bg-color">ggplot2</span>
                     </a>
                     
                 </div>
@@ -1039,33 +868,28 @@ ls .<span class="token operator">/</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/11/RdataScience-part1/">
+                <a href="/2022/02/16/PapreRead-Day6/">
                     <div class="card-image">
                         
+                        <img src="https://www.seyens.com/wp-content/uploads/2016/07/reading-journal-papers-project-grant-funding-proposals.jpg" class="responsive-img" alt="文献阅读 Day6">
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="R数据科学，第一部分：探索">
-                        
-                        <span class="card-title">R数据科学，第一部分：探索</span>
+                        <span class="card-title">文献阅读 Day6</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一部分主要是R入门和 ggplot2 的基础, 其中 dyplr 包的几个函数还是非常实用的。由于之前已经走过一遍 《R数据可视化手册》， 所以这里并没有消耗太多精力。
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-16
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
@@ -1073,16 +897,8 @@ ls .<span class="token operator">/</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
-                    </a>
-                    
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
+                    <a href="/tags/tumor/">
+                        <span class="chip bg-color">tumor</span>
                     </a>
                     
                 </div>
