@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现), Shaw">
-    <meta name="description" content="HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)link1-lessonlink2-heatmap-extend
-Agglomerative Hierarchical Clusterin">
+    <meta name="keywords" content="linux命令————awk, Shaw">
+    <meta name="description" content="awk命令 作为 Linux 的三驾马车之一，功能强大，却也颇有些门道，之前对 awk 的认识仅仅能够满足基本操作需求，这里系统地重新学习一下 awk">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@ Agglomerative Hierarchical Clusterin">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现) | Shaw</title>
+    <title>linux命令————awk | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -250,12 +249,12 @@ Agglomerative Hierarchical Clusterin">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HIERARCHICAL CLUSTERING IN R (层级聚类及其在R中实现)</h1>
+                    <h1 class="description center-align post-title">linux命令————awk</h1>
                 </div>
             </div>
         </div>
@@ -371,18 +370,27 @@ Agglomerative Hierarchical Clusterin">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hierarchical-clustering/">
-                                <span class="chip bg-color">hierarchical clustering</span>
+                            <a href="/tags/cmd/">
+                                <span class="chip bg-color">cmd</span>
                             </a>
                         
-                            <a href="/tags/R/">
-                                <span class="chip bg-color">R</span>
+                            <a href="/tags/awk/">
+                                <span class="chip bg-color">awk</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -391,14 +399,14 @@ Agglomerative Hierarchical Clusterin">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-30
+                    2022-02-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-30
+                    2022-02-22
                 </div>
                 
 
@@ -420,444 +428,188 @@ Agglomerative Hierarchical Clusterin">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="HIERARCHICAL-CLUSTERING-IN-R-THE-ESSENTIALS-层级聚类"><a href="#HIERARCHICAL-CLUSTERING-IN-R-THE-ESSENTIALS-层级聚类" class="headerlink" title="HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)"></a>HIERARCHICAL CLUSTERING IN R: THE ESSENTIALS (层级聚类)</h1><p><a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/agglomerative-hierarchical-clustering/">link1-lesson</a><br><a target="_blank" rel="noopener" href="https://www.datanovia.com/en/blog/clustering-using-correlation-as-distance-measures-in-r/">link2-heatmap-extend</a></p>
-<h2 id="Agglomerative-Hierarchical-Clustering"><a href="#Agglomerative-Hierarchical-Clustering" class="headerlink" title="Agglomerative Hierarchical Clustering"></a>Agglomerative Hierarchical Clustering</h2><p><a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/agglomerative-hierarchical-clustering/">丛集聚类</a><br>分裂聚类</p>
-<img src="hierarchical_clustering.jpg" width="600">
+                <h1 id="awk-语法"><a href="#awk-语法" class="headerlink" title="awk 语法"></a>awk 语法</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token punctuation">[</span>-options<span class="token punctuation">]</span> <span class="token string">'script'</span> <span class="token punctuation">[</span>var<span class="token operator">=</span>value<span class="token punctuation">]</span> <span class="token function">file</span>
+<span class="token comment"># 或</span>
+<span class="token function">awk</span> <span class="token punctuation">[</span>-options<span class="token punctuation">]</span> -f scriptfile <span class="token punctuation">[</span>var<span class="token operator">=</span>value<span class="token punctuation">]</span> <span class="token function">file</span>
+<span class="token comment"># 或</span>
+<span class="token function">cat</span> <span class="token function">file</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token punctuation">[</span>-options<span class="token punctuation">]</span> <span class="token string">'script'</span> <span class="token punctuation">[</span>var<span class="token operator">=</span>value<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重点在 <strong>script</strong> 上，比较复杂却也相应的实用，内容较多时可写成文件形式；<code>var=value</code>一般涉及到引入外部变量<br><font color="red">注意</font>： awk 后面接的是单引号<code>awk ''</code></p>
+<h1 id="awk-基本结构"><a href="#awk-基本结构" class="headerlink" title="awk 基本结构"></a>awk 基本结构</h1><img src="https://img-blog.csdnimg.cn/img_convert/0e486c75619d8c5439dd62938e69660a.png" alt="awk基本结构" width="600/">
 
-
-<h2 id="Steps-to-agglomerative-hierarchical-clustering"><a href="#Steps-to-agglomerative-hierarchical-clustering" class="headerlink" title="Steps to agglomerative hierarchical clustering"></a>Steps to agglomerative hierarchical clustering</h2><center><img src="Steps_to_agglomerative.jpg" width="800"></center>
-
-<h3 id="Data-structure-and-preparation"><a href="#Data-structure-and-preparation" class="headerlink" title="Data structure and preparation"></a>Data structure and preparation</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R"># Load the data
-data("USArrests")
-
-# Standardize the data
-## The R function scale() can be used for standardization
-df &lt;- scale(USArrests)
-
-# Show the first 6 rows
-head(df, nrow = 6)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<table class="dataframe">
-<caption>A matrix: 6 × 4 of type dbl</caption>
-<thead>
-    <tr><th></th><th scope="col">Murder</th><th scope="col">Assault</th><th scope="col">UrbanPop</th><th scope="col">Rape</th></tr>
-</thead>
-<tbody>
-    <tr><th scope="row">Alabama</th><td>1.24256408</td><td>0.7828393</td><td>-0.5209066</td><td>-0.003416473</td></tr>
-    <tr><th scope="row">Alaska</th><td>0.50786248</td><td>1.1068225</td><td>-1.2117642</td><td> 2.484202941</td></tr>
-    <tr><th scope="row">Arizona</th><td>0.07163341</td><td>1.4788032</td><td> 0.9989801</td><td> 1.042878388</td></tr>
-    <tr><th scope="row">Arkansas</th><td>0.23234938</td><td>0.2308680</td><td>-1.0735927</td><td>-0.184916602</td></tr>
-    <tr><th scope="row">California</th><td>0.27826823</td><td>1.2628144</td><td> 1.7589234</td><td> 2.067820292</td></tr>
-    <tr><th scope="row">Colorado</th><td>0.02571456</td><td>0.3988593</td><td> 0.8608085</td><td> 1.864967207</td></tr>
-</tbody>
-</table>
-
-
-
-<h3 id="Similarity-measures"><a href="#Similarity-measures" class="headerlink" title="Similarity measures"></a>Similarity measures</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R"># Compute the dissimilarity matrix
-# df = the standardized data
-res.dist &lt;- dist(df, method = "euclidean")  # Euclidean and manhattan<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># view distance
-as.matrix(res.dist)[1:6, 1:6]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-<table class="dataframe">
-<caption>A matrix: 6 × 6 of type dbl</caption>
-<thead>
-    <tr><th></th><th scope="col">Alabama</th><th scope="col">Alaska</th><th scope="col">Arizona</th><th scope="col">Arkansas</th><th scope="col">California</th><th scope="col">Colorado</th></tr>
-</thead>
-<tbody>
-    <tr><th scope="row">Alabama</th><td>0.000000</td><td>2.703754</td><td>2.293520</td><td>1.289810</td><td>3.263110</td><td>2.651067</td></tr>
-    <tr><th scope="row">Alaska</th><td>2.703754</td><td>0.000000</td><td>2.700643</td><td>2.826039</td><td>3.012541</td><td>2.326519</td></tr>
-    <tr><th scope="row">Arizona</th><td>2.293520</td><td>2.700643</td><td>0.000000</td><td>2.717758</td><td>1.310484</td><td>1.365031</td></tr>
-    <tr><th scope="row">Arkansas</th><td>1.289810</td><td>2.826039</td><td>2.717758</td><td>0.000000</td><td>3.763641</td><td>2.831051</td></tr>
-    <tr><th scope="row">California</th><td>3.263110</td><td>3.012541</td><td>1.310484</td><td>3.763641</td><td>0.000000</td><td>1.287619</td></tr>
-    <tr><th scope="row">Colorado</th><td>2.651067</td><td>2.326519</td><td>1.365031</td><td>2.831051</td><td>1.287619</td><td>0.000000</td></tr>
-</tbody>
-</table>
-
-
-
-<h3 id="Linkage"><a href="#Linkage" class="headerlink" title="Linkage"></a>Linkage</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R">res.hc &lt;- hclust(d = res.dist, method = "ward.D2")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="Verify-the-cluster-tree"><a href="#Verify-the-cluster-tree" class="headerlink" title="Verify the cluster tree"></a>Verify the cluster tree</h3><p>One way to measure how well the cluster tree generated by the hclust() function reflects your data is to compute the correlation between the cophenetic distances and the original distance data generated by the dist() function.<br>If the clustering is valid, the linking of objects in the cluster tree should have a strong correlation with the distances between objects in the original distance matrix.<br>评估聚类效果的方法之一，就是评估 <code>hclust()</code> 算出来的距离 和 用<code>dist()</code>算的原始数据的距离，二者之间的相关性好不好。</p>
-<p>The closer the value of the correlation coefficient is to 1, the more accurately the clustering solution reflects your data. Values above 0.75 are felt to be good.<br>The “average” linkage method appears to produce high values of this statistic.<br>相关性越接近 <strong>1</strong>，说明聚类的效果越能反映真实情况.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Compute cophentic distance
-res.coph &lt;- cophenetic(res.hc)
-
-# Correlation between cophenetic distance and
-# the original distance
-cor(res.dist, res.coph)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>0.697526563237039</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Execute the hclust() function again using the average linkage method
-res.hc2 &lt;- hclust(res.dist, method = "average")
-
-cor(res.dist, cophenetic(res.hc2))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p>0.718038237932047</p>
-<h3 id="Dendrogram-树状图"><a href="#Dendrogram-树状图" class="headerlink" title="Dendrogram(树状图)"></a>Dendrogram(树状图)</h3><p>Dendrogram can be produced in R using the base function <code>plot(res.hc)</code>, where res.hc is the output of hclust()</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">plot(res.hc, cex = 0.8)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<p><img src="output_18_0.png" alt="png"></p>
-<p> <code>fviz_dend()</code> ( in <code>factoextra</code> R package ) to produce a beautiful dendrogram.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># cex: label size
-suppressPackageStartupMessages(library("factoextra"))
-fviz_dend(res.hc, title='', cex = 0.7)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_20_0.png" alt="png"></p>
-<h3 id="Cut-the-dendrogram-into-different-groups"><a href="#Cut-the-dendrogram-into-different-groups" class="headerlink" title="Cut the dendrogram into different groups"></a>Cut the dendrogram into different groups</h3><p>You can cut the hierarchical tree at a given height in order to partition your data into clusters.<br>The R base function cutree() can be used to cut a tree, generated by the hclust() function, into several groups either by specifying the desired number of groups or the cut height.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Cut tree into 4 groups
-grp &lt;- cutree(res.hc, k = 4)
-head(grp, n = 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<style>
-.dl-inline {width: auto; margin:0; padding: 0}
-.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
-.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
-.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
-</style><dl class="dl-inline"><dt>Alabama</dt><dd>1</dd><dt>Alaska</dt><dd>2</dd><dt>Arizona</dt><dd>2</dd><dt>Arkansas</dt><dd>3</dd></dl>
-
-
-
-
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Number of members in each cluster
-table(grp)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-<pre><code>grp
- 1  2  3  4 
- 7 12 19 12 
-</code></pre>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Get the names for the members of cluster 1
-rownames(df)[grp == 1]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-<style>
-.list-inline {list-style: none; margin:0; padding: 0}
-.list-inline>li {display: inline-block}
-.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
-</style>
-<ol class="list-inline"><li>'Alabama'</li><li>'Georgia'</li><li>'Louisiana'</li><li>'Mississippi'</li><li>'North Carolina'</li><li>'South Carolina'</li><li>'Tennessee'</li></ol>
-
-
-
-<p><a target="_blank" rel="noopener" href="http://agroninfotech.blogspot.com/2020/06/visualizing-clusters-in-r-hierarchical.html"><strong>fviz_dend advanced handbook</strong></a></p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">fviz_dend(res.hc, title='', cex=0.7, k=4, type='rectangle', rect=T ,rect_border = "jco", rect_fill = TRUE, horiz = TRUE) # type='scatter'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<p><img src="output_27_0.png" alt="png"></p>
-<h2 id="Cluster-R-package"><a href="#Cluster-R-package" class="headerlink" title="Cluster R package"></a>Cluster R package</h2><p>The R package <code>cluster</code> makes it easy to perform cluster analysis in R. It provides the function agnes() and diana() for computing agglomerative and divisive clustering, respectively. These functions perform all the necessary steps for you. You don’t need to execute the scale(), dist() and hclust() function separately.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">library("cluster")
-# Agglomerative Nesting (Hierarchical Clustering)
-res.agnes &lt;- agnes(x = USArrests, # data matrix
-                   stand = TRUE, # Standardize the data
-                   metric = "euclidean", # metric for distance matrix
-                   method = "ward" # Linkage method
-                   )
-
-# DIvisive ANAlysis Clustering
-res.diana &lt;- diana(x = USArrests, # data matrix
-                   stand = TRUE, # standardize the data
-                   metric = "euclidean" # metric for distance matrix
-                   )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre><code>Warning message:
-"package 'cluster' was built under R version 4.0.5"
-</code></pre>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">fviz_dend(res.diana, cex = 0.7, k = 4, horiz = T, type = 'circular')<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<p><img src="output_31_0.png" alt="png"></p>
-<h2 id="Application-of-hierarchical-clustering-to-gene-expression-data-analysis"><a href="#Application-of-hierarchical-clustering-to-gene-expression-data-analysis" class="headerlink" title="Application of hierarchical clustering to gene expression data analysis"></a>Application of hierarchical clustering to gene expression data analysis</h2><p>In gene expression data analysis, clustering is generaly used as one of the first step to explore the data.<br>We are interested in whether there are groups of genes or groups of samples that have similar gene expression patterns.  </p>
-<p>Several <a target="_blank" rel="noopener" href="https://www.datanovia.com/en/lessons/clustering-distance-measures/">clustering distance measures</a> have been described for assessing the similarity or the dissimilarity between items, in order to decide which items have to be grouped together or not.<br>These measures can be used to cluster genes or samples that are similar.</p>
-<p>For most common clustering softwares, the default distance measure is the Euclidean distance.<br>The most popular methods for gene expression data are to use log2(expression + 0.25), correlation distance and complete linkage clustering agglomerative-clustering.  </p>
-<p>Note that, when the data are scaled, the Euclidean distance of the z-scores is the same as correlation distance.</p>
-<p>Pearson’s correlation is quite sensitive to outliers. When clustering genes, it is important to be aware of the possible impact of outliers.<br>An alternative option is to use Spearman’s correlation instead of Pearson’s correlation.</p>
-<h2 id="Comparing-Cluster-Dendrograms-in-R"><a href="#Comparing-Cluster-Dendrograms-in-R" class="headerlink" title="Comparing Cluster Dendrograms in R"></a>Comparing Cluster Dendrograms in R</h2><h3 id="Data-preparation"><a href="#Data-preparation" class="headerlink" title="Data preparation"></a>Data preparation</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R">df &lt;- scale(USArrests)
-
-# Subset containing 10 rows
-set.seed(123)
-ss &lt;- sample(1:50, 10)
-df &lt;- df[ss,]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="Dendrograms-comparison"><a href="#Dendrograms-comparison" class="headerlink" title="Dendrograms comparison"></a>Dendrograms comparison</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressPackageStartupMessages(library(dendextend))
-
-# Compute distance matrix
-res.dist &lt;- dist(df, method = "euclidean")
-
-# Compute 2 hierarchical clusterings
-hc1 &lt;- hclust(res.dist, method = "average")
-hc2 &lt;- hclust(res.dist, method = "ward.D2")
-
-# Create two dendrograms
-dend1 &lt;- as.dendrogram (hc1)
-dend2 &lt;- as.dendrogram (hc2)
-
-# Create a list to hold dendrograms
-dend_list &lt;- dendlist(dend1, dend2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol>
-<li>Visual comparison of two dendrograms</li>
-</ol>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Align and plot two dendrograms side by side
-dendlist(dend1, dend2) %&gt;%
-  untangle(method = "step1side") %&gt;% # Find the best alignment layout
-  tanglegram()                       # Draw the two dendrograms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_41_0.png" alt="png"></p>
-<h2 id="Heatmap-in-R-Static-and-Interactive-Visualization"><a href="#Heatmap-in-R-Static-and-Interactive-Visualization" class="headerlink" title="Heatmap in R: Static and Interactive Visualization"></a>Heatmap in R: Static and Interactive Visualization</h2><h3 id="R-Packages-functions-for-drawing-heatmaps"><a href="#R-Packages-functions-for-drawing-heatmaps" class="headerlink" title="R Packages/functions for drawing heatmaps"></a>R Packages/functions for drawing heatmaps</h3><ul>
-<li>heatmap() [R base function, stats package]: Draws a simple heatmap</li>
-<li>heatmap.2() [gplots R package]: Draws an enhanced heatmap compared to the R base function.</li>
-<li>pheatmap() [pheatmap R package]: Draws pretty heatmaps and provides more control to change the appearance of heatmaps.</li>
-<li>d3heatmap() [d3heatmap R package]: Draws an interactive/clickable heatmap</li>
-<li>Heatmap() [ComplexHeatmap R/Bioconductor package]: Draws, annotates and arranges complex heatmaps (very useful for genomic data analysis)</li>
-</ul>
-<h3 id="data-preparation"><a href="#data-preparation" class="headerlink" title="data preparation"></a>data preparation</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R"># start by standardizing the data to make variables comparable
-df &lt;- scale(mtcars)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="R-base-heatmap-heatmap"><a href="#R-base-heatmap-heatmap" class="headerlink" title="R base heatmap: heatmap()"></a>R base heatmap: heatmap()</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R">heatmap(df, scale = "row")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<p><img src="output_48_0.png" alt="png"></p>
-<p>It’s possible to specify a color palette using the argument col, which can be defined as follow:</p>
+<h2 id="BEGIN-模块"><a href="#BEGIN-模块" class="headerlink" title="BEGIN 模块"></a>BEGIN 模块</h2><p>放置执行前的语句，BEGIN模式的经常性设置有 </p>
 <ul>
-<li>use custom colors</li>
+<li>FS（field separator，输入列分隔符）</li>
+<li>OFS（output FS）</li>
+<li>RS（record separator，输入行分隔符）</li>
+<li>ORS（output RS）</li>
 </ul>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">col&lt;- colorRampPalette(c("red", "white", "blue"))(256)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>Or, using RColorBrewer color palette:</li>
-</ul>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">library("RColorBrewer")
-col &lt;- colorRampPalette(brewer.pal(10, "RdYlBu"))(256)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>Additionally, you can use the argument RowSideColors and ColSideColors to annotate rows and columns, respectively.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Use RColorBrewer color palette names
-library("RColorBrewer")
-col &lt;- colorRampPalette(brewer.pal(10, "RdYlBu"))(256)
-heatmap(df, scale = "none", col =  col, 
-        RowSideColors = rep(c("blue", "pink"), each = 16),
-        ColSideColors = c(rep("purple", 5), rep("orange", 6)))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>都可以是正则表达式，写在双引号之间，例如<code>BEGIN{FS="[\t| |a-z]";OFS="\t"}</code><br>也可以将变量初始化放在这里，如：<code>BEGIN{n=0;sum=0}</code>；应该注意一点的是：这里的变量(n, sum)以及引入的外部变量(var)，都不需要通过<code>$</code> 引用<br>还可以做程序开始行为</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'BEGIN { print "Hello, world!" }'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<p><img src="output_55_0.png" alt="png"></p>
-<h3 id="Enhanced-heat-maps-heatmap-2"><a href="#Enhanced-heat-maps-heatmap-2" class="headerlink" title="Enhanced heat maps: heatmap.2()"></a>Enhanced heat maps: heatmap.2()</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R"># install.packages("gplots")
-suppressPackageStartupMessages(library("gplots"))
-heatmap.2(df, scale = "none", col = bluered(100), 
-          trace = "none", density.info = "none")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="“办事”模块"><a href="#“办事”模块" class="headerlink" title="“办事”模块"></a>“办事”模块</h2><p>使用运算符和/或匹配模式进行处理</p>
+<h2 id="END-模块"><a href="#END-模块" class="headerlink" title="END 模块"></a>END 模块</h2><p>这里面放的是处理完所有的行后要执行的语句。如结束语，或者输出最后的计数结果</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'BEGIN { print "Hello, world!" }END{ print "Good bye!" }'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="awk-支持的正则表达式元字符"><a href="#awk-支持的正则表达式元字符" class="headerlink" title="awk 支持的正则表达式元字符"></a>awk 支持的正则表达式元字符</h1><img src="https://img-blog.csdnimg.cn/img_convert/bedb8ceee7a822b1dd93a7f6c813fc3b.png" alt="awk 支持的正则表达式元字符" width="600">
 
-<p><img src="output_57_0.png" alt="png"></p>
-<h3 id="Pretty-heat-maps-pheatmap"><a href="#Pretty-heat-maps-pheatmap" class="headerlink" title="Pretty heat maps: pheatmap()"></a>Pretty heat maps: pheatmap()</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R">library("pheatmap")
-pheatmap(df, cutree_rows = 4, cutree_cols = 2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_59_0.png" alt="png"></p>
-<h3 id="Interactive-heat-maps-d3heatmap"><a href="#Interactive-heat-maps-d3heatmap" class="headerlink" title="Interactive heat maps: d3heatmap()"></a>Interactive heat maps: d3heatmap()</h3><h3 id="Complex-heatmap"><a href="#Complex-heatmap" class="headerlink" title="Complex heatmap"></a>Complex heatmap</h3><h4 id="simple-heatmap"><a href="#simple-heatmap" class="headerlink" title="simple heatmap"></a>simple heatmap</h4><pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressPackageStartupMessages(library(ComplexHeatmap))
-Heatmap(df, 
-        name = "mtcars", #title of legend
-        column_title = "Variables", row_title = "Samples",
-        row_title_gp = gpar(fontsize = 14),
-        row_names_gp = gpar(fontsize = 10), # Text size for row names
-        column_names_gp = gpar(fontsize = 14)
-        )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_63_0.png" alt="png"></p>
-<p>To specify a custom colors, you must use the the <code>colorRamp2()</code> function [circlize package], as follow</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">suppressPackageStartupMessages(library(circlize))
-mycols &lt;- colorRamp2(breaks = c(-2, 0, 2), 
-                    colors = c("green", "white", "red"))
-Heatmap(df, name = "mtcars", col = mycols)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_65_0.png" alt="png"></p>
-<p>We can also customize the appearance of dendograms using the function <code>color_branches()</code> [dendextend package]</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(dendextend)
-row_dend &lt;- hclust(dist(df))
-col_dend &lt;- hclust(dist(t(df)))
-Heatmap(df, name='mtcars',
-        row_names_gp = gpar(fontsize = 11),
-        cluster_rows = color_branches(row_dend,k=4),
-        cluster_columns = color_branches(col_dend,k=2)
-       )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_67_0.png" alt="png"></p>
-<h4 id="Splitting-heatmap-by-rows"><a href="#Splitting-heatmap-by-rows" class="headerlink" title="Splitting heatmap by rows"></a>Splitting heatmap by rows</h4><p>You can split the heatmap using either the k-means algorithm or a grouping variable</p>
-<ul>
-<li>by k-means</li>
-</ul>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Divide into 2 groups
-set.seed(2)
-Heatmap(df, name = "mtcars", k = 2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_71_0.png" alt="png"></p>
-<ul>
-<li>grouping variables</li>
-</ul>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># split by a vector specifying rowgroups
-Heatmap(df, name = "mtcars", split = mtcars$cyl,
-        row_names_gp = gpar(fontsize = 7))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_73_0.png" alt="png"></p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Split by combining multiple variables
-Heatmap(df, name ="mtcars", 
-        split = data.frame(cyl = mtcars$cyl, am = mtcars$am),
-        row_names_gp = gpar(fontsize = 7))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_74_0.png" alt="png"></p>
-<h3 id="Heatmap-annotation"><a href="#Heatmap-annotation" class="headerlink" title="Heatmap annotation"></a>Heatmap annotation</h3><p>For the example below, we’ll transpose our data to have the observations in columns and the variables in rows.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">df &lt;- t(df)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="Simple-annotation"><a href="#Simple-annotation" class="headerlink" title="Simple annotation"></a>Simple annotation</h4><p>A vector, containing discrete or continuous values, is used to annotate rows or columns.<br>We’ll use the qualitative variables cyl (levels = “4”, “5” and “8”) and am (levels = “0” and “1”), and the continuous variable mpg to annotate columns.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">table(mtcars['am'])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<pre><code> 0  1 
-19 13 
-</code></pre>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R"># Define colors for each levels of qualitative variables
-col = list(cyl = c("4"="green","6"="gray","8"="darkred"),
-          am = c("0"="yellow","1"="orange"),
-          mpg = circlize::colorRamp2(c(10,34),
-                                    c("lightblue", "purple")))
-ha &lt;- HeatmapAnnotation(
-cyl = mtcars$cyl, am = mtcars$am, mpg = mtcars$mpg,
-col = col)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">Heatmap(df, name='mtcars',
-       top_annotation = ha)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_82_0.png" alt="png"></p>
-<h4 id="complex-annotation"><a href="#complex-annotation" class="headerlink" title="*complex annotation"></a>*complex annotation</h4><pre class="line-numbers language-R" data-language="R"><code class="language-R"># Define some graphics to display the distribution of columns
-.hist = anno_histogram(df, gp = gpar(fill = "lightblue"))
-.density = anno_density(df, type = "line", gp = gpar(col = "blue"))
-ha_mix_top = HeatmapAnnotation(
-  hist = .hist, density = .density,
-  height = unit(3.8, "cm")
-  )
-# Define some graphics to display the distribution of rows
-.violin = anno_density(df, type = "violin", 
-                       gp = gpar(fill = "lightblue"), which = "row")
-.boxplot = anno_boxplot(df, which = "row")
-ha_mix_right = HeatmapAnnotation(violin = .violin, bxplt = .boxplot,
-                              which = "row", width = unit(4, "cm"))
-# Combine annotation with heatmap
-Heatmap(df, name = "mtcars", 
-        column_names_gp = gpar(fontsize = 8),
-        top_annotation = ha_mix_top) + ha_mix_right<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_84_0.png" alt="png"></p>
-<h4 id="Combining-multiple-heatmaps"><a href="#Combining-multiple-heatmaps" class="headerlink" title="*Combining multiple heatmaps"></a>*Combining multiple heatmaps</h4><pre class="line-numbers language-R" data-language="R"><code class="language-R"># Heatmap 1
-ht1 = Heatmap(df, name = "ht1", km = 2,
-              column_names_gp = gpar(fontsize = 9))
-# Heatmap 2
-ht2 = Heatmap(df, name = "ht2", 
-        col = circlize::colorRamp2(c(-2, 0, 2), c("green", "white", "red")),
-        column_names_gp = gpar(fontsize = 9))
-# Combine the two heatmaps
-ht1 + ht2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_86_0.png" alt="png"></p>
-<h3 id="Application-to-gene-expression-matrix"><a href="#Application-to-gene-expression-matrix" class="headerlink" title="Application to gene expression matrix"></a>Application to gene expression matrix</h3><p>In gene expression data, <u>rows are genes</u> and <u>columns are samples</u>.   </p>
-<p>More information about genes can be attached after the expression heatmap such as gene length and type of genes.</p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">expr &lt;- readRDS(paste0(system.file(package = "ComplexHeatmap"),
-                      "/extdata/gene_expression.rds"))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">head(expr,1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<table class="dataframe">
-<caption>A data.frame: 1 × 27</caption>
+<h1 id="awk-运算符"><a href="#awk-运算符" class="headerlink" title="awk 运算符"></a>awk 运算符</h1><table>
 <thead>
-    <tr><th></th><th scope="col">s1_cell01</th><th scope="col">s2_cell02</th><th scope="col">s3_cell03</th><th scope="col">s4_cell01</th><th scope="col">s5_cell02</th><th scope="col">s6_cell03</th><th scope="col">s7_cell01</th><th scope="col">s8_cell02</th><th scope="col">s9_cell03</th><th scope="col">s10_cell01</th><th scope="col">...</th><th scope="col">s18_cell03</th><th scope="col">s19_cell01</th><th scope="col">s20_cell02</th><th scope="col">s21_cell03</th><th scope="col">s22_cell01</th><th scope="col">s23_cell02</th><th scope="col">s24_cell03</th><th scope="col">length</th><th scope="col">type</th><th scope="col">chr</th></tr>
-    <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">...</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th></tr>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+</tr>
 </thead>
-<tbody>
-    <tr><th scope="row">gene1</th><td>11.11632</td><td>12.65986</td><td>11.3805</td><td>10.84344</td><td>12.29402</td><td>11.07829</td><td>11.08335</td><td>12.83157</td><td>11.24916</td><td>10.45512</td><td>...</td><td>11.41324</td><td>10.69669</td><td>12.83305</td><td>11.12082</td><td>10.25306</td><td>12.63911</td><td>11.20286</td><td>124882</td><td>protein_coding</td><td>chr1</td></tr>
-</tbody>
-</table>
+<tbody><tr>
+<td align="left">= += -= *= /= %= ^= **=</td>
+<td align="left">赋值</td>
+</tr>
+<tr>
+<td align="left">?:</td>
+<td align="left">C条件表达式</td>
+</tr>
+<tr>
+<td align="left">|| &amp;&amp;</td>
+<td align="left">或，与</td>
+</tr>
+<tr>
+<td align="left">~ !~</td>
+<td align="left">匹配，不匹配</td>
+</tr>
+<tr>
+<td align="left">&lt; &lt;= &gt; &gt;= != ==</td>
+<td align="left">关系运算符</td>
+</tr>
+<tr>
+<td align="left">+ - * / %</td>
+<td align="left">加减乘除余</td>
+</tr>
+<tr>
+<td align="left">^ ***</td>
+<td align="left">求幂</td>
+</tr>
+<tr>
+<td align="left">++ --</td>
+<td align="left">加加，渐渐</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'$1==2 &amp;&amp; $2=="Are" {print $1+1,$3}'</span> log.txt  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>筛选匹配字符的行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'$2 ~ /pattern/'</span> log.txt
+<span class="token function">awk</span> <span class="token string">'$2 !~ /pattern/'</span> log.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-
-
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">table(expr$chr)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<pre><code> chr1 chr10 chr11 chr12 chr13 chr14 chr15 chr16 chr17 chr18 chr19  chr2 chr20 
-    9    10     6     7     3     8     9     3     5     5     5    14     3 
-chr22  chr3  chr4  chr5  chr6  chr7  chr8  chr9  chrM  chrX 
-    1     7     8     9     9    12     5     4     6     7 
-</code></pre>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">mat &lt;- as.matrix(expr[,grep("cell",colnames(expr))])
-type &lt;- gsub('s\\d+_','',colnames(mat))
-ha = HeatmapAnnotation(
-  df = data.frame(type = type),
-    annotation_height = unit(4, "mm")
-  )
-
-Heatmap(mat, name='expression' , km = 5, top_annotation = ha,
-        show_column_names = F, show_row_names = F) + 
-Heatmap(expr$length, name = 'length', width = unit(5, "mm"),
-        col = circlize::colorRamp2(c(0,100000),c('white','orange'))) +
-Heatmap(expr$type, name = 'type', width = unit(5, "mm")) +
-Heatmap(expr$chr, name = 'chr', width = unit(5, "mm"),
-       col = circlize::rand_color(length(unique(expr$chr))))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<p><img src="output_92_0.png" alt="png"></p>
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">set.seed(123)
-mydata &lt;- matrix(rnorm(200), 20, 10)
-mydata[1:10, seq(1, 10, 2)] = mydata[1:10, seq(1, 10, 2)] + 3
-mydata[11:20, seq(2, 10, 2)] = mydata[11:20, seq(2, 10, 2)] + 2
-mydata[15:20, seq(2, 10, 2)] = mydata[15:20, seq(2, 10, 2)] + 4
-colnames(mydata) = paste("Sple", 1:10, sep = "")
-rownames(mydata) = paste("Gene", 1:20, sep = "")
-head(mydata[, 1:4], 4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<table class="dataframe">
-<caption>A matrix: 4 × 4 of type dbl</caption>
+<h1 id="awk-内置变量"><a href="#awk-内置变量" class="headerlink" title="awk 内置变量"></a>awk 内置变量</h1><table>
 <thead>
-    <tr><th></th><th scope="col">Sple1</th><th scope="col">Sple2</th><th scope="col">Sple3</th><th scope="col">Sple4</th></tr>
+<tr>
+<th align="left">变量名</th>
+<th align="left">属性</th>
+</tr>
 </thead>
-<tbody>
-    <tr><th scope="row">Gene1</th><td>2.439524</td><td>-1.0678237</td><td>2.305293</td><td> 0.3796395</td></tr>
-    <tr><th scope="row">Gene2</th><td>2.769823</td><td>-0.2179749</td><td>2.792083</td><td>-0.5023235</td></tr>
-    <tr><th scope="row">Gene3</th><td>4.558708</td><td>-1.0260044</td><td>1.734604</td><td>-0.3332074</td></tr>
-    <tr><th scope="row">Gene4</th><td>3.070508</td><td>-0.7288912</td><td>5.168956</td><td>-1.0185754</td></tr>
-</tbody>
-</table>
+<tbody><tr>
+<td align="left">$0</td>
+<td align="left">当前记录整行</td>
+</tr>
+<tr>
+<td align="left">$1,$2,….</td>
+<td align="left">当前记录第 n 个field，由 FS 分隔</td>
+</tr>
+<tr>
+<td align="left">NF</td>
+<td align="left">列数，number of field</td>
+</tr>
+<tr>
+<td align="left">NR</td>
+<td align="left">行数，number of row</td>
+</tr>
+<tr>
+<td align="left">IGNORECASE</td>
+<td align="left">忽略大小写，设为0(FALSE)，1(TRUE)</td>
+</tr>
+<tr>
+<td align="left">OFMT</td>
+<td align="left">数字的输出格式(默认值是%.6g)</td>
+</tr>
+</tbody></table>
+<p>更多见参考资料</p>
+<h1 id="awk-内置函数"><a href="#awk-内置函数" class="headerlink" title="awk 内置函数"></a>awk 内置函数</h1><h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>awk 的内建函数 split 允许把一个字符串分隔未单词并存储在数组中。<br>格式：  </p>
+<pre class="line-numbers language-none"><code class="language-none">split(string, array, field separator)
+split(string, array) # 如果第三个参数没有提供，默认为 FS 值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token assign-left variable">time</span><span class="token operator">=</span><span class="token string">"12:34:56"</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$time</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{split($0,a,":");print a[1],a[2],a[3]}'</span>
+<span class="token number">12</span> <span class="token number">34</span> <span class="token number">56</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h2><p>返回从起始位置起，指定长度之子字符串；若未指定长度，则返回从起始位置到字符串末尾的子字符串。<br>格式:  </p>
+<pre class="line-numbers language-none"><code class="language-none">substr(s,p) # 返回字符串s中从p开始的后缀部分
+substr(s,p,n)  # 返回字符串s中从p开始长度为n的后缀部分<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"123"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print substr($0,1,1)}'</span>
+<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token variable">$time</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'split($0,a,":"){print length(a[1])}'</span>
+<span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="gsub"><a href="#gsub" class="headerlink" title="gsub"></a>gsub</h2><p>gsub函数则使得在所有正则表达式被匹配的时候都发生替换。<br>格式：  </p>
+<pre class="line-numbers language-none"><code class="language-none">gsub(regular expression, subsitution string, target string) # 简称 gsub（r,s,t)。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>举例：把一个文件里面所有包含 abc 的行里面的 abc 替换成 def，然后输出第一列和第三列</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">awk</span> <span class="token string">'$0 ~ /abc/ {gsub("abc", "def", $0); print $1, $3}'</span> abc.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="一些示例"><a href="#一些示例" class="headerlink" title="一些示例"></a>一些示例</h1><h2 id="计算文件大小"><a href="#计算文件大小" class="headerlink" title="计算文件大小"></a>计算文件大小</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> -l *.txt <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{sum+=$5} END {print sum}'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="脚本示例"><a href="#脚本示例" class="headerlink" title="脚本示例"></a>脚本示例</h2><p>假设有如下成绩表：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> score.txt
+Marry   <span class="token number">2143</span> <span class="token number">78</span> <span class="token number">84</span> <span class="token number">77</span>
+Jack    <span class="token number">2321</span> <span class="token number">66</span> <span class="token number">78</span> <span class="token number">45</span>
+Tom     <span class="token number">2122</span> <span class="token number">48</span> <span class="token number">77</span> <span class="token number">71</span>
+Mike    <span class="token number">2537</span> <span class="token number">87</span> <span class="token number">97</span> <span class="token number">95</span>
+Bob     <span class="token number">2415</span> <span class="token number">40</span> <span class="token number">57</span> <span class="token number">62</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>awk 脚本如下：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> cal.awk
+<span class="token comment">#!/bin/awk -f</span>
+<span class="token comment">#运行前</span>
+BEGIN <span class="token punctuation">{</span>
+    math <span class="token operator">=</span> <span class="token number">0</span>
+    english <span class="token operator">=</span> <span class="token number">0</span>
+    computer <span class="token operator">=</span> <span class="token number">0</span>
+ 
+    <span class="token builtin class-name">printf</span> <span class="token string">"NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL<span class="token entity" title="\n">\n</span>"</span>
+    <span class="token builtin class-name">printf</span> <span class="token string">"---------------------------------------------<span class="token entity" title="\n">\n</span>"</span>
+<span class="token punctuation">}</span>
+<span class="token comment">#运行中</span>
+<span class="token punctuation">{</span>
+    <span class="token assign-left variable">math</span><span class="token operator">+=</span><span class="token variable">$3</span>
+    <span class="token assign-left variable">english</span><span class="token operator">+=</span><span class="token variable">$4</span>
+    <span class="token assign-left variable">computer</span><span class="token operator">+=</span><span class="token variable">$5</span>
+    <span class="token builtin class-name">printf</span> <span class="token string">"%-6s %-6s %4d %8d %8d %8d<span class="token entity" title="\n">\n</span>"</span>, <span class="token variable">$1</span>, <span class="token variable">$2</span>, <span class="token variable">$3</span>,<span class="token variable">$4</span>,<span class="token variable">$5</span>, <span class="token variable">$3</span>+<span class="token variable">$4</span>+<span class="token variable">$5</span>
+<span class="token punctuation">}</span>
+<span class="token comment">#运行后</span>
+END <span class="token punctuation">{</span>
+    <span class="token builtin class-name">printf</span> <span class="token string">"---------------------------------------------<span class="token entity" title="\n">\n</span>"</span>
+    <span class="token builtin class-name">printf</span> <span class="token string">"  TOTAL:%10d %8d %8d <span class="token entity" title="\n">\n</span>"</span>, math, english, computer
+    <span class="token builtin class-name">printf</span> <span class="token string">"AVERAGE:%10.2f %8.2f %8.2f<span class="token entity" title="\n">\n</span>"</span>, math/NR, english/NR, computer/NR
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>执行结果: </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">awk</span> -f cal.awk score.txt
+NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL
+---------------------------------------------
+Marry  <span class="token number">2143</span>     <span class="token number">78</span>       <span class="token number">84</span>       <span class="token number">77</span>      <span class="token number">239</span>
+Jack   <span class="token number">2321</span>     <span class="token number">66</span>       <span class="token number">78</span>       <span class="token number">45</span>      <span class="token number">189</span>
+Tom    <span class="token number">2122</span>     <span class="token number">48</span>       <span class="token number">77</span>       <span class="token number">71</span>      <span class="token number">196</span>
+Mike   <span class="token number">2537</span>     <span class="token number">87</span>       <span class="token number">97</span>       <span class="token number">95</span>      <span class="token number">279</span>
+Bob    <span class="token number">2415</span>     <span class="token number">40</span>       <span class="token number">57</span>       <span class="token number">62</span>      <span class="token number">159</span>
+---------------------------------------------
+  TOTAL:       <span class="token number">319</span>      <span class="token number">393</span>      <span class="token number">350</span>
+AVERAGE:     <span class="token number">63.80</span>    <span class="token number">78.60</span>    <span class="token number">70.00</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
-
-
-<pre class="line-numbers language-R" data-language="R"><code class="language-R">library("pheatmap")
-pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre><code>Warning message:
-"package 'pheatmap' was built under R version 4.0.3"
-</code></pre>
-<p><img src="output_94_1.png" alt="png"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39890327/article/details/113045991">awk取某个字符串后面的内容_Linux 三剑客之 awk 详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-awk.html">Linux awk 命令</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bymo/p/7601519.html">linux 下 awk 内置函数的使用(split/substr/length)</a></li>
+</ul>
 
                 
             </div>
@@ -884,7 +636,7 @@ pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2021/12/30/Hierarchical_clustering_in_R/">https://liangshaw.github.io/2021/12/30/Hierarchical_clustering_in_R/</a>
+                    <a href="https://liangshaw.github.io/2022/02/22/linux-awk/">https://liangshaw.github.io/2022/02/22/linux-awk/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -922,12 +674,12 @@ pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hierarchical-clustering/">
-                                    <span class="chip bg-color">hierarchical clustering</span>
+                                <a href="/tags/cmd/">
+                                    <span class="chip bg-color">cmd</span>
                                 </a>
                             
-                                <a href="/tags/R/">
-                                    <span class="chip bg-color">R</span>
+                                <a href="/tags/awk/">
+                                    <span class="chip bg-color">awk</span>
                                 </a>
                             
                         </div>
@@ -1241,54 +993,52 @@ pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/02/RDataVisualization-2/">
+                <a href="/2022/02/22/linux-awk/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="R数据可视化手册-下">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="linux命令————awk">
                         
-                        <span class="card-title">R数据可视化手册-下</span>
+                        <span class="card-title">linux命令————awk</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                            awk命令 作为 Linux 的三驾马车之一，功能强大，却也颇有些门道，之前对 awk 的认识仅仅能够满足基本操作需求，这里系统地重新学习一下 awk
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%8B%E5%86%8C/" class="post-category">
-                                    R数据可视化手册
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
+                    <a href="/tags/cmd/">
+                        <span class="chip bg-color">cmd</span>
                     </a>
                     
-                    <a href="/tags/ggplot2/">
-                        <span class="chip bg-color">ggplot2</span>
-                    </a>
-                    
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
+                    <a href="/tags/awk/">
+                        <span class="chip bg-color">awk</span>
                     </a>
                     
                 </div>
@@ -1302,13 +1052,13 @@ pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/30/GSEA_instruction/">
+                <a href="/2022/02/20/PapreRead-Day10/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="GSEA富集分析笔记">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="文献阅读 Day10">
                         
-                        <span class="card-title">GSEA富集分析笔记</span>
+                        <span class="card-title">文献阅读 Day10</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1319,12 +1069,16 @@ pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-20
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            梁绍波
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/paper/" class="post-category">
+                                    paper
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1332,8 +1086,12 @@ pheatmap(mydata, scale = "row")<span aria-hidden="true" class="line-numbers-rows
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/GSEA/">
-                        <span class="chip bg-color">GSEA</span>
+                    <a href="/tags/RBP/">
+                        <span class="chip bg-color">RBP</span>
+                    </a>
+                    
+                    <a href="/tags/Che-RBP/">
+                        <span class="chip bg-color">Che-RBP</span>
                     </a>
                     
                 </div>
