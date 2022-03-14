@@ -1,0 +1,2078 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Shaw">
+    <meta name="description" content="编程产出代码，代码是一种沟通工具。将代码当作一种沟通工具是非常重要的，因为现在所有项目基本上都要靠协作才能完成。即使你现在单枪匹马地工作，也肯定要与未来的自己进行交流！代码清晰易懂特别重要，这样其他人（包括未来的你）才能理解你为什么要使用这">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Shaw</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(http://h2.ioliu.cn/bing/BulgariaPerseids_EN-AU11585904087_1920x1080.jpg?imageslim&quot);
+       background-repeat:no-repeat;
+       background-size: 100% 100%;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Shaw</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Shaw</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title"></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-03-03
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-03-03
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>编程产出代码，代码是一种沟通工具。将代码当作一种沟通工具是非常重要的，因为现在所有项目基本上都要靠协作才能完成。即使你现在单枪匹马地工作，也肯定要与未来的自己进行交流！代码清晰易懂特别重要，这样其他人（包括未来的你）才能理解你为什么要使用这种方式进行分析。因此，提高编程能力的同时也要提高沟通能力，随着时间的推移，你不仅会希望代码更易于编写，还会希望它更容易为他人所理解。  </p>
+<p>写代码和写文章在很多方面是相似的。我们发现二者特别重要的一个共同之处是，要想让文章和代码更加清晰易懂，<strong>重写</strong>是关键。<br>对自己的想法第一次表达往往不是特别清除，因此需要多次重写。解决一个数据分析难题后，我们通常应该再审视一下代码，思考一下它是否真正实现了我们的要求。<br>当产生新想法时，如果花一点时间重写代码，就可以节省以后重构代码所需的时间。</p>
+<ul>
+<li>第13章将深入介绍<strong>管道操作</strong>，即 %&gt;%，你将学习更多关于管道操作的工作原理和代替方式，以及不适合使用管道的情形。</li>
+<li>复制粘贴确实功能强大，但这种操作不应该超过两次。代码中的重复内容是非常危险的，因为这样很容易导致错误和不一致。第14章会介绍如何<strong>编写函数</strong>，这是重用代码的一种方式，它可以让你提取出重复代码，然后轻松地进行重用。</li>
+<li>当开始编写功能更强大地函数时，你需要深刻理解R的<strong>数据结构</strong>，对应15章内容。必须掌握4种常用的原子向量，以及以此为基础构建的3种重要S3类，并理解列表和数据框背后的奥秘。</li>
+<li>函数可以提出重复代码，但你经常需要对不同的输入重复相同的操作。你需要可以多次执行相同操作的<strong>迭代</strong>工具，这些工具包括 for 循环和函数式编程，这就是第16章将介绍的内容。</li>
+</ul>
+<h1 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>本章的重点在于介绍 R 基础包中的数据结构，因此无需加载任何R包。但是，为了避免 R 基础包中的一些不一致现象，我们会使用 purrr 包中的少量函数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(tidyverse)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'tidyverse' was built under R version 4.0.5"
+-- [1mAttaching packages[22m ------------------------------------------------------------------------------- tidyverse 1.3.1 --
+
+[32mv[39m [34mggplot2[39m 3.3.5     [32mv[39m [34mpurrr  [39m 0.3.4
+[32mv[39m [34mtibble [39m 3.1.2     [32mv[39m [34mdplyr  [39m 1.0.7
+[32mv[39m [34mtidyr  [39m 1.1.3     [32mv[39m [34mstringr[39m 1.4.0
+[32mv[39m [34mreadr  [39m 2.1.0     [32mv[39m [34mforcats[39m 0.5.1
+
+Warning message:
+"package 'tibble' was built under R version 4.0.5"
+Warning message:
+"package 'tidyr' was built under R version 4.0.4"
+Warning message:
+"package 'readr' was built under R version 4.0.5"
+Warning message:
+"package 'dplyr' was built under R version 4.0.5"
+Warning message:
+"package 'forcats' was built under R version 4.0.3"
+-- [1mConflicts[22m ---------------------------------------------------------------------------------- tidyverse_conflicts() --
+[31mx[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31mx[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+</code></pre>
+<h2 id="向量基础"><a href="#向量基础" class="headerlink" title="向量基础"></a>向量基础</h2><p>向量的类型主要两种：</p>
+<ul>
+<li><strong>原子向量</strong>，其共有6种类型：逻辑型、整型、双精度型、字符型、复数型和原始型。整数型 和 双精度型 统称为<strong>数值型</strong>向量。</li>
+<li><strong>列表</strong>，有时又称为递归向量，因为列表中也可以包含其他列表。</li>
+</ul>
+<p>二者主要区别在于，原子向量中的各个值都是<strong>同种类型的</strong>，而列表中的各个值可以是<strong>不同类型的</strong>。 NULL是一个与向量相关的对象，用于表示空向量（与表示向量中的一个值为空的NA不同），通常指长度为0的向量。</p>
+<img src="https://img-blog.csdnimg.cn/img_convert/e3eba104da9322ad669a76fdb6f0649c.png" width="700" alt="R向量类型的层次图">
+
+<p>每个向量都有两个关键属性。</p>
+<ul>
+<li>类型。你可以使用 <code>typeof()</code> 函数来确定向量的类型:</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">typeof(letters)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>‘character’</p>
+<ul>
+<li>长度。你可以使用 <code>length()</code> 函数来确定向量的长度: </li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- list("a","b",1:10)
+length(x)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p>3</p>
+<p>还可以向向量中任意添加额外的元数据，这些元数据称为特性。特性可以用来创建<strong>创建向量</strong>，以执行一些新的操作。比较重要的拓展向量有4种类型。</p>
+<ul>
+<li>基于整型向量构建的因子。</li>
+<li>基于数值型向量构建的日期和日期时间。</li>
+<li>基于列表构建的数据框和 tibble 。</li>
+</ul>
+<p>本章将由浅入深地介绍这些重要向量。首先是原子向量、然后是列表，最后是拓展向量。</p>
+<h2 id="重要的原子向量"><a href="#重要的原子向量" class="headerlink" title="重要的原子向量"></a>重要的原子向量</h2><h3 id="逻辑型"><a href="#逻辑型" class="headerlink" title="逻辑型"></a>逻辑型</h3><pre class="line-numbers language-R" data-language="R"><code class="language-R">TRUE FALSE NA<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><p>R中默认数值是双精度型的。如果想要创建整型数值，可以在数字后面加一个L：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">typeof(1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>‘double’</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">typeof(1L)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>‘integer’</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">1.5L<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>1.5</p>
+<ul>
+<li><p>双精度型是近似值。双精度型表示的是浮点数，不能由固定数量的内存精确表示。这意味着你应该将所有双精度数当成近似值。</p>
+<p>在处理浮点数时，这种现象非常普遍：多数计算都包含一些近似误差。在比较浮点数时，不能使用 ==，而应该使用 <code>dplyr::near()</code>,后者可以容忍一些数据误差。</p>
+</li>
+<li><p>整型数据有一个特殊值 NA，而双精度型数据则有4个特殊值：NA、NAN、Inf和 -Inf。其他3个特殊值都可以由除法产生：</p>
+</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">c(-1, 0, 1) / 0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>-Inf</li><li>NaN</li><li>Inf</li></ol>
+
+
+
+<p>不要使用 == 来检查这些特殊值，而应该使用辅助函数 <code>is.finite()</code>、<code>is.infinite()</code> 和 <code>is.nan()</code>。</p>
+<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><p>R 使用的是全局字符串池。这意味着每个唯一的字符串在内存中只保存一次，每次对这个字符串的使用都指向这段内存，这样可以减少复制字符串所需的内存空间。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- "This is a reasonably long string."
+pryr::object_size(x)
+
+y &lt;- rep(x, 1000)
+pryr::object_size(y)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre><code>152 B
+
+
+
+8,144 B
+</code></pre>
+<p>y 所占的内存不是 x 的 1000倍，因为 y 中的每个元素都只是指向一个字符串的指针。</p>
+<h3 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h3><p>注意，每种类型的原子向量都有自己的缺失值：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">NA   # 逻辑型
+NA_integer_ # 整型
+NA_real_ # 双精度型
+NA_character_ # 字符型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<p>&lt;NA&gt;</p>
+<p>&lt;NA&gt;</p>
+<p>&lt;NA&gt;</p>
+<p>NA</p>
+<p>一般不需要考虑类型问题，可以一直使用NA，R会通过隐含的强制类型转换规则将其转换为正确的类型。</p>
+<h2 id="使用原子向量"><a href="#使用原子向量" class="headerlink" title="使用原子向量"></a>使用原子向量</h2><h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><ul>
+<li>显式强制转换：调用 as.logical()、as.integer()、as.double() 或 as.character() 这样的函数进行转换</li>
+<li>隐式强制转换：<br>在数值型摘要函数中使用逻辑向量。这种情况下，TRUE 转换为1，FALSE 转换为0.这意味着对逻辑向量求和的结果就是其中真值的个数，逻辑向量的均值就是其中真值的比例。</li>
+</ul>
+<p>当试图使用<code>c()</code>函数来创建包含多种类型元素的向量时，清楚如何进行类型转换也是非常重要的。这时总会统一转换为最复杂的元素类型：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">typeof(c(TRUE,1L))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>‘integer’</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">typeof(c(1L,1.5))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>‘double’</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">typeof(c(1,5, "a"))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>‘character’</p>
+<p>原子向量中不能包含不同类型的元素，因为类型是整个向量的一种属性，不是其中单个元素的属性。如何需要在同一向量中包含混合类型的元素，那么就需要使用列表。</p>
+<h3 id="检验函数"><a href="#检验函数" class="headerlink" title="检验函数"></a>检验函数</h3><p>有时我们需要根据向量的类型进行不同的操作。检验向量类型的一种方法是使用 <code>typeof()</code> 函数，另一种方法是使用检验函数来返回 TRUE 或 FALSE。R 基础包中提供了很多这样的函数，如is.vector() 和 is.atomic()，但它们经常返回出人意料的结果。更可靠的方法是使用 purrr 包提供的 is_* 函数族，以下表格总结了它们的使用方式。</p>
+<img src="http://talimi.se/wp-content/uploads/2017/12/Ska%CC%88rmavbild-2017-12-23-kl.-12.46.12-e1514030771649.png" width="500" align="left" alt="purrr is_*函数族">
+
+<h3 id="标量与循环规则"><a href="#标量与循环规则" class="headerlink" title="标量与循环规则"></a>标量与循环规则</h3><p>R 可以隐式地对向量类型进行强制转换，同样地，也可以对向量长度进行强制转换。这种转换称为<strong>向量循环</strong>，因为R会将较短的向量重复到与较长的向量相同的长度。混合使用向量和“标量”时，向量循环是最有用的。<br>我们在标量上加了引号，因为R中没有真正的标量，只有长度为1的向量。正因为没有标量，所以R的多数内置函数都是<strong>向量化的</strong>，即可以在数值的一个向量上进行操作。这就是以下代码可以运行的原因。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">sample(10) + 100
+runif(10) &gt; 0.5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>106</li><li>103</li><li>102</li><li>104</li><li>109</li><li>107</li><li>110</li><li>105</li><li>108</li><li>101</li></ol>
+
+
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>FALSE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li></ol>
+
+
+
+<p>在R中，基本的数学运算是使用向量来进行的，这意味着在进行简单数据计算时，根本不需要执行显式迭代。</p>
+<p>两个长度相同的向量或者一个向量和一个“标量”相加，结果是显而易见的。<br>如果两个长度不同的向量相加，R就会拓展较短的向量，使其与较长的向量一样长，这个过程就称作向量循环。如果较长的向量不是较短向量长度的整数倍，会出现warning。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">1:10 + 1:2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>2</li><li>4</li><li>4</li><li>6</li><li>6</li><li>8</li><li>8</li><li>10</li><li>10</li><li>12</li></ol>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">1:10 + 1:3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message in 1:10 + 1:3:
+"长的对象长度不是短的对象长度的整倍数"
+</code></pre>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>2</li><li>4</li><li>6</li><li>5</li><li>7</li><li>9</li><li>8</li><li>10</li><li>12</li><li>11</li></ol>
+
+
+
+<h3 id="向量命名"><a href="#向量命名" class="headerlink" title="向量命名"></a>向量命名</h3><p>所有类型的向量都是可以命名的。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">c(x=1, y=2, z=4)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>x</dt><dd>1</dd><dt>y</dt><dd>2</dd><dt>z</dt><dd>4</dd></dl>
+
+
+
+<p>也可以在向量创建完成后，使用 <code>purrr::set_names()</code> 函数来命名：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">set_names(1:3, c("a","b","c"))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>a</dt><dd>1</dd><dt>b</dt><dd>2</dd><dt>c</dt><dd>3</dd></dl>
+
+
+
+<p>向量命名对于向量取子集特别重要。</p>
+<h3 id="向量取子集"><a href="#向量取子集" class="headerlink" title="向量取子集"></a>向量取子集</h3><p>[ 就是取子集函数，调用形式是x[a]。你可以使用以下4种形式来完成向量取子集操作。</p>
+<ul>
+<li>使用仅包含整数的数值向量。整数要么<u>全部为正数，要么全部为负数，或者为0</u>。<br>使用正整数取子集时，可以保持相应位置的元素：</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- c("one","two","three","four","five")
+x[c(3,2,5)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'three'</li><li>'two'</li><li>'five'</li></ol>
+
+
+
+<p>位置可以重复  </p>
+<p>使用负整数取子集时，会丢弃相应位置的元素：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x[c(-1,-3,-5)]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'two'</li><li>'four'</li></ol>
+
+
+
+<p>正数与负数混合使用则会引发一个错误:</p>
+<ul>
+<li>使用逻辑向量取子集。这种方式可以提取出TRUE值对应的所有元素，一般与比较函数结合起来效果更佳:</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- c(10, 3, NA, 5, 8, 1, NA)
+x[!is.na(x)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>10</li><li>3</li><li>5</li><li>8</li><li>1</li></ol>
+
+
+
+<ul>
+<li>如果是命名向量，那么可以使用字符向量来取子集：</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- c(abc = 1, def = 2, xyz = 3)
+x[c("xyz", "def")]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>xyz</dt><dd>3</dd><dt>def</dt><dd>2</dd></dl>
+
+
+
+<ul>
+<li>取子集的最简方式就是什么都不写：<code>x[]</code>, 这样就会返回x中的全部元素。<br>这种方式对于向量取子集没有什么用处，但对于矩阵（或其他高维数据结构）取子集则非常重要。<br>因为这样可以取出所有的行或所有的列，只要将行或列保持为空即可。例如，如果 x 是二维的，那么 <code>x[1,]</code>可以选取出第一行和所有列，<code>x[,-1]</code>则可以选取出所有行和除第一列外的所有列。</li>
+</ul>
+<p><code>[</code>有一个重要的变体<code>[[</code>。<code>[[</code>从来都是只提取单个元素，并丢弃名称。</p>
+<h2 id="递归向量（列表）"><a href="#递归向量（列表）" class="headerlink" title="递归向量（列表）"></a>递归向量（列表）</h2><p>列表是建立在原子向量基础上的一种复杂形式，因为<u>列表中可以包含其他列表</u>。这种性质使得列表特别适合表示层次结构或树形结构。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- list(1,2,3)
+x<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<ol>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ol>
+
+
+
+<h3 id="列表可视化"><a href="#列表可视化" class="headerlink" title="列表可视化"></a>列表可视化</h3><p>为了解释清楚更复杂的列表操作函数，列表的可视化大有裨益。</p>
+<h3 id="列表取子集"><a href="#列表取子集" class="headerlink" title="列表取子集"></a>列表取子集</h3><p>列表取子集有三种方式，接下来我们通过列表a来说明：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">a &lt;- list(a = 1:3, b = "a string", c = pi, d = list(-1,-5))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>使用<code>[</code> 提取子列表。这种方式的结果总是一个列表：</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">str(a[1])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>List of 1
+ $ a: int [1:3] 1 2 3
+</code></pre>
+<ul>
+<li>使用<code>[[</code>从列表中提取单个元素。这种方式会从列表中删除一个层次等级：</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">str(a[[1]])<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code> int [1:3] 1 2 3
+</code></pre>
+<ul>
+<li><code>$</code>是提取列表命名元素的简单方式，其作用与 <code>[[</code>相同，只是不需要使用括号：</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">a$a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>1</li><li>2</li><li>3</li></ol>
+
+
+
+<p>对于列表来说，<code>[</code>和<code>[[</code>之间的区别非常重要。<code>[[</code>会使列表降低一个层级，而<code>[</code>则会返回一个新的、更小的列表。</p>
+<img src="part2-列表取子集的可视化表示.png" width="600" alt="聊表取子集的可视化表示">
+
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>任何向量都可以通过其<strong>特性</strong>来附加任意元数据。可以将特性看作可以附加在任何对象上的一个向量命名列表。可以使用 <code>attr()</code> 函数来读取和设置单个特性值，也可以使用<code>attributes()</code>函数同时查看所有特性值：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- 1:10
+attr(x, "greeting")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<pre><code>NULL
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">attr(x, "greeting") &lt;- "Hi!"
+attr(x, "farewell") &lt;- "Bye!"
+attributes(x)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<dl>
+    <dt>$greeting</dt>
+        <dd>'Hi!'</dd>
+    <dt>$farewell</dt>
+        <dd>'Bye!'</dd>
+</dl>
+
+
+
+<p>3种特别重要的特性可以用来实现R中的基础功能。</p>
+<ul>
+<li>名称</li>
+<li>维度</li>
+<li>类：用于实现面向对象的S3系统。可以控制<strong>泛型函数</strong>的运行方式。</li>
+</ul>
+<p>泛型函数是R中实现面向对象编程的关键，因为它允许函数根据不同类型的输入而进行不同的操作。</p>
+<h2 id="拓展向量"><a href="#拓展向量" class="headerlink" title="拓展向量"></a>拓展向量</h2><p>原子向量和列表是最基础的向量，使用它们可以构建出另外一些重要的向量类型，比如因子和日期。这些构建出来的向量为拓展向量，因为他们具有附加特性，其中包括类。因为拓展向量中带有类，所以它们的行为就与基础的原子向量不同。</p>
+<h3 id="因子"><a href="#因子" class="headerlink" title="因子"></a>因子</h3><p>因子是设计用来表示分类数据的，只能在固定集合中取值。因子是在整型向量的基础上构建的，添加了水平特性：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x &lt;- factor(c("ab","cd","ab"), levels = c("ab","cd","ef"))
+typeof(x)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+<p>‘integer’</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">attributes(x)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<dl>
+    <dt>$levels</dt>
+        <dd><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'ab'</li><li>'cd'</li><li>'ef'</li></ol>
+</dd>
+    <dt>$class</dt>
+        <dd>'factor'</dd>
+</dl>
+
+
+
+<h3 id="日期和日期时间"><a href="#日期和日期时间" class="headerlink" title="日期和日期时间"></a>日期和日期时间</h3><h3 id="tibble"><a href="#tibble" class="headerlink" title="tibble"></a>tibble</h3><h1 id="使用-purrr-实现迭代"><a href="#使用-purrr-实现迭代" class="headerlink" title="使用 purrr 实现迭代"></a>使用 purrr 实现迭代</h1><p>减少重复代码主要有3个好处</p>
+<ul>
+<li>更容易看清代码的意图。吸引我们目光的东西是那些不同的部分，而不是那些保持不变的部分。</li>
+<li>更容易对需求变化做出反应。当要修改代码时，只需要在一处进行修改即可</li>
+<li>更容易减少bug，因为每行代码都被多次使用</li>
+</ul>
+<p>函数是减少重复代码的一种工具，其减少重复代码的方法是，先识别出代码中的重复模式，然后将其提取出来，成为更容易修改和重用的独立部分。<br>减少重复代码的另一种工具是<strong>迭代</strong>，它的作用在于可以对多个输入执行同一种处理，比如对多个列或多个数据集进行同样的操作。<br>本章将介绍两种重要的迭代方式：命令式编程和函数式编程。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">library(tidyverse)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code>Warning message:
+"package 'tidyverse' was built under R version 4.0.5"
+-- [1mAttaching packages[22m ------------------------------------------------------------------------------- tidyverse 1.3.1 --
+
+[32mv[39m [34mggplot2[39m 3.3.5     [32mv[39m [34mpurrr  [39m 0.3.4
+[32mv[39m [34mtibble [39m 3.1.2     [32mv[39m [34mdplyr  [39m 1.0.7
+[32mv[39m [34mtidyr  [39m 1.1.3     [32mv[39m [34mstringr[39m 1.4.0
+[32mv[39m [34mreadr  [39m 2.1.0     [32mv[39m [34mforcats[39m 0.5.1
+
+Warning message:
+"package 'tibble' was built under R version 4.0.5"
+Warning message:
+"package 'tidyr' was built under R version 4.0.4"
+Warning message:
+"package 'readr' was built under R version 4.0.5"
+Warning message:
+"package 'dplyr' was built under R version 4.0.5"
+Warning message:
+"package 'forcats' was built under R version 4.0.3"
+-- [1mConflicts[22m ---------------------------------------------------------------------------------- tidyverse_conflicts() --
+[31mx[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31mx[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+</code></pre>
+<h2 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">df &lt;- tibble(
+    a = rnorm(10),
+    b = rnorm(10),
+    c = rnorm(10),
+    d = rnorm(10)
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>我们想要计算出每列的中位数。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">output &lt;- vector("double", ncol(df)) # 1. 输出
+for (i in seq_along(df)){            # 2. 序列
+    output[[i]] &lt;- median(df[[i]])   # 3. 循环体
+}
+
+output<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>0.0958849547446843</li><li>-0.306585623094582</li><li>0.0416632570547124</li><li>-0.0808040981927321</li></ol>
+
+
+
+<p>输出： output &lt;- vector(“double”, length(x))<br>    在开始循环前，你必须为输出结果分配足够的空间。这对循环效率非常重要，如果在每次迭代中都使用 c() 来保存循环的结果，那么 for 循环的速度就会特别慢</p>
+<p>序列： i in seq_along(df)<br>    这部分确定了使用哪些值来进行循环：每一轮 for 循环都会赋予 i 一个来自于 seq_along(df) 的不同值。</p>
+<p>seq_along() 函数的作用，它与 1: length(l) 的作用基本相同，但最重要的区别是更加安全。  </p>
+<p>不过，使用 vector 应该注意一点的是，命名只能是数字。如上的例子，结果不再是以 “a”, “b”, “c”, “d” 命名，最后可通过 <code>names(output) &lt;- c()</code>的形式进行重命名，或者数据量不大的时候，用 <code>list()</code> 替代 <code>vector()</code> 的使用。</p>
+<h2 id="for-循环的变体"><a href="#for-循环的变体" class="headerlink" title="for 循环的变体"></a>for 循环的变体</h2><h3 id="修改现有变量"><a href="#修改现有变量" class="headerlink" title="修改现有变量"></a>修改现有变量</h3><p>有时我们希望使用 for 循环来修改现有的对象。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">df &lt;- tibble(
+    a = rnorm(10),
+    b = rnorm(10),
+    c = rnorm(10),
+    d = rnorm(10)
+)
+
+rescale01 &lt;- function(x){
+    rng &lt;- range(x, na.rm = TRUE)
+    (x - rng[1]) / (rng[2] - rng[1])
+}
+
+df$a &lt;- rescale01(df$a)
+df$b &lt;- rescale01(df$b)
+df$c &lt;- rescale01(df$c)
+df$d &lt;- rescale01(df$d)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>使用 for 循环解决这个问题</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">for (i in seq_along(df)){
+    df[[i]] &lt;- rescale01(df[[i]])
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>要记住使用的是 <code>[[</code> 而不是 <code>[</code>。在所有 for 循环中，使用的都是<code>[[</code>。我们认为甚至在原子向量中最好也使用<code>[[</code>，因为它可以明确表示要处理的是单个元素</p>
+<h3 id="循环模式"><a href="#循环模式" class="headerlink" title="循环模式"></a>循环模式</h3><p>对向量进行循环的基本方式有3种。</p>
+<ul>
+<li>之前使用的 for (i in seq_along(xs))</li>
+<li>使用元素进行循环： for (x in xs)</li>
+<li>使用名称进行循环: for (nm in names(xs)). 可以使用 <code>x[[nm]]</code> 来访问元素的值<br>如果想要创建命名的输出向量，一定要按照以下方式进行命名：</li>
+</ul>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">x = 5
+results &lt;- vector("list", length(x))
+names(results) &lt;- names(x)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>用数值索引进行循环是最常用的方式，因为给定位置后，就可以提取出元素的名称和值：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">for (i in seq_along(x)){
+    name &lt;- names(x)[[i]]
+    value &lt;- x[[i]]
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="未知的输出长度"><a href="#未知的输出长度" class="headerlink" title="未知的输出长度"></a>未知的输出长度</h3><p>有时你可能不知道输出的长度。你或许会想通过逐渐增加向量长度的方式来解决这个问题。</p>
+<p>但这并不是一种非常高效的方式，因为R要在每次迭代中复制上一次迭代中的所有数据。从技术角度来看，你执行了一种“平方”操作。</p>
+<p>更好的解决方式是将结果保存在一个列表中，循环结束后再组合成一个向量：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">means &lt;- 1:3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">out &lt;- vector("list", length(means))
+for (i in seq_along(means)){
+    n &lt;- sample(100,1)
+    out[[i]] &lt;- rnorm(n, means[[i]])
+    }
+str(out)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre><code>List of 3
+ $ : num [1:64] 1.386 2.401 0.535 1.508 -0.165 ...
+ $ : num [1:97] 1.73 1.55 1.71 1.34 2.88 ...
+ $ : num [1:50] 1.65 3.54 3.73 3.23 4 ...
+</code></pre>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">str(unlist(out))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre><code> num [1:211] 1.386 2.401 0.535 1.508 -0.165 ...
+</code></pre>
+<p>这里使用 <code>unlist()</code> 函数将一个向量列表转换为单个向量。</p>
+<p>其他情况下也可以使用这种编码模式：</p>
+<ul>
+<li>一个很长的字符串。不要使用<code>paste()</code>函数将每次迭代的结果与上一次连接起来，而应该将每次迭代的结果保存在字符向量中，然后再使用 paste<code>(output, collapse="")</code></li>
+<li>一个很大的数据框。不要在每次迭代中以此使用 <code>rbind()</code> 函数, 而应该将每次迭代结果保存在列表中，再使用 <code>dplyr::bind_rows(output)</code> 将结果组成数据框</li>
+</ul>
+<p>只要遇到类似情况，就应该使用一个更复杂的对象来保存每次迭代的结果，最后一次性合并起来。</p>
+<h3 id="未知的序列长度"><a href="#未知的序列长度" class="headerlink" title="未知的序列长度"></a>未知的序列长度</h3><p>输入序列的长度未知，比如抛硬币时，直到掷出正面。这种不能通过 for 循环，而应用 while 循环。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">while (condition){
+    # 循环体
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>while 循环也比 for 循环更常用，所有 for 循环都可以用 while 循环实现，但反过来不一定。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">while (i &lt;= length(x)){
+    # 循环体
+    i = i+1
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="for-循环与函数式编程"><a href="#for-循环与函数式编程" class="headerlink" title="for 循环与函数式编程"></a>for 循环与函数式编程</h2><h2 id="映射函数"><a href="#映射函数" class="headerlink" title="映射函数"></a>映射函数</h2><p>先对向量进行循环，然后对其每个元素进行一番处理，最后保存结果。这种模式太普遍了，因此 purrr 包提供了一个函数来完成这种操作，每种类型的输出都有一个相应的函数：</p>
+<ul>
+<li>map() 用于输出列表</li>
+<li>map_lgl() 用于输出逻辑型向量</li>
+<li>map_int() 输出整型向量</li>
+<li>map_dbl() 双精度型向量</li>
+<li>map_chr() 字符型向量</li>
+</ul>
+<p>每个函数都是用一个向量作为输入，并对向量的每个元素应用一个函数，然后返回和输入向量同样长度的一个新向量。向量的类型由映射函数的后缀决定。</p>
+<p>可能有人会告诉你不要使用 for 循环，因为它们很慢，错！（for 已经很多年都不慢了）。使用 <code>map()</code> 函数的主要优势不是速度，而是简洁：它们可以让你的代码更容易编写，也更易读。</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">map(df, mean)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<dl>
+    <dt>$a</dt>
+        <dd>0.576563294456781</dd>
+    <dt>$b</dt>
+        <dd>0.686022544487736</dd>
+    <dt>$c</dt>
+        <dd>0.530912642473943</dd>
+    <dt>$d</dt>
+        <dd>0.423394367376984</dd>
+</dl>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">map_dbl(df, mean)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>a</dt><dd>0.576563294456781</dd><dt>b</dt><dd>0.686022544487736</dd><dt>c</dt><dd>0.530912642473943</dd><dt>d</dt><dd>0.423394367376984</dd></dl>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">map_dbl(df, median)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>a</dt><dd>0.591578766581408</dd><dt>b</dt><dd>0.764083328457511</dd><dt>c</dt><dd>0.600418254821894</dd><dt>d</dt><dd>0.405819916629453</dd></dl>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">df %&gt;% map_dbl(median)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>a</dt><dd>0.591578766581408</dd><dt>b</dt><dd>0.764083328457511</dd><dt>c</dt><dd>0.600418254821894</dd><dt>d</dt><dd>0.405819916629453</dd></dl>
+
+
+
+
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">df %&gt;% map_dbl(sd)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>a</dt><dd>0.283172420608764</dd><dt>b</dt><dd>0.295247328617479</dd><dt>c</dt><dd>0.297714845287434</dd><dt>d</dt><dd>0.339448515188844</dd></dl>
+
+
+
+<p>map_* 和 col_summary() 具有以下几点区别</p>
+<ul>
+<li>所有 purrr 都是用 C 实现的，速度很快</li>
+<li>第二个参数，可以是一个公式、字符向量或整型向量<br>见下<a href="#%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F">快捷方式</a></li>
+<li>map_*() 使用 … 向 .f 传递一些附加参数，供其在每次调用中使用：</li>
+<li>映射函数可以保留名称</li>
+</ul>
+<h3 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h3><p>对于参数 .f, 你可以 使用几种快捷方式来减少输入量。假设你想对每个数据集中的每个分组都拟合一个线性模型。按照气缸值进行分类将 mtcars 数据集拆分成3个部分，并对每个部分拟合一个线性模型:</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">models &lt;- mtcars %&gt;%
+    split(.$cyl) %&gt;%
+    map(function(df) lm(mpg ~ wt, data=df))
+
+models<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<pre><code>$`4`
+
+Call:
+lm(formula = mpg ~ wt, data = df)
+
+Coefficients:
+(Intercept)           wt  
+     39.571       -5.647  
+
+
+$`6`
+
+Call:
+lm(formula = mpg ~ wt, data = df)
+
+Coefficients:
+(Intercept)           wt  
+      28.41        -2.78  
+
+
+$`8`
+
+Call:
+lm(formula = mpg ~ wt, data = df)
+
+Coefficients:
+(Intercept)           wt  
+     23.868       -2.192  
+</code></pre>
+<p>因为 R 中创建匿名函数的语法比较繁琐，所以 purrr 提供了一种更方便快捷方式——单侧公式：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">models &lt;- mtcars %&gt;%
+    split(.$cyl) %&gt;%
+    map(~lm(mpg ~ wt, data = .))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在以上示例中使用了 <code>.</code> 作为一个代词：它表示当前列表元素（与 for 循环中用 i 表示当前索引是一样的）。</p>
+<p>当检查多个模型时，有时你会需要提取出像 R2 这样的摘要统计量。想要完成这个任务，需要先运行 summary() 函数，然后提取出结果中的 r.squared。我们可以使用匿名函数的快捷方式来完成这个操作： </p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">models %&gt;% map(summary) %&gt;% map_dbl(~.$r.squared)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>4</dt><dd>0.50863259632314</dd><dt>6</dt><dd>0.464510150550548</dd><dt>8</dt><dd>0.422965536496111</dd></dl>
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">梁绍波</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://liangshaw.github.io/2022/03/03/RdataScience-part3/">https://liangshaw.github.io/2022/03/03/RdataScience-part3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">梁绍波</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'QweMbL6pJuEjzHeRLcd4sxIW-gzGzoHsz',
+        appKey: 'JdA69Wq6tDpDu1DWdKmY4DJy',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'retro',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请留下友善的评论~'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/03/05/PaperRead-Day15/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="文献阅读 Day15">
+                        
+                        <span class="card-title">文献阅读 Day15</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/paper/" class="post-category">
+                                    paper
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/tumor/">
+                        <span class="chip bg-color">tumor</span>
+                    </a>
+                    
+                    <a href="/tags/mutation/">
+                        <span class="chip bg-color">mutation</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/03/02/PaperRead-Day14/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="PaperRead-Day14">
+                        
+                        <span class="card-title">PaperRead-Day14</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Shaw<br />'
+            + '文章作者: 梁绍波<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="509963472"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">梁绍波</a>
+            |&nbsp;版权所有
+            |&nbsp;Theme Source&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            <i class="fas fa-chart-area"></i>&nbsp;
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "1";
+                        var startDate = "1";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/LiangShaw" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:shaoboliang@whu.edu.cn" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1323909095" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1323909095" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
