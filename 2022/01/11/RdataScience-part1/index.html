@@ -410,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-14
+                    2022-09-05
                 </div>
                 
 
@@ -603,6 +603,7 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 
 
 <p>position = “dodge”将每组条形依次并列放置</p>
+<p>使用 position = position_dodge() 可以设置分离的宽度，默认 position_dodge(width=0.9)</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">ggplot(data = diamonds, aes(x=cut, fill=clarity)) + geom_bar(position = "dodge")<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
