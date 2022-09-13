@@ -440,10 +440,14 @@
 <p><strong>富集差异</strong>（这里指代ChIP-seq类数据中peak的富集）。如果你能想到上边的问题，就会发现， ChIP-seq 这一类富集的测序数据不也有这样的情况吗？ peak 整体的降低，或者大多数降低的减少，个别升高的很多的情况。<br>如果把 mRNA-seq 想象成，mRNA是被 <code>“polyA抗体”</code> 富集下来的，那么 ChIP-seq 和 mRNA-seq 在数据处理的角度，就是相似的。</p>
 <p><img src="ChIP-seq_and_RNA-seq.png" alt="ChIP-seq and RNA-seq"></p>
 <p>如果把所有样本的 peak set 整合成一个 collection，是不是很像基因组注释？</p>
-<p>在一偏研究胚胎发育的研究中<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0092867415001282?via=ihub#sec4">Zygotic genome activation triggers the DNA replication checkpoint at the midblastula transition</a>，对于 ChIP-seq differential binding 的确定就用到了 edgeR</p>
+<p>在一篇研究胚胎发育的研究中<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0092867415001282?via=ihub#sec4">Zygotic genome activation triggers the DNA replication checkpoint at the midblastula transition</a>，对于 ChIP-seq differential binding 的确定就用到了 edgeR</p>
 <pre class="line-numbers language-none"><code class="language-none">Regions of significant enrichment were determined using Zinba (Rashid et al., 2011), differential binding was determined using edgeR.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="留个问题"><a href="#留个问题" class="headerlink" title="留个问题"></a>留个问题</h1><p>既然 RPKM，FPKM，TPM 方法用于比较样本间的变化，用这些方法制作文件得到的 coverage track 还有意义吗？有没有其他的方法？</p>
+<h1 id="留个问题"><a href="#留个问题" class="headerlink" title="留个问题"></a>留个问题</h1><p>既然 RPKM, FPKM, CPM 方法用于比较样本间的变化，用这些方法制作文件得到的 coverage track 还有意义吗？有没有其他的方法？</p>
+<p>先做个回答：<br>肯定是有意义的，很多文章也一直都在用。<br>上面我们所讨论的问题其实都推向了一个极端，DESeq2 和 edgeR 的算法相对而言是更 complete，更能反应真实情况。</p>
+<p>不过，大多数实际情况会比这些极端情况温和得多，也就是说，RPKM 等方法做 normalize 还是能够反应一部分真实得情况。</p>
+<p>如果有其他见解，欢迎评论区留言，可附一些文章链接。</p>
+<h1 id="CPM"><a href="#CPM" class="headerlink" title="CPM"></a>CPM</h1><p>在 ChIP-seq 类数据的处理中，常使用的方法是 CPM(count per million)，count 与 read 的区别，我是从单细胞中了解到的，单细胞的矩阵分为 read matrices 和 molecular matrices(count matrices)，二者的区别在于 reads 根据 UMI 去重后得到了 counts，所以单细胞多用 count matrices。在 ChIP-seq 类数据中，即使在没有 UMI 的情况下，也会做去重，相当于得到了 counts，所以 normalize 方法选用 CPM。在 RNA-seq 中，reads 与 counts 等同。</p>
 
                 
             </div>
