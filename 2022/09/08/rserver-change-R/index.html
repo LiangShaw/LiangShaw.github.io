@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-09
+                    2022-09-13
                 </div>
                 
 
@@ -476,6 +476,44 @@ Error reading /etc/rstudio/rserver.conf: unrecognised option <span class="token 
 <p>以为 r-version-multiple 是Rstudio-server 后来出现的 feature，所以按照<a target="_blank" rel="noopener" href="https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Workbench-or-RStudio-Server">官方更新步骤</a>进行更新。</p>
 <p>不过，仍然出现相同的问题。</p>
 <p>烦死了 ..&gt;_&lt;..</p>
+<p>同时指定多版本的 R version，目前还没有解决，就先这样吧，不折腾了</p>
+<h2 id="usr-lib64-libstdc-so-6-version-GLIBCXX-3-’-not-found-问题"><a href="#usr-lib64-libstdc-so-6-version-GLIBCXX-3-’-not-found-问题" class="headerlink" title="/usr/lib64/libstdc++.so.6: version `GLIBCXX_3.*.**’ not found 问题"></a>/usr/lib64/libstdc++.so.6: version `GLIBCXX_3.*.**’ not found 问题</h2><p>之前在用 <code>rstudio-server</code> 进行安装 <code>workflowr</code>, <code>Seurat</code> 以及运行 <code>ggplot2</code> 的时候，总是遇到 <code>/lib64/libstdc++.so.6: version 'GLIBCXX_3.4.21' not found</code> 的问题，之前也没意识到具体是什么问题，其实直接搜索的话，就可以找到很多解答的。</p>
+<p>根本原因就是 root 下的 gcc+ 升级后动态库没有更新，运行以下命令检查动态库：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> strings /usr/lib64/libstdc++.so.6 <span class="token operator">|</span> <span class="token function">grep</span> GLIBC
+GLIBCXX_3.4
+GLIBCXX_3.4.1
+GLIBCXX_3.4.2
+GLIBCXX_3.4.3
+GLIBCXX_3.4.4
+GLIBCXX_3.4.5
+GLIBCXX_3.4.6
+GLIBCXX_3.4.7
+GLIBCXX_3.4.8
+GLIBCXX_3.4.9
+GLIBCXX_3.4.10
+GLIBCXX_3.4.11
+GLIBCXX_3.4.12
+GLIBCXX_3.4.13
+GLIBCXX_FORCE_NEW
+GLIBCXX_DEBUG_MESSAGE_LENGTH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>检查输出结果中有没有报错出现的文件（一般报错了就是没有）。</p>
+<p>然后 </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> / -name <span class="token string">'libstdc++.so*'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>找一个高版本的 libstdc++.so.6.*.**，在 stringr 检查一下动态库有没有，如果有的话，就用这个。</p>
+<p>然后，上述报错为例，原来的版本位置在 <code>/lib64/libstdc++.so.6</code>，将新版本的 cp 到路径下，将原来的版本改名备份</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">mv</span> libstdc++.so.6 libstdc++.so.6.bak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>创建新的软连接，指向刚拷贝的库</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> -s libstdc++.so.6.0.21 libstdc++.so.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>参考文档：</p>
+<ul>
+<li>[ImportError: /lib64/libstdc++.so.6: version `GLIBCXX_3.4.21‘ not found](<a target="_blank" rel="noopener" href="https://blog.csdn.net/BurningSilence/article/details/112919308">https://blog.csdn.net/BurningSilence/article/details/112919308</a>)</li>
+<li><a target="_blank" rel="noopener" href="https://itbilu.com/linux/management/NymXRUieg.html">https://itbilu.com/linux/management/NymXRUieg.html</a></li>
+</ul>
+<p>提醒一下，在 Rstudio-server上安装 R 包不一定能成功，即使在你指定了安装路径的情况下。这个时候，可以尝试在 服务器终端打开R进行安装，将 R 包安装在 Rstudio-server 所用的 libPath 下面。</p>
 
                 
             </div>
