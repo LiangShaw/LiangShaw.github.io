@@ -415,7 +415,7 @@
             <div id="articleContent">
                 <h1 id="差异"><a href="#差异" class="headerlink" title="差异"></a>差异</h1><p>表达差异，剪接变化差异，和富集差异等等，如何从生物信息学的角度理解<code>差异</code>？</p>
 <p><strong>剪接差异</strong> 应该最为容易理解：通过计算PSI(percent spliced in)值，进而得到样本间变化的 ΔPSI(PSI<sub>1</sub>-PSI<sub>2</sub>)。</p>
-<p><strong>表达差异</strong>（这里表达简单指基因转录出RNA的水平），平常在做基因表达差异的时候，往往会通过 RPKM,FPKM, TPM 值等做 normalize 的方法，三者间的差异详见<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1940c5954c81">RPKM、FPKM、TPM详解</a>。总结所，TPM 是更完备的 normalize 方法。</p>
+<p><strong>表达差异</strong>（这里表达简单指基因转录出RNA的水平），平常在做基因表达差异的时候，往往会通过 RPKM,FPKM, TPM 值等做 normalize 的方法，三者间的差异详见<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1940c5954c81">RPKM、FPKM、TPM详解</a>。总结说，TPM 是更完备的 normalize 方法。</p>
 <p>这里说到的表达差异，个人认为可以这样理解：</p>
 <pre class="line-numbers language-none"><code class="language-none">A,B,C,D 四人分 RMB，在第一次分 100 RMB 的时候，四个人势均力敌，大家和平相处，都分了25 RMB；
 然而，第二次通货膨胀，分 1000 RMB，D带了一把扳手，于是，只分给了A,B,C一人 50 RMB，自己拿了 850 RMB；
@@ -440,7 +440,10 @@
 <p><strong>富集差异</strong>（这里指代ChIP-seq类数据中peak的富集）。如果你能想到上边的问题，就会发现， ChIP-seq 这一类富集的测序数据不也有这样的情况吗？ peak 整体的降低，或者大多数降低的减少，个别升高的很多的情况。<br>如果把 mRNA-seq 想象成，mRNA是被 <code>“polyA抗体”</code> 富集下来的，那么 ChIP-seq 和 mRNA-seq 在数据处理的角度，就是相似的。</p>
 <p><img src="ChIP-seq_and_RNA-seq.png" alt="ChIP-seq and RNA-seq"></p>
 <p>如果把所有样本的 peak set 整合成一个 collection，是不是很像基因组注释？</p>
-<h2 id="留个问题"><a href="#留个问题" class="headerlink" title="留个问题"></a>留个问题</h2><p>既然 RPKM，FPKM，TPM 方法用于比较样本间的变化，用这些方法制作文件得到的 coverage track 还有意义吗？有没有其他的方法？</p>
+<p>在一偏研究胚胎发育的研究中<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0092867415001282?via=ihub#sec4">Zygotic genome activation triggers the DNA replication checkpoint at the midblastula transition</a>，对于 ChIP-seq differential binding 的确定就用到了 edgeR</p>
+<pre class="line-numbers language-none"><code class="language-none">Regions of significant enrichment were determined using Zinba (Rashid et al., 2011), differential binding was determined using edgeR.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="留个问题"><a href="#留个问题" class="headerlink" title="留个问题"></a>留个问题</h1><p>既然 RPKM，FPKM，TPM 方法用于比较样本间的变化，用这些方法制作文件得到的 coverage track 还有意义吗？有没有其他的方法？</p>
 
                 
             </div>
