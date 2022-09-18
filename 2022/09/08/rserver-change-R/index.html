@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-13
+                    2022-09-14
                 </div>
                 
 
@@ -436,7 +436,8 @@
 
 <p>帖子里关于这两个 rserver 进程的解释是，rserver 没有正确清除自身文件导致的。</p>
 <p>到这里，rserver 的启停终于恢复了。</p>
-<h3 id="设置-server-conf"><a href="#设置-server-conf" class="headerlink" title="设置 server conf"></a>设置 server conf</h3><p><a target="_blank" rel="noopener" href="https://docs.rstudio.com/ide/server-pro/r_sessions/user_and_group_profiles.html">rstudio admin guide</a> 中关于配置 rstudio server 提到了几个文件</p>
+<h3 id="设置-server-conf"><a href="#设置-server-conf" class="headerlink" title="设置 server conf"></a>设置 server conf</h3><p>⚠提醒：一下的操作和文件，均是在服务器 Rstudio-server 开放端口的节点下。我这里用的是 node2，不同的节点，设置是独立的。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.rstudio.com/ide/server-pro/r_sessions/user_and_group_profiles.html">rstudio admin guide</a> 中关于配置 rstudio server 提到了几个文件</p>
 <ul>
 <li>/etc/rstudio/profiles</li>
 <li>/etc/rstudio/r-versions</li>

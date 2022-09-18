@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="normalize 和差异分析, Shaw">
-    <meta name="description" content="差异表达差异，剪接变化差异，和富集差异等等，如何从生物信息学的角度理解差异？
-剪接差异 应该最为容易理解：通过计算PSI(percent spliced in)值，进而得到样本间变化的 ΔPSI(PSI1-PSI2)。
-表达差异（这里表达简">
+    <meta name="keywords" content="peak calling 与 merge, Shaw">
+    <meta name="description" content="TF、histone 等 ChIP-seq, RBP 的 CLIP 中的 peak calling 是分析过程中重要的一环
+peak callingmacs2SICER(2)使用SICER进行peak calling现如今已有 versio">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>normalize 和差异分析 | Shaw</title>
+    <title>peak calling 与 merge | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -251,12 +250,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">normalize 和差异分析</h1>
+                    <h1 class="description center-align post-title">peak calling 与 merge</h1>
                 </div>
             </div>
         </div>
@@ -370,9 +369,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/peak/">
+                                <span class="chip bg-color">peak</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -384,14 +387,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-13
+                    2022-09-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-14
+                    2022-09-15
                 </div>
                 
 
@@ -413,44 +416,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="差异"><a href="#差异" class="headerlink" title="差异"></a>差异</h1><p>表达差异，剪接变化差异，和富集差异等等，如何从生物信息学的角度理解<code>差异</code>？</p>
-<p><strong>剪接差异</strong> 应该最为容易理解：通过计算PSI(percent spliced in)值，进而得到样本间变化的 ΔPSI(PSI<sub>1</sub>-PSI<sub>2</sub>)。</p>
-<p><strong>表达差异</strong>（这里表达简单指基因转录出RNA的水平），平常在做基因表达差异的时候，往往会通过 RPKM,FPKM, TPM 值等做 normalize 的方法，三者间的差异详见<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1940c5954c81">RPKM、FPKM、TPM详解</a>。总结说，TPM 是更完备的 normalize 方法。</p>
-<p>这里说到的表达差异，个人认为可以这样理解：</p>
-<pre class="line-numbers language-none"><code class="language-none">A,B,C,D 四人分 RMB，在第一次分 100 RMB 的时候，四个人势均力敌，大家和平相处，都分了25 RMB；
-然而，第二次通货膨胀，分 1000 RMB，D带了一把扳手，于是，只分给了A,B,C一人 50 RMB，自己拿了 850 RMB；
-
-这个时候问，D与A谁分到的多？ A在哪次中拿到的多？
-第一个问题傻瓜，不做回答
-第二个问题，大部分人可能都会稍微考虑一下，不会直接说第二次拿到的多，因为，第二次总量也多了。
-第一次 25/100，分到了 1/4
-第二次 50/1000，分到了 1/20
-实际上第二次A分到的相对变少了（杠精出门左拐）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>基因表达也是类似，在同一样本间比较，是容易的，考虑到 gene length 就可以了。而在样本间比较，要考虑到两次间的深度（read depth）不同。normalize 的过程，其实就是把<code>分摊的钱总数</code>变一致的过程。换个角度想，A 在第一次中，分到的RMB数与其他人并列第一，而第二次，却与BC并列第二了，从名次上看，也是第一次多。</p>
-<p>没走的杠精可能会问了：<br><u>第一次确实分的钱少了，也不是因为通货膨胀的影响，两次购买力一致，那第二次A分到的就是多了。</u></p>
-<p>这次给杠精点个赞，这确实也反映了实际的生物学测序上的问题，</p>
-<ol>
-<li>当我们敲低一个转录因子的时候，整体的表达量就是降低的，我们再用 normalize 的方法做，真的可以吗？</li>
-<li>会不会出现每个基因同等比例的下降，采用 normalize 比较时，没有检测到基因表达有差异？或者说，只有下降和没有变化的，用 normalize 的方法就会出现，下降和上升两种变化？</li>
-<li>不同组织中，活跃的基因不同，仅在组织A中表达的基因a，在组织B中，用 normalize 的方法作比较，a的reads数就会变为0，相当于分摊到了其他基因上。</li>
-</ol>
-<p>这些问题，其实是文库补偿效应造成的，RPKM，FPKM 和 TPM 就不能很好的解决这样的问题。我目前能想到的，对于这样情况，只能利用 spike-in，或者你已知一些不受影响的基因，作为参考。</p>
-<p>差异表达的计算中，DESeq2 和 edgeR 使用了“参考基因”(<a target="_blank" rel="noopener" href="http://www.360doc.com/content/18/0815/22/57890290_778579575.shtml">edger与DEseq包分析原理</a>)  </p>
-<p><strong>富集差异</strong>（这里指代ChIP-seq类数据中peak的富集）。如果你能想到上边的问题，就会发现， ChIP-seq 这一类富集的测序数据不也有这样的情况吗？ peak 整体的降低，或者大多数降低的减少，个别升高的很多的情况。<br>如果把 mRNA-seq 想象成，mRNA是被 <code>“polyA抗体”</code> 富集下来的，那么 ChIP-seq 和 mRNA-seq 在数据处理的角度，就是相似的。</p>
-<p><img src="ChIP-seq_and_RNA-seq.png" alt="ChIP-seq and RNA-seq"></p>
-<p>如果把所有样本的 peak set 整合成一个 collection，是不是很像基因组注释？</p>
-<p>在一篇研究胚胎发育的研究中<a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0092867415001282?via=ihub#sec4">Zygotic genome activation triggers the DNA replication checkpoint at the midblastula transition</a>，对于 ChIP-seq differential binding 的确定就用到了 edgeR</p>
-<pre class="line-numbers language-none"><code class="language-none">Regions of significant enrichment were determined using Zinba (Rashid et al., 2011), differential binding was determined using edgeR.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h1 id="留个问题"><a href="#留个问题" class="headerlink" title="留个问题"></a>留个问题</h1><p>既然 RPKM, FPKM, CPM 方法用于比较样本间的变化，用这些方法制作文件得到的 coverage track 还有意义吗？有没有其他的方法？</p>
-<p>先做个回答：<br>肯定是有意义的，很多文章也一直都在用。<br>上面我们所讨论的问题其实都推向了一个极端，DESeq2 和 edgeR 的算法相对而言是更 complete，更能反应真实情况。</p>
-<p>不过，大多数实际情况会比这些极端情况温和得多，也就是说，RPKM 等方法做 normalize 还是能够反应一部分真实得情况。</p>
-<p>如果有其他见解，欢迎评论区留言，可附一些文章链接。</p>
-<h1 id="CPM"><a href="#CPM" class="headerlink" title="CPM"></a>CPM</h1><p>在 ChIP-seq 类数据的处理中，常使用的方法是 CPM(count per million)，count 与 read 的区别，我是从单细胞中了解到的，单细胞的矩阵分为 read matrices 和 molecular matrices(count matrices)，二者的区别在于 reads 根据 UMI 去重后得到了 counts，所以单细胞多用 count matrices。在 ChIP-seq 类数据中，即使在没有 UMI 的情况下，也会做去重，相当于得到了 counts，所以 normalize 方法选用 CPM。在 RNA-seq 中，reads 与 counts 等同。</p>
-<h1 id="Rprofile-in-workflowr-project-masks-Rprofile"><a href="#Rprofile-in-workflowr-project-masks-Rprofile" class="headerlink" title=".Rprofile in workflowr project masks ~/.Rprofile"></a>.Rprofile in workflowr project masks ~/.Rprofile</h1><p>今天遇到了Rstudio-server不加载<del>/.Rprofile的问题，找了帖子发现，原来是 workflowr 创建的project中出现了 ./.Rprofile，并且不再读取 \</del>/.Rprofile 文件。似乎是在 Rstudio 启动时创建的。<br><a target="_blank" rel="noopener" href="https://community.rstudio.com/t/why-does-r-ignore-rprofile/23897">Why does R ignore ~/.Rprofile</a></p>
-<p>想知道 R 是如何启动的以及创建 .Rprofile 的，请参阅<a target="_blank" rel="noopener" href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">R for Enterprise: Understanding R’s Startup</a></p>
-
+                <p>TF、histone 等 ChIP-seq, RBP 的 CLIP 中的 peak calling 是分析过程中重要的一环</p>
+<h1 id="peak-calling"><a href="#peak-calling" class="headerlink" title="peak calling"></a>peak calling</h1><h2 id="macs2"><a href="#macs2" class="headerlink" title="macs2"></a>macs2</h2><h2 id="SICER-2"><a href="#SICER-2" class="headerlink" title="SICER(2)"></a>SICER(2)</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43569478/article/details/108079432">使用SICER进行peak calling</a><br>现如今已有 <a target="_blank" rel="noopener" href="https://zanglab.github.io/SICER2/">version2:Redesigned and improved ChIP-seq broad peak calling tool SICER</a></p>
+<p>几种 peak callers 比较<br><a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5429005/">Features that define the best ChIP-seq peak calling algorithms</a></p>
+<h1 id="peak-merge"><a href="#peak-merge" class="headerlink" title="peak merge"></a>peak merge</h1><h2 id="homer-mergePeaks"><a href="#homer-mergePeaks" class="headerlink" title="homer: mergePeaks"></a>homer: mergePeaks</h2><h2 id="R-MergePeakCoordinates"><a href="#R-MergePeakCoordinates" class="headerlink" title="R: MergePeakCoordinates"></a>R: MergePeakCoordinates</h2><h2 id="manually-operate"><a href="#manually-operate" class="headerlink" title="manually operate"></a>manually operate</h2>
                 
             </div>
             <hr/>
@@ -476,7 +445,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/09/13/normalize-and-DA/">https://liangshaw.github.io/2022/09/13/normalize-and-DA/</a>
+                    <a href="https://liangshaw.github.io/2022/09/15/peak-process/">https://liangshaw.github.io/2022/09/15/peak-process/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -513,7 +482,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/peak/">
+                                    <span class="chip bg-color">peak</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -825,9 +798,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/09/15/peak-process/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="peak calling 与 merge">
+                        
+                        <span class="card-title">peak calling 与 merge</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/peak/">
+                        <span class="chip bg-color">peak</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/09/14/R-command-records/">
                     <div class="card-image">
@@ -845,55 +865,15 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
                             <a href="/categories/R/" class="post-category">
                                     R
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/09/09/scRNA-seq1/">
-                    <div class="card-image">
-                        
-                        <img src="https://www.annualreviews.org/na101/home/literatum/publisher/ar/journals/content/biodatasci/2021/biodatasci.2021.4.issue-1/annurev-biodatasci-092820-031008/20210704/images/large/bd40207.f2.jpeg" class="responsive-img" alt="单细胞练习1">
-                        
-                        <span class="card-title">单细胞练习1</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-09
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/scRNA-seq/" class="post-category">
-                                    scRNA-seq
                                 </a>
                             
                             
