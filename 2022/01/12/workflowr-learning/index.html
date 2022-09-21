@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-02-16
+                    2022-09-18
                 </div>
                 
 
@@ -588,8 +588,22 @@ ls .<span class="token operator">/</span>
 <pre class="line-numbers language-none"><code class="language-none">顶格写 ```是这种效果<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>而不顶格效果类似 这种：<code>不顶格长这样</code>。</p>
 </li>
-<li><p>在 <code>analysis</code>中写 .Rmd 时，运行 R 代码块，位置是在 <code>analysis/</code> 下，而在生成网页的时候，工作路径是在 Project 下面，也就是在 <code>analysis/</code> 上一层（最顶级的目录），这样产生的一个问题就是：在写 .Rmd 的时候，导入，比如 <code>output/input.csv</code> 中的文件，要写为 <code>../output/input.csv</code>，运行代码块正常，而当生成网页的时候，这样写会报错，正确的路径为 <code>output/input.csv</code>。所以在创建网页前，要将 <code>../</code> 删除；<br>而在 .Rmd 中插入图片的时候，比如 <code>docs/figure/outer-image/image1.png</code>，要写为 <code>../docs/figure/outer-image/image1.png</code> 。确实有些困扰。</p>
+<li><p>在 <code>analysis</code>中写 .Rmd 时，运行 R 代码块，位置是在 <code>analysis/</code> 下，而在生成网页的时候，工作路径是在 Project 下面，也就是在 <code>analysis/</code> 上一层（最顶级的目录），这样产生的一个问题就是：在写 .Rmd 的时候，导入，比如 <code>output/input.csv</code> 中的文件，要写为 <code>../output/input.csv</code>，运行代码块正常，而当生成网页的时候，这样写会报错，正确的路径为 <code>output/input.csv</code>。所以在创建网页前，要将 <code>../</code> 删除；<br>而在 .Rmd 中插入图片的时候，比如 <code>docs/figure/outer-image/image1.png</code>，要写为 <code>../docs/figure/outer-image/image1.png</code> 。确实有些困扰。（问题已解决，见<a target="_blank" rel="noopener" href="https://www.codenong.com/30237310/">关于r：使用opts_chunk $ set(root.dir =…)在knitr中设置工作目录不起作用</a>）</p>
 </li>
+</ol>
+<p>首先这个问题的根源是执行目录的不同：<code>Rmd</code> 文档本身在 <code>analysis/</code>，而进行 build 或 public 的时候是在 console，也就是 project 的 root 下。<br>所以解决办法就是在 Rmd 内部设置全局更改工作路径：</p>
+<pre class="line-numbers language-none"><code class="language-none">```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE
+                     , comment = NA
+                     , warning = FALSE
+                     , error = FALSE
+                     , message = FALSE
+                     , tidy = TRUE)
+
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) #设为本项目的根目录```<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<ol start="6">
 <li><p>建议在写 <code>.Rmd</code> 的时候，每个 part 分成：目的，实现代码，结果；类似这种三段式结构，将目的和最终结果呈现给决策者/老板。</p>
 </li>
 <li><p>Rmarkdown 中链接文件时，要将文件放在 <code>docs/</code>或其子文件夹下，否则会找不到文件，链接失败。</p>
