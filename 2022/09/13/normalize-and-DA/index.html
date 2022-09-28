@@ -391,7 +391,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-14
+                    2022-09-26
                 </div>
                 
 
@@ -448,8 +448,9 @@
 <p>不过，大多数实际情况会比这些极端情况温和得多，也就是说，RPKM 等方法做 normalize 还是能够反应一部分真实得情况。</p>
 <p>如果有其他见解，欢迎评论区留言，可附一些文章链接。</p>
 <h1 id="CPM"><a href="#CPM" class="headerlink" title="CPM"></a>CPM</h1><p>在 ChIP-seq 类数据的处理中，常使用的方法是 CPM(count per million)，count 与 read 的区别，我是从单细胞中了解到的，单细胞的矩阵分为 read matrices 和 molecular matrices(count matrices)，二者的区别在于 reads 根据 UMI 去重后得到了 counts，所以单细胞多用 count matrices。在 ChIP-seq 类数据中，即使在没有 UMI 的情况下，也会做去重，相当于得到了 counts，所以 normalize 方法选用 CPM。在 RNA-seq 中，reads 与 counts 等同。</p>
-<h1 id="Rprofile-in-workflowr-project-masks-Rprofile"><a href="#Rprofile-in-workflowr-project-masks-Rprofile" class="headerlink" title=".Rprofile in workflowr project masks ~/.Rprofile"></a>.Rprofile in workflowr project masks ~/.Rprofile</h1><p>今天遇到了Rstudio-server不加载<del>/.Rprofile的问题，找了帖子发现，原来是 workflowr 创建的project中出现了 ./.Rprofile，并且不再读取 \</del>/.Rprofile 文件。似乎是在 Rstudio 启动时创建的。<br><a target="_blank" rel="noopener" href="https://community.rstudio.com/t/why-does-r-ignore-rprofile/23897">Why does R ignore ~/.Rprofile</a></p>
-<p>想知道 R 是如何启动的以及创建 .Rprofile 的，请参阅<a target="_blank" rel="noopener" href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">R for Enterprise: Understanding R’s Startup</a></p>
+<h1 id="diffbind"><a href="#diffbind" class="headerlink" title="diffbind"></a>diffbind</h1><p>这个 R 包主要用于 不同处理条件、不同时间节点的 peak 差异比较，实现了 peak 的合并和 差异分析。</p>
+<p>简单实现差异比较</p>
+<p><a target="_blank" rel="noopener" href="https://bioconductor.org/packages/release/bioc/vignettes/DiffBind/inst/doc/DiffBind.pdf">diffbind bioconda principle</a><br><a target="_blank" rel="noopener" href="https://bioconductor.org/packages/release/bioc/manuals/DiffBind/man/DiffBind.pdf">diffbind bioconda commands</a></p>
 
                 
             </div>

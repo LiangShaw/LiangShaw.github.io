@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-14
+                    2022-09-26
                 </div>
                 
 
@@ -515,6 +515,8 @@ GLIBCXX_DEBUG_MESSAGE_LENGTH<span aria-hidden="true" class="line-numbers-rows"><
 <li><a target="_blank" rel="noopener" href="https://itbilu.com/linux/management/NymXRUieg.html">https://itbilu.com/linux/management/NymXRUieg.html</a></li>
 </ul>
 <p>提醒一下，在 Rstudio-server上安装 R 包不一定能成功，即使在你指定了安装路径的情况下。这个时候，可以尝试在 服务器终端打开R进行安装，将 R 包安装在 Rstudio-server 所用的 libPath 下面。</p>
+<h2 id="Rprofile-in-workflowr-project-masks-Rprofile"><a href="#Rprofile-in-workflowr-project-masks-Rprofile" class="headerlink" title=".Rprofile in workflowr project masks ~/.Rprofile"></a>.Rprofile in workflowr project masks ~/.Rprofile</h2><p>今天遇到了Rstudio-server不加载<del>/.Rprofile的问题，找了帖子发现，原来是 workflowr 创建的project中出现了 ./.Rprofile，并且不再读取 \</del>/.Rprofile 文件。似乎是在 Rstudio 启动时创建的。<br><a target="_blank" rel="noopener" href="https://community.rstudio.com/t/why-does-r-ignore-rprofile/23897">Why does R ignore ~/.Rprofile</a></p>
+<p>想知道 R 是如何启动的以及创建 .Rprofile 的，请参阅<a target="_blank" rel="noopener" href="https://rviews.rstudio.com/2017/04/19/r-for-enterprise-understanding-r-s-startup/">R for Enterprise: Understanding R’s Startup</a></p>
 
                 
             </div>
