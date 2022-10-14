@@ -374,12 +374,12 @@
                                 <span class="chip bg-color">R</span>
                             </a>
                         
-                            <a href="/tags/handbook/">
-                                <span class="chip bg-color">handbook</span>
-                            </a>
-                        
                             <a href="/tags/data-science/">
                                 <span class="chip bg-color">data science</span>
+                            </a>
+                        
+                            <a href="/tags/handbook/">
+                                <span class="chip bg-color">handbook</span>
                             </a>
                         
                     </div>
@@ -410,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-05
+                    2022-10-10
                 </div>
                 
 
@@ -837,7 +837,16 @@ ggplot(data = mpg, aes(x=displ, y=hwy)) + geom_point() + facet_wrap(~ class, nro
 </table>
 
 
+<h3 id="select-使用的注意事项"><a href="#select-使用的注意事项" class="headerlink" title="select 使用的注意事项"></a>select 使用的注意事项</h3><p><code>MASS</code> 也有 <code>select</code> 函数，并且优先级更高，哪怕再次载入 <code>tidyverse</code>也不行，载入 <code>dplyr</code> 也不行。<br>解决办法：</p>
+<ul>
+<li>绝对引用函数<pre class="line-numbers language-R" data-language="R"><code class="language-R">&gt; dplyr::select<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>放到环境变量中<pre class="line-numbers language-R" data-language="R"><code class="language-R">&gt; select = dplyr::select<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p>推荐载入包时，将下面代码放在开头，就可以肆无忌惮的应用select了，毕竟，环境变量的优先级是第一位的：</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">&gt; library(tidyverse)
+&gt; select = dplyr::select<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<p>参考 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1940988">R select</a></p>
 <h2 id="使用mutate-添加新变量"><a href="#使用mutate-添加新变量" class="headerlink" title="使用mutate()添加新变量"></a>使用<code>mutate()</code>添加新变量</h2><p>除了选择现有的列，我们还经常需要添加新列，新列是现有列的函数。这就是<code>mutate()</code>函数的作用</p>
 <pre class="line-numbers language-R" data-language="R"><code class="language-R">flights_sml &lt;- select(flights,
                      year:day,
@@ -1269,12 +1278,12 @@ daily %&gt;%
                                     <span class="chip bg-color">R</span>
                                 </a>
                             
-                                <a href="/tags/handbook/">
-                                    <span class="chip bg-color">handbook</span>
-                                </a>
-                            
                                 <a href="/tags/data-science/">
                                     <span class="chip bg-color">data science</span>
+                                </a>
+                            
+                                <a href="/tags/handbook/">
+                                    <span class="chip bg-color">handbook</span>
                                 </a>
                             
                         </div>
