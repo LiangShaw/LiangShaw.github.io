@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-28
+                    2022-11-09
                 </div>
                 
 
@@ -520,6 +520,7 @@ GLIBCXX_DEBUG_MESSAGE_LENGTH<span aria-hidden="true" class="line-numbers-rows"><
 <hr>
 <h1 id="R-包安装"><a href="#R-包安装" class="headerlink" title="R 包安装"></a>R 包安装</h1><p>在安装一些R包时，总会遇到奇奇怪怪的依赖性问题，根源还是 root 下环境和 用户自己的环境差别。所以，rstudio-verser 实现每个用户自定义自己的 r-core，可真是太香了/眼馋。</p>
 <h2 id="tidyverse-installation"><a href="#tidyverse-installation" class="headerlink" title="tidyverse installation"></a>tidyverse installation</h2><p>我在安装 <code>tidyverse</code> 的时候，在自己的 R 中正常安装和加载，但是在 rstudio-server 中就会无法加载，遇到 <code>libiconv.so</code> 缺失的问题。<br>最后用这个方法得到了解决，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaofeiIDO/p/12074435.html">【R】tidyverse软件包，haven.so和readxl.so报错</a><br>不排除是自己的R是4.0.3，而rserver R 4.0.5，版本差别的可能。</p>
+<h2 id="BiocManager-版本低"><a href="#BiocManager-版本低" class="headerlink" title="BiocManager 版本低"></a>BiocManager 版本低</h2><p>不同版本的 <code>BiocManager</code> 对应能安装的 R 包的版本是不一样的，如 3.12 版本的 <code>BiocManger</code> 安装的 <code>DiffBind</code> 版本是 3.0.*， 而 3.15 <code>BiocManager</code> 可以安装 更高版本的 <code>DiffBind</code></p>
 
                 
             </div>

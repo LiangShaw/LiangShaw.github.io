@@ -410,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-16
+                    2022-11-03
                 </div>
                 
 
@@ -1605,6 +1605,31 @@ levels(mpg2$drv)[levels(mpg2$drv)=="r"] &lt;- "Rear"<span aria-hidden="true" cla
 
 
 <p><img src="output_284_0.png" alt="png"></p>
+<h2 id="facet-wrap-与-facet-grid"><a href="#facet-wrap-与-facet-grid" class="headerlink" title="facet_wrap 与 facet_grid"></a>facet_wrap 与 facet_grid</h2><p>两个函数这两个函数都可以进行分面，但使用和达到的效果有所不同。<br>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/u014566586/article/details/100190957">ggplot2 分面相关设置（facet）</a></p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">facet_wrap<span class="token punctuation">(</span>facets<span class="token punctuation">,</span> nrow <span class="token operator">=</span> <span class="token keyword">NULL</span><span class="token punctuation">,</span> ncol <span class="token operator">=</span> <span class="token keyword">NULL</span><span class="token punctuation">,</span> scales <span class="token operator">=</span> <span class="token string">"fixed"</span><span class="token punctuation">,</span> shrink <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">,</span> as.table <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">,</span> drop <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span>
+
+facet_grid<span class="token punctuation">(</span>facets<span class="token punctuation">,</span> margins <span class="token operator">=</span> <span class="token boolean">FALSE</span><span class="token punctuation">,</span> scales <span class="token operator">=</span> <span class="token string">"fixed"</span><span class="token punctuation">,</span> space <span class="token operator">=</span> <span class="token string">"fixed"</span><span class="token punctuation">,</span> shrink <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">,</span> labeller <span class="token operator">=</span> <span class="token string">"label_value"</span><span class="token punctuation">,</span> as.table <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">,</span> drop <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>其中facet_wrap和facet_grid不同在于facet_wrap是基于一个因子进行设置，facets表示形式为：<del>变量（</del>单元格） </p>
+<p>而facet_grid是基于两个因子进行设置，facets表示形式为：变量<del>变量（行</del>列），如果把一个因子用点表示，也可以达到facet_wrap的效果，也可以用加号设置成两个以上变量</p>
+<p>例如：变量+变量~变量 的形式，表示对三个变量设置分面。</p>
+<p>具体参数：<br>具体的参数（把两个函数参数和在一起）：</p>
+<ul>
+<li><p>nrow,ncol 分面设置成的行和列，参数为数值，表示几行或者几列</p>
+</li>
+<li><p>scales  参数fixed表示固定坐标轴刻度，free表示反馈坐标轴刻度，也可以单独设置成free_x或free_y</p>
+</li>
+<li><p>shrink  也和坐标轴刻度有关，如果为TRUE（默认值）则按统计后的数据调整刻度范围，否则按统计前的数据设定坐标。</p>
+</li>
+<li><p>drop 表示是否去掉没有数据的分组，默认情况下不显示，逻辑值为FALSE</p>
+</li>
+<li><p>as.table 和小图排列顺序有关的选项。如果为TRUE（默认）则按表格方式排列，即最大值（指分组level值）排在表格最后即右下角，否则排在左上角。</p>
+</li>
+<li><p>margins 通过TRUE或者FALSE表示否设置而一个总和的分面变量，默认情况为FALSE，即不设置</p>
+</li>
+<li><p>space    表示分面空间是否可以按照数据进行缩放，参数和scales一样</p>
+</li>
+</ul>
 <h1 id="第十二章-配色"><a href="#第十二章-配色" class="headerlink" title="第十二章 配色"></a>第十二章 配色</h1><p>对于点形来说，大多数点形，整个点的颜色是由 color 控制的，而不是 fill。例外的情况是21-25号点，它们不仅有填充色，也有边界色</p>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyGbFLS6kIzEFecRarshBazlmY_FGGN4pX1w&amp;usqp=CAU" width="700">
 

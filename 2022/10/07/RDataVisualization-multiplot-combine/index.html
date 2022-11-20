@@ -5,8 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="ggplot2 绘图——多个图形组合展示, Shaw">
-    <meta name="description" content="主图与副图的组合多个 panel 的排列控制reference简书：R使用笔记: ggplot2的一顿骚操作…
-">
+    <meta name="description" content="主图与副图的组合多个 panel 的排列控制cowplot
+library(cowplot)
+
+plot_grid(p1, p2)
+
+ggdraw() + 
+  draw_plot(p1, xstart, ystart, WidthRati">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -390,7 +395,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-07
+                    2022-11-12
                 </div>
                 
 
@@ -412,7 +417,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="主图与副图的组合"><a href="#主图与副图的组合" class="headerlink" title="主图与副图的组合"></a>主图与副图的组合</h1><h1 id="多个-panel-的排列控制"><a href="#多个-panel-的排列控制" class="headerlink" title="多个 panel 的排列控制"></a>多个 panel 的排列控制</h1><h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd56c69f48bf">简书：R使用笔记: ggplot2的一顿骚操作…</a></p>
+                <h1 id="主图与副图的组合"><a href="#主图与副图的组合" class="headerlink" title="主图与副图的组合"></a>主图与副图的组合</h1><h1 id="多个-panel-的排列控制"><a href="#多个-panel-的排列控制" class="headerlink" title="多个 panel 的排列控制"></a>多个 panel 的排列控制</h1><p><code>cowplot</code></p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">library<span class="token punctuation">(</span>cowplot<span class="token punctuation">)</span>
+
+plot_grid<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">)</span>
+
+ggdraw<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> 
+  draw_plot<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> xstart<span class="token punctuation">,</span> ystart<span class="token punctuation">,</span> WidthRatio<span class="token punctuation">,</span> HeightRatio<span class="token punctuation">)</span> <span class="token operator">+</span> 
+  draw_plot<span class="token punctuation">(</span>p2<span class="token punctuation">,</span> xstart<span class="token punctuation">,</span> ystart<span class="token punctuation">,</span> WidthRatio<span class="token punctuation">,</span> HeightRatio<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://wilkelab.org/cowplot/articles/index.html">cowplot All vignettes</a></p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cd56c69f48bf">简书：R使用笔记: ggplot2的一顿骚操作…</a></p>
+<p><a target="_blank" rel="noopener" href="https://genchanghsu.github.io/ggGallery/posts/2021-12-20-post-9-arrange-multiple-ggplots/">Arrange multiple ggplots on one graphic device</a></p>
 
                 
             </div>
@@ -788,18 +804,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/10/07/RDataVisualization-multiplot-combine/">
+                <a href="/2022/10/31/RDataVisualization-pie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ggplot2 绘图——多个图形组合展示">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="R 常用绘图方法二. (饼状图)">
                         
-                        <span class="card-title">ggplot2 绘图——多个图形组合展示</span>
+                        <span class="card-title">R 常用绘图方法二. (饼状图)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -809,18 +824,37 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-07
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-31
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            梁绍波
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%8B%E5%86%8C/" class="post-category">
+                                    R数据可视化手册
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/R/">
+                        <span class="chip bg-color">R</span>
+                    </a>
+                    
+                    <a href="/tags/ggplot2/">
+                        <span class="chip bg-color">ggplot2</span>
+                    </a>
+                    
+                    <a href="/tags/pie/">
+                        <span class="chip bg-color">pie</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
