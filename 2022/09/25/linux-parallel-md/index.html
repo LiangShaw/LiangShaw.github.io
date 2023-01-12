@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2023-01-10
                 </div>
                 
 
@@ -436,7 +436,8 @@
 <h2 id="–joblog-file"><a href="#–joblog-file" class="headerlink" title="–joblog file"></a>–joblog file</h2><p>生成各个任务的日志文件</p>
 <h2 id="–resume-failed-–retry-failed"><a href="#–resume-failed-–retry-failed" class="headerlink" title="–resume-failed/–retry-failed"></a>–resume-failed/–retry-failed</h2><p>重新运行失败的任务，二者作用类似，只是 <code>--resume-failed</code>从命令行读取失败任务，而<code>--retry-failed</code>则是从日志文件中读取失败任务：</p>
 <h2 id="–trim"><a href="#–trim" class="headerlink" title="–trim"></a>–trim</h2><p>去除参数两头的空格</p>
-<h1 id="输入指定"><a href="#输入指定" class="headerlink" title="输入指定"></a>输入指定</h1><h2 id="–xapply"><a href="#–xapply" class="headerlink" title="–xapply"></a>–xapply</h2><p>不使用该参数时，会将多个参数源进行全部组合</p>
+<h1 id="输入指定"><a href="#输入指定" class="headerlink" title="输入指定"></a>输入指定</h1><h2 id="n-number"><a href="#n-number" class="headerlink" title="-n number"></a>-n number</h2><p><code>-n 1</code> 表示每次只取一个输入做参数  </p>
+<h2 id="–xapply"><a href="#–xapply" class="headerlink" title="–xapply"></a>–xapply</h2><p>不使用该参数时，会将多个参数源进行全部组合</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ parallel <span class="token builtin class-name">echo</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span> ::: A B ::: C D
 A C
 A D
@@ -459,6 +460,9 @@ $ parallel --header <span class="token builtin class-name">:</span> --colsep <sp
 <span class="token assign-left variable">f1</span><span class="token operator">=</span>C <span class="token assign-left variable">f2</span><span class="token operator">=</span>D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="parallel-与-xargs-管道连用"><a href="#parallel-与-xargs-管道连用" class="headerlink" title="parallel 与 xargs 管道连用"></a>parallel 与 xargs 管道连用</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">find</span> ./ -name <span class="token string">'*.txt'</span> <span class="token operator">|</span> parallel <span class="token function">xargs</span> -n <span class="token number">1</span> <span class="token function">grep</span> <span class="token string">'target'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="parallel-与-awk-连用"><a href="#parallel-与-awk-连用" class="headerlink" title="parallel 与 awk 连用"></a>parallel 与 awk 连用</h1><p>这有一个实用帖子<a target="_blank" rel="noopener" href="https://blog.csdn.net/hahoo2009/article/details/95380026">GNU Parallel + AWK: 让你的文本处理飞起来</a><br>–linebuffer 保证并行结果不串行<br>-q 支持引号。 保证命令行中的特殊字符不被翻译，这样做对 awk 尤其方便。但是目前我还没想到在这种情况下如何在命令行中使用管道。</p>
+
                 
             </div>
             <hr/>
@@ -1104,7 +1108,7 @@ $ parallel --header <span class="token builtin class-name">:</span> --colsep <sp
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022</span>
+                <span id="year">2022-2023</span>
             
             <a href="/about" target="_blank">梁绍波</a>
             |&nbsp;版权所有

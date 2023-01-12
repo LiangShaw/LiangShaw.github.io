@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-11-20
+                    2023-01-06
                 </div>
                 
 
@@ -433,14 +433,14 @@
 <li>收集<strong>对数期细胞</strong>，调整细胞悬液浓度，96 孔板每孔加入 100ul， 使待测细胞密度为 1,000～10,000 细胞/孔。</li>
 <li>培养时间根据细胞种类的不同和每孔内细胞数量的多少进行调整。</li>
 <li>分别培养12，24，36，48h （培养时间根据细胞种类的不同和每孔内细胞数量的多少进行调整）。</li>
-<li>测定时，按10% 的比例，将新鲜培养基与 CCK8 进行预混，随后更换培养基（可铁壁添加，避免在孔中生成气泡，它们会影响OD值的读数）。注意设置对照。</li>
+<li>测定时，按10% 的比例，将新鲜培养基与 CCK8 进行预混，随后更换培养基（可贴壁添加，避免在孔中生成气泡，它们会影响OD值的读数）。注意设置对照。</li>
 <li>在细胞培养箱内继续孵育 0.5～4 小时，对于大多数情况孵育 1 小时就可以了。</li>
 <li>由于检测过程暴露在空气中，所以，后续仍需继续培养时，需将对应时间点孔内的CCK8-培养基转移到新的96孔中，拿到酶标仪上进行测定。注意，吸光度受到孔内培养基深度的影响，所以要保证每孔内的CCK8-培养基体积相同。</li>
 <li>用酶标仪测定在450nm处的吸光度。</li>
 </ul>
 <p>参考 <a target="_blank" rel="noopener" href="https://www.biomart.cn/experiment/793/2713523.">丁香通：多年 CCK-8 经验总结请收好，这些坑不要再跳了</a></p>
 <h2 id="96孔板注意事项"><a href="#96孔板注意事项" class="headerlink" title="96孔板注意事项"></a>96孔板注意事项</h2><ul>
-<li>本实验室，96 孔板通常一个孔加 # ul</li>
+<li>本实验室，96 孔板通常一个孔加 100 ul</li>
 <li>最外一周孔，不可使用</li>
 <li>实验孔外一周，添加 PBS，防止实验孔培养基蒸干</li>
 </ul>
@@ -451,10 +451,17 @@
 <p>因为使用稀释后的细胞悬液，所以 稀释倍数为 1， 即当一个中格平均细胞数为 60 时， 1ml 稀释后的细胞悬液的细胞量为 60 w。</p>
 <p>参考 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ai4y1s7YC/?vd_source=be41a8c61fe4ff3129eec82ba4c80cf9">血球计数板计数细胞密度</a></p>
 <p>如果每孔需要 7,500 个细胞，8个孔（预混体系9个），7500 × 9 / 6×10^5 × 1000 = 112.5 (ul)，总体积 100 × 9 = 900 ul，即取 112.5 ul 细胞悬液，补 787.5 ul 培养基，混匀后，分到 8 个孔中。</p>
+<h2 id="实验结果分析"><a href="#实验结果分析" class="headerlink" title="实验结果分析"></a>实验结果分析</h2><p>每个实验孔的吸光度，都要去除空对照，即 OD(exp) - OD(null)，然后用于后续结果分析</p>
+<pre class="line-numbers language-none"><code class="language-none">细胞活力 = [OD(treat) - OD(null)] / [OD(no treat) - OD(null)] × 100%
+抑制率 = [OD(no treat) - OD(treat)] / [OD(no treat) - OD(null)] × 100%<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>OD(treat): 具有细胞、CCK-8、培养基（和药物处理）的吸光值<br>OD(no treat): 具有细胞、CCK-8、培养基（无药物处理）的吸光值<br>OD(null): 具有CCK-8、培养基、没有细胞的吸光值  </p>
+<p>OD(exp) 包括 OD(treat) 和 OD(no treat)，treat 包含外加药物，也包括细胞本身的不同。</p>
 <h2 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h2><ul>
 <li>细胞要消化充分，形成单细胞</li>
 <li>每次取细胞前要混匀，防止每孔/管数量不一</li>
 <li>细胞类型与每孔细胞量，以保证在测定期间，细胞处于对数生长期</li>
+<li>加 CCK8 时，要做一组空对照，即没有细胞，用于去除培养基、CCK8、药物等造成的光吸收</li>
 <li>像 PCR 的预混体积一样，如果你需要8个孔，就算9个孔，进行取细胞</li>
 </ul>
 
@@ -840,18 +847,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/11/20/wetlab-CCK-8/">
+                <a href="/2022/12/30/wetlab-Transwell/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="CCK-8">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Transwell">
                         
-                        <span class="card-title">CCK-8</span>
+                        <span class="card-title">Transwell</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -861,9 +867,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -876,16 +882,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CCK-8/">
-                        <span class="chip bg-color">CCK-8</span>
-                    </a>
-                    
-                    <a href="/tags/cell-count/">
-                        <span class="chip bg-color">cell count</span>
+                    <a href="/tags/transwell/">
+                        <span class="chip bg-color">transwell</span>
                     </a>
                     
                 </div>
@@ -1101,7 +1102,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022</span>
+                <span id="year">2022-2023</span>
             
             <a href="/about" target="_blank">梁绍波</a>
             |&nbsp;版权所有
