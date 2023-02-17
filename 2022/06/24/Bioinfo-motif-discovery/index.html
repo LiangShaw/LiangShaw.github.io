@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="AI 绘图操作技巧, Shaw">
-    <meta name="description" content="初衷是记录一下自己使用时遇到的 wired 情况，很多时候是因为无意间触动了一些选项的快捷键，所以将此记录下来。希望能拓展到 AI 绘图技巧
-快捷操作显示/隐藏 定界框描述：当选中文字或图形时，最外围会出现一个蓝色矩形框，可进行拖拽、缩放、">
+    <meta name="keywords" content="motif discovery and enrichment, Shaw">
+    <meta name="description" content="基本了解motifs指在一些序列当中，高频出现的序列特征。motif 的发现与富集是生信分析的常用手段，其原理和常用的工具，以及不同工具的特点，如何选择合适的工具，都值得深入的了解。先在这里填个坑，希望能把这个大坑填完。
+motifs 常以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>AI 绘图操作技巧 | Shaw</title>
+    <title>motif discovery and enrichment | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -250,12 +250,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://crackedfine.com/wp-content/uploads/2018/12/1-15.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">AI 绘图操作技巧</h1>
+                    <h1 class="description center-align post-title">motif discovery and enrichment</h1>
                 </div>
             </div>
         </div>
@@ -369,17 +369,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/ai/">
-                                <span class="chip bg-color">ai</span>
-                            </a>
-                        
-                            <a href="/tags/shortcut/">
-                                <span class="chip bg-color">shortcut</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -387,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/adobe/" class="post-category">
-                                adobe
+                            <a href="/categories/bioinformatics/" class="post-category">
+                                bioinformatics
                             </a>
                         
                     </div>
@@ -400,14 +392,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2022-06-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2023-02-12
                 </div>
                 
 
@@ -429,9 +421,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>初衷是记录一下自己使用时遇到的 wired 情况，很多时候是因为无意间触动了一些选项的快捷键，所以将此记录下来。希望能拓展到 AI 绘图技巧</p>
-<h2 id="快捷操作"><a href="#快捷操作" class="headerlink" title="快捷操作"></a>快捷操作</h2><h3 id="显示-隐藏-定界框"><a href="#显示-隐藏-定界框" class="headerlink" title="显示/隐藏 定界框"></a>显示/隐藏 定界框</h3><p>描述：当选中文字或图形时，最外围会出现一个蓝色矩形框，可进行拖拽、缩放、旋转等操作<br>快捷键：Ctrl+Shift+B</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+                <h2 id="基本了解"><a href="#基本了解" class="headerlink" title="基本了解"></a>基本了解</h2><p>motifs指在一些序列当中，高频出现的序列特征。motif 的发现与富集是生信分析的常用手段，其原理和常用的工具，以及不同工具的特点，如何选择合适的工具，都值得深入的了解。先在这里填个坑，希望能把这个大坑填完。</p>
+<p>motifs 常以 seq logo 的形式出现，根据纵坐标的不同分为 probability 和 entropy 两种方式。probability 好理解，就是在每个位置上，不同的状态所占比例，如 A, C, G, T 各自占的百分比。而 entropy（熵） 涉及到了<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">信息熵</a>的概念。这里有一篇<a target="_blank" rel="noopener" href="https://biology.stackexchange.com/questions/64368/how-to-determine-the-height-bits-in-a-sequence-logo">问答</a>，值得细看。</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="meme-suite"><a href="#meme-suite" class="headerlink" title="meme suite"></a>meme suite</h3><h3 id="homer"><a href="#homer" class="headerlink" title="homer"></a>homer</h3><h3 id="homer2"><a href="#homer2" class="headerlink" title="homer2"></a>homer2</h3><h3 id="weblogo3"><a href="#weblogo3" class="headerlink" title="weblogo3"></a>weblogo3</h3><h3 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h3>
                 
             </div>
             <hr/>
@@ -457,7 +449,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2023/02/07/AI-shortcut/">https://liangshaw.github.io/2023/02/07/AI-shortcut/</a>
+                    <a href="https://liangshaw.github.io/2022/06/24/Bioinfo-motif-discovery/">https://liangshaw.github.io/2022/06/24/Bioinfo-motif-discovery/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -494,15 +486,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/ai/">
-                                    <span class="chip bg-color">ai</span>
-                                </a>
-                            
-                                <a href="/tags/shortcut/">
-                                    <span class="chip bg-color">shortcut</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -818,24 +802,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/10/RdataScience-data-reshape/">
+                <a href="/2022/09/08/rserver-change-R/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="RdataScience-data-reshape">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="rstudio-server 更换 R 内核">
                         
-                        <span class="card-title">RdataScience-data-reshape</span>
+                        <span class="card-title">rstudio-server 更换 R 内核</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            服务器上 Rstudio-server 的更新换代
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-08
                         </span>
                         <span class="publish-author">
                             
@@ -844,6 +828,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/rstudio-server/">
+                        <span class="chip bg-color">rstudio-server</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -855,31 +847,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/12/30/wetlab-Transwell/">
+                <a href="/2022/03/27/RdataScience-part3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Transwell">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="R数据科学，第三部分：编程">
                         
-                        <span class="card-title">Transwell</span>
+                        <span class="card-title">R数据科学，第三部分：编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            编程部分
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/wetlab/" class="post-category">
-                                    wetlab
+                            <a href="/categories/R-for-data-science/" class="post-category">
+                                    R for data science
                                 </a>
                             
                             
@@ -889,8 +881,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/transwell/">
-                        <span class="chip bg-color">transwell</span>
+                    <a href="/tags/R/">
+                        <span class="chip bg-color">R</span>
+                    </a>
+                    
+                    <a href="/tags/data-science/">
+                        <span class="chip bg-color">data science</span>
+                    </a>
+                    
+                    <a href="/tags/handbook/">
+                        <span class="chip bg-color">handbook</span>
                     </a>
                     
                 </div>
