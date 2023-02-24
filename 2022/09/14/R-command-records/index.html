@@ -402,7 +402,7 @@ options(timeout =">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-16
+                    2023-02-20
                 </div>
                 
 
@@ -430,6 +430,11 @@ options<span class="token punctuation">(</span>main.graphics<span class="token o
 <span class="token comment"># increasing the download timeout</span>
 options<span class="token punctuation">(</span>timeout <span class="token operator">=</span> <span class="token number">600</span><span class="token punctuation">)</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>以下命令可以实现在命令行中选择 mirror，可以将该命令添加到 ~/.Rprofile</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">chooseCRANmirror<span class="token punctuation">(</span>graphics<span class="token operator">=</span><span class="token boolean">FALSE</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<p>参考 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/48095">如何在R中选择CRAN镜像reference</a></p>
 <h1 id="查看安装的包"><a href="#查看安装的包" class="headerlink" title="查看安装的包"></a>查看安装的包</h1><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 所有包</span>
 installed.packages<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -456,6 +461,9 @@ install_version<span class="token punctuation">(</span><span class="token string
 <span class="token comment"># 用源文件安装</span>
 packageurl <span class="token operator">=</span> <span class="token string">'https://cran.r-project.org/src/contrib/Archive/survminer/survminer_0.4.2.tar.gz'</span>
 install.packages<span class="token punctuation">(</span>packageurl<span class="token punctuation">,</span> repos <span class="token operator">=</span> <span class="token keyword">NULL</span><span class="token punctuation">,</span> type <span class="token operator">=</span> <span class="token string">'source'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>CRAN repository web <a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/available_packages_by_name.html">index</a></p>
+
                 
             </div>
             <hr/>
