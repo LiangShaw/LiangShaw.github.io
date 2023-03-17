@@ -411,7 +411,7 @@ $ tr [:upper:] [:lower:]
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-21
+                    2023-03-15
                 </div>
                 
 
@@ -444,12 +444,8 @@ $ <span class="token function">tr</span> <span class="token punctuation">[</span
 
 <h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sed</span> <span class="token string">'s/[a-z]/\U&amp;/g'</span>
 $ <span class="token function">sed</span> <span class="token string">'s/[A-Z]/\L&amp;/g'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token function">file</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print toupper($1)}'</span>
-FILE
-
-$ <span class="token builtin class-name">echo</span> FILE <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print tolower($1)}'</span>
-<span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h3><h4 id="example1-fasta-DNA-gt-RNA"><a href="#example1-fasta-DNA-gt-RNA" class="headerlink" title="example1 fasta DNA > RNA"></a>example1 fasta DNA &gt; RNA</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token string">'s/原字符串/目标字符串/g'</span> <span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="批量替换多文本中的字符串"><a href="#批量替换多文本中的字符串" class="headerlink" title="批量替换多文本中的字符串"></a>批量替换多文本中的字符串</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">"s/原字符串/目标字符串/g"</span> <span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> 原字符串 -rl 需要批量替换的文件或文件夹目录<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h1 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h1><h2 id="I"><a href="#I" class="headerlink" title="-I"></a>-I</h2><p>指定每一项命令行参数的替代字符串</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> foo.txt
@@ -482,6 +478,11 @@ $ <span class="token builtin class-name">echo</span> <span class="token string">
 The argument <span class="token keyword">for</span> the option A is Jerry
 The argument <span class="token keyword">for</span> the option B is Likes
 The argument <span class="token keyword">for</span> the option C is Tom<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h1><h2 id="常用的参数"><a href="#常用的参数" class="headerlink" title="常用的参数"></a>常用的参数</h2><h3 id="e"><a href="#e" class="headerlink" title="-e"></a>-e</h3><ul>
+<li>启动反斜杠转义解释，如将 <code>\n</code> 解释为换行，不设置 <code>-e</code>，会直接打印 <code>\n</code></li>
+</ul>
+
                 
             </div>
             <hr/>

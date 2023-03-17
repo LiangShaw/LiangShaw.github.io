@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-10
+                    2023-03-15
                 </div>
                 
 
@@ -429,13 +429,29 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>parallel 的参数介绍见链接博客：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cc54a72616a1">Linux下的并行神器——parallel</a></p>
-<p>一下记录好用的几个参数使用：</p>
-<h1 id="运行控制"><a href="#运行控制" class="headerlink" title="运行控制"></a>运行控制</h1><h2 id="–keep-order-k"><a href="#–keep-order-k" class="headerlink" title="–keep-order/-k"></a>–keep-order/-k</h2><p>使输出与输入顺序保持一致</p>
-<h2 id="–dry-run"><a href="#–dry-run" class="headerlink" title="–dry-run"></a>–dry-run</h2><p>试运行 parallel 指导的命令，并输出要运行的命令行</p>
-<h2 id="–delay"><a href="#–delay" class="headerlink" title="–delay"></a>–delay</h2><p>当job有大量的IO操作时，为避免“惊群效应”，可使用<code>--delay</code>参数指定各个job开始的时间间隔。</p>
-<h2 id="–joblog-file"><a href="#–joblog-file" class="headerlink" title="–joblog file"></a>–joblog file</h2><p>生成各个任务的日志文件</p>
-<h2 id="–resume-failed-–retry-failed"><a href="#–resume-failed-–retry-failed" class="headerlink" title="–resume-failed/–retry-failed"></a>–resume-failed/–retry-failed</h2><p>重新运行失败的任务，二者作用类似，只是 <code>--resume-failed</code>从命令行读取失败任务，而<code>--retry-failed</code>则是从日志文件中读取失败任务：</p>
-<h2 id="–trim"><a href="#–trim" class="headerlink" title="–trim"></a>–trim</h2><p>去除参数两头的空格</p>
+<p>以下记录好用的几个参数使用：</p>
+<h1 id="运行控制"><a href="#运行控制" class="headerlink" title="运行控制"></a>运行控制</h1><h2 id="–ungroup"><a href="#–ungroup" class="headerlink" title="–ungroup"></a>–ungroup</h2><ul>
+<li>一般 GNU parallel 会延迟输出，直到一组命令执行完成。</li>
+<li>使用 <code>--ungroup</code>，可立即打印输出已完成部分<h2 id="–linebuffer"><a href="#–linebuffer" class="headerlink" title="–linebuffer"></a>–linebuffer</h2></li>
+<li>一个任务的行输出可能会被另一个任务的输出截断。  </li>
+<li>使用 <code>--linebuffer</code>避免这个问题（稍慢一点）<h2 id="–keep-order-k"><a href="#–keep-order-k" class="headerlink" title="–keep-order/-k"></a>–keep-order/-k</h2></li>
+<li>使输出与输入顺序保持一致</li>
+</ul>
+<h2 id="–dry-run"><a href="#–dry-run" class="headerlink" title="–dry-run"></a>–dry-run</h2><ul>
+<li>试运行 parallel 指导的命令，并输出要运行的命令行</li>
+</ul>
+<h2 id="–delay"><a href="#–delay" class="headerlink" title="–delay"></a>–delay</h2><ul>
+<li>当job有大量的IO操作时，为避免“惊群效应”，可使用<code>--delay</code>参数指定各个job开始的时间间隔。</li>
+</ul>
+<h2 id="–joblog-file"><a href="#–joblog-file" class="headerlink" title="–joblog file"></a>–joblog file</h2><ul>
+<li>生成各个任务的日志文件</li>
+</ul>
+<h2 id="–resume-failed-–retry-failed"><a href="#–resume-failed-–retry-failed" class="headerlink" title="–resume-failed/–retry-failed"></a>–resume-failed/–retry-failed</h2><ul>
+<li>重新运行失败的任务，二者作用类似，只是 <code>--resume-failed</code>从命令行读取失败任务，而<code>--retry-failed</code>则是从日志文件中读取失败任务：</li>
+</ul>
+<h2 id="–trim"><a href="#–trim" class="headerlink" title="–trim"></a>–trim</h2><ul>
+<li>去除参数两头的空格</li>
+</ul>
 <h1 id="输入指定"><a href="#输入指定" class="headerlink" title="输入指定"></a>输入指定</h1><h2 id="n-number"><a href="#n-number" class="headerlink" title="-n number"></a>-n number</h2><p><code>-n 1</code> 表示每次只取一个输入做参数  </p>
 <h2 id="–xapply"><a href="#–xapply" class="headerlink" title="–xapply"></a>–xapply</h2><p>不使用该参数时，会将多个参数源进行全部组合</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ parallel <span class="token builtin class-name">echo</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span> ::: A B ::: C D
