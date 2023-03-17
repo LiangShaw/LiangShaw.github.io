@@ -411,7 +411,7 @@ $ tr [:upper:] [:lower:]
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-15
+                    2023-03-17
                 </div>
                 
 
@@ -482,6 +482,16 @@ The argument <span class="token keyword">for</span> the option C is Tom<span ari
 <h1 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h1><h2 id="常用的参数"><a href="#常用的参数" class="headerlink" title="常用的参数"></a>常用的参数</h2><h3 id="e"><a href="#e" class="headerlink" title="-e"></a>-e</h3><ul>
 <li>启动反斜杠转义解释，如将 <code>\n</code> 解释为换行，不设置 <code>-e</code>，会直接打印 <code>\n</code></li>
 </ul>
+<h1 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h1><p><code>mv</code> 和 <code>rename</code> 都有重命名的功能，但是 <code>mv</code> 只能对单个文件重命名，而 rename 则可以实现批量重命名<br>Linux 中 <code>rename</code> 有两个版本（<code>C</code> and <code>perl</code>）, 详见<a target="_blank" rel="noopener" href="https://blog.csdn.net/killoly/article/details/51753765">linux中mv和rename的区别</a></p>
+<p>C 版本的 rename 格式就是：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">rename</span> from to <span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>from, 修改什么名字</li>
+<li>to, 改成什么名字</li>
+<li>file, 对什么文件修改</li>
+</ul>
+<p>缺点是无法实现循环，按标号重命名的目的。</p>
+<p>perl 版本的好处就是可以使用正则表达式</p>
 
                 
             </div>
