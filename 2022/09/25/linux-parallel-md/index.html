@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-15
+                    2023-03-20
                 </div>
                 
 
@@ -477,7 +477,9 @@ $ parallel --header <span class="token builtin class-name">:</span> --colsep <sp
 
 <h1 id="parallel-与-xargs-管道连用"><a href="#parallel-与-xargs-管道连用" class="headerlink" title="parallel 与 xargs 管道连用"></a>parallel 与 xargs 管道连用</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">find</span> ./ -name <span class="token string">'*.txt'</span> <span class="token operator">|</span> parallel <span class="token function">xargs</span> -n <span class="token number">1</span> <span class="token function">grep</span> <span class="token string">'target'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="parallel-与-awk-连用"><a href="#parallel-与-awk-连用" class="headerlink" title="parallel 与 awk 连用"></a>parallel 与 awk 连用</h1><p>这有一个实用帖子<a target="_blank" rel="noopener" href="https://blog.csdn.net/hahoo2009/article/details/95380026">GNU Parallel + AWK: 让你的文本处理飞起来</a><br>–linebuffer 保证并行结果不串行<br>-q 支持引号。 保证命令行中的特殊字符不被翻译，这样做对 awk 尤其方便。但是目前我还没想到在这种情况下如何在命令行中使用管道。</p>
+<h1 id="parallel-与-awk-连用"><a href="#parallel-与-awk-连用" class="headerlink" title="parallel 与 awk 连用"></a>parallel 与 awk 连用</h1><p>这有一个实用帖子<a target="_blank" rel="noopener" href="https://blog.csdn.net/hahoo2009/article/details/95380026">GNU Parallel + AWK: 让你的文本处理飞起来</a>  </p>
+<p>parallel 后所有特殊字符都会不会被自动转译，所以要自行添加 <code>\</code> 手动转译，包括 space，comma，semicolons</p>
+<p>–linebuffer 保证并行结果不串行<br>-q 支持引号。 保证命令行中的特殊字符不被翻译，这样做对 awk 尤其方便。但是目前我还没想到在这种情况下如何在命令行中使用管道。</p>
 
                 
             </div>

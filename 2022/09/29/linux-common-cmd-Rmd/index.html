@@ -411,7 +411,7 @@ $ tr [:upper:] [:lower:]
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-17
+                    2023-03-20
                 </div>
                 
 
@@ -447,6 +447,17 @@ $ <span class="token function">sed</span> <span class="token string">'s/[A-Z]/\L
 <h3 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h3><h4 id="example1-fasta-DNA-gt-RNA"><a href="#example1-fasta-DNA-gt-RNA" class="headerlink" title="example1 fasta DNA > RNA"></a>example1 fasta DNA &gt; RNA</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token string">'s/原字符串/目标字符串/g'</span> <span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="批量替换多文本中的字符串"><a href="#批量替换多文本中的字符串" class="headerlink" title="批量替换多文本中的字符串"></a>批量替换多文本中的字符串</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">"s/原字符串/目标字符串/g"</span> <span class="token variable"><span class="token variable">`</span><span class="token function">grep</span> 原字符串 -rl 需要批量替换的文件或文件夹目录<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h1 id="windows-到-linux，行后缀的处理"><a href="#windows-到-linux，行后缀的处理" class="headerlink" title="windows 到 linux，行后缀的处理"></a>windows 到 linux，行后缀的处理</h1><p>将在 Windows 下创建的文本文件传输到 Linux 上时，要注意二者行后缀不同 (windows <code>\n\r</code>, linux <code>\n</code>)。<br>忽略这一点，往往会导致一些后续操作出现莫名其妙的问题。<br>通过 <code>vim</code> 文件可以看到每行后会有 <code>^M</code>。<br>搜罗了以下几种方法：  </p>
+<ul>
+<li>tr ：  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tr</span> -d <span class="token string">'\r'</span> <span class="token comment">## 删除 \r</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>sed<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sed</span> <span class="token string">'s/^M$//'</span> filename <span class="token operator">&gt;</span> tmp_filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>dos2unix (if installed)</li>
+<li>vim<ul>
+<li>行数不多，直接删除<code>^M</code></li>
+<li>命令模式下输入 <code>:set fileformat=unix</code></li>
+</ul>
+</li>
+</ul>
 <h1 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h1><h2 id="I"><a href="#I" class="headerlink" title="-I"></a>-I</h2><p>指定每一项命令行参数的替代字符串</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> foo.txt
 one
