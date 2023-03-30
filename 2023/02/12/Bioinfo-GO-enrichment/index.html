@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="基因富集分析, Shaw">
-    <meta name="description" content="toolsonline webpage toolsDAVIDEnrichrg:ProfilerR packagegprofier2cytoscapeGSEAprocess of enrichment analysis resultmanua">
+    <meta name="description" content="基因富集分析，非常常用，但我们真的弄清楚了嘛？  
+除了最常用的 GO enrichment (BP/CC/MF) / KEGG，对于基因的 enrichment，还有 GSEA 和 Reactome pathway analysis。
+另">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -402,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-17
+                    2023-03-28
                 </div>
                 
 
@@ -424,7 +426,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h1><h2 id="online-webpage-tools"><a href="#online-webpage-tools" class="headerlink" title="online webpage tools"></a>online webpage tools</h2><h3 id="DAVID"><a href="#DAVID" class="headerlink" title="DAVID"></a><a target="_blank" rel="noopener" href="https://david.ncifcrf.gov/tools.jsp">DAVID</a></h3><h3 id="Enrichr"><a href="#Enrichr" class="headerlink" title="Enrichr"></a><a target="_blank" rel="noopener" href="https://maayanlab.cloud/Enrichr/">Enrichr</a></h3><h3 id="g-Profiler"><a href="#g-Profiler" class="headerlink" title="g:Profiler"></a><a target="_blank" rel="noopener" href="https://biit.cs.ut.ee/gprofiler/gost">g:Profiler</a></h3><h2 id="R-package"><a href="#R-package" class="headerlink" title="R package"></a>R package</h2><h3 id="gprofier2"><a href="#gprofier2" class="headerlink" title="gprofier2"></a>gprofier2</h3><h2 id="cytoscape"><a href="#cytoscape" class="headerlink" title="cytoscape"></a>cytoscape</h2><h2 id="GSEA"><a href="#GSEA" class="headerlink" title="GSEA"></a>GSEA</h2><h1 id="process-of-enrichment-analysis-result"><a href="#process-of-enrichment-analysis-result" class="headerlink" title="process of enrichment analysis result"></a>process of enrichment analysis result</h1><h2 id="manually-curated-GO-terms"><a href="#manually-curated-GO-terms" class="headerlink" title="manually curated GO terms"></a>manually curated GO terms</h2><p>“collapsed GO terms into 10 generalized functions”, learning from <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42255-022-00734-2?utm_source=stork&amp;utm_medium=referral&amp;utm_content=paid&amp;utm_campaign=CONR_JRNLS_AWA1_CN_CNPL_STKRE_NATURERJ#Sec12">Pancreatic microexons regulate islet function and glucose homeostasis (2023, <em>Nat Met</em>)</a></p>
+                <p>基因富集分析，非常常用，但我们真的弄清楚了嘛？  </p>
+<p>除了最常用的 GO enrichment (BP/CC/MF) / KEGG，对于基因的 enrichment，还有 GSEA 和 <a target="_blank" rel="noopener" href="https://reactome.org/what-is-reactome#:~:text=Reactome%20is%20used%20by%20clinicians%2C%20geneticists%2C%20genomics%20researchers%2C,predictive%20models%20of%20normal%20and%20disease%20variant%20pathways.">Reactome pathway analysis</a>。</p>
+<p>另外一点，gene enrichment 的对象，常常是，differentially expressed genes (DEGs)，然而，思路可以打开，可以做其他的有意义的 gene set，如 AS gene set (例如这篇：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-023-05820-3"><em>Nature</em>, 2023, RBFOX2 modulates a metastatic signature o</a>)。</p>
+<h1 id="tools"><a href="#tools" class="headerlink" title="tools"></a>tools</h1><h2 id="online-webpage-tools"><a href="#online-webpage-tools" class="headerlink" title="online webpage tools"></a>online webpage tools</h2><h3 id="DAVID"><a href="#DAVID" class="headerlink" title="DAVID"></a><a target="_blank" rel="noopener" href="https://david.ncifcrf.gov/tools.jsp">DAVID</a></h3><h3 id="Enrichr"><a href="#Enrichr" class="headerlink" title="Enrichr"></a><a target="_blank" rel="noopener" href="https://maayanlab.cloud/Enrichr/">Enrichr</a></h3><h3 id="g-Profiler"><a href="#g-Profiler" class="headerlink" title="g:Profiler"></a><a target="_blank" rel="noopener" href="https://biit.cs.ut.ee/gprofiler/gost">g:Profiler</a></h3><h2 id="R-package"><a href="#R-package" class="headerlink" title="R package"></a>R package</h2><h3 id="gprofier2"><a href="#gprofier2" class="headerlink" title="gprofier2"></a>gprofier2</h3><h2 id="cytoscape"><a href="#cytoscape" class="headerlink" title="cytoscape"></a>cytoscape</h2><h2 id="GSEA"><a href="#GSEA" class="headerlink" title="GSEA"></a>GSEA</h2><h1 id="process-of-enrichment-analysis-result"><a href="#process-of-enrichment-analysis-result" class="headerlink" title="process of enrichment analysis result"></a>process of enrichment analysis result</h1><h2 id="manually-curated-GO-terms"><a href="#manually-curated-GO-terms" class="headerlink" title="manually curated GO terms"></a>manually curated GO terms</h2><p>“collapsed GO terms into 10 generalized functions”, learning from <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s42255-022-00734-2?utm_source=stork&amp;utm_medium=referral&amp;utm_content=paid&amp;utm_campaign=CONR_JRNLS_AWA1_CN_CNPL_STKRE_NATURERJ#Sec12">Pancreatic microexons regulate islet function and glucose homeostasis (2023, <em>Nat Met</em>)</a></p>
 
                 
             </div>
