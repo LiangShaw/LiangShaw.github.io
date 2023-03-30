@@ -390,14 +390,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-02
+                    2023-03-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-01-02
+                    2023-03-30
                 </div>
                 
 
@@ -439,6 +439,7 @@
 <span class="token function">git</span> config --global user.email <span class="token string">"your_email@youremail.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 <li>check user<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> config user.name  
 <span class="token function">git</span> config user.email<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li>check all information<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> config -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <h2 id="repository-initialization"><a href="#repository-initialization" class="headerlink" title="repository initialization"></a>repository initialization</h2><h3 id="method1"><a href="#method1" class="headerlink" title="method1"></a>method1</h3><p><strong>clone a reposiroty from remote server</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone repository_address  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
 <p>*can reate a clone for local repository<br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone /path/to/local/repository <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
@@ -488,6 +489,30 @@
 <li><p>add SSH key content into github SSH<br><code>setting</code> -&gt; <code>SSH and GPG keys</code></p>
 </li>
 </ul>
+<h1 id="日常遇到的问题"><a href="#日常遇到的问题" class="headerlink" title="日常遇到的问题"></a>日常遇到的问题</h1><h2 id="Offending-RSA-key-in-ssh-known-hosts-2"><a href="#Offending-RSA-key-in-ssh-known-hosts-2" class="headerlink" title="Offending RSA key in ~/.ssh/known_hosts:2"></a>Offending RSA key in ~/.ssh/known_hosts:2</h2><p>在进行 <code>git push/pull</code> 的时候，发生如下错误：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -T git@github.com
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
+Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
+It is also possible that a <span class="token function">host</span> key has just been changed.
+The fingerprint <span class="token keyword">for</span> the RSA key sent by the remote <span class="token function">host</span> is
+SHA256:uNVztksCshcc0ueBujQXVUpZIDTMczCvjtD2.
+Please contact your system administrator.
+Add correct <span class="token function">host</span> key <span class="token keyword">in</span> ~/.ssh/known_hosts to get rid of this message.
+Offending RSA key <span class="token keyword">in</span> ~/.ssh/known_hosts:2
+RSA <span class="token function">host</span> key <span class="token keyword">for</span> github.com has changed and you have requested strict checking.
+Host key verification failed.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>多番查阅后，总结是 GitHub rsa-id 更新，使用 ecdsa 方式。<br>所以，一方面要删除 ~/.ssh/known_host 中的 rsa:</p>
+<ul>
+<li>可以根据错误提示 <strong>Offending RSA key in ~/.ssh/known_hosts:2</strong>，进入 known_host 进行手动删除，也可以命令行的方式进行删除（在你知道 host IP 的前提下）<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t rsa -R github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
+<p>在此之后，更新 GitHub 账户上的 host-key:  </p>
+<ul>
+<li>将 <code>~/.ssh/known_hosts</code> 中信息添加到 <code>Settings -&gt; SSH and GPG keys -&gt; New SSH key</code></li>
+</ul>
 
                 
             </div>
@@ -514,7 +539,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/01/02/Git_instructions/">https://liangshaw.github.io/2022/01/02/Git_instructions/</a>
+                    <a href="https://liangshaw.github.io/2023/03/30/Git_instructions/">https://liangshaw.github.io/2023/03/30/Git_instructions/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -871,50 +896,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/01/10/RDataSci/">
+                <a href="/2023/03/30/Git_instructions/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/28.jpg" class="responsive-img" alt="R数据科学系列">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="git/github basic usage guide">
                         
-                        <span class="card-title">R数据科学系列</span>
+                        <span class="card-title">git/github basic usage guide</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            能够在 R 中得心应手得处理数据、改造数据，会大大提高工作效率。
+                            一些 git 常用命令，用作备忘录、使用手册，方便快速查阅
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-30
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R-for-data-science/" class="post-category">
-                                    R for data science
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
-                    <a href="/tags/data-science/">
-                        <span class="chip bg-color">data science</span>
+                    <a href="/tags/Github/">
+                        <span class="chip bg-color">Github</span>
                     </a>
                     
                 </div>
@@ -928,31 +951,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/01/02/RDataVisualization-1/">
+                <a href="/2023/03/29/Bioinfo-RoutineToolsCollections/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="R数据可视化手册-上">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Bioinfo-RoutineToolsCollections">
                         
-                        <span class="card-title">R数据可视化手册-上</span>
+                        <span class="card-title">Bioinfo-RoutineToolsCollections</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            博主最开始正式学习 R 语言的时候，是出于数据可视化的目的，以 Oreilly 的《R数据可视化手册》 为 handbook，将此书的 90% 内容在 jupyter 中都复现了一遍。jupyter 原始文件可到我的 Github 相应仓库中获取。由于内容较多，分为了上下两部分。
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%8B%E5%86%8C/" class="post-category">
-                                    R数据可视化手册
+                            <a href="/categories/bioinformatics/" class="post-category">
+                                    bioinformatics
                                 </a>
                             
                             
@@ -962,16 +985,20 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
+                    <a href="/tags/samtools/">
+                        <span class="chip bg-color">samtools</span>
                     </a>
                     
-                    <a href="/tags/ggplot2/">
-                        <span class="chip bg-color">ggplot2</span>
+                    <a href="/tags/bedtools/">
+                        <span class="chip bg-color">bedtools</span>
                     </a>
                     
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
+                    <a href="/tags/deeptools/">
+                        <span class="chip bg-color">deeptools</span>
+                    </a>
+                    
+                    <a href="/tags/collection/">
+                        <span class="chip bg-color">collection</span>
                     </a>
                     
                 </div>
