@@ -411,7 +411,7 @@ $ tr [:upper:] [:lower:]
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-20
+                    2023-04-03
                 </div>
                 
 
@@ -501,6 +501,10 @@ The argument <span class="token keyword">for</span> the option C is Tom<span ari
 <li>to, 改成什么名字</li>
 <li>file, 对什么文件修改</li>
 </ul>
+<p>example:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># change "txt" suffix into bed for all .txt file.</span>
+<span class="token function">rename</span> txt bed *.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>注意：上述替换，只会发生在第一个匹配的字符串，所以感觉安装个 perl 版本的 rename 很舒服？</p>
 <p>缺点是无法实现循环，按标号重命名的目的。</p>
 <p>perl 版本的好处就是可以使用正则表达式</p>
 

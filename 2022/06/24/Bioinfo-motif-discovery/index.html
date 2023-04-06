@@ -403,7 +403,7 @@ motifs 常以">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-28
+                    2023-04-05
                 </div>
                 
 
@@ -427,7 +427,37 @@ motifs 常以">
             <div id="articleContent">
                 <h2 id="基本了解"><a href="#基本了解" class="headerlink" title="基本了解"></a>基本了解</h2><p>motifs指在一些序列当中，高频出现的序列特征。motif 的发现与富集是生信分析的常用手段，其原理和常用的工具，以及不同工具的特点，如何选择合适的工具，都值得深入的了解。先在这里填个坑，希望能把这个大坑填完。</p>
 <p>motifs 常以 seq logo 的形式出现，根据纵坐标的不同分为 probability 和 entropy 两种方式。probability 好理解，就是在每个位置上，不同的状态所占比例，如 A, C, G, T 各自占的百分比。而 entropy（熵） 涉及到了<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">信息熵</a>的概念。这里有一篇<a target="_blank" rel="noopener" href="https://biology.stackexchange.com/questions/64368/how-to-determine-the-height-bits-in-a-sequence-logo">问答</a>，值得细看。</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="meme-suite"><a href="#meme-suite" class="headerlink" title="meme suite"></a>meme suite</h3><h3 id="homer"><a href="#homer" class="headerlink" title="homer"></a>homer</h3><h3 id="homer2"><a href="#homer2" class="headerlink" title="homer2"></a>homer2</h3><h3 id="weblogo3"><a href="#weblogo3" class="headerlink" title="weblogo3"></a>weblogo3</h3><h3 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h3>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="meme-suite"><a href="#meme-suite" class="headerlink" title="meme suite"></a>meme suite</h2><h3 id="Motif-Discovery"><a href="#Motif-Discovery" class="headerlink" title="Motif Discovery"></a>Motif Discovery</h3><h4 id="MEME"><a href="#MEME" class="headerlink" title="MEME"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/meme.html?man_type=web">MEME</a></h4><p>discover novel, ungapped motifs, recurring, fixed-length pattern.  </p>
+<p>input: no more than 50 sequences, fixed length (or STREME is a better choice)</p>
+<h4 id="STREME"><a href="#STREME" class="headerlink" title="STREME"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/streme.html?man_type=web">STREME</a></h4><p>ungapped motif</p>
+<p>note: work with DNA sequence even if you specify the RNA alphabet</p>
+<h4 id="XSTREME"><a href="#XSTREME" class="headerlink" title="XSTREME"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/xstreme.html?man_type=web">XSTREME</a></h4><p>comprehensive motif analysis (including motif discovery)  </p>
+<p>input: any length, and length may vary<br>note: </p>
+<ol>
+<li>找 motifs (with STREME and MEME)</li>
+<li>determine which motifs are most enriched (with SEA)</li>
+<li>分析与已知 motif 的相似度 (with Tomtom)</li>
+<li>根据相似性进行分组</li>
+<li>创建一个 GFF file，方便查看每一个 motif 的 predicted sites<h4 id="MEME-ChIP"><a href="#MEME-ChIP" class="headerlink" title="MEME-ChIP"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/meme-chip.html?man_type=web">MEME-ChIP</a></h4>comprehensive motif analysis (including motif discovery), 并且针对于 motif 倾向出现在 centrally located, 例如 ChIP-seq peaks.  </li>
+</ol>
+<p>input: 可能包含 motif 的 100 character 在序列中心，整条序列长度大概在 500 letters.</p>
+<p>will do:  </p>
+<ol>
+<li>在中心区域(默认 centered 100 characters)找 motif</li>
+<li>determine which motifs are most centrally enriched (with CentriMo)</li>
+<li>分析与已知 motif 的相似度 (with Tomtom)</li>
+<li>根据相似性进行分组</li>
+<li>perform a motif spacing analysis (with SpaMo)</li>
+<li>create a GFG file</li>
+</ol>
+<h4 id="GLAM2-Gapped-Local-Alignment-of-Motifs"><a href="#GLAM2-Gapped-Local-Alignment-of-Motifs" class="headerlink" title="GLAM2(Gapped Local Alignment of Motifs)"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/glam2.html?man_type=web">GLAM2(Gapped Local Alignment of Motifs)</a></h4><p>在 DNA 或 protein 水平上，discover novel, gapped motifs (variable-length pattern)  </p>
+<ul>
+<li>允许 insertions and deletions in motifs</li>
+<li>simulated annealing algorithm, with a temperature parameter. </li>
+</ul>
+<h4 id="MoMo-Modification-motifs"><a href="#MoMo-Modification-motifs" class="headerlink" title="MoMo(Modification motifs)"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/momo.html?man_type=web">MoMo(Modification motifs)</a></h4><p>discover sequence motifs associated with PTMs (post-translational modifications) </p>
+<h3 id="Motif-Enrichment"><a href="#Motif-Enrichment" class="headerlink" title="Motif Enrichment"></a>Motif Enrichment</h3><h4 id="SEA-Simple-Enrichment-Analysis"><a href="#SEA-Simple-Enrichment-Analysis" class="headerlink" title="SEA(Simple Enrichment Analysis)"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/sea.html?man_type=web">SEA(Simple Enrichment Analysis)</a></h4><h4 id="CentriMo-Central-Motif"><a href="#CentriMo-Central-Motif" class="headerlink" title="CentriMo(Central Motif)"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/centrimo.html?man_type=web">CentriMo(Central Motif)</a></h4><h4 id="AME-Analysis-of-Motif-Enrichment"><a href="#AME-Analysis-of-Motif-Enrichment" class="headerlink" title="AME(Analysis of Motif Enrichment)"></a><a target="_blank" rel="noopener" href="https://meme-suite.org/meme/doc/ame.html?man_type=web">AME(Analysis of Motif Enrichment)</a></h4><p>AME identifies known</p>
+<h2 id="homer"><a href="#homer" class="headerlink" title="homer"></a>homer</h2><h3 id="HOMER-Motif-Analysis"><a href="#HOMER-Motif-Analysis" class="headerlink" title="HOMER Motif Analysis"></a><a target="_blank" rel="noopener" href="http://homer.ucsd.edu/homer/motif/">HOMER Motif Analysis</a></h3><h4 id="findMotifs-pl"><a href="#findMotifs-pl" class="headerlink" title="findMotifs.pl"></a><a href="">findMotifs.pl</a></h4><h4 id="findMotifsGenome-pl"><a href="#findMotifsGenome-pl" class="headerlink" title="findMotifsGenome.pl"></a><a href="">findMotifsGenome.pl</a></h4><h4 id=""><a href="#" class="headerlink" title="[]"></a>[]</h4><h2 id="homer2"><a href="#homer2" class="headerlink" title="homer2"></a>homer2</h2><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h2 id="weblogo3"><a href="#weblogo3" class="headerlink" title="weblogo3"></a>weblogo3</h2><h2 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h2>
                 
             </div>
             <hr/>
@@ -893,12 +923,12 @@ motifs 常以">
                         <span class="chip bg-color">R</span>
                     </a>
                     
-                    <a href="/tags/handbook/">
-                        <span class="chip bg-color">handbook</span>
-                    </a>
-                    
                     <a href="/tags/data-science/">
                         <span class="chip bg-color">data science</span>
+                    </a>
+                    
+                    <a href="/tags/handbook/">
+                        <span class="chip bg-color">handbook</span>
                     </a>
                     
                 </div>
