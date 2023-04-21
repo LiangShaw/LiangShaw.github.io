@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SNV 数据搜集与关联分析, Shaw">
-    <meta name="description" content="疾病中的 SNV 暗示着相应的基因事件的重要性，对于提高生物学意义有着很重要的效果">
+    <meta name="keywords" content="TCGA 数据库以及衍生工具, Shaw">
+    <meta name="description" content="TCGA这里有一篇关于 TCGA 数据库的详细介绍和数据下载指南 link  
+OncoDBUCSC xena TCGA expression databaseRTCGATCGAbiolinks">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SNV 数据搜集与关联分析 | Shaw</title>
+    <title>TCGA 数据库以及衍生工具 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +250,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SNV 数据搜集与关联分析</h1>
+                    <h1 class="description center-align post-title">TCGA 数据库以及衍生工具</h1>
                 </div>
             </div>
         </div>
@@ -368,33 +369,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/SNV/">
-                                <span class="chip bg-color">SNV</span>
-                            </a>
-                        
-                            <a href="/tags/TCGA/">
-                                <span class="chip bg-color">TCGA</span>
-                            </a>
-                        
-                            <a href="/tags/database/">
-                                <span class="chip bg-color">database</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/bioinformatics/" class="post-category">
-                                bioinformatics
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -403,7 +383,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-28
+                    2023-04-12
                 </div>
                 
 
@@ -432,12 +412,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最全面的 SNV 数据库当属 TCGA，包含了各种组织癌症的基因表达和突变信息，另外由此衍生出了很多相关 database 和 software/pipeline（我已经觉得眼花缭乱了），这些 database 进行整理和整合，一方面会提高信息认知，另一方面也会对相关工作的信息收集起到很大的帮助作用。</p>
-<h1 id="SNV-database"><a href="#SNV-database" class="headerlink" title="SNV database"></a>SNV database</h1><h2 id="TCGA"><a href="#TCGA" class="headerlink" title="TCGA"></a><a target="_blank" rel="noopener" href="https://portal.gdc.cancer.gov/">TCGA</a></h2><p>TCGA 本身就包含了非常多的信息</p>
-<h2 id="variant-gene-phenotype-freeze5"><a href="#variant-gene-phenotype-freeze5" class="headerlink" title="variant-gene-phenotype freeze5"></a>variant-gene-phenotype <a target="_blank" rel="noopener" href="http://r5.finngen.fi/">freeze5</a></h2><p>gene, variant, phenotype, 通过一个方面，查阅关联的另外两个信息</p>
-<h2 id="AMP-CMDKP"><a href="#AMP-CMDKP" class="headerlink" title="AMP CMDKP"></a><a target="_blank" rel="noopener" href="https://hugeamp.org/">AMP CMDKP</a></h2><p>该数据库主要报告了 gene variant and 代谢疾病/性状<br>The Common Metabolic Diseases Knowledge Portal aggregates, analyzes, and displays human genetic and functional genomic information linked to <strong>common metabolic diseases and traits</strong>, while protecting the integrity and confidentiality of the underlying data.</p>
-<h2 id="NCBI-dbVar-and-dbSNP"><a href="#NCBI-dbVar-and-dbSNP" class="headerlink" title="NCBI dbVar and dbSNP"></a>NCBI <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/dbvar">dbVar</a> and <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/snp/?cmd=search">dbSNP</a></h2><h1 id="link-correlation-analysis"><a href="#link-correlation-analysis" class="headerlink" title="link-correlation analysis"></a>link-correlation analysis</h1><h2 id="regtools-integrate-genomic-and-transcriptomic-data"><a href="#regtools-integrate-genomic-and-transcriptomic-data" class="headerlink" title="regtools: integrate genomic and transcriptomic data"></a><a target="_blank" rel="noopener" href="https://github.com/griffithlab/regtools">regtools</a>: integrate genomic and transcriptomic data</h2><p>regtools 发自 <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41467-023-37266-6?utm_medium=external_display&amp;utm_source=stork&amp;utm_content=email&amp;utm_term=null&amp;utm_campaign=CONR_JRNLS_AWA1_CN_CNPL_0034V_STKRE#Sec2"><em>NC</em>, 2023, Integrated analysis of genomic and transcriptomic data for the discovery of splice-associated variants in cancer</a></p>
-
+                <h1 id="TCGA"><a href="#TCGA" class="headerlink" title="TCGA"></a><a target="_blank" rel="noopener" href="https://portal.gdc.cancer.gov/">TCGA</a></h1><p>这里有一篇关于 TCGA 数据库的详细介绍和数据下载指南 <a target="_blank" rel="noopener" href="https://blog.csdn.net/didi_ya/article/details/120354536">link</a>  </p>
+<h2 id="OncoDB"><a href="#OncoDB" class="headerlink" title="OncoDB"></a><a href="">OncoDB</a></h2><h2 id="UCSC-xena-TCGA-expression-database"><a href="#UCSC-xena-TCGA-expression-database" class="headerlink" title="UCSC xena TCGA expression database"></a><a target="_blank" rel="noopener" href="https://xenabrowser.net/datapages/">UCSC xena TCGA expression database</a></h2><h2 id="RTCGA"><a href="#RTCGA" class="headerlink" title="RTCGA"></a><a href="">RTCGA</a></h2><h2 id="TCGAbiolinks"><a href="#TCGAbiolinks" class="headerlink" title="TCGAbiolinks"></a><a href="">TCGAbiolinks</a></h2>
                 
             </div>
             <hr/>
@@ -463,7 +439,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2023/03/28/Bioinfo-SNV-1/">https://liangshaw.github.io/2023/03/28/Bioinfo-SNV-1/</a>
+                    <a href="https://liangshaw.github.io/2023/04/12/Bioinfo-TCGA-learn/">https://liangshaw.github.io/2023/04/12/Bioinfo-TCGA-learn/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -500,19 +476,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/SNV/">
-                                    <span class="chip bg-color">SNV</span>
-                                </a>
-                            
-                                <a href="/tags/TCGA/">
-                                    <span class="chip bg-color">TCGA</span>
-                                </a>
-                            
-                                <a href="/tags/database/">
-                                    <span class="chip bg-color">database</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -828,13 +792,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/03/29/Bioinfo-RoutineToolsCollections/">
+                <a href="/2023/04/21/Bioinfo-protein-structure-predict-and-visualize/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Bioinfo-RoutineToolsCollections">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="蛋白质结构预测与可视化">
                         
-                        <span class="card-title">Bioinfo-RoutineToolsCollections</span>
+                        <span class="card-title">蛋白质结构预测与可视化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -845,39 +809,15 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-21
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/bioinformatics/" class="post-category">
-                                    bioinformatics
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/samtools/">
-                        <span class="chip bg-color">samtools</span>
-                    </a>
-                    
-                    <a href="/tags/bedtools/">
-                        <span class="chip bg-color">bedtools</span>
-                    </a>
-                    
-                    <a href="/tags/deeptools/">
-                        <span class="chip bg-color">deeptools</span>
-                    </a>
-                    
-                    <a href="/tags/collection/">
-                        <span class="chip bg-color">collection</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -889,13 +829,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/16/RDataVisualization-ggpubr/">
+                <a href="/2023/04/06/Bio-seq-method-collections/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="ggpubr 可视化 package">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="测序方法汇总">
                         
-                        <span class="card-title">ggpubr 可视化 package</span>
+                        <span class="card-title">测序方法汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -906,7 +846,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
                             </span>
                         <span class="publish-author">
                             
@@ -915,22 +855,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/ggplot2/">
-                        <span class="chip bg-color">ggplot2</span>
-                    </a>
-                    
-                    <a href="/tags/ggpubr/">
-                        <span class="chip bg-color">ggpubr</span>
-                    </a>
-                    
                 </div>
                 
             </div>

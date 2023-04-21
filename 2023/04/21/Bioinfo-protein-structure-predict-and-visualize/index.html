@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SNV 数据搜集与关联分析, Shaw">
-    <meta name="description" content="疾病中的 SNV 暗示着相应的基因事件的重要性，对于提高生物学意义有着很重要的效果">
+    <meta name="keywords" content="蛋白质结构预测与可视化, Shaw">
+    <meta name="description" content="以一篇 nature 文章中做的 MPRIP 基因结构为例，走完一遍蛋白质结构预测与可视化比较文章链接：RBFOX2 modulates a metastatic signature of alternative splicing in p">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SNV 数据搜集与关联分析 | Shaw</title>
+    <title>蛋白质结构预测与可视化 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SNV 数据搜集与关联分析</h1>
+                    <h1 class="description center-align post-title">蛋白质结构预测与可视化</h1>
                 </div>
             </div>
         </div>
@@ -368,33 +368,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/SNV/">
-                                <span class="chip bg-color">SNV</span>
-                            </a>
-                        
-                            <a href="/tags/TCGA/">
-                                <span class="chip bg-color">TCGA</span>
-                            </a>
-                        
-                            <a href="/tags/database/">
-                                <span class="chip bg-color">database</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/bioinformatics/" class="post-category">
-                                bioinformatics
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -403,14 +382,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-28
+                    2023-04-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-04-12
+                    2023-04-21
                 </div>
                 
 
@@ -432,11 +411,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最全面的 SNV 数据库当属 TCGA，包含了各种组织癌症的基因表达和突变信息，另外由此衍生出了很多相关 database 和 software/pipeline（我已经觉得眼花缭乱了），这些 database 进行整理和整合，一方面会提高信息认知，另一方面也会对相关工作的信息收集起到很大的帮助作用。</p>
-<h1 id="SNV-database"><a href="#SNV-database" class="headerlink" title="SNV database"></a>SNV database</h1><h2 id="TCGA"><a href="#TCGA" class="headerlink" title="TCGA"></a><a target="_blank" rel="noopener" href="https://portal.gdc.cancer.gov/">TCGA</a></h2><p>TCGA 本身就包含了非常多的信息</p>
-<h2 id="variant-gene-phenotype-freeze5"><a href="#variant-gene-phenotype-freeze5" class="headerlink" title="variant-gene-phenotype freeze5"></a>variant-gene-phenotype <a target="_blank" rel="noopener" href="http://r5.finngen.fi/">freeze5</a></h2><p>gene, variant, phenotype, 通过一个方面，查阅关联的另外两个信息</p>
-<h2 id="AMP-CMDKP"><a href="#AMP-CMDKP" class="headerlink" title="AMP CMDKP"></a><a target="_blank" rel="noopener" href="https://hugeamp.org/">AMP CMDKP</a></h2><p>该数据库主要报告了 gene variant and 代谢疾病/性状<br>The Common Metabolic Diseases Knowledge Portal aggregates, analyzes, and displays human genetic and functional genomic information linked to <strong>common metabolic diseases and traits</strong>, while protecting the integrity and confidentiality of the underlying data.</p>
-<h2 id="NCBI-dbVar-and-dbSNP"><a href="#NCBI-dbVar-and-dbSNP" class="headerlink" title="NCBI dbVar and dbSNP"></a>NCBI <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/dbvar">dbVar</a> and <a target="_blank" rel="noopener" href="https://www.ncbi.nlm.nih.gov/snp/?cmd=search">dbSNP</a></h2><h1 id="link-correlation-analysis"><a href="#link-correlation-analysis" class="headerlink" title="link-correlation analysis"></a>link-correlation analysis</h1><h2 id="regtools-integrate-genomic-and-transcriptomic-data"><a href="#regtools-integrate-genomic-and-transcriptomic-data" class="headerlink" title="regtools: integrate genomic and transcriptomic data"></a><a target="_blank" rel="noopener" href="https://github.com/griffithlab/regtools">regtools</a>: integrate genomic and transcriptomic data</h2><p>regtools 发自 <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41467-023-37266-6?utm_medium=external_display&amp;utm_source=stork&amp;utm_content=email&amp;utm_term=null&amp;utm_campaign=CONR_JRNLS_AWA1_CN_CNPL_0034V_STKRE#Sec2"><em>NC</em>, 2023, Integrated analysis of genomic and transcriptomic data for the discovery of splice-associated variants in cancer</a></p>
+                <p>以一篇 nature 文章中做的 MPRIP 基因结构为例，走完一遍蛋白质结构预测与可视化比较<br>文章链接：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-023-05820-3#Sec8">RBFOX2 modulates a metastatic signature of alternative splicing in pancreatic cancer</a>，其中 RBFOX2 调控的一个基因 MPRIP ，exon 23 跳过与否导致了不同的功能效果，于是作者对两种 form 的结构进行了比较。</p>
+<h1 id="获取蛋白结构"><a href="#获取蛋白结构" class="headerlink" title="获取蛋白结构"></a>获取蛋白结构</h1><h2 id="ensembl-中已知的转录本跳转-Uniprot"><a href="#ensembl-中已知的转录本跳转-Uniprot" class="headerlink" title="ensembl 中已知的转录本跳转 Uniprot"></a><a target="_blank" rel="noopener" href="https://asia.ensembl.org/index.html">ensembl</a> 中已知的转录本跳转 Uniprot</h2><p>在 ensembl 中搜索 <a target="_blank" rel="noopener" href="https://asia.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?db=core;g=ENSG00000133030;r=17:17042457-17217679;t=ENST00000584067"><code>MPRIP</code></a> 基因，选取需要的转录本，点击对应的 Uniprot 链接，跳转到 <a target="_blank" rel="noopener" href="https://www.uniprot.org/uniprotkb/J3KSW8/entry">Uniprot</a>；</p>
+<p><img src="ensembl-click-uniprot.jpg" alt="ensembl-click-uniprot"></p>
+<p>点击导航栏 Structure 部分，跳转到 <a target="_blank" rel="noopener" href="https://www.uniprot.org/uniprotkb/J3KSW8/entry#structure">structure</a>；<br>点击下载 <code>.pdb</code> 文件</p>
+<p><img src="MPRIP-uniprot-structure.jpg" alt="MPRIP structure in Uniprot"></p>
+<h2 id="Uniprot-PDB-搜索ID"><a href="#Uniprot-PDB-搜索ID" class="headerlink" title="Uniprot/PDB 搜索ID"></a>Uniprot/PDB 搜索ID</h2><h2 id="根据-AF-ID-到-AlphaFold-Prot-DB-获取已被预测的结构"><a href="#根据-AF-ID-到-AlphaFold-Prot-DB-获取已被预测的结构" class="headerlink" title="根据 AF ID 到 AlphaFold Prot DB 获取已被预测的结构"></a>根据 AF ID 到 <a target="_blank" rel="noopener" href="https://alphafold.ebi.ac.uk/">AlphaFold Prot DB</a> 获取已被预测的结构</h2><pre class="line-numbers language-none"><code class="language-none">Structural illustrations were generated with PYMOL, using predicted models of MPRIP on alphaFold: AF-Q6WCQ1-F1-model_v3_1 (Exon 23 included) and AF-B9EGI2-F1-model_v3 (Exon 23 excluded)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>其中 Q6WCQ1 和 B9EGI2 就是 AF (AlphaFold) ID</p>
+<h2 id="全新的蛋白通过-alphafold-预测"><a href="#全新的蛋白通过-alphafold-预测" class="headerlink" title="全新的蛋白通过 alphafold 预测"></a>全新的蛋白通过 alphafold 预测</h2><ul>
+<li>在线使用 server: 搜索 alphafold colab 或者进入链接 <a target="_blank" rel="noopener" href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb">alphafold colab</a>。提醒：需要梯子。</li>
+<li>安装 alphafold 到<strong>服务器</strong>。找一篇帖子跟着走。</li>
+</ul>
+<ul>
+<li>alphafold</li>
+<li>pymol</li>
+</ul>
+<h1 id="使用-pymol-可视化"><a href="#使用-pymol-可视化" class="headerlink" title="使用 pymol 可视化"></a>使用 pymol 可视化</h1><p>pymol 的基本操作还是自己找攻略</p>
+<p>学习资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkzNjIzMTU0Nw==&amp;mid=2247520426&amp;idx=1&amp;sn=7d91117731ee92cfa558de46711388f5&amp;chksm=c2a307bef5d48ea8dee8264fdd06ea0b49356d1890d4fc3a8d4f2d9a28175c485706b9883fef&amp;scene=178&amp;cur_album_id=2273186699705024520#rd">pymol 入门基础</a></li>
+<li><a target="_blank" rel="noopener" href="https://pymol.org/pymol-command-ref.html">official command help</a></li>
+<li><a target="_blank" rel="noopener" href="https://pymol.org/dokuwiki/?id=command:core_set">core command</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkzNjIzMTU0Nw==&amp;mid=2247522165&amp;idx=1&amp;sn=c0a3156da0a02649acccdb2b235d7951&amp;chksm=c2a30061f5d48977fb69e596343bc52b5a9538c38317dff9e189135cfdf6bcd64b740879eb26&amp;token=712614077&amp;lang=zh_CN#rd">PyMOL必备绘图技巧，从此游刃有余!</a></li>
+</ul>
+<p>比较两个蛋白结构差异是很重要的手段，在 pymol 中可以通过 align (序列一致性低于 30% 时，使用 super 或者 cealign) 完成这项任务  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1642107478535123244">使用PyMOL的Align进行蛋白结构叠合比对</a></li>
+</ul>
+<p>RMSD用来表是蛋白质结构之间差异的参数，计算RMSD时，可以针对目标蛋白质(如: 所有的原子、骨干部份或只考虑 alpha 碳原子等等)。不同的标准，计算RMSD的数值会有所差异。</p>
+<h1 id="使用-chimera-寻找结构差异"><a href="#使用-chimera-寻找结构差异" class="headerlink" title="使用 chimera 寻找结构差异"></a>使用 chimera 寻找结构差异</h1><p>distance matrix 是对3D结构比对的一个补充，可以很轻松的找到结构发生明显差异的区域，可以先用distance matrix 找出结构明显不同的地方，然后在3D图中找到这些区域，仔细观察氨基酸组成以及可能的活性差异机制。使用 chimera 的 RR Distance Maps 就可以进行计算。  </p>
+<pre class="line-numbers language-none"><code class="language-none">Tools &gt; Structure comparison &gt; RR Distance Maps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -463,7 +468,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2023/03/28/Bioinfo-SNV-1/">https://liangshaw.github.io/2023/03/28/Bioinfo-SNV-1/</a>
+                    <a href="https://liangshaw.github.io/2023/04/21/Bioinfo-protein-structure-predict-and-visualize/">https://liangshaw.github.io/2023/04/21/Bioinfo-protein-structure-predict-and-visualize/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -500,19 +505,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/SNV/">
-                                    <span class="chip bg-color">SNV</span>
-                                </a>
-                            
-                                <a href="/tags/TCGA/">
-                                    <span class="chip bg-color">TCGA</span>
-                                </a>
-                            
-                                <a href="/tags/database/">
-                                    <span class="chip bg-color">database</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -824,78 +817,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/03/29/Bioinfo-RoutineToolsCollections/">
+                <a href="/2023/04/21/Bioinfo-protein-structure-predict-and-visualize/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Bioinfo-RoutineToolsCollections">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="蛋白质结构预测与可视化">
                         
-                        <span class="card-title">Bioinfo-RoutineToolsCollections</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/bioinformatics/" class="post-category">
-                                    bioinformatics
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/samtools/">
-                        <span class="chip bg-color">samtools</span>
-                    </a>
-                    
-                    <a href="/tags/bedtools/">
-                        <span class="chip bg-color">bedtools</span>
-                    </a>
-                    
-                    <a href="/tags/deeptools/">
-                        <span class="chip bg-color">deeptools</span>
-                    </a>
-                    
-                    <a href="/tags/collection/">
-                        <span class="chip bg-color">collection</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/03/16/RDataVisualization-ggpubr/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="ggpubr 可视化 package">
-                        
-                        <span class="card-title">ggpubr 可视化 package</span>
+                        <span class="card-title">蛋白质结构预测与可视化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -906,7 +839,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-21
                             </span>
                         <span class="publish-author">
                             
@@ -916,21 +849,43 @@
                         </span>
                     </div>
                 </div>
+
                 
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
-                    <a href="/tags/ggplot2/">
-                        <span class="chip bg-color">ggplot2</span>
-                    </a>
-                    
-                    <a href="/tags/ggpubr/">
-                        <span class="chip bg-color">ggpubr</span>
-                    </a>
-                    
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/04/12/Bioinfo-TCGA-learn/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="TCGA 数据库以及衍生工具">
+                        
+                        <span class="card-title">TCGA 数据库以及衍生工具</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
+                            
+                        </span>
+                    </div>
                 </div>
                 
             </div>
