@@ -389,7 +389,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-04-21
+                    2023-04-24
                 </div>
                 
 
@@ -423,19 +423,22 @@
 <li>在线使用 server: 搜索 alphafold colab 或者进入链接 <a target="_blank" rel="noopener" href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb">alphafold colab</a>。提醒：需要梯子。参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/Eumenidus/article/details/123611569">在线 AlphaFold 预测</a></li>
 <li>安装 alphafold 到<strong>服务器</strong>。找一篇帖子跟着走。</li>
 </ul>
+<h1 id="使用-pymol-可视化"><a href="#使用-pymol-可视化" class="headerlink" title="使用 pymol 可视化"></a>使用 pymol 可视化</h1><p>pymol 导入文件</p>
 <ul>
-<li>alphafold</li>
-<li>pymol</li>
+<li>直接导入本地的 .pdb 文件，<code>load 1dn2.pdb</code></li>
+<li>根据 PDB 中的 ID，进行获取，<code>fetch 1dn2</code></li>
 </ul>
-<h1 id="使用-pymol-可视化"><a href="#使用-pymol-可视化" class="headerlink" title="使用 pymol 可视化"></a>使用 pymol 可视化</h1><p>pymol 的基本操作还是自己找攻略</p>
+<p>pymol 的基本操作还是自己找攻略</p>
 <p>学习资料：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkzNjIzMTU0Nw==&amp;mid=2247520426&amp;idx=1&amp;sn=7d91117731ee92cfa558de46711388f5&amp;chksm=c2a307bef5d48ea8dee8264fdd06ea0b49356d1890d4fc3a8d4f2d9a28175c485706b9883fef&amp;scene=178&amp;cur_album_id=2273186699705024520#rd">pymol 入门基础</a></li>
 <li><a target="_blank" rel="noopener" href="https://pymol.org/pymol-command-ref.html">official command help</a></li>
 <li><a target="_blank" rel="noopener" href="https://pymol.org/dokuwiki/?id=command:core_set">core command</a></li>
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzkzNjIzMTU0Nw==&amp;mid=2247522165&amp;idx=1&amp;sn=c0a3156da0a02649acccdb2b235d7951&amp;chksm=c2a30061f5d48977fb69e596343bc52b5a9538c38317dff9e189135cfdf6bcd64b740879eb26&amp;token=712614077&amp;lang=zh_CN#rd">PyMOL必备绘图技巧，从此游刃有余!</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/121215784">pymol 选择器的语法参考</a>，参考：<a target="_blank" rel="noopener" href="https://pymolwiki.org/index.php/Selection_Algebra">pymol Selection Algebra</a></li>
 </ul>
-<p>比较两个蛋白结构差异是很重要的手段，在 pymol 中可以通过 align (序列一致性低于 30% 时，使用 super 或者 cealign) 完成这项任务  </p>
+<p>使用 pymol 一方面是常查手册、攻略，另一方面，利用右侧的 object menu (对象窗口)，每个对象有 A (Action) S (Show) H (Hide) L (Label) C (Color) 五个按钮，可以对相应对象完成一些操作，并且在实现这些操作时，会在 Feedback window 输出相应的 command line，查看这些 command line，也会帮助我们学习 command 实现操作。</p>
+<h3 id="比较蛋白结构"><a href="#比较蛋白结构" class="headerlink" title="比较蛋白结构"></a>比较蛋白结构</h3><p>比较两个蛋白结构差异是很重要的手段，在 pymol 中可以通过 align (序列一致性低于 30% 时，使用 super 或者 cealign) 完成这项任务  </p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1642107478535123244">使用PyMOL的Align进行蛋白结构叠合比对</a></li>
 </ul>
