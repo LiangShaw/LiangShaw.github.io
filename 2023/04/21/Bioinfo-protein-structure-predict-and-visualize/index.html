@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="蛋白质结构预测与可视化, Shaw">
-    <meta name="description" content="以一篇 nature 文章中做的 MPRIP 基因结构为例，走完一遍蛋白质结构预测与可视化比较文章链接：RBFOX2 modulates a metastatic signature of alternative splicing in p">
+    <meta name="description" content="蛋白质结构预测以一篇 nature 文章中做的 MPRIP 基因结构为例，走完一遍蛋白质结构预测与可视化比较文章链接：RBFOX2 modulates a metastatic signature of alternative splici">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -368,12 +368,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/structure/">
+                                <span class="chip bg-color">structure</span>
+                            </a>
+                        
+                            <a href="/tags/alphafold/">
+                                <span class="chip bg-color">alphafold</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/bioinformatics/" class="post-category">
+                                bioinformatics
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -389,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-04-24
+                    2023-06-13
                 </div>
                 
 
@@ -411,19 +428,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>以一篇 nature 文章中做的 MPRIP 基因结构为例，走完一遍蛋白质结构预测与可视化比较<br>文章链接：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-023-05820-3#Sec8">RBFOX2 modulates a metastatic signature of alternative splicing in pancreatic cancer</a>，其中 RBFOX2 调控的一个基因 MPRIP ，exon 23 跳过与否导致了不同的功能效果，于是作者对两种 form 的结构进行了比较。</p>
-<h1 id="获取蛋白结构"><a href="#获取蛋白结构" class="headerlink" title="获取蛋白结构"></a>获取蛋白结构</h1><h2 id="ensembl-中已知的转录本跳转-Uniprot"><a href="#ensembl-中已知的转录本跳转-Uniprot" class="headerlink" title="ensembl 中已知的转录本跳转 Uniprot"></a><a target="_blank" rel="noopener" href="https://asia.ensembl.org/index.html">ensembl</a> 中已知的转录本跳转 Uniprot</h2><p>在 ensembl 中搜索 <a target="_blank" rel="noopener" href="https://asia.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?db=core;g=ENSG00000133030;r=17:17042457-17217679;t=ENST00000584067"><code>MPRIP</code></a> 基因，选取需要的转录本，点击对应的 Uniprot 链接，跳转到 <a target="_blank" rel="noopener" href="https://www.uniprot.org/uniprotkb/J3KSW8/entry">Uniprot</a>；</p>
+                <h1 id="蛋白质结构预测"><a href="#蛋白质结构预测" class="headerlink" title="蛋白质结构预测"></a>蛋白质结构预测</h1><p>以一篇 nature 文章中做的 MPRIP 基因结构为例，走完一遍蛋白质结构预测与可视化比较<br>文章链接：<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-023-05820-3#Sec8">RBFOX2 modulates a metastatic signature of alternative splicing in pancreatic cancer</a>，其中 RBFOX2 调控的一个基因 MPRIP ，exon 23 跳过与否导致了不同的功能效果，于是作者对两种 form 的结构进行了比较。</p>
+<h2 id="获取蛋白结构"><a href="#获取蛋白结构" class="headerlink" title="获取蛋白结构"></a>获取蛋白结构</h2><h3 id="ensembl-中已知的转录本跳转-Uniprot"><a href="#ensembl-中已知的转录本跳转-Uniprot" class="headerlink" title="ensembl 中已知的转录本跳转 Uniprot"></a><a target="_blank" rel="noopener" href="https://asia.ensembl.org/index.html">ensembl</a> 中已知的转录本跳转 Uniprot</h3><p>在 ensembl 中搜索 <a target="_blank" rel="noopener" href="https://asia.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?db=core;g=ENSG00000133030;r=17:17042457-17217679;t=ENST00000584067"><code>MPRIP</code></a> 基因，选取需要的转录本，点击对应的 Uniprot 链接，跳转到 <a target="_blank" rel="noopener" href="https://www.uniprot.org/uniprotkb/J3KSW8/entry">Uniprot</a>；</p>
 <p><img src="ensembl-click-uniprot.jpg" alt="ensembl-click-uniprot"></p>
 <p>点击导航栏 Structure 部分，跳转到 <a target="_blank" rel="noopener" href="https://www.uniprot.org/uniprotkb/J3KSW8/entry#structure">structure</a>；<br>点击下载 <code>.pdb</code> 文件</p>
 <p><img src="MPRIP-uniprot-structure.jpg" alt="MPRIP structure in Uniprot"></p>
-<h2 id="Uniprot-PDB-搜索ID"><a href="#Uniprot-PDB-搜索ID" class="headerlink" title="Uniprot/PDB 搜索ID"></a>Uniprot/PDB 搜索ID</h2><h2 id="根据-AF-ID-到-AlphaFold-Prot-DB-获取已被预测的结构"><a href="#根据-AF-ID-到-AlphaFold-Prot-DB-获取已被预测的结构" class="headerlink" title="根据 AF ID 到 AlphaFold Prot DB 获取已被预测的结构"></a>根据 AF ID 到 <a target="_blank" rel="noopener" href="https://alphafold.ebi.ac.uk/">AlphaFold Prot DB</a> 获取已被预测的结构</h2><pre class="line-numbers language-none"><code class="language-none">Structural illustrations were generated with PYMOL, using predicted models of MPRIP on alphaFold: AF-Q6WCQ1-F1-model_v3_1 (Exon 23 included) and AF-B9EGI2-F1-model_v3 (Exon 23 excluded)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="Uniprot-PDB-搜索ID"><a href="#Uniprot-PDB-搜索ID" class="headerlink" title="Uniprot/PDB 搜索ID"></a>Uniprot/PDB 搜索ID</h3><h3 id="根据-AF-ID-到-AlphaFold-Prot-DB-获取已被预测的结构"><a href="#根据-AF-ID-到-AlphaFold-Prot-DB-获取已被预测的结构" class="headerlink" title="根据 AF ID 到 AlphaFold Prot DB 获取已被预测的结构"></a>根据 AF ID 到 <a target="_blank" rel="noopener" href="https://alphafold.ebi.ac.uk/">AlphaFold Prot DB</a> 获取已被预测的结构</h3><pre class="line-numbers language-none"><code class="language-none">Structural illustrations were generated with PYMOL, using predicted models of MPRIP on alphaFold: AF-Q6WCQ1-F1-model_v3_1 (Exon 23 included) and AF-B9EGI2-F1-model_v3 (Exon 23 excluded)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>其中 Q6WCQ1 和 B9EGI2 就是 AF (AlphaFold) ID</p>
-<h2 id="全新的蛋白通过-alphafold-预测"><a href="#全新的蛋白通过-alphafold-预测" class="headerlink" title="全新的蛋白通过 alphafold 预测"></a>全新的蛋白通过 alphafold 预测</h2><ul>
+<h3 id="全新的蛋白通过-alphafold-预测"><a href="#全新的蛋白通过-alphafold-预测" class="headerlink" title="全新的蛋白通过 alphafold 预测"></a>全新的蛋白通过 alphafold 预测</h3><ul>
 <li>在线使用 server: 搜索 alphafold colab 或者进入链接 <a target="_blank" rel="noopener" href="https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb">alphafold colab</a>。提醒：需要梯子。参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/Eumenidus/article/details/123611569">在线 AlphaFold 预测</a></li>
 <li>安装 alphafold 到<strong>服务器</strong>。找一篇帖子跟着走。</li>
 </ul>
-<h1 id="使用-pymol-可视化"><a href="#使用-pymol-可视化" class="headerlink" title="使用 pymol 可视化"></a>使用 pymol 可视化</h1><p>pymol 导入文件</p>
+<h2 id="使用-pymol-可视化"><a href="#使用-pymol-可视化" class="headerlink" title="使用 pymol 可视化"></a>使用 pymol 可视化</h2><p>pymol 导入文件</p>
 <ul>
 <li>直接导入本地的 .pdb 文件，<code>load 1dn2.pdb</code></li>
 <li>根据 PDB 中的 ID，进行获取，<code>fetch 1dn2</code></li>
@@ -443,8 +460,12 @@
 <li><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1642107478535123244">使用PyMOL的Align进行蛋白结构叠合比对</a></li>
 </ul>
 <p>RMSD用来表是蛋白质结构之间差异的参数，计算RMSD时，可以针对目标蛋白质(如: 所有的原子、骨干部份或只考虑 alpha 碳原子等等)。不同的标准，计算RMSD的数值会有所差异。</p>
-<h1 id="使用-chimera-寻找结构差异"><a href="#使用-chimera-寻找结构差异" class="headerlink" title="使用 chimera 寻找结构差异"></a>使用 chimera 寻找结构差异</h1><p>distance matrix 是对3D结构比对的一个补充，可以很轻松的找到结构发生明显差异的区域，可以先用distance matrix 找出结构明显不同的地方，然后在3D图中找到这些区域，仔细观察氨基酸组成以及可能的活性差异机制。使用 chimera 的 RR Distance Maps 就可以进行计算。  </p>
+<h2 id="使用-chimera-寻找结构差异"><a href="#使用-chimera-寻找结构差异" class="headerlink" title="使用 chimera 寻找结构差异"></a>使用 chimera 寻找结构差异</h2><p>distance matrix 是对3D结构比对的一个补充，可以很轻松的找到结构发生明显差异的区域，可以先用distance matrix 找出结构明显不同的地方，然后在3D图中找到这些区域，仔细观察氨基酸组成以及可能的活性差异机制。使用 chimera 的 RR Distance Maps 就可以进行计算。  </p>
 <pre class="line-numbers language-none"><code class="language-none">Tools &gt; Structure comparison &gt; RR Distance Maps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h1 id="PPI-互作分析："><a href="#PPI-互作分析：" class="headerlink" title="PPI 互作分析："></a>PPI 互作分析：</h1><p>可以使用 alphafold2-multimer 进行预测</p>
+<p><a target="_blank" rel="noopener" href="https://www.embopress.org/doi/full/10.15252/embr.202356834">An AlphaFold2 map of the 53BP1 pathway identifies a direct SHLD3–RIF1 interaction critical for shieldin activity</a></p>
 
                 
             </div>
@@ -508,7 +529,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/structure/">
+                                    <span class="chip bg-color">structure</span>
+                                </a>
+                            
+                                <a href="/tags/alphafold/">
+                                    <span class="chip bg-color">alphafold</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -877,9 +906,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="TCGA 数据库以及衍生工具">
+                        <img src="/medias/featureimages/27.jpg" class="responsive-img" alt="TCGA 和 GTEx 数据库使用分析">
                         
-                        <span class="card-title">TCGA 数据库以及衍生工具</span>
+                        <span class="card-title">TCGA 和 GTEx 数据库使用分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
