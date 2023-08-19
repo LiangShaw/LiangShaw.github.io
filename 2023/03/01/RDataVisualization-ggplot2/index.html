@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="ggplot2 绘图中常用的拓展功能, Shaw">
     <meta name="description" content="添加显著性标志参考： ggplot 添加P值和显著性水平
-bar 图设置小技巧保证每个 bar 宽度一致在 position_dodge2 中设置 preserve=&#39;single&#39;
-参考: https://www.zhihu.com/qu">
+使用 ggsignif 分面添加显著性标识参考： ggsignif: Significance Brackets for ‘ggplot2’
+注意，当分面时，ggplot(aes()">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -408,7 +408,7 @@ bar 图设置小技巧保证每个 bar 宽度一致在 position_dodge2 中设置
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-04-08
+                    2023-08-13
                 </div>
                 
 
@@ -431,6 +431,8 @@ bar 图设置小技巧保证每个 bar 宽度一致在 position_dodge2 中设置
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="添加显著性标志"><a href="#添加显著性标志" class="headerlink" title="添加显著性标志"></a>添加显著性标志</h2><p>参考： <a target="_blank" rel="noopener" href="https://blog.csdn.net/zhouhucheng00/article/details/106391872">ggplot 添加P值和显著性水平</a></p>
+<h3 id="使用-ggsignif-分面添加显著性标识"><a href="#使用-ggsignif-分面添加显著性标识" class="headerlink" title="使用 ggsignif 分面添加显著性标识"></a>使用 <code>ggsignif</code> 分面添加显著性标识</h3><p>参考： <a target="_blank" rel="noopener" href="https://const-ae.github.io/ggsignif/">ggsignif: Significance Brackets for ‘ggplot2’</a></p>
+<p>注意，当分面时，ggplot(aes()) 内部 除了 <code>x= , y= </code> 不要设置其他参数，如 color, fill等，否则 geom_signif 可能会不计算显著性，另外，分面也不可以设置 <code>scales = 'free' / 'free_x' / 'free_y </code> 参数</p>
 <h2 id="bar-图设置小技巧"><a href="#bar-图设置小技巧" class="headerlink" title="bar 图设置小技巧"></a>bar 图设置小技巧</h2><h3 id="保证每个-bar-宽度一致"><a href="#保证每个-bar-宽度一致" class="headerlink" title="保证每个 bar 宽度一致"></a>保证每个 bar 宽度一致</h3><p>在 <code>position_dodge2</code> 中设置 <code>preserve='single'</code></p>
 <p>参考: <a target="_blank" rel="noopener" href="https://www.zhihu.com/question/414290269">https://www.zhihu.com/question/414290269</a></p>
 <h2 id="geom-boxplot"><a href="#geom-boxplot" class="headerlink" title="geom_boxplot"></a>geom_boxplot</h2><h3 id="添加-error-bar"><a href="#添加-error-bar" class="headerlink" title="添加 error_bar"></a>添加 error_bar</h3><p><code>stat_boxplot(geom='errorbar, width=0.2)</code> # 设置 quartile line width</p>
