@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-28
+                    2023-10-11
                 </div>
                 
 
@@ -451,7 +451,7 @@
 <li>Rstudio-server版本低，不兼容R4.0。</li>
 </ol>
 <p>所以我打算是root下用 binary rpm 安装R4.0，用这个做R core，看看Rserver能不能运行。</p>
-<p>Rserver 中对 install multiple version of R做了说明(<a target="_blank" rel="noopener" href="https://docs.rstudio.com/resources/install-r/)%EF%BC%8C%E8%AF%B4%E6%9C%80%E5%90%8E%E5%AE%89%E8%A3%85%E7%9A%84R%E5%9C%A8">https://docs.rstudio.com/resources/install-r/)，说最后安装的R在</a> /opt/R/${R_VERSION}/bin/里面，应该是不影响已有的R的。<br><img src="install_R.jpg" alt="rstudio install R"><br><img src="multiple_R.jpg" alt="multiple R version"></p>
+<p>Rserver 中对 <a target="_blank" rel="noopener" href="https://docs.rstudio.com/resources/install-r/">install multiple version of R</a> 做了说明，说最后安装的R在 /opt/R/${R_VERSION}/bin/里面，应该是不影响已有的R的。<br><img src="install_R.jpg" alt="rstudio install R"><br><img src="multiple_R.jpg" alt="multiple R version"></p>
 <p>所以就根据官方指南安装 R</p>
 <h3 id="root-下-R-的安装"><a href="#root-下-R-的安装" class="headerlink" title="root 下 R 的安装"></a>root 下 R 的安装</h3><p>本以为这一步很简单，结果不出意外，又出bug了，当我用下载的 binary R rpm 进行安装后，确实安装在了 <code>/opt/R</code>下面，不过查看 R 版本的时候出现问题了</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ /opt/R/4.0.3/bin/R --version
