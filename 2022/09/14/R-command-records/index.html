@@ -402,7 +402,7 @@ options(timeout =">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-20
+                    2023-10-12
                 </div>
                 
 
@@ -435,6 +435,18 @@ options<span class="token punctuation">(</span>timeout <span class="token operat
 
 
 <p>参考 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/48095">如何在R中选择CRAN镜像reference</a></p>
+<h1 id="安装指定版本的-R"><a href="#安装指定版本的-R" class="headerlink" title="安装指定版本的 R"></a>安装指定版本的 R</h1><h2 id="miniconda2-与-miniconda3-的切换"><a href="#miniconda2-与-miniconda3-的切换" class="headerlink" title="miniconda2 与 miniconda3 的切换"></a>miniconda2 与 miniconda3 的切换</h2><p>可以去找对应conda 下的 activate.d 文件 conda activate ；<br>也可以直接修改 <code>~/.bashrc</code> 文件对 <code>inti conda</code> 的部分，直接对版本路径进行修改，然后 source 一下就可以。</p>
+<h2 id="R-安装"><a href="#R-安装" class="headerlink" title="R 安装"></a>R 安装</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda list
+<span class="token comment">#发现没有4.0版本的，此时可以添加镜像源</span>
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
+conda config --set show_channel_urls <span class="token function">yes</span>
+conda config --show
+conda search R
+conda <span class="token function">install</span> <span class="token assign-left variable">r</span><span class="token operator">=</span><span class="token number">4.3</span>.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_49451693/article/details/109974608">创建R环境，安装指定版本的R</a> </p>
 <h1 id="查看安装的包"><a href="#查看安装的包" class="headerlink" title="查看安装的包"></a>查看安装的包</h1><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 所有包</span>
 installed.packages<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
