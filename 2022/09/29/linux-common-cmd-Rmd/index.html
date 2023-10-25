@@ -411,7 +411,7 @@ $ tr [:upper:] [:lower:]
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-09
+                    2023-10-25
                 </div>
                 
 
@@ -513,7 +513,32 @@ The argument <span class="token keyword">for</span> the option C is Tom<span ari
 <p>注意：上述替换，只会发生在第一个匹配的字符串，所以感觉安装个 perl 版本的 rename 很舒服？</p>
 <p>缺点是无法实现循环，按标号重命名的目的。</p>
 <p>perl 版本的好处就是可以使用正则表达式</p>
+<h1 id="文件-文件夹判断"><a href="#文件-文件夹判断" class="headerlink" title="文件/文件夹判断"></a>文件/文件夹判断</h1><p>判断文件是否存在</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -f <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">echo</span> <span class="token string">"file not exist"</span><span class="token punctuation">;</span> <span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>判断文件是否为空</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token operator">!</span> -s <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">echo</span> <span class="token string">"file is NULL"</span><span class="token punctuation">;</span> <span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">–b 当file存在并且是块文件时返回真
+-c 当file存在并且是字符文件时返回真
+-d 当pathname存在并且是一个目录时返回真
+-e 判断对象是否存在
+-f 判断对象是否存在，并且为常规文件
+-L 判断对象是否存在，并且为符号链接
+-h 判断对象是否存在，并且为软链接
+-k 当由pathname指定的文件或目录存在并且设置了“粘滞”位时返回真
+-p 当file存在并且是命令管道时返回为真
+-r 当由pathname指定的文件或目录存在并且可读时返回为真
+-s 判断对象是否存在，并且长度不为0
+-r 判断对象是否存在，并且可读
+-u 当由pathname指定的文件或目录存在并且设置了SUID位时返回真
+-w 判断对象是否存在，并且可写
+-o 当由pathname指定的文件或目录存在并且被子当前进程的有效用户ID所指定的用户拥有时返回真
+-x 判断对象是否存在，并且可执行
+-O 判断对象是否存在，并且属于当前用户
+-G 判断对象是否存在，并且属于当前用户组
+-nt 判断file1是否比file2新
+-ot 判断file1是否比file2旧<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
