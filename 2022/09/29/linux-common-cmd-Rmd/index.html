@@ -411,7 +411,7 @@ $ tr [:upper:] [:lower:]
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-25
+                    2023-12-04
                 </div>
                 
 
@@ -475,27 +475,6 @@ one
 two
 three<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/onelikeone/p/13469185.html">more options</a></p>
-<h1 id="sh-bash"><a href="#sh-bash" class="headerlink" title="sh / bash"></a>sh / bash</h1><p>用法肯定是很多的，这里就说一个最常用的、简单的命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> threeOptions.sh
-<span class="token comment">#!/bin/bash</span>
-
-<span class="token keyword">while</span> <span class="token builtin class-name">getopts</span> <span class="token string">":A:B:C:"</span> opt<span class="token punctuation">;</span> <span class="token keyword">do</span>
-  <span class="token keyword">case</span> <span class="token variable">$opt</span> <span class="token keyword">in</span>
-   A<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The argument for the option A is <span class="token variable">$OPTARG</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-   B<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The argument for the option B is <span class="token variable">$OPTARG</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-   C<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The argument for the option C is <span class="token variable">$OPTARG</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-   ?<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Unknown Option"</span> 
-      <span class="token builtin class-name">exit</span> <span class="token number">1</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-  <span class="token keyword">esac</span>
-<span class="token keyword">done</span>
-<span class="token builtin class-name">shift</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>$OPTIND <span class="token operator">-</span><span class="token number">1</span><span class="token variable">))</span></span>"</span>
-<span class="token comment"># In the script threeOptions.sh, we’ve used getopts to parse options and their arguments.</span>
-
-$ <span class="token builtin class-name">echo</span> <span class="token string">"Tom Likes Jerry"</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">bash</span> -c <span class="token string">'./threeOptions.sh -A $2 -B $1 -C $0'</span>
-The argument <span class="token keyword">for</span> the option A is Jerry
-The argument <span class="token keyword">for</span> the option B is Likes
-The argument <span class="token keyword">for</span> the option C is Tom<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 <h1 id="echo"><a href="#echo" class="headerlink" title="echo"></a>echo</h1><h2 id="常用的参数"><a href="#常用的参数" class="headerlink" title="常用的参数"></a>常用的参数</h2><h3 id="e"><a href="#e" class="headerlink" title="-e"></a>-e</h3><ul>
 <li>启动反斜杠转义解释，如将 <code>\n</code> 解释为换行，不设置 <code>-e</code>，会直接打印 <code>\n</code></li>
 </ul>
@@ -539,6 +518,8 @@ The argument <span class="token keyword">for</span> the option C is Tom<span ari
 -G 判断对象是否存在，并且属于当前用户组
 -nt 判断file1是否比file2新
 -ot 判断file1是否比file2旧<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="搜索进程"><a href="#搜索进程" class="headerlink" title="搜索进程"></a>搜索进程</h1>
                 
             </div>
             <hr/>

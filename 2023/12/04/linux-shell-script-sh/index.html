@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux命令—-awk, Shaw">
-    <meta name="description" content="awk命令 作为 Linux 的三驾马车之一，功能强大，却也颇有些门道，之前对 awk 的认识仅仅能够满足基本操作需求，这里系统地重新学习一下 awk">
+    <meta name="keywords" content="shell 脚本编写的技巧, Shaw">
+    <meta name="description" content="shell 脚本编写的一些技巧">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux命令—-awk | Shaw</title>
+    <title>shell 脚本编写的技巧 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux命令—-awk</h1>
+                    <h1 class="description center-align post-title">shell 脚本编写的技巧</h1>
                 </div>
             </div>
         </div>
@@ -368,17 +368,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/cmd/">
-                                <span class="chip bg-color">cmd</span>
-                            </a>
-                        
-                            <a href="/tags/awk/">
-                                <span class="chip bg-color">awk</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -399,14 +391,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-22
+                    2023-12-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-12-01
+                    2023-12-04
                 </div>
                 
 
@@ -428,247 +420,56 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="awk-语法"><a href="#awk-语法" class="headerlink" title="awk 语法"></a>awk 语法</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token punctuation">[</span>-options<span class="token punctuation">]</span> <span class="token string">'script'</span> <span class="token punctuation">[</span>var<span class="token operator">=</span>value<span class="token punctuation">]</span> <span class="token function">file</span>
-<span class="token comment"># 或</span>
-<span class="token function">awk</span> <span class="token punctuation">[</span>-options<span class="token punctuation">]</span> -f scriptfile <span class="token punctuation">[</span>var<span class="token operator">=</span>value<span class="token punctuation">]</span> <span class="token function">file</span>
-<span class="token comment"># 或</span>
-<span class="token function">cat</span> <span class="token function">file</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token punctuation">[</span>-options<span class="token punctuation">]</span> <span class="token string">'script'</span> <span class="token punctuation">[</span>var<span class="token operator">=</span>value<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重点在 <strong>script</strong> 上，比较复杂却也相应的实用，内容较多时可写成文件形式；<code>var=value</code>一般涉及到引入外部变量<br><font color="red">注意</font>： awk 后面接的是单引号<code>awk ''</code></p>
-<h1 id="awk-基本结构"><a href="#awk-基本结构" class="headerlink" title="awk 基本结构"></a>awk 基本结构</h1><img src="https://img-blog.csdnimg.cn/img_convert/0e486c75619d8c5439dd62938e69660a.png" alt="awk基本结构" width="600/">
+                <h2 id="打印脚本帮助文档，获取参数"><a href="#打印脚本帮助文档，获取参数" class="headerlink" title="打印脚本帮助文档，获取参数"></a>打印脚本帮助文档，获取参数</h2><h3 id="getopts"><a href="#getopts" class="headerlink" title="getopts"></a>getopts</h3><p>用法肯定是很多的，这里就说一个最常用的、简单的命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> threeOptions.sh
+<span class="token comment">#!/bin/bash</span>
 
-<h2 id="BEGIN-模块"><a href="#BEGIN-模块" class="headerlink" title="BEGIN 模块"></a>BEGIN 模块</h2><p>放置执行前的语句，BEGIN模式的经常性设置有 </p>
+<span class="token keyword">while</span> <span class="token builtin class-name">getopts</span> <span class="token string">":A:B:C:"</span> opt<span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token keyword">case</span> <span class="token variable">$opt</span> <span class="token keyword">in</span>
+   A<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The argument for the option A is <span class="token variable">$OPTARG</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+   B<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The argument for the option B is <span class="token variable">$OPTARG</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+   C<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"The argument for the option C is <span class="token variable">$OPTARG</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+   ?<span class="token punctuation">)</span> <span class="token builtin class-name">echo</span> <span class="token string">"Unknown Option"</span> 
+      <span class="token builtin class-name">exit</span> <span class="token number">1</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token keyword">esac</span>
+<span class="token keyword">done</span>
+<span class="token builtin class-name">shift</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>$OPTIND <span class="token operator">-</span><span class="token number">1</span><span class="token variable">))</span></span>"</span>
+<span class="token comment"># In the script threeOptions.sh, we’ve used getopts to parse options and their arguments.</span>
+
+$ <span class="token builtin class-name">echo</span> <span class="token string">"Tom Likes Jerry"</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">bash</span> -c <span class="token string">'./threeOptions.sh -A $2 -B $1 -C $0'</span>
+The argument <span class="token keyword">for</span> the option A is Jerry
+The argument <span class="token keyword">for</span> the option B is Likes
+The argument <span class="token keyword">for</span> the option C is Tom<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="自定义-help-函数"><a href="#自定义-help-函数" class="headerlink" title="自定义 help 函数"></a>自定义 help 函数</h3><p>参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/lhl_blog/article/details/107409694">shell脚本如何优雅的打印帮助信息</a><br>shell中一般#开头的行为注释信息，所以利用这个特性，我们可以把帮助信息设计成如下的样式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash </span>
+<span class="token comment">### Usage:</span>
+<span class="token comment">###   my-script &lt;input&gt; &lt;output&gt;</span>
+<span class="token comment">### </span>
+<span class="token comment">### Options:</span>
+<span class="token comment">###   &lt;input&gt;   Input file to read.</span>
+<span class="token comment">###   &lt;output&gt;  Output file to write. Use '-' for stdout.</span>
+<span class="token comment">###   -h        Show this message.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后，编写一个help函数完成帮助信息打印:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">help</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">sed</span> -rn <span class="token string">'s/^### ?//;T;p;'</span> <span class="token string">"<span class="token variable">$0</span>"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>编写help的调用逻辑，即直接调用脚本，或者使用-h选项:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">==</span> <span class="token string">"-h"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+	    <span class="token builtin class-name">help</span>
+	    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里用到了sed这个工具，sed是类Unix系统中十分强大的流编辑工具，关于sed的更多的使用方式，请man sed。关于help中的sed使用到的参数解释如下：</p>
 <ul>
-<li>FS（field separator，输入列分隔符）</li>
-<li>OFS（output FS）</li>
-<li>RS（record separator，输入行分隔符）</li>
-<li>ORS（output RS）</li>
-<li>OFMT (output format, 设置输出格式，用于 printf，如 “%.4f”) </li>
-</ul>
-<p>都可以是正则表达式，写在双引号之间，例如<code>BEGIN{FS="[\t| |a-z]";OFS="\t"}</code><br>也可以将变量初始化放在这里，如：<code>BEGIN{n=0;sum=0}</code>；应该注意一点的是：这里的变量(n, sum)以及引入的外部变量(var)，都不需要通过<code>$</code> 引用<br>还可以做程序开始行为</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'BEGIN { print "Hello, world!" }'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h2 id="“办事”模块"><a href="#“办事”模块" class="headerlink" title="“办事”模块"></a>“办事”模块</h2><p>使用运算符和/或匹配模式进行处理</p>
-<h2 id="END-模块"><a href="#END-模块" class="headerlink" title="END 模块"></a>END 模块</h2><p>这里面放的是处理完所有的行后要执行的语句。如结束语，或者输出最后的计数结果</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'BEGIN { print "Hello, world!" }END{ print "Good bye!" }'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="awk-支持的正则表达式元字符"><a href="#awk-支持的正则表达式元字符" class="headerlink" title="awk 支持的正则表达式元字符"></a>awk 支持的正则表达式元字符</h1><img src="https://img-blog.csdnimg.cn/img_convert/bedb8ceee7a822b1dd93a7f6c813fc3b.png" alt="awk 支持的正则表达式元字符" width="600">
-
-<h1 id="awk-运算符"><a href="#awk-运算符" class="headerlink" title="awk 运算符"></a>awk 运算符</h1><table>
-<thead>
-<tr>
-<th align="left">运算符</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">= += -= *= /= %= ^= **=</td>
-<td align="left">赋值</td>
-</tr>
-<tr>
-<td align="left">?:</td>
-<td align="left">C条件表达式</td>
-</tr>
-<tr>
-<td align="left">|| &amp;&amp;</td>
-<td align="left">或，与</td>
-</tr>
-<tr>
-<td align="left">~ !~</td>
-<td align="left">匹配，不匹配</td>
-</tr>
-<tr>
-<td align="left">&lt; &lt;= &gt; &gt;= != ==</td>
-<td align="left">关系运算符</td>
-</tr>
-<tr>
-<td align="left">+ - * / %</td>
-<td align="left">加减乘除余</td>
-</tr>
-<tr>
-<td align="left">^ ***</td>
-<td align="left">求幂</td>
-</tr>
-<tr>
-<td align="left">++ --</td>
-<td align="left">加加，渐渐</td>
-</tr>
-</tbody></table>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'$1==2 &amp;&amp; $2=="Are" {print $1+1,$3}'</span> log.txt  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>筛选匹配字符的行</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'$2 ~ /pattern/'</span> log.txt
-<span class="token function">awk</span> <span class="token string">'$2 !~ /pattern/'</span> log.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h1 id="awk-内置变量"><a href="#awk-内置变量" class="headerlink" title="awk 内置变量"></a>awk 内置变量</h1><table>
-<thead>
-<tr>
-<th align="left">变量名</th>
-<th align="left">属性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">$0</td>
-<td align="left">当前记录整行</td>
-</tr>
-<tr>
-<td align="left">$1,$2,….</td>
-<td align="left">当前记录第 n 个field，由 FS 分隔</td>
-</tr>
-<tr>
-<td align="left">NF</td>
-<td align="left">列数，number of field</td>
-</tr>
-<tr>
-<td align="left">NR</td>
-<td align="left">行数，number of row</td>
-</tr>
-<tr>
-<td align="left">IGNORECASE</td>
-<td align="left">忽略大小写，设为0(FALSE)，1(TRUE)</td>
-</tr>
-<tr>
-<td align="left">OFMT</td>
-<td align="left">数字的输出格式(默认值是%.6g)</td>
-</tr>
-</tbody></table>
-<p>更多见参考资料</p>
-<h1 id="awk-内置函数"><a href="#awk-内置函数" class="headerlink" title="awk 内置函数"></a>awk 内置函数</h1><h2 id="split"><a href="#split" class="headerlink" title="split"></a>split</h2><p>awk 的内建函数 split 允许把一个字符串分隔未单词并存储在数组中。<br>格式：  </p>
-<pre class="line-numbers language-none"><code class="language-none">split(string, array, field separator)
-split(string, array) # 如果第三个参数没有提供，默认为 FS 值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token assign-left variable">time</span><span class="token operator">=</span><span class="token string">"12:34:56"</span>
-$ <span class="token builtin class-name">echo</span> <span class="token variable">$time</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{split($0,a,":");print a[1],a[2],a[3]}'</span>
-<span class="token number">12</span> <span class="token number">34</span> <span class="token number">56</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h2><p>返回从起始位置起，指定长度之子字符串；若未指定长度，则返回从起始位置到字符串末尾的子字符串。<br>格式:  </p>
-<pre class="line-numbers language-none"><code class="language-none">substr(s,p) # 返回字符串s中从p开始的后缀部分
-substr(s,p,n)  # 返回字符串s中从p开始长度为n的后缀部分<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"123"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print substr($0,1,1)}'</span>
-<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token variable">$time</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'split($0,a,":"){print length(a[1])}'</span>
-<span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="toupper-tolower"><a href="#toupper-tolower" class="headerlink" title="toupper/tolower"></a>toupper/tolower</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token function">file</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print toupper($1)}'</span>
-FILE
-
-$ <span class="token builtin class-name">echo</span> FILE <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print tolower($1)}'</span>
-<span class="token function">file</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="gsub"><a href="#gsub" class="headerlink" title="gsub"></a>gsub</h2><p>gsub函数则使得在所有正则表达式被匹配的时候都发生替换。  </p>
-<p>格式：<br><code>gsub(/匹配字符串/,目标字符串,域)</code>  </p>
-<pre class="line-numbers language-none"><code class="language-none">gsub(regular expression, subsitution string, target string) # 简称 gsub（r,s,t)。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>举例：把一个文件里面所有包含 abc 的行里面的 abc 替换成 def，然后输出第一列和第三列</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">awk</span> <span class="token string">'$0 ~ /abc/ {gsub("abc", "def", $0); print $1, $3}'</span> abc.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"a b c 2011-11-22 a-d"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'gsub(/-/,"",$4)'</span>
-a b c <span class="token number">20111122</span> a-d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>而 <code>'{print gsub(expression)}'</code> 会打印替换的次数，如上例改写</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"a b c 2011-11-22 a-d"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print gsub(/-/,"",$4)}'</span>
-<span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="运算函数"><a href="#运算函数" class="headerlink" title="运算函数"></a>运算函数</h2><table>
-<thead>
-<tr>
-<th>函数</th>
-<th>解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>atan2(x,y)</td>
-<td>y,x范围内的余切</td>
-</tr>
-<tr>
-<td>sin,cos</td>
-<td>正余弦</td>
-</tr>
-<tr>
-<td>exp(x)</td>
-<td>求幂</td>
-</tr>
-<tr>
-<td>int(x)</td>
-<td>取整</td>
-</tr>
-<tr>
-<td>log(x)</td>
-<td>自然对数</td>
-</tr>
-<tr>
-<td>rand()</td>
-<td>随机数</td>
-</tr>
-<tr>
-<td>sqrt(x)</td>
-<td>平方根</td>
-</tr>
-<tr>
-<td>srand(x)</td>
-<td>x是rand()函数的种子</td>
-</tr>
-</tbody></table>
-<h3 id="log"><a href="#log" class="headerlink" title="log()"></a>log()</h3><p>以 e 为底，其他底数的对数，可以根据<code>换底公式</code>进行转换<br>如以 2 为底：<code>log(x)/log(2)</code> 即可</p>
-<h1 id="一些示例"><a href="#一些示例" class="headerlink" title="一些示例"></a>一些示例</h1><h2 id="计算文件大小"><a href="#计算文件大小" class="headerlink" title="计算文件大小"></a>计算文件大小</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ls</span> -l *.txt <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{sum+=$5} END {print sum}'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="脚本示例"><a href="#脚本示例" class="headerlink" title="脚本示例"></a>脚本示例</h2><p>假设有如下成绩表：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> score.txt
-Marry   <span class="token number">2143</span> <span class="token number">78</span> <span class="token number">84</span> <span class="token number">77</span>
-Jack    <span class="token number">2321</span> <span class="token number">66</span> <span class="token number">78</span> <span class="token number">45</span>
-Tom     <span class="token number">2122</span> <span class="token number">48</span> <span class="token number">77</span> <span class="token number">71</span>
-Mike    <span class="token number">2537</span> <span class="token number">87</span> <span class="token number">97</span> <span class="token number">95</span>
-Bob     <span class="token number">2415</span> <span class="token number">40</span> <span class="token number">57</span> <span class="token number">62</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>awk 脚本如下：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> cal.awk
-<span class="token comment">#!/bin/awk -f</span>
-<span class="token comment">#运行前</span>
-BEGIN <span class="token punctuation">{</span>
-    math <span class="token operator">=</span> <span class="token number">0</span>
-    english <span class="token operator">=</span> <span class="token number">0</span>
-    computer <span class="token operator">=</span> <span class="token number">0</span>
- 
-    <span class="token builtin class-name">printf</span> <span class="token string">"NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL<span class="token entity" title="\n">\n</span>"</span>
-    <span class="token builtin class-name">printf</span> <span class="token string">"---------------------------------------------<span class="token entity" title="\n">\n</span>"</span>
-<span class="token punctuation">}</span>
-<span class="token comment">#运行中</span>
-<span class="token punctuation">{</span>
-    <span class="token assign-left variable">math</span><span class="token operator">+=</span><span class="token variable">$3</span>
-    <span class="token assign-left variable">english</span><span class="token operator">+=</span><span class="token variable">$4</span>
-    <span class="token assign-left variable">computer</span><span class="token operator">+=</span><span class="token variable">$5</span>
-    <span class="token builtin class-name">printf</span> <span class="token string">"%-6s %-6s %4d %8d %8d %8d<span class="token entity" title="\n">\n</span>"</span>, <span class="token variable">$1</span>, <span class="token variable">$2</span>, <span class="token variable">$3</span>,<span class="token variable">$4</span>,<span class="token variable">$5</span>, <span class="token variable">$3</span>+<span class="token variable">$4</span>+<span class="token variable">$5</span>
-<span class="token punctuation">}</span>
-<span class="token comment">#运行后</span>
-END <span class="token punctuation">{</span>
-    <span class="token builtin class-name">printf</span> <span class="token string">"---------------------------------------------<span class="token entity" title="\n">\n</span>"</span>
-    <span class="token builtin class-name">printf</span> <span class="token string">"  TOTAL:%10d %8d %8d <span class="token entity" title="\n">\n</span>"</span>, math, english, computer
-    <span class="token builtin class-name">printf</span> <span class="token string">"AVERAGE:%10.2f %8.2f %8.2f<span class="token entity" title="\n">\n</span>"</span>, math/NR, english/NR, computer/NR
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行结果: </p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">awk</span> -f cal.awk score.txt
-NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL
----------------------------------------------
-Marry  <span class="token number">2143</span>     <span class="token number">78</span>       <span class="token number">84</span>       <span class="token number">77</span>      <span class="token number">239</span>
-Jack   <span class="token number">2321</span>     <span class="token number">66</span>       <span class="token number">78</span>       <span class="token number">45</span>      <span class="token number">189</span>
-Tom    <span class="token number">2122</span>     <span class="token number">48</span>       <span class="token number">77</span>       <span class="token number">71</span>      <span class="token number">196</span>
-Mike   <span class="token number">2537</span>     <span class="token number">87</span>       <span class="token number">97</span>       <span class="token number">95</span>      <span class="token number">279</span>
-Bob    <span class="token number">2415</span>     <span class="token number">40</span>       <span class="token number">57</span>       <span class="token number">62</span>      <span class="token number">159</span>
----------------------------------------------
-  TOTAL:       <span class="token number">319</span>      <span class="token number">393</span>      <span class="token number">350</span>
-AVERAGE:     <span class="token number">63.80</span>    <span class="token number">78.60</span>    <span class="token number">70.00</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="设置输出格式"><a href="#设置输出格式" class="headerlink" title="设置输出格式"></a>设置输出格式</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">awk</span> <span class="token string">'BEGIN{OFS="\t";OFMT="%.6f"}{m1=($2+$3)/2;m2=($6+$7)/2;printf "%s\t%d\t%d\t%.4f\t%.4f\n",$1,m1,m2,$4,$9}'</span> result.txt <span class="token operator">|</span> <span class="token function">less</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="根据某列分割文件"><a href="#根据某列分割文件" class="headerlink" title="根据某列分割文件"></a>根据某列分割文件</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> raw.file <span class="token operator">|</span> <span class="token function">awk</span>  <span class="token string">'{print &gt; ("prefix" $1 "suffix")}'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39890327/article/details/113045991">awk取某个字符串后面的内容_Linux 三剑客之 awk 详解</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-awk.html">Linux awk 命令</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bymo/p/7601519.html">linux 下 awk 内置函数的使用(split/substr/length)</a></li>
+<li>“$0”:表示脚本的文件名，例如，help.sh</li>
+<li>-r:表示使用扩展的正则表达式</li>
+<li>-n:表示打印sed匹配到的信息</li>
+<li>s:使用sed的替换模式</li>
+<li>^### ？:表示匹配以###和若干个空格开头的字符串</li>
+<li>//:用空字符替换之前匹配到的字符串</li>
+<li>T:如果s///没有替换成功，跳转到sed-script的末尾</li>
+<li>p:打印替换结果</li>
 </ul>
 
                 
@@ -696,7 +497,7 @@ AVERAGE:     <span class="token number">63.80</span>    <span class="token numbe
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2022/02/22/linux-awk/">https://liangshaw.github.io/2022/02/22/linux-awk/</a>
+                    <a href="https://liangshaw.github.io/2023/12/04/linux-shell-script-sh/">https://liangshaw.github.io/2023/12/04/linux-shell-script-sh/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -733,15 +534,7 @@ AVERAGE:     <span class="token number">63.80</span>    <span class="token numbe
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/cmd/">
-                                    <span class="chip bg-color">cmd</span>
-                                </a>
-                            
-                                <a href="/tags/awk/">
-                                    <span class="chip bg-color">awk</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1053,53 +846,43 @@ AVERAGE:     <span class="token number">63.80</span>    <span class="token numbe
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/02/22/PaperRead-Microexons-CRISPR/">
+                <a href="/2023/12/04/linux-shell-script-sh/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="基因组范围的 CRISPR-Cas9 对剪接网络的研究揭示了与自闭症相关的 microexon 识别">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="shell 脚本编写的技巧">
                         
-                        <span class="card-title">基因组范围的 CRISPR-Cas9 对剪接网络的研究揭示了与自闭症相关的 microexon 识别</span>
+                        <span class="card-title">shell 脚本编写的技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            shell 脚本编写的一些技巧
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/paper/" class="post-category">
-                                    paper
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/RBP/">
-                        <span class="chip bg-color">RBP</span>
-                    </a>
-                    
-                    <a href="/tags/microexon/">
-                        <span class="chip bg-color">microexon</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -1110,30 +893,31 @@ AVERAGE:     <span class="token number">63.80</span>    <span class="token numbe
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/02/20/PaperRead-Day10/">
+                <a href="/2023/11/03/Docker-start/">
                     <div class="card-image">
                         
-                        <img src="https://www.seyens.com/wp-content/uploads/2016/07/reading-journal-papers-project-grant-funding-proposals.jpg" class="responsive-img" alt="文献阅读 Day10">
                         
-                        <span class="card-title">文献阅读 Day10</span>
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="Docker-入门">
+                        
+                        <span class="card-title">Docker-入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            Docker 集装箱技术入门
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/paper/" class="post-category">
-                                    paper
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -1143,12 +927,8 @@ AVERAGE:     <span class="token number">63.80</span>    <span class="token numbe
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/RBP/">
-                        <span class="chip bg-color">RBP</span>
-                    </a>
-                    
-                    <a href="/tags/Che-RBP/">
-                        <span class="chip bg-color">Che-RBP</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                 </div>
