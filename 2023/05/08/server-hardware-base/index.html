@@ -398,7 +398,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-03
+                    2024-03-11
                 </div>
                 
 
@@ -455,6 +455,18 @@ Host: scsi0 Channel: 02 Id: 00 Lun: 00
 <li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1aT411j71G/?vd_source=0fcfb2f2f346ba4bccf7f3ee3eb4ae69">R750安装硬盘教程</a></p>
 </li>
 </ul>
+<h1 id="实现开机自动挂载"><a href="#实现开机自动挂载" class="headerlink" title="实现开机自动挂载"></a>实现开机自动挂载</h1><p>在 /etc/fstab 中配置自动挂载数据盘。  </p>
+<pre class="line-numbers language-none"><code class="language-none">fstab支持使用云盘分区名（例如/dev/vdb1）或UUID标识文件系统，两者的差异如下所示：
+在fstab中使用云盘分区名标识文件系统，如果云盘的挂载顺序变更，云盘分区可能不会被正确地挂载（mount）到原来的挂载点。这种情况下可能会影响您在ECS上运行的应用。
+在fstab中使用UUID标识文件系统，如果云盘的挂载顺序变更，云盘分区仍然可以正确地挂载（mount）到原来的挂载点。因此，本文建议使用UUID标识文件系统。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>参考: <a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/use-cases/configure-uuids-in-the-fstab-file-to-automatically-attach-data-disks">在fstab文件中配置UUID方式自动挂载数据盘</a>  </p>
+<p>查看磁盘信息：<br>fdisk -lu</p>
+<p>查看文件系统类型：<br>lsblk -f</p>
+<p>查看数据盘 UUID 信息：<br>blkid</p>
+<p>查清楚以上信息，打开 fstab 文件，根据要求格式，添加新的数据盘信息。</p>
+<p>重启后，/etc/fstab 里面的数据会被机器加载。随后再利用 mount 实现多个节点下文件的互相读取。</p>
+<p>物理磁盘–磁盘映射–虚拟磁盘–用户的文件系统  </p>
+<p>想要深入了解物理磁盘与虚拟磁盘的映射，可以参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/529858214">一文读懂Linux内核中的Device mapper映射机制</a></p>
 
                 
             </div>
@@ -1105,7 +1117,7 @@ Host: scsi0 Channel: 02 Id: 00 Lun: 00
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022-2023</span>
+                <span id="year">2022-2024</span>
             
             <a href="/about" target="_blank">梁绍波</a>
             |&nbsp;版权所有
