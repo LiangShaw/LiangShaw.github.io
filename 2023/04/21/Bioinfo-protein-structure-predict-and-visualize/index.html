@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-02-22
+                    2024-03-14
                 </div>
                 
 
@@ -470,6 +470,22 @@
 
 <h1 id="PPI-互作分析："><a href="#PPI-互作分析：" class="headerlink" title="PPI 互作分析："></a>PPI 互作分析：</h1><p>可以使用 alphafold2-multimer 进行预测</p>
 <p><a target="_blank" rel="noopener" href="https://www.embopress.org/doi/full/10.15252/embr.202356834">An AlphaFold2 map of the 53BP1 pathway identifies a direct SHLD3–RIF1 interaction critical for shieldin activity</a></p>
+<h1 id="pymol-在-python-中的调用"><a href="#pymol-在-python-中的调用" class="headerlink" title="pymol 在 python 中的调用"></a>pymol 在 python 中的调用</h1><p>Pymol中很常用的一个包是cmd，在Python脚本中需要调用cmd来实现一些在命令窗口直接输入的命令。  </p>
+<p>比如: PyMOL&gt; select atom_c, name C这行命令在Python脚本中应写成cmd.select(‘atom_c’, ‘name C’)。  </p>
+<p>注：cmd.select(‘atom_c’, ‘name C’)可以在命令窗口中直接执行。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> pymol <span class="token keyword">import</span> cmd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="pymol-安装"><a href="#pymol-安装" class="headerlink" title="pymol 安装"></a>pymol 安装</h2><p>有<a target="_blank" rel="noopener" href="https://pymol.org/conda/">建议</a>是 这样安装: </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda <span class="token function">install</span> -c conda-forge -c schrodinger pymol-bundle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但安装完成后，运行时出现了很多问题，找到了 pymol open source github 里面 [issue}(<a target="_blank" rel="noopener" href="https://github.com/schrodinger/pymol-open-source/issues/182">https://github.com/schrodinger/pymol-open-source/issues/182</a>) 提到：</p>
+<p>I removed pymol with <code>pip uninstall pymol</code> and <code>conda uninstall pymol</code>.<br>Re-installed pymol with <code>conda install -c conda-forge pymol-open-source</code></p>
+<p>另外的 issue 也提到了该<a target="_blank" rel="noopener" href="https://github.com/schrodinger/pymol-open-source/issues/304">解决思路</a></p>
+<p>操作步骤</p>
+<ol>
+<li>加载 pdb 文件: fetch 或 load （fetch 根据 pdb 的号，获取在线结构，load 加载本低文件）</li>
+<li>对 pdb object 进行操作，如 align</li>
+</ol>
 
                 
             </div>

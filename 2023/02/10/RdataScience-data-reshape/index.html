@@ -5,7 +5,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="R 数据科学：数据加工与重塑, Shaw">
-    <meta name="description" content="tidyverse">
+    <meta name="description" content="tidyversedplyr
+用 0 替换 NA
+## all NA
+df &amp;lt;- df %&amp;gt;% replace(is. na (.), 0)
+
+## 针对某一列
+df &amp;lt;- df %&amp;gt;% 
+  mutate(rebs">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -401,7 +408,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-17
+                    2024-03-13
                 </div>
                 
 
@@ -423,7 +430,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="tidyverse"><a href="#tidyverse" class="headerlink" title="tidyverse"></a>tidyverse</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+                <h1 id="tidyverse"><a href="#tidyverse" class="headerlink" title="tidyverse"></a>tidyverse</h1><h1 id="dplyr"><a href="#dplyr" class="headerlink" title="dplyr"></a>dplyr</h1><ul>
+<li><p>用 0 替换 NA</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">## all NA
+df &lt;- df %&gt;% replace(is. na (.), 0)
+
+## 针对某一列
+df &lt;- df %&gt;% 
+  mutate(rebs = ifelse(is. na (rebs), 0, rebs), 
+         pts = ifelse(is. na (pts), 0, pts))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>删除全是 NA 的行</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">df %&gt;% 
+  filter(!if_all(.fns = is.na))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>用某一列做行名</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">df %&gt;% 
+  column_to_rownames()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<li><p>对列重命名</p>
+<pre class="line-numbers language-R" data-language="R"><code class="language-R">df %&gt;% 
+  rename()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ul>
+<h1 id="分组处理"><a href="#分组处理" class="headerlink" title="分组处理"></a>分组处理</h1><pre class="line-numbers language-none"><code class="language-none">df %&gt;% 
+  group_by(group) %&gt;% 
+  summarise(count=n())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
