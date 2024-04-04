@@ -402,7 +402,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-04-03
+                    2024-04-04
                 </div>
                 
 
@@ -475,8 +475,29 @@ dokken/centos-7                   CentOS 7 image for kitchen-dokken             
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl stop docker
 systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="docker-进阶"><a href="#docker-进阶" class="headerlink" title="docker 进阶"></a>docker 进阶</h2><h3 id="将本地文件传入-传出-container"><a href="#将本地文件传入-传出-container" class="headerlink" title="将本地文件传入/传出 container"></a>将本地文件传入/传出 container</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>bind,source<span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>/R,target<span class="token operator">=</span>/home/data --rm -it bmennis/majiq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="docker-进阶"><a href="#docker-进阶" class="headerlink" title="docker 进阶"></a>docker 进阶</h2><h3 id="将本地文件传入-传出-container"><a href="#将本地文件传入-传出-container" class="headerlink" title="将本地文件传入/传出 container"></a>将本地文件传入/传出 container</h3><h4 id="mount-传入-container"><a href="#mount-传入-container" class="headerlink" title="mount 传入 container"></a>mount 传入 container</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>bind,source<span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>/R,target<span class="token operator">=</span>/home/data --rm -it bmennis/majiq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>!参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30652299/having-docker-access-external-files">Having Docker access External files</a></p>
+<h4 id="mount-传出"><a href="#mount-传出" class="headerlink" title="mount 传出"></a>mount 传出</h4><h3 id="container-的退出与重新进入"><a href="#container-的退出与重新进入" class="headerlink" title="container 的退出与重新进入"></a>container 的退出与重新进入</h3><p>不考虑 –rm 的情况，每次运行 image 都会产生新的 container，这样既浪费资源，也使得我们在 container 内的操作重复，所以在长期使用一个 软件时，应该保持一个 container，进行反复操作。  </p>
+<p>container 有几种状态: running, exited,<br>我对 container 的退出与重新进入做了一些测试：  </p>
+<ul>
+<li><p>docker run mageck 后，直接 Ctrl+D 或者 exit 退出，会使 container 处于 exited 状态<br><img src="docker-run-mageck.jpg" alt="docker-run-mageck"><br><img src="container-exit.jpg" alt="container-exit">  </p>
+</li>
+<li><p>exited container 无法直接使用<br><img src="docker-exec-stopped-container.jpg"></p>
+</li>
+<li><p>使用 start 启动 exited container<br><img src="docker-start-stopped-container.jpg"><br><img src="container-status-after-start.jpg"></p>
+</li>
+<li><p>docker exec 重新进入 running container<br><img src="docker-exec-started-container.jpg"></p>
+</li>
+<li><p>同理，使用 stop 停止 container 运行，可进行删除操作<br><img src="docker-stop-container.jpg"><br><img src="docker-rm-stopped-container.jpg"></p>
+</li>
+<li><p>当我们使用 Ctrl+P 后接 Ctrl+Q 的方法 detached the container，就会保持 container 处于 running 状态<br><img src="docker-quit-with-ctrl_P-ctrl_Q.jpg"><br><img src="container-status-after-ctrl_P-ctrl-Q.jpg"></p>
+</li>
+</ul>
+<p>参考<a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/exit-docker-container">How to Exit a Docker Container</a></p>
+<ul>
+<li>在 detach container 之后，可以用 <code>docker attach container-name</code> 重新回到 container</li>
+</ul>
 <h3 id="向内部程序传入参数"><a href="#向内部程序传入参数" class="headerlink" title="向内部程序传入参数"></a>向内部程序传入参数</h3><p>参考: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/tianyee/p/14844956.html">启动 docker 时如何向内部传入参数</a>  </p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run -it -d --name my_container -e <span class="token assign-left variable">PARAMS</span><span class="token operator">=</span><span class="token string">"parameters"</span>  my_image <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
