@@ -477,21 +477,27 @@ systemctl start docker<span aria-hidden="true" class="line-numbers-rows"><span><
 
 <h2 id="docker-进阶"><a href="#docker-进阶" class="headerlink" title="docker 进阶"></a>docker 进阶</h2><h3 id="将本地文件传入-传出-container"><a href="#将本地文件传入-传出-container" class="headerlink" title="将本地文件传入/传出 container"></a>将本地文件传入/传出 container</h3><h4 id="mount-传入-container"><a href="#mount-传入-container" class="headerlink" title="mount 传入 container"></a>mount 传入 container</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker run --mount <span class="token assign-left variable">type</span><span class="token operator">=</span>bind,source<span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>/R,target<span class="token operator">=</span>/home/data --rm -it bmennis/majiq<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+
+
 <p>!参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30652299/having-docker-access-external-files">Having Docker access External files</a></p>
-<h4 id="mount-传出"><a href="#mount-传出" class="headerlink" title="mount 传出"></a>mount 传出</h4><h3 id="container-的退出与重新进入"><a href="#container-的退出与重新进入" class="headerlink" title="container 的退出与重新进入"></a>container 的退出与重新进入</h3><p>不考虑 –rm 的情况，每次运行 image 都会产生新的 container，这样既浪费资源，也使得我们在 container 内的操作重复，所以在长期使用一个 软件时，应该保持一个 container，进行反复操作。  </p>
+<h4 id="copy-files-folders-between-a-container-and-the-local-filesystem"><a href="#copy-files-folders-between-a-container-and-the-local-filesystem" class="headerlink" title="copy files/folders between a container and the local filesystem"></a>copy files/folders between a container and the local filesystem</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">docker <span class="token function">cp</span> <span class="token operator">&lt;</span>container-id<span class="token operator">&gt;</span>:SRC_PATH DEST_PATH<span class="token operator">|</span>-
+docker <span class="token function">cp</span> SRC_PATH<span class="token operator">|</span>- <span class="token operator">&lt;</span>container-id<span class="token operator">&gt;</span>:DEST_PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>!参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22049212/copying-files-from-docker-container-to-host">Copying files from Docker container to host</a></p>
+<h3 id="container-的退出与重新进入"><a href="#container-的退出与重新进入" class="headerlink" title="container 的退出与重新进入"></a>container 的退出与重新进入</h3><p>不考虑 –rm 的情况，每次运行 image 都会产生新的 container，这样既浪费资源，也使得我们在 container 内的操作重复，所以在长期使用一个 软件时，应该保持一个 container，进行反复操作。  </p>
 <p>container 有几种状态: running, exited,<br>我对 container 的退出与重新进入做了一些测试：  </p>
 <ul>
 <li><p>docker run mageck 后，直接 Ctrl+D 或者 exit 退出，会使 container 处于 exited 状态<br><img src="docker-run-mageck.jpg" alt="docker-run-mageck"><br><img src="container-exit.jpg" alt="container-exit">  </p>
 </li>
-<li><p>exited container 无法直接使用<br><img src="docker-exec-stopped-container.jpg"></p>
+<li><p>exited container 无法直接使用<br><img src="docker-exec-stopped-container.jpg" alt="docker-exec-stopped-container"></p>
 </li>
-<li><p>使用 start 启动 exited container<br><img src="docker-start-stopped-container.jpg"><br><img src="container-status-after-start.jpg"></p>
+<li><p>使用 start 启动 exited container<br><img src="docker-start-stopped-container.jpg" alt="docker-start-stopped-container"><br><img src="container-status-after-start.jpg" alt="container-status-after-start"></p>
 </li>
-<li><p>docker exec 重新进入 running container<br><img src="docker-exec-started-container.jpg"></p>
+<li><p>docker exec 重新进入 running container<br><img src="docker-exec-started-container.jpg" alt="docker-exec-started-container"></p>
 </li>
-<li><p>同理，使用 stop 停止 container 运行，可进行删除操作<br><img src="docker-stop-container.jpg"><br><img src="docker-rm-stopped-container.jpg"></p>
+<li><p>同理，使用 stop 停止 container 运行，可进行删除操作<br><img src="docker-stop-container.jpg" alt="docker-stop-container"><br><img src="docker-rm-stopped-container.jpg" alt="docker-rm-stopped-container"></p>
 </li>
-<li><p>当我们使用 Ctrl+P 后接 Ctrl+Q 的方法 detached the container，就会保持 container 处于 running 状态<br><img src="docker-quit-with-ctrl_P-ctrl_Q.jpg"><br><img src="container-status-after-ctrl_P-ctrl-Q.jpg"></p>
+<li><p>当我们使用 Ctrl+P 后接 Ctrl+Q 的方法 detached the container，就会保持 container 处于 running 状态<br><img src="docker-quit-with-ctrl_P-ctrl_Q.jpg" alt="docker-quit-with-ctrl_P-ctrl_Q"><br><img src="container-status-after-ctrl_P-ctrl-Q.jpg" alt="container-status-after-ctrl_P-ctrl-Q"></p>
 </li>
 </ul>
 <p>参考<a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/exit-docker-container">How to Exit a Docker Container</a></p>
