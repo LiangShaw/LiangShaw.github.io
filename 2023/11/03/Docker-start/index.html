@@ -487,8 +487,9 @@ docker <span class="token function">cp</span> SRC_PATH<span class="token operato
 <h3 id="container-的退出与重新进入"><a href="#container-的退出与重新进入" class="headerlink" title="container 的退出与重新进入"></a>container 的退出与重新进入</h3><p>不考虑 –rm 的情况，每次运行 image 都会产生新的 container，这样既浪费资源，也使得我们在 container 内的操作重复，所以在长期使用一个 软件时，应该保持一个 container，进行反复操作。  </p>
 <p>container 有几种状态: running, exited,<br>我对 container 的退出与重新进入做了一些测试：  </p>
 <ul>
-<li><p>docker run mageck 后，直接 Ctrl+D 或者 exit 退出，会使 container 处于 exited 状态<br><img src="docker-run-mageck.jpg" alt="docker-run-mageck"><br><img src="container-exit.jpg" alt="container-exit">  </p>
-</li>
+<li><p>docker run mageck 后，直接 Ctrl+D 或者 exit 退出，会使 container 处于 exited 状态<br><img src="docker-run-mageck.jpg" alt="docker-run-mageck">  </p>
+<img src="docker-run-mageck.jpg" alt="docker-run-mageck" title="docker-run-mageck" align="left">
+![container-exit](container-exit.jpg)  </li>
 <li><p>exited container 无法直接使用<br><img src="docker-exec-stopped-container.jpg" alt="docker-exec-stopped-container"></p>
 </li>
 <li><p>使用 start 启动 exited container<br><img src="docker-start-stopped-container.jpg" alt="docker-start-stopped-container"><br><img src="container-status-after-start.jpg" alt="container-status-after-start"></p>
