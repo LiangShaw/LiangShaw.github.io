@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git/github basic usage guide, Shaw">
-    <meta name="description" content="一些 git 常用命令，用作备忘录、使用手册，方便快速查阅">
+    <meta name="keywords" content="Bioinfo-scRNA-seq3, Shaw">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git/github basic usage guide | Shaw</title>
+    <title>Bioinfo-scRNA-seq3 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +249,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git/github basic usage guide</h1>
+                    <h1 class="description center-align post-title">Bioinfo-scRNA-seq3</h1>
                 </div>
             </div>
         </div>
@@ -368,17 +368,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
-                            </a>
-                        
-                            <a href="/tags/Github/">
-                                <span class="chip bg-color">Github</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -390,14 +382,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-03-30
+                    2024-04-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-30
+                    2024-04-06
                 </div>
                 
 
@@ -419,101 +411,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Git-Github-Usage-and-Instruction"><a href="#Git-Github-Usage-and-Instruction" class="headerlink" title="Git/Github Usage and Instruction"></a>Git/Github Usage and Instruction</h1><p><strong>note</strong>:  </p>
-<ul>
-<li><p><strong>make sure that target local files are located in repository folder.</strong>  </p>
-</li>
-<li><p><strong>Cannot operate files outside repository folder.</strong>  </p>
-</li>
-<li><p>two file transferring paths: http and SSH( Recommaded, openssh required)</p>
-</li>
-<li><p>*set authentication(鉴权). </p>
-<ul>
-<li>In .git/config, add username and passwd after url</li>
-</ul>
-</li>
-</ul>
-<h2 id="config-git"><a href="#config-git" class="headerlink" title="config git"></a>config git</h2><ul>
-<li>totally new env<br>create ssh key<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh-keygen -t rsa -C <span class="token string">"your_email@youremail.com"</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>set user info<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> config --global user.name <span class="token string">"your name"</span>  
-<span class="token function">git</span> config --global user.email <span class="token string">"your_email@youremail.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>check user<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> config user.name  
-<span class="token function">git</span> config user.email<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-<li>check all information<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> config -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<h2 id="repository-initialization"><a href="#repository-initialization" class="headerlink" title="repository initialization"></a>repository initialization</h2><h3 id="method1"><a href="#method1" class="headerlink" title="method1"></a>method1</h3><p><strong>clone a reposiroty from remote server</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone repository_address  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<p>*can reate a clone for local repository<br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone /path/to/local/repository <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p></p>
-<h3 id="method2"><a href="#method2" class="headerlink" title="method2"></a>method2</h3><p><strong>initialize a local folder as a repository</strong><br>  </p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> target_folder  
-<span class="token function">git</span> init  
-<span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token operator">&lt;</span>git url<span class="token operator">&gt;</span>  <span class="token comment"># connect to remote repository</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p></p>
-<h2 id="repository-operation"><a href="#repository-operation" class="headerlink" title="repository operation"></a>repository operation</h2><p>local repository trilayer structure  </p>
-<img src="https://www.runoob.com/wp-content/uploads/2014/05/trees.png" width="500" alt="local repository trilayer structure" align="center">  
-
-<ul>
-<li><p>add files to index(cache space)</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> file1 file2 <span class="token punctuation">..</span>.  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>add version annatation</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> commit -m <span class="token string">"modification_annotation"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>view current git status</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>push modification to remote repository</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>pull latest version from repostory</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> pull<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<h2 id="about-version"><a href="#about-version" class="headerlink" title="about version"></a>about version</h2><ul>
-<li><p>get version list (<strong>not</strong> incluede the versions <strong>hereafter</strong>)</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> log <span class="token punctuation">[</span> --pretty<span class="token operator">=</span>online <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>set current version</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> reset --hard version_number<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li><p>get all versions</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> reflog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<h2 id="branch-command"><a href="#branch-command" class="headerlink" title="branch command"></a>branch command</h2><p>branch pattern  </p>
-<img src="https://www.runoob.com/wp-content/uploads/2014/05/branches.png" width="500" alt="branch pattern" align="center">
-
-<ul>
-<li>list branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> branch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>create branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> branch name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>switch branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>creat and switch branch<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout -b name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>delete <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> branch -d name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>merge <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> merge names<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p>Note: the operations in different branches do not influence each other. Merge operation is in need af final.</p>
-<h3 id="solve-conflicts"><a href="#solve-conflicts" class="headerlink" title="solve conflicts"></a>solve conflicts</h3><h3 id="add-git-sshkey-into-Github"><a href="#add-git-sshkey-into-Github" class="headerlink" title="add git sshkey into Github"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ayseeing/p/3572582.html">add git sshkey into Github</a></h3><ul>
-<li><p>create a SSH key</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh-keygen -t rsa -C <span class="token string">"your_email@example.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>default generated file <code>~/.ssh/id_rsa.pub</code>  </p>
-</li>
-<li><p>add SSH key content into github SSH<br><code>setting</code> -&gt; <code>SSH and GPG keys</code></p>
-</li>
-</ul>
-<h1 id="日常遇到的问题"><a href="#日常遇到的问题" class="headerlink" title="日常遇到的问题"></a>日常遇到的问题</h1><h2 id="Offending-RSA-key-in-ssh-known-hosts-2"><a href="#Offending-RSA-key-in-ssh-known-hosts-2" class="headerlink" title="Offending RSA key in ~/.ssh/known_hosts:2"></a>Offending RSA key in ~/.ssh/known_hosts:2</h2><p>在进行 <code>git push/pull</code> 的时候，发生如下错误：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -T git@github.com
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
-Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
-It is also possible that a <span class="token function">host</span> key has just been changed.
-The fingerprint <span class="token keyword">for</span> the RSA key sent by the remote <span class="token function">host</span> is
-SHA256:uNVztksCshcc0ueBujQXVUpZIDTMczCvjtD2.
-Please contact your system administrator.
-Add correct <span class="token function">host</span> key <span class="token keyword">in</span> ~/.ssh/known_hosts to get rid of this message.
-Offending RSA key <span class="token keyword">in</span> ~/.ssh/known_hosts:2
-RSA <span class="token function">host</span> key <span class="token keyword">for</span> github.com has changed and you have requested strict checking.
-Host key verification failed.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>多番查阅后，总结是 GitHub rsa-id 更新，使用 ecdsa 方式。<br>所以，一方面要删除 ~/.ssh/known_host 中的 rsa:</p>
-<ul>
-<li>可以根据错误提示 <strong>Offending RSA key in ~/.ssh/known_hosts:2</strong>，进入 known_host 进行手动删除，也可以命令行的方式进行删除（在你知道 host IP 的前提下）<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t rsa -R github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ul>
-<p>在此之后，更新 GitHub 账户上的 host-key:  </p>
-<ul>
-<li>将 <code>~/.ssh/known_hosts</code> 中信息添加到 <code>Settings -&gt; SSH and GPG keys -&gt; New SSH key</code></li>
-</ul>
-
+                
                 
             </div>
             <hr/>
@@ -539,7 +437,7 @@ Host key verification failed.<span aria-hidden="true" class="line-numbers-rows">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2023/03/30/Git_instructions/">https://liangshaw.github.io/2023/03/30/Git_instructions/</a>
+                    <a href="https://liangshaw.github.io/2024/04/06/Bioinfo-scRNA-seq3/">https://liangshaw.github.io/2024/04/06/Bioinfo-scRNA-seq3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -576,15 +474,7 @@ Host key verification failed.<span aria-hidden="true" class="line-numbers-rows">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
-                                </a>
-                            
-                                <a href="/tags/Github/">
-                                    <span class="chip bg-color">Github</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -900,24 +790,24 @@ Host key verification failed.<span aria-hidden="true" class="line-numbers-rows">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/04/06/Bio-seq-method-collections/">
+                <a href="/2024/05/30/Git_instructions/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="测序方法汇总">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="git/github basic usage guide">
                         
-                        <span class="card-title">测序方法汇总</span>
+                        <span class="card-title">git/github basic usage guide</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            一些 git 常用命令，用作备忘录、使用手册，方便快速查阅
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-05-30
                         </span>
                         <span class="publish-author">
                             
@@ -926,6 +816,18 @@ Host key verification failed.<span aria-hidden="true" class="line-numbers-rows">
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                    <a href="/tags/Github/">
+                        <span class="chip bg-color">Github</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -937,13 +839,13 @@ Host key verification failed.<span aria-hidden="true" class="line-numbers-rows">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/29/Bioinfo-RoutineToolsCollections/">
+                <a href="/2024/03/13/software-inistall/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Bioinfo-RoutineToolsCollections">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="软件安装遇到的事儿">
                         
-                        <span class="card-title">Bioinfo-RoutineToolsCollections</span>
+                        <span class="card-title">软件安装遇到的事儿</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -954,39 +856,15 @@ Host key verification failed.<span aria-hidden="true" class="line-numbers-rows">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-13
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/bioinformatics/" class="post-category">
-                                    bioinformatics
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/samtools/">
-                        <span class="chip bg-color">samtools</span>
-                    </a>
-                    
-                    <a href="/tags/bedtools/">
-                        <span class="chip bg-color">bedtools</span>
-                    </a>
-                    
-                    <a href="/tags/deeptools/">
-                        <span class="chip bg-color">deeptools</span>
-                    </a>
-                    
-                    <a href="/tags/collection/">
-                        <span class="chip bg-color">collection</span>
-                    </a>
-                    
                 </div>
                 
             </div>
