@@ -4,16 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="同源基因分析（根据氨基酸序列）, Shaw">
-    <meta name="description" content="目的：分析同源基因的进化情况做法：  
+    <meta name="keywords" content="git 的进阶用法, Shaw">
+    <meta name="description" content=".gitignore让 git 忽略或不追踪特定的文件.gitignore 是一个纯文本文件，将不想被追踪的文件或文件夹名写入其中  
+在根目录中创建 .gitignore 文件写入的内容格式，可以是个文件名，
+test
 
-获取同源基因编码的氨基酸序列  
-序列比对  
-构建进化树  
-绘制进化树  
-
-下面逐步进行拆解：  
-1. 获取氨基酸序列可以利用某个物种已知的蛋白质序列，在NCBI blastp进行searc">
+也可以是文件夹，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +21,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>同源基因分析（根据氨基酸序列） | Shaw</title>
+    <title>git 的进阶用法 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -257,12 +253,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">同源基因分析（根据氨基酸序列）</h1>
+                    <h1 class="description center-align post-title">git 的进阶用法</h1>
                 </div>
             </div>
         </div>
@@ -376,12 +372,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/git/" class="post-category">
+                                git
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -390,14 +399,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-06-18
+                    2024-06-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-06-18
+                    2024-06-26
                 </div>
                 
 
@@ -419,99 +428,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>目的：分析同源基因的进化情况<br>做法：  </p>
-<ol>
-<li>获取同源基因编码的氨基酸序列  </li>
-<li>序列比对  </li>
-<li>构建进化树  </li>
-<li>绘制进化树  </li>
-</ol>
-<p>下面逐步进行拆解：  </p>
-<h2 id="1-获取氨基酸序列"><a href="#1-获取氨基酸序列" class="headerlink" title="1. 获取氨基酸序列"></a>1. 获取氨基酸序列</h2><p>可以利用某个物种已知的蛋白质序列，在<a target="_blank" rel="noopener" href="https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastp&amp;PAGE_TYPE=BlastSearch&amp;LINK_LOC=blasthome">NCBI blastp</a>进行search，然后将search的结果保存为fasta文件</p>
-<h2 id="2-序列比对"><a href="#2-序列比对" class="headerlink" title="2. 序列比对"></a>2. 序列比对</h2><p>使用多序列比对工具（Multiple Sequence Alignment, MSA）对这些氨基酸序列进行比对。常用的MSA工具包括：  </p>
-<ul>
-<li>Clustal Omega: 适用于大规模的序列比对。  </li>
-<li>MUSCLE: 高精度且快速的多序列比对工具。  </li>
-<li>MAFFT: 适合于长序列的多序列比对。<br>如果只是想展示几个物种间序列一致性，可以使用 <code>SnapGene</code><h2 id="3-构建进化树"><a href="#3-构建进化树" class="headerlink" title="3. 构建进化树"></a>3. 构建进化树</h2>根据多序列比对的结果，构建进化树。常用的方法包括：  </li>
-<li>邻接法（Neighbor-Joining, NJ）: 简单且快速，适合大规模数据。</li>
-<li>最大似然法（Maximum Likelihood, ML）: 精度较高，但计算复杂度大。</li>
-<li>贝叶斯推断法（Bayesian Inference, BI）: 精度高且可估计不确定性，但计算时间长。<h2 id="4-绘制进化树"><a href="#4-绘制进化树" class="headerlink" title="4. 绘制进化树"></a>4. 绘制进化树</h2>使用专门的软件或工具绘制进化树，常用的软件包括：  </li>
-<li>MEGA (Molecular Evolutionary Genetics Analysis): 综合性较强的序列分析和进化树构建工具。</li>
-<li>PhyML: 基于最大似然法构建进化树。</li>
-<li>MrBayes: 基于贝叶斯推断法构建进化树。</li>
-<li>FigTree: 进化树可视化工具。</li>
-<li>iTOL (Interactive Tree Of Life): 在线进化树绘制和注释工具。</li>
-</ul>
-<p>可以选择一些工具组合成流程：  </p>
-<h2 id="组合1-Clustal-Omega-MEGA-FigTree"><a href="#组合1-Clustal-Omega-MEGA-FigTree" class="headerlink" title="组合1. Clustal Omega + MEGA + FigTree"></a>组合1. Clustal Omega + MEGA + FigTree</h2><ol>
-<li>多序列比对：Clustal Omega<br>你可以在线使用Clustal Omega或在本地安装并运行Clustal Omega进行多序列比对。<br>输入序列文件（例如 sequences.fasta），生成比对结果（例如 sequences.aln）。</li>
-<li>构建进化树：MEGA<br>将比对结果导入MEGA软件，选择构建进化树的方法（例如邻接法或最大似然法）。<br>MEGA界面友好，可以进行参数设置和结果调整。  </li>
-<li>绘制进化树：FigTree<br>将MEGA生成的树文件导入FigTree，进行进化树的可视化。<br>FigTree提供丰富的可视化选项，可以对树形、颜色、标签等进行调整。  </li>
-</ol>
-<h2 id="组合2-MUSCLE-PhyML-iTOL"><a href="#组合2-MUSCLE-PhyML-iTOL" class="headerlink" title="组合2. MUSCLE + PhyML + iTOL"></a>组合2. MUSCLE + PhyML + iTOL</h2><ol>
-<li>多序列比对：MUSCLE<br>在本地运行MUSCLE进行多序列比对。<br>输入序列文件（例如 sequences.fasta），生成比对结果（例如 sequences.aln）。  <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">muscle -in sequences.fasta -out sequences.aln<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>构建进化树：PhyML<br>将比对结果导入PhyML，选择构建进化树的方法（例如最大似然法）。<br>PhyML在命令行运行，可以指定多种参数。  <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">phyml -i sequences.aln -d aa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>绘制进化树：iTOL<br>将PhyML生成的树文件上传到iTOL在线工具。<br>iTOL提供丰富的在线注释和可视化选项，可以对树形、颜色、标签等进行调整。  </li>
-</ol>
-<h2 id="组合3-MAFFT-RAxML-FigTree"><a href="#组合3-MAFFT-RAxML-FigTree" class="headerlink" title="组合3. MAFFT + RAxML + FigTree"></a>组合3. MAFFT + RAxML + FigTree</h2><ol>
-<li>多序列比对：MAFFT<br>在本地运行MAFFT进行多序列比对。<br>输入序列文件（例如 <code>sequences.fasta</code>），生成比对结果（例如 <code>sequences.aln</code>）。  <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">mafft --auto sequences.fasta &gt; sequences.aln<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>构建进化树：RAxML<br>将比对结果导入RAxML，选择构建进化树的方法（例如最大似然法）。<br>RAxML在命令行运行，可以指定多种参数。  <pre class="line-numbers language-sh" data-language="sh"><code class="language-sh">raxmlHPC -s sequences.aln -n output -m PROTCATLG<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>绘制进化树：FigTree<br>将RAxML生成的树文件导入FigTree，进行进化树的可视化。<br>FigTree提供丰富的可视化选项，可以对树形、颜色、标签等进行调整。  <h2 id="使用-Biopython"><a href="#使用-Biopython" class="headerlink" title="使用 Biopython"></a>使用 Biopython</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Bio<span class="token punctuation">.</span>Align<span class="token punctuation">.</span>Applications <span class="token keyword">import</span> ClustalOmegaCommandline<span class="token punctuation">,</span> MuscleCommandline<span class="token punctuation">,</span> MafftCommandline
-<span class="token keyword">from</span> Bio<span class="token punctuation">.</span>Phylo<span class="token punctuation">.</span>Applications <span class="token keyword">import</span> PhymlCommandline<span class="token punctuation">,</span> RaxmlCommandline
-<span class="token keyword">from</span> Bio <span class="token keyword">import</span> Phylo
+                <h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><p>让 git 忽略或不追踪特定的文件<br><code>.gitignore</code> 是一个纯文本文件，将不想被追踪的文件或文件夹名写入其中  </p>
+<p>在根目录中创建 <code>.gitignore</code> 文件<br>写入的内容格式，<br>可以是个文件名，</p>
+<pre class="line-numbers language-none"><code class="language-none">test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># Step 1: 多序列比对（选择一个工具）</span>
-<span class="token comment"># Clustal Omega</span>
-clustalomega_cline <span class="token operator">=</span> ClustalOmegaCommandline<span class="token punctuation">(</span>infile<span class="token operator">=</span><span class="token string">"sequences.fasta"</span><span class="token punctuation">,</span> outfile<span class="token operator">=</span><span class="token string">"sequences.aln"</span><span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> auto<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-clustalomega_cline<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>也可以是文件夹，如 </p>
+<pre class="line-numbers language-none"><code class="language-none">test/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># 或者 MUSCLE</span>
-muscle_cline <span class="token operator">=</span> MuscleCommandline<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token operator">=</span><span class="token string">"sequences.fasta"</span><span class="token punctuation">,</span> out<span class="token operator">=</span><span class="token string">"sequences.aln"</span><span class="token punctuation">)</span>
-muscle_cline<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>也可以使用通配符用以匹配符合条件的所有文件，如以 img 开头的所有文件  </p>
+<pre class="line-numbers language-none"><code class="language-none">img* <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># 或者 MAFFT</span>
-mafft_cline <span class="token operator">=</span> MafftCommandline<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token operator">=</span><span class="token string">"sequences.fasta"</span><span class="token punctuation">)</span>
-mafft_cline<span class="token punctuation">(</span>stdout<span class="token operator">=</span><span class="token string">"sequences.aln"</span><span class="token punctuation">)</span>
+<p>或者所有 md 文件 </p>
+<pre class="line-numbers language-none"><code class="language-none">*.md<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token comment"># Step 2: 构建进化树（选择一个工具）</span>
-<span class="token comment"># PhyML</span>
-phyml_cline <span class="token operator">=</span> PhymlCommandline<span class="token punctuation">(</span><span class="token builtin">input</span><span class="token operator">=</span><span class="token string">"sequences.aln"</span><span class="token punctuation">,</span> datatype<span class="token operator">=</span><span class="token string">"aa"</span><span class="token punctuation">)</span>
-phyml_cline<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<p>另外，如果想排除某个模式下的一个文件，可以使用 <code>!</code> 来进行否定  </p>
+<pre class="line-numbers language-none"><code class="language-none"># 忽略所有 md 文件
+*.md
 
-<span class="token comment"># 或者 RAxML</span>
-raxml_cline <span class="token operator">=</span> RaxmlCommandline<span class="token punctuation">(</span>sequences<span class="token operator">=</span><span class="token string">"sequences.aln"</span><span class="token punctuation">,</span> model<span class="token operator">=</span><span class="token string">"PROTCATLG"</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">"output"</span><span class="token punctuation">)</span>
-raxml_cline<span class="token punctuation">(</span><span class="token punctuation">)</span>
+# 不忽略 README.md 文件
+!README.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但如果是忽略了整个文件夹，那么否定模式对于其内部的文件不再起作用</p>
+<pre class="line-numbers language-none"><code class="language-none"># 忽略所有名字带有 test 的目录
+test/
 
-<span class="token comment"># Step 3: 绘制进化树（以FigTree为例）</span>
-tree <span class="token operator">=</span> Phylo<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token string">"output.tree"</span><span class="token punctuation">,</span> <span class="token string">"newick"</span><span class="token punctuation">)</span>
-Phylo<span class="token punctuation">.</span>draw<span class="token punctuation">(</span>tree<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ol>
-<h2 id="重要文件格式"><a href="#重要文件格式" class="headerlink" title="重要文件格式"></a>重要文件格式</h2><h3 id="muscle-生成的-aln-文件格式是什么样的"><a href="#muscle-生成的-aln-文件格式是什么样的" class="headerlink" title="muscle 生成的 aln 文件格式是什么样的"></a>muscle 生成的 aln 文件格式是什么样的</h3><p>MUSCLE（Multiple Sequence Comparison by Log-Expectation）生成的比对结果文件（.aln）通常是以CLUSTAL格式（即ClustalW格式）保存的。以下是一个典型的MUSCLE生成的CLUSTAL格式的示例：</p>
-<pre class="line-numbers language-none"><code class="language-none">CLUSTAL O(1.2.4) multiple sequence alignment
+# 试图在一个被忽略的目录内排除一个文件是行不通的
+!test/example.md<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-seq1     MKTAYIAKQRQISFVKSHFSRQDILDLWIYHTQGYFPQFL
-seq2     MKTAYIAKQRQISFVKSHFSRQDILDLWIYHTQGYFPQFL
-seq3     MKTAYIAKQRQISFVKSHFSRQDILDLWIYHTQGYFPQFL
-
-seq1     RNAPLIWKRKRQIQKKSLKQKNNIQEQLSKDDTKEIKDLR
-seq2     RNAPLIWKRKRQIQKKSLKQKNNIQEQLSKDDTKEIKDLR
-seq3     RNAPLIWKRKRQIQKKSLKQKNNIQEQLSKDDTKEIKDLR
-
-seq1     KLKH
-seq2     KLKH
-seq3     KLKH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>文件格式说明</strong><br>头部信息：<br>文件开始部分有一个CLUSTAL的标识，通常后面会跟着版本信息，例如CLUSTAL O(1.2.4)。<br>序列块：  </p>
-<p>序列按块排列，每块一般包含固定数量（例如60个）的氨基酸残基。<br>每个块内，序列名称和序列本身按列对齐。<br>相同位置的相同氨基酸会在对齐标识线上显示一个标识（一般是空格）。<br>对齐标识：  </p>
-<p>每个块的下面有一行对齐标识线。对于相同位置的相同氨基酸，通常用星号（*）标识；对于类似氨基酸，有时用点（.）或冒号（:）标识。</p>
-<p>生成ALN文件后，可以使用这些工具和软件来进一步分析和绘制进化树：  </p>
-<ul>
-<li>MEGA：可以直接导入ALN文件进行进化树构建。</li>
-<li>PhyML：也支持CLUSTAL格式的输入。</li>
-<li>RAxML：需要将ALN文件转换为兼容格式（例如PHYLIP）。</li>
-<li>FigTree 或 iTOL：用于进化树的可视化。</li>
-</ul>
+<p>参考 <a target="_blank" rel="noopener" href="https://www.freecodecamp.org/chinese/news/gitignore-file-how-to-ignore-files-and-folders-in-git/">.gitignore 文件——如何在 Git 中忽略文件和文件夹</a></p>
 
                 
             </div>
@@ -538,7 +481,7 @@ seq3     KLKH<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2024/06/18/evolution-tree-md/">https://liangshaw.github.io/2024/06/18/evolution-tree-md/</a>
+                    <a href="https://liangshaw.github.io/2024/06/26/Git-advanced/">https://liangshaw.github.io/2024/06/26/Git-advanced/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -575,7 +518,11 @@ seq3     KLKH<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -891,19 +838,19 @@ seq3     KLKH<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/06/26/Git-advanced/">
+                <a href="/2024/06/26/Git_instructions/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="git 的进阶用法">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="git/github basic usage guide">
                         
-                        <span class="card-title">git 的进阶用法</span>
+                        <span class="card-title">git/github basic usage guide</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            一些 git 常用命令，用作备忘录、使用手册，方便快速查阅
                         
                     </div>
                     <div class="publish-info">
@@ -940,13 +887,13 @@ seq3     KLKH<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/04/06/Bioinfo-scRNA-seq3/">
+                <a href="/2024/06/18/evolution-tree-md/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Bioinfo-scRNA-seq3">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="同源基因分析（根据氨基酸序列）">
                         
-                        <span class="card-title">Bioinfo-scRNA-seq3</span>
+                        <span class="card-title">同源基因分析（根据氨基酸序列）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -957,7 +904,7 @@ seq3     KLKH<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-04-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-06-18
                             </span>
                         <span class="publish-author">
                             
