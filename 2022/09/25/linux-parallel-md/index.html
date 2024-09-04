@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-20
+                    2024-09-04
                 </div>
                 
 
@@ -474,6 +474,12 @@ B D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 $ parallel --header <span class="token builtin class-name">:</span> --colsep <span class="token string">'\t'</span> <span class="token builtin class-name">echo</span> <span class="token assign-left variable">f1</span><span class="token operator">=</span><span class="token punctuation">{</span>f1<span class="token punctuation">}</span> <span class="token assign-left variable">f2</span><span class="token operator">=</span><span class="token punctuation">{</span>f2<span class="token punctuation">}</span> :::: tsv-file.tsv 
 <span class="token assign-left variable">f1</span><span class="token operator">=</span>A <span class="token assign-left variable">f2</span><span class="token operator">=</span>B
 <span class="token assign-left variable">f1</span><span class="token operator">=</span>C <span class="token assign-left variable">f2</span><span class="token operator">=</span>D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="–joblog-与-–resume"><a href="#–joblog-与-–resume" class="headerlink" title="–joblog 与 –resume"></a>–joblog 与 –resume</h2><p>可以记录每个任务的状态。在执行任务时，添加 –joblog 选项，并指定一个日志文件。该日志文件将记录所有任务的执行情况，包括成功或失败的状态。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">parallel --joblog joblog.txt <span class="token operator">&lt;</span>commands<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>当你需要中断并稍后继续任务时，可以使用 –resume 选项，它会基于 –joblog 文件中的信息，只重新运行失败的或未完成的任务。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">parallel --resume --joblog joblog.txt <span class="token operator">&lt;</span>commands<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h1 id="parallel-与-xargs-管道连用"><a href="#parallel-与-xargs-管道连用" class="headerlink" title="parallel 与 xargs 管道连用"></a>parallel 与 xargs 管道连用</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">find</span> ./ -name <span class="token string">'*.txt'</span> <span class="token operator">|</span> parallel <span class="token function">xargs</span> -n <span class="token number">1</span> <span class="token function">grep</span> <span class="token string">'target'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
