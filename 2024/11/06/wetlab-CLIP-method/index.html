@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="wetlab-CLIP-method, Shaw">
+    <meta name="keywords" content="CLIP实验方法, Shaw">
     <meta name="description" content="CLIP-seq早已是被广泛使用的protein-RNA结合互作位点研究的方法，但我们自己做的非常少，除了实验室老一辈人有的做过，现在的同学都没人做过，所以只好自己上，钻研一下CLIP的实验方法。
-参考: Transcriptome-wid">
+有些抑制剂和磷酸酶，如果没有，可尝试不加。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>wetlab-CLIP-method | Shaw</title>
+    <title>CLIP实验方法 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -250,12 +250,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">wetlab-CLIP-method</h1>
+                    <h1 class="description center-align post-title">CLIP实验方法</h1>
                 </div>
             </div>
         </div>
@@ -413,10 +413,208 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>CLIP-seq早已是被广泛使用的protein-RNA结合互作位点研究的方法，但我们自己做的非常少，除了实验室老一辈人有的做过，现在的同学都没人做过，所以只好自己上，钻研一下CLIP的实验方法。</p>
+<p>有些抑制剂和磷酸酶，如果没有，可尝试不加。</p>
 <p>参考: <a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41596-022-00680-z">Transcriptome-wide identification of RNA-binding protein binding sites using seCLIP-seq</a></p>
-<img src="Overview_of_CLIP_method.jpg" width="600">
+<img src="Overview_of_CLIP_method.jpg" width="600" alt="Overview of CLIP method">
 
-<img src="Overview_of_seCLIP_protocol.jpg" width="600">
+<img src="Overview_of_seCLIP_protocol.jpg" width="600" alt="Overview of seCLIP protocol">
+
+<h1 id="Reagents"><a href="#Reagents" class="headerlink" title="Reagents"></a>Reagents</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><ul>
+<li>Dulbecco’s PBS （DPBS）：细胞解离前，需采用不含钙和镁的制剂从培养物中冲洗掉螯合剂。</li>
+<li>Lysis：</li>
+<li>high-salt wash buffer</li>
+<li>wash buffer</li>
+<li>DNase</li>
+<li>RNase I, 100 U/μl (Invitrogen, cat. no. AM2295)</li>
+<li>murine RNase inhibitor</li>
+<li>FastAP alkaline phosphatase（碱性磷酸酶）. 1 U/μl (Thermo Scientific, cat. no. EF0652)</li>
+<li>10× PNK7 buffer. PNK buffer contains 700 mM Tris-HCl pH 7 and 100 mM MgCl2. This buffer is stable at −20 °C for ≥6 months.</li>
+<li>PEG 8000</li>
+</ul>
+<h1 id="protocol-step-by-step"><a href="#protocol-step-by-step" class="headerlink" title="protocol step by step"></a>protocol step by step</h1><h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><h2 id="Sample-preparation-and-UV-crosslinking-fig2a"><a href="#Sample-preparation-and-UV-crosslinking-fig2a" class="headerlink" title="Sample preparation and UV crosslinking (fig2a)"></a><strong>Sample preparation and UV crosslinking (fig2a)</strong></h2><p>Timing：2-3h</p>
+<ol>
+<li>贴壁细胞用DPBS洗一遍，然后添加足够预冷的DPBS覆盖单层细胞（统计细胞数量）</li>
+<li>将crosslinker的金属块预冷后，放回crosslinker</li>
+<li>将培养皿水平放到预冷金属块上，打开盖子，进行交联<ul>
+<li>irradiation: 254nm</li>
+<li>quantity: 400mJ/cm<sup>2</sup> once</li>
+</ul>
+</li>
+<li>交联完毕，马上用移液枪刮吹细胞，转移到离心管中，再用DPBS洗一遍，将剩余细胞转移到离心管中</li>
+<li>4°C 300g离心3min，去上清，再用DPBS重悬细胞，至20 million cells/ml（或者其他理想浓度）</li>
+<li>将细胞悬液按照理想的细胞数量，进行分装。分装后，4°C 300g离心3min，去上清。若不立即进行后续操作，可冻存于-80°C</li>
+</ol>
+<hr>
+<p>Pause point：Cross-linked cells or tissue can be used immediately for lysis and IP or stored at −80 °C until use.</p>
+<hr>
+<h2 id="Bead-preparation"><a href="#Bead-preparation" class="headerlink" title="Bead preparation"></a><strong>Bead preparation</strong></h2><p><font color="red"><strong>以下步骤均需预冷的buffer</strong></font><br>提前将lysis, high-salt wash and wash buffers预冷  </p>
+<p>Timing：1h</p>
+<ol start="7">
+<li>用500 ul预冷的lysis buffer wash beads 2次。注意不要震荡。弃去buffer，用100 ul lysis buffer重悬beads</li>
+<li>每个IP样品，向washed beads中添加10ug的RBP-specific antibody，在rotator上室温混匀45min</li>
+</ol>
+<hr>
+<p>10ug对于很多抗体是适宜的量，当然可以进行优化</p>
+<hr>
+<h2 id="Cell-lysis-RNase-digestion-and-IP"><a href="#Cell-lysis-RNase-digestion-and-IP" class="headerlink" title="Cell lysis, RNase digestion and IP"></a><strong>Cell lysis, RNase digestion and IP</strong></h2><p>Timing：3h or overnight</p>
+<ol start="9">
+<li>向预冷的lysis buffer，加入蛋白酶抑制剂。用1ml的proteinase inhibitor+cold lysis buffer混匀细胞。将管子放在冰上裂解5min</li>
+<li>在4°C下，超声仪低功率处理样品5min，30S on 30S off。样品置于冰上</li>
+<li>在冰上，用DPBS以1：25的比例稀释RNase I。提前预热热混仪到37°C。向裂解样品中，加入5 ul Turbo DNase和10 ul的diluted RNase I，混匀。<strong>立即</strong>放到预热到37°C的热混仪上，以1,200 rpm的晃动频率，孵育5min整，然后置于冰上。立即加入11ul的murine RNase inhibitor。Centrifuge at 15,000g for 10 min at 4 °C.</li>
+<li>离心的同时，用500ul的lysis buffer清洗两次上述准备好的beads。清洗后，离心除去剩余的wash buffer。将cleared lysate转移到antibody-bound beads，注意不要吸到细胞残片。4°C rotate 2h或者过夜（建议过夜）。</li>
+</ol>
+<h2 id="Dephosphorylation-of-IP-samples"><a href="#Dephosphorylation-of-IP-samples" class="headerlink" title="Dephosphorylation of IP samples"></a><strong>Dephosphorylation of IP samples</strong></h2><p>Timing: 1h</p>
+<ol start="13">
+<li>将lysate颠倒混匀。每个lysate（包括beads），转移20ul到两个新管子里，放在冰上暂存，待用（直到step23）。这部分用于做size-matched input samples (SMInput)，一份用于跑RNA gel，一份用于做western blot</li>
+<li>用磁力架，将beads和lysate分离开，并用500ul high-salt wash buffer洗两遍beads。<strong>为了防止盐浓度的突然变化破坏antibody-RBP复合物间的相互作用</strong>，采用过渡清洗的方法：加入500ul high-salt wash buffer，混匀，再加入500ul的wash buffer。先这样洗两次。再用wash buffer洗三次。</li>
+<li>轻柔地spin down beads，除去残留的wash buffer。用dephosphorylation master mix重悬beads，轻弹管身，混匀。dephosphorylation master mix配方如下（每个样品的量50 ul）：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Amount</th>
+<th>Final</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H<sub>2</sub>O</td>
+<td>38</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10× FastAP Buffer</td>
+<td>5</td>
+<td>1x</td>
+</tr>
+<tr>
+<td>Murine RNase inhibitor</td>
+<td>2</td>
+<td>80U</td>
+</tr>
+<tr>
+<td>Turbo DNase</td>
+<td>2</td>
+<td>4U</td>
+</tr>
+<tr>
+<td>FastAP enzyme</td>
+<td>3</td>
+<td>3U</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>50</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ol start="16">
+<li>将反应体系，在37°C热混仪上，1,200 rpm摇10 min。<u>这一步反应会去掉RNase I切割后，留在3’的磷酸基团</u>。在孵育的同时，准备PNK master mix（下表是每个样品的量）：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Amount (ul)</th>
+<th>Final</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H<sub>2</sub>O</td>
+<td>126</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10× PNK7 buffer</td>
+<td>20</td>
+<td>1x</td>
+</tr>
+<tr>
+<td>T4 PNK enzyme</td>
+<td>4</td>
+<td>40 U</td>
+</tr>
+<tr>
+<td>total</td>
+<td>150 ul</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ol start="17">
+<li>不需要去除 dephosphorylation mix，直接加入PNK master mix，继续在37°C热混仪上摇20 min。T4 PNK确保RNA片段3’ end完全去磷酸化，准备好3’ end ligation.</li>
+<li>加200 ul high-salt wash buffer，混匀，磁性分离beads和上清，去除上清。继续使用过渡清洗的办法，先加500 ul high-salt wash buffer，混匀，再加入500 ul wash buffer，除去上清。然后用500 ul wash buffer洗三次。</li>
+</ol>
+<hr>
+<p>❗CRITICAL STEP：<br>(Optional) Before carrying out 3′ ligation in the next steps, reserve 10% of the IP samples for biotin labeling to visualize the RNA cross-linked to your RBP of interest (see Box 1 for further explanation).</p>
+<hr>
+<h2 id="3’-RNA-adapter-ligation-of-IP-samples"><a href="#3’-RNA-adapter-ligation-of-IP-samples" class="headerlink" title="3’ RNA adapter ligation of IP samples"></a><strong>3’ RNA adapter ligation of IP samples</strong></h2><ol start="19">
+<li>在室温下，准备3’ RNA adapter master（每个样品用量）：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Amount (ul)</th>
+<th>Final</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>H<sub>2</sub>O</td>
+<td>8.4</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10× RNA ligase buffer (no DTT)</td>
+<td>3.0</td>
+<td>1.2x</td>
+</tr>
+<tr>
+<td>0.1 M ATP</td>
+<td>0.3</td>
+<td>1.2 uM</td>
+</tr>
+<tr>
+<td>100%DMSO</td>
+<td>0.9</td>
+<td>3.6%</td>
+</tr>
+<tr>
+<td>1% (vol/vol) Tween-20</td>
+<td>0.6</td>
+<td>0.024%</td>
+</tr>
+<tr>
+<td>50% (wt/vol) PEG 8000</td>
+<td>9.0</td>
+<td>18%</td>
+</tr>
+<tr>
+<td>Murine RNase inhibitor</td>
+<td>0.4</td>
+<td>0.8 U</td>
+</tr>
+<tr>
+<td>T4 RNA ligase high-concentration enzyme</td>
+<td>2.4</td>
+<td>72 U</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>25</td>
+<td>-</td>
+</tr>
+</tbody></table>
+
                 
             </div>
             <hr/>
@@ -791,18 +989,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/11/06/wetlab-CLIP-method/">
+                <a href="/2024/11/07/wetlab-RIP/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="wetlab-CLIP-method">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="RIP-seq实验方法">
                         
-                        <span class="card-title">wetlab-CLIP-method</span>
+                        <span class="card-title">RIP-seq实验方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -812,9 +1009,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-06
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-11-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -823,7 +1020,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
