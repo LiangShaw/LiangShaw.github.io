@@ -447,7 +447,7 @@ p1 <span class="token operator">/</span> p2 <span class="token operator">+</span
 <h3 id="横纵混合排布"><a href="#横纵混合排布" class="headerlink" title="横纵混合排布"></a>横纵混合排布</h3><p>假设有p1, p2, p3, p4四个子图，按照上2下2，左右排布，则可以：</p>
 <pre class="line-numbers language-r" data-language="r"><code class="language-r">p1 <span class="token operator">+</span> p2 <span class="token operator">+</span> p3 <span class="token operator">+</span> p4 <span class="token operator">+</span>  <span class="token comment"># 假设 p1-p4 是你的四个图/占位符</span>
   plot_layout<span class="token punctuation">(</span>
-    heighs <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+    heighs <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     widths <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment"># 定义了三列的宽度比例</span>
     design <span class="token operator">=</span> "
     <span class="token number">12</span> <span class="token comment"># 指第一个图和第二个图，第一行</span>
@@ -455,6 +455,17 @@ p1 <span class="token operator">/</span> p2 <span class="token operator">+</span
     "
   <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Gemini回答横纵混合排布 <code>(p1+p2) / (p3+p4) + plot_layout()</code>，这样的嵌套写法，会导致宽度控制异常，stackflow里有相关问题的解释: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65320638/controlling-widths-of-many-patchworked-ggplots">https://stackoverflow.com/questions/65320638/controlling-widths-of-many-patchworked-ggplots</a></p>
+<h3 id="plot-spacer占位"><a href="#plot-spacer占位" class="headerlink" title="plot_spacer占位"></a>plot_spacer占位</h3><p>当有一个主图，p_main，和横轴的一个附图p_x，和纵轴的附图p_y，将三者放到一起时，会有一块是空着的，这个时候，就需要plot_spacer() 填充占位：</p>
+<pre class="line-numbers language-r" data-language="r"><code class="language-r">p_x <span class="token operator">+</span> plot_spacer<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> p_main <span class="token operator">+</span> p_y <span class="token operator">+</span> 
+  plot_layout<span class="token punctuation">(</span>
+    heighs <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+    widths <span class="token operator">=</span> c<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    design <span class="token operator">=</span> "
+    <span class="token number">12</span>
+    <span class="token number">34</span>
+    "
+  <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>示例来自Gemini</p>
 <h2 id="1-准备数据和绘图"><a href="#1-准备数据和绘图" class="headerlink" title="1. 准备数据和绘图"></a>1. 准备数据和绘图</h2><pre class="line-numbers language-r" data-language="r"><code class="language-r">library<span class="token punctuation">(</span>ggplot2<span class="token punctuation">)</span>
 library<span class="token punctuation">(</span>patchwork<span class="token punctuation">)</span>
