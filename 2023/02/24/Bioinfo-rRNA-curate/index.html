@@ -406,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-24
+                    2025-12-24
                 </div>
                 
 
@@ -458,6 +458,29 @@
 </li>
 </ul>
 <p>无论是哪种方法，找到完整和正确的 ribosomal sequence 都是至关重要的，第一种方法，在写贴的当前，貌似在 nucleotide search到的物种有限：<br><img src="rDNA-NCBI-nucleatide-search.png" width="500"><br>所以，第二种方法使用更广泛一些。</p>
+<h1 id="2025-12-23-方法更新"><a href="#2025-12-23-方法更新" class="headerlink" title="2025.12.23 方法更新"></a>2025.12.23 方法更新</h1><p>最近做ribominus，拿到的RNA-Seq数据比对率比较低，可能原因：</p>
+<ol>
+<li><code>rRNA去除不干净</code>（上面已经谈到了）</li>
+<li><code>支原体污染</code></li>
+</ol>
+<p>对于第二个原因，如何能批量获取Mesomycoplasma的基因组就是问题的关键。</p>
+<p>以下回答，结合Gemini获得：</p>
+<p>使用 NCBI Datasets 工具（获取最全库），可以下载RefSeq中整个“支原体目（Mycoplasmatales）”的代表性基因组。以下是我实际运行的代码：  </p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># conda 安装 ncbi-datasets-cli</span>
+conda create -n ncbi_datasets
+conda activate ncbi_datasets
+conda <span class="token function">install</span> -c conda-forge ncbi-datasets-cli
+
+<span class="token comment"># 下载mycoplasmatales</span>
+datasets download genome taxon mycoplasmatales --reference --assembly-source Refseq --filename mycoplasma_genomes.zip
+
+<span class="token function">unzip</span> mycoplasma_genomes.zip
+<span class="token function">find</span> ncbi_dataset/ -name <span class="token string">'*.fna'</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">cat</span> <span class="token operator">&gt;</span> Mesomycoplasma.fna
+
+<span class="token comment"># 创建bowtie2 index</span>
+bowtie2-build Mesomycoplasma.fna Mesomycoplasma_bowtie2_index/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>后续对测序数据用bowtie2进行比对，就可以了。</p>
 
                 
             </div>
