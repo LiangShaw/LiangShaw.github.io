@@ -4,8 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="R数据类型——S4, Shaw">
-    <meta name="description" content="了解S4数据类型，处理数据事倍功半">
+    <meta name="keywords" content="ImageJ用于条带灰度值定量的用法, Shaw">
+    <meta name="description" content="RT-PCR的条带定量，是基因表达量的比较和剪接水平的定量的非常好的办法。下面介绍一下主要操作步骤：
+
+导入胶图
+原始胶图一般是黑底的，所以要进行反向  
+将图像进制转变为8bit；tiff默认就是8bit的  
+
+然后进行正式的定量操作：">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +23,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>R数据类型——S4 | Shaw</title>
+    <title>ImageJ用于条带灰度值定量的用法 | Shaw</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -249,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/28.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">R数据类型——S4</h1>
+                    <h1 class="description center-align post-title">ImageJ用于条带灰度值定量的用法</h1>
                 </div>
             </div>
         </div>
@@ -370,23 +376,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/S4/">
-                                <span class="chip bg-color">S4</span>
+                            <a href="/tags/imageJ/">
+                                <span class="chip bg-color">imageJ</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/R/" class="post-category">
-                                R
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -395,14 +392,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-04-15
+                    2025-06-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-15
+                    2026-04-24
                 </div>
                 
 
@@ -424,77 +421,40 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最近在做单细胞数据分析，才知道了解S4数据类型的重要性。本篇以RDS文件为模板，介绍S4类型数据。以下取自于deepseek。  </p>
-<p>简单来说，<code>RDS</code>文件就像是一个“容器”，里面可以保存任何<code>R</code>对象，包括向量、数据框，而你下载的Seurat对象的RDS文件，其内部核心确实是一种 S4 类的对象。DESeq2的输出结果也是S4对象。  </p>
-<h2 id="什么是S4数据类型"><a href="#什么是S4数据类型" class="headerlink" title="什么是S4数据类型"></a>什么是S4数据类型</h2><p>你可以把S4类理解为R语言为了处理复杂数据而构建的一套 “精密乐高”系统。</p>
-<p>普通列表 像一袋没有说明书的散装积木，你可以随意拼接，但也容易出错。</p>
-<p>S4对象 则像一套有严格图纸的乐高套装。它规定了哪些零件（数据）可以放在哪里（称为“槽”，Slot），以及这些零件应该如何使用。这使得数据存储和分析流程变得非常规范和可靠。</p>
-<p>比如，一个Seurat对象就通过不同的槽，规整地存放了表达矩阵 (<code>assays</code>)、细胞信息 (<code>meta.data</code>)、降维坐标 (<code>reductions</code>) 等。</p>
-<h2 id="核心操作：从认识到提取"><a href="#核心操作：从认识到提取" class="headerlink" title="核心操作：从认识到提取"></a>核心操作：从认识到提取</h2><p>下面的代码假设你已经将RDS文件读取为一个名为 seurat_obj 的对象。</p>
-<h3 id="1-认识它：查看对象的结构和槽"><a href="#1-认识它：查看对象的结构和槽" class="headerlink" title="1. 认识它：查看对象的结构和槽"></a>1. 认识它：查看对象的结构和槽</h3><p>这是最重要的一步，让你知道这个S4对象里究竟有什么。</p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 查看对象的类</span>
-class<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">)</span>
+                <p>RT-PCR的条带定量，是基因表达量的比较和剪接水平的定量的非常好的办法。下面介绍一下主要操作步骤：</p>
+<ol>
+<li>导入胶图</li>
+<li>原始胶图一般是黑底的，所以要进行反向  <img src="Step1.invert.jpg" width="500"></li>
+<li>将图像进制转变为8bit；tiff默认就是8bit的  <img src="step2.image_type.jpg" width="500"></li>
+</ol>
+<p>然后进行正式的定量操作：</p>
+<ol start="4">
+<li>用矩形框选目的条带，然后<strong>analyze</strong>-&gt;<strong>gels</strong>-&gt;<strong>select first lane</strong>，或者使用快捷键<strong>Ctrl+1</strong>  <img src="step3.框选条带.jpg" width="500"></li>
+</ol>
+<img src="step4.select_1st_lane.jpg" width="500">
 
-<span class="token comment"># 查看对象的内部结构（这是核心命令）</span>
-str<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">,</span> max.level <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment"># max.level 控制显示的层级，避免输出过载</span>
+<ol start="5">
+<li>然后拖动矩形框（不能重新绘制，因为要保证所有矩形框大小相同），到下一个条带的位置，<strong>analyze</strong>-&gt;<strong>gels</strong>-&gt;<strong>select next lane</strong>，或者使用快捷键<strong>Ctrl+2</strong></li>
+</ol>
+<img src="step5.select_next_lane.jpg" width="500">
 
-<span class="token comment"># 查看S4对象中所有“槽”的名称</span>
-slotNames<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">)</span>
-<span class="token comment"># 对于Seurat对象，输出可能类似于：</span>
-<span class="token comment"># [1] "assays"     "meta.data"  "active.assay" "active.ident" "graphs"     "reductions" ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li>重复step 5，直至所有目的条带被框选</li>
+<li><strong>analyze</strong>-&gt;<strong>gels</strong>-&gt;<strong>plot lanes</strong>，或者使用快捷键<strong>Ctrl+3</strong>，绘制覆盖图</li>
+</ol>
+<img src="step6.plot_lanes.jpg" width="500">
 
-<h3 id="2-访问它：两种提取数据的方式"><a href="#2-访问它：两种提取数据的方式" class="headerlink" title="2. 访问它：两种提取数据的方式"></a>2. 访问它：两种提取数据的方式</h3><p>获取S4对象中的数据主要有两种方法：</p>
-<ul>
-<li><p>方法一：使用 @ 操作符提取槽 (Slot)<br>这是最直接的方法。@ 符号类似于列表的 $，但专门用于访问S4对象的命名槽。</p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 提取元数据（细胞信息表）</span>
-metadata <span class="token operator">&lt;-</span> seurat_obj<span class="token operator">@</span>meta.data
-head<span class="token punctuation">(</span>metadata<span class="token punctuation">)</span>
+<img src="plot_lanes.jpg" width="500">
 
-<span class="token comment"># 提取降维坐标（如UMAP）</span>
-umap_coords <span class="token operator">&lt;-</span> seurat_obj<span class="token operator">@</span>reductions<span class="token operator">$</span>umap<span class="token operator">@</span>cell.embeddings
-head<span class="token punctuation">(</span>umap_coords<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>方法二：使用辅助函数 (推荐)<br>为了方便用户，Seurat等包的作者通常会提供专门的“getter”函数，让操作更简洁、更安全。</p>
-<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 提取元数据（等同于 seurat_obj@meta.data）</span>
-metadata <span class="token operator">&lt;-</span> seurat_obj<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<ol start="8">
+<li>使用魔法棒工具，对准峰图的位置，点击，即可获得该区域的覆盖度</li>
+</ol>
+<img src="wand_tool.jpg" width="500">
 
-<span class="token comment"># 提取表达矩阵（等同于 seurat_obj@assays$RNA@counts）</span>
-count_matrix <span class="token operator">&lt;-</span> GetAssayData<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">,</span> slot <span class="token operator">=</span> <span class="token string">"counts"</span><span class="token punctuation">)</span>
+<img src="results.jpg" width="500">
 
-<span class="token comment"># 获取当前活跃的细胞分类标签（等同于 Idents(seurat_obj)）</span>
-cell_labels <span class="token operator">&lt;-</span> seurat_obj<span class="token operator">$</span>seurat_clusters<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-<h3 id="3-探索它：常用的导航命令"><a href="#3-探索它：常用的导航命令" class="headerlink" title="3. 探索它：常用的导航命令"></a>3. 探索它：常用的导航命令</h3><ul>
-<li>查看对象本身：直接在控制台输入对象名并回车，Seurat会提供一个友好的概览。<pre class="line-numbers language-r" data-language="r"><code class="language-r">seurat_obj<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>查看所有列名：经常在 meta.data 中寻找细胞注释信息。<pre class="line-numbers language-r" data-language="r"><code class="language-r">colnames<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-<li>查看对象的内存结构：用 str 命令的变体，可以更清晰地看到树形结构。<pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 查看对象的结构概览（类似树状图）</span>
-str<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">,</span> list.len <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
-</ul>
-<h3 id="4-为什么会有S4这种“麻烦”的设计？"><a href="#4-为什么会有S4这种“麻烦”的设计？" class="headerlink" title="4. 为什么会有S4这种“麻烦”的设计？"></a>4. 为什么会有S4这种“麻烦”的设计？</h3><p>理解了基本操作后，你可能还想知道为什么要把数据设计得这么“复杂”。这主要是因为S4系统有几个普通列表无法比拟的优势：</p>
-<ul>
-<li><strong>数据完整性</strong>：它强制数据以规范的形式存储，避免随意修改导致错误。</li>
-<li><strong>方法通用</strong>：可以为同一个函数（比如 plot）定义针对不同S4对象（如Seurat对象、DESeq2对象）的不同行为，这称为“方法分派”（Method Dispatch）。</li>
-<li><strong>防止命名冲突</strong>：不同包的S4对象即使有同名的槽，也不会互相干扰。</li>
-</ul>
-<h2 id="一个完整的实战示例"><a href="#一个完整的实战示例" class="headerlink" title="一个完整的实战示例"></a>一个完整的实战示例</h2><pre class="line-numbers language-r" data-language="r"><code class="language-r"><span class="token comment"># 1. 加载包并读取文件</span>
-library<span class="token punctuation">(</span>Seurat<span class="token punctuation">)</span>
-seurat_obj <span class="token operator">&lt;-</span> readRDS<span class="token punctuation">(</span><span class="token string">"testis_data.rds"</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 2. 快速侦察：它是什么？</span>
-class<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">)</span> <span class="token comment"># 确认是Seurat对象</span>
-
-<span class="token comment"># 3. 查看有哪些数据槽</span>
-slotNames<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">)</span>
-
-<span class="token comment"># 4. 寻找细胞注释（通常在 meta.data 里）</span>
-<span class="token comment"># 使用辅助函数查看所有可用信息列</span>
-head<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-<span class="token comment"># 假设找到一列名为 'celltype'</span>
-<span class="token comment"># 5. 使用辅助函数检查该列的内容</span>
-unique<span class="token punctuation">(</span>seurat_obj<span class="token operator">$</span>celltype<span class="token punctuation">)</span>
-
-<span class="token comment"># 6. 使用辅助函数可视化</span>
-DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punctuation">,</span> group.by <span class="token operator">=</span> <span class="token string">"celltype"</span><span class="token punctuation">,</span> label <span class="token operator">=</span> <span class="token boolean">TRUE</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在使用时，经常会遇到，峰图与X轴不能形成一个密闭的区域，导致选取区域错误。在出现这种情况时，可以使用直线工具，手动添加线条，形成一个密闭区域，但是要注意，线条添加尽可能合理，不要导致结果大量偏移初始值。<br>尤其是在计算PSI值，需要同时统计两个条带亮度，可以利用这个技巧，手动划分两个峰。  </p>
+<img src="plot_lanes_add_straight.jpg" width="500">
                 
             </div>
             <hr/>
@@ -520,7 +480,7 @@ DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punc
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://liangshaw.github.io/2026/04/15/R-S4-datatype/">https://liangshaw.github.io/2026/04/15/R-S4-datatype/</a>
+                    <a href="https://liangshaw.github.io/2025/06/19/ImageJ-basic-usage/">https://liangshaw.github.io/2025/06/19/ImageJ-basic-usage/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -558,8 +518,8 @@ DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punc
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/S4/">
-                                    <span class="chip bg-color">S4</span>
+                                <a href="/tags/imageJ/">
+                                    <span class="chip bg-color">imageJ</span>
                                 </a>
                             
                         </div>
@@ -877,13 +837,13 @@ DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punc
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/04/24/wetlab-sperm-analyse/">
+                <a href="/2025/09/17/job-search-info-summary/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="wetlab-sperm-analyse">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="job-search-info-summary">
                         
-                        <span class="card-title">wetlab-sperm-analyse</span>
+                        <span class="card-title">job-search-info-summary</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -894,7 +854,7 @@ DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punc
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-09-17
                         </span>
                         <span class="publish-author">
                             
@@ -914,13 +874,13 @@ DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punc
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/11/04/RDataVisualization-patchwork/">
+                <a href="/2025/04/07/Bioinfo-AS-detect/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="R图形组合工具包——patchwork">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="剪接事件检测工具之SUPPA">
                         
-                        <span class="card-title">R图形组合工具包——patchwork</span>
+                        <span class="card-title">剪接事件检测工具之SUPPA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -931,27 +891,15 @@ DimPlot<span class="token punctuation">(</span>seurat_obj<span class="token punc
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/R%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%8B%E5%86%8C/" class="post-category">
-                                    R数据可视化手册
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            梁绍波
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/R/">
-                        <span class="chip bg-color">R</span>
-                    </a>
-                    
                 </div>
                 
             </div>
